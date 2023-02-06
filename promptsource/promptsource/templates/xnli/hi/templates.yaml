@@ -1,0 +1,37 @@
+dataset: xnli
+subset: hi
+templates:
+  7131b3dd-38fa-4205-ab10-7a8353b6632b: !Template
+    answer_choices: "\u0938\u0939\u0940 ||| \u0917\u0932\u0924 ||| \u0926\u094B\u0928\
+      \u094B\u0902 \u0928\u0939\u0940\u0902"
+    id: 7131b3dd-38fa-4205-ab10-7a8353b6632b
+    jinja: "{{premise}}\n\u0938\u0935\u093E\u0932: {{hypothesis}} \u0938\u0939\u0940\
+      , \u0917\u0932\u0924 , \u092F\u093E \u0926\u094B\u0928\u094B\u0902 \u0928\u0939\
+      \u0940\u0902 ? ||| {{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - hi
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Handcrafted GPT-3 style
+    reference: 'Hindi version of prompt reported in Figure G7 of the GPT-3 paper,
+      except that there is no task identifying tokens like "anli R1: ".'
+  9940c00e-11c7-4422-a4e6-fe53a5df25fe: !Template
+    answer_choices: True ||| Neither ||| False
+    id: 9940c00e-11c7-4422-a4e6-fe53a5df25fe
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: English GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'

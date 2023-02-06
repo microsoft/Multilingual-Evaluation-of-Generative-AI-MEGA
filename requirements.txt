@@ -1,0 +1,4 @@
+openai
+datasets
+transformers==4.26.0
+tqdm
