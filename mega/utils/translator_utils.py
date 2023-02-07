@@ -37,7 +37,7 @@ def translate_with_bing(text: str, src: str, dest: str) -> str:
     """
     params = {"api-version": "3.0", "from": src, "to": [dest]}
     body = [{"text": text}]
-    
+
     try:
         request = requests.post(
             constructed_url, params=params, headers=headers, json=body
@@ -66,7 +66,7 @@ def translate_xnli(
     Returns:
         Dataset: Translated Dataset
     """
-    
+
     # Translate premise
     xnli_dataset = xnli_dataset.map(
         lambda example: {"premise": translate_with_bing(example["premise"], src, dest)},
@@ -86,5 +86,5 @@ def translate_xnli(
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         xnli_dataset.save_to_disk(save_path)
-        
+
     return xnli_dataset

@@ -77,10 +77,14 @@ def parse_args(args: list) -> argparse.Namespace:
         "--save_dir", default="results", type=str, help="Path to store results"
     )
     parser.add_argument(
-        "--translate-test", action="store_true", help = "Whether to use translated test data"
+        "--translate-test",
+        action="store_true",
+        help="Whether to use translated test data",
     )
     parser.add_argument(
-        "--use-val-to-prompt", action="store_true", help = "Whether to use Validation Data for in-context examples"
+        "--use-val-to-prompt",
+        action="store_true",
+        help="Whether to use Validation Data for in-context examples",
     )
     return parser.parse_args(args)
 
@@ -95,21 +99,31 @@ def load_xnli_dataset(lang: str) -> Union[Dataset, DatasetDict]:
     """
     return load_dataset("xnli", lang)
 
-def load_translate_test(tgt_lang: str, pivot_lang: str = "en", test_dataset : Optional[Dataset] = None, data_dir: str = "data") -> Dataset:
+
+def load_translate_test(
+    tgt_lang: str,
+    pivot_lang: str = "en",
+    test_dataset: Optional[Dataset] = None,
+    data_dir: str = "data",
+) -> Dataset:
 
     tt_dir = os.path.join(
         data_dir, "xnli", "translate_test", f"{tgt_lang}_{pivot_lang}"
     )
     if not os.path.exists(f"{tt_dir}/dataset_info.json"):
         if test_dataset is None:
-            raise ValueError("Need to provide `test_dataset`, if translate_test dataset do not exist already")
-        tt_dataset = translate_xnli(test_dataset, tgt_lang, pivot_lang, save_path = tt_dir)
+            raise ValueError(
+                "Need to provide `test_dataset`, if translate_test dataset do not exist already"
+            )
+        tt_dataset = translate_xnli(
+            test_dataset, tgt_lang, pivot_lang, save_path=tt_dir
+        )
     else:
         tt_dataset = load_from_disk(tt_dir)
-    
+
     return tt_dataset
-    
-    
+
+
 def load_prompt_template(lang: str, prompt_name: str) -> Template:
     """Loads prompt template from promptsource
 
@@ -191,10 +205,10 @@ def get_model_pred(
     prompt_input, label = construct_prompt(
         train_examples, test_example, train_prompt_template, test_prompt_template
     )
-    
+
     # Hit the api repeatedly till response is obtained
     while True:
-        try:        
+        try:
             response = openai.Completion.create(
                 engine=model,
                 prompt=prompt_input,
@@ -206,7 +220,7 @@ def get_model_pred(
             break
         except openai.error.APIConnectionError:
             continue
-            
+
     return {"prediction": response["choices"][0]["text"].strip(), "ground_truth": label}
 
 
@@ -289,7 +303,9 @@ def main():
         train_dataset = train_dataset["validation"]
     test_dataset = load_xnli_dataset(args.tgt_lang)["test"]
     if args.translate_test:
-        test_dataset = load_translate_test(args.tgt_lang, args.pivot_lang, test_dataset, data_dir = "data")
+        test_dataset = load_translate_test(
+            args.tgt_lang, args.pivot_lang, test_dataset, data_dir="data"
+        )
 
     # Load prompt templates for train and test datasets
     train_prompt_template = load_prompt_template(
@@ -306,7 +322,7 @@ def main():
         out_dir = f"{out_dir}_translate_test"
     if args.use_val_to_prompt:
         out_dir = f"{out_dir}_use_val_to_prompt"
-    
+
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
 
