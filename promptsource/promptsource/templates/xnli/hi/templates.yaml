@@ -1,6 +1,40 @@
 dataset: xnli
 subset: hi
 templates:
+  07b3a8b1-ae81-4939-b125-d5860cc13099: !Template
+    answer_choices: Correct ||| Inconclusive ||| Incorrect
+    id: 07b3a8b1-ae81-4939-b125-d5860cc13099
+    jinja: '{{premise}} Using only the above description and what you know about the
+      world, "{{hypothesis}}" is definitely correct, incorrect, or inconclusive? |||
+      {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: English MNLI crowdsource
+    reference: Adapted from Williams et al. 2018's instructions to crowdsourcing workers.
+  2c4e1fe1-1576-44ed-b7d8-6881039ef7ef: !Template
+    answer_choices: "\u0939\u093E\u0901 ||| \u0928\u0939\u0940\u0902 ||| \u0936\u093E\
+      \u092F\u0926"
+    id: 2c4e1fe1-1576-44ed-b7d8-6881039ef7ef
+    jinja: "{{premise}} \u092A\u0940\u091B\u0947 \u0926\u093F\u090F \u0917\u090F \u092A\
+      \u093E\u0920 \u0915\u0947 \u0906\u0927\u093E\u0930 \u092A\u0930 , \u0915\u094D\
+      \u092F\u093E \u092F\u0939 \u0938\u091A \u0939\u0948 \u0915\u0940 \"{{hypothesis}}\"\
+      ? \u0939\u093E\u0901 , \u0928\u0939\u0940\u0902 \u092F\u093E \u0936\u093E\u092F\
+      \u0926? ||| {{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - hi
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Handcrafted based on the previous passage
+    reference: "Hindi Version of Prompts Adapted from the BoolQ prompts in Schick\
+      \ & Sch\xFCtze 2021."
   7131b3dd-38fa-4205-ab10-7a8353b6632b: !Template
     answer_choices: "\u0938\u0939\u0940 ||| \u0917\u0932\u0924 ||| \u0926\u094B\u0928\
       \u094B\u0902 \u0928\u0939\u0940\u0902"
@@ -35,3 +69,40 @@ templates:
     name: English GPT-3 style
     reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
       is no task identifying tokens like "anli R1: ".'
+  af99c26d-3d85-466e-8450-64f52622eee4: !Template
+    answer_choices: Yes ||| Maybe ||| No
+    id: af99c26d-3d85-466e-8450-64f52622eee4
+    jinja: '{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
+      Yes, no, or maybe? ||| {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: English based on the previous passage
+    reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
+  fd525de3-d327-41af-b7c7-c061289e4dec: !Template
+    answer_choices: "\u0938\u0939\u0940 ||| \u0917\u0932\u0924 ||| \u0905\u0928\u093F\
+      \u0930\u094D\u0923\u0940\u0924"
+    id: fd525de3-d327-41af-b7c7-c061289e4dec
+    jinja: "{{premise}} \u0915\u0947\u0935\u0932 \u0909\u092A\u0930\u094B\u0915\u094D\
+      \u0924 \u0935\u093F\u0935\u0930\u0923 \u0915\u093E \u092A\u094D\u0930\u092F\u094B\
+      \u0917 \u0915\u0930\u0924\u0947 \u0939\u0941\u090F \u0914\u0930 \u0906\u092A\
+      \u0915\u0940 \u0926\u0941\u0928\u093F\u092F\u093E \u0915\u0940 \u091C\u093E\u0928\
+      \u0915\u093E\u0930\u0940 \u0915\u0947 \u0905\u0928\u0941\u0938\u093E\u0930 ,\
+      \ \u092C\u0924\u093E\u090F\u0902  \u0915\u0940 \u0915\u094D\u092F\u093E \"{{hypothesis}}\"\
+      \ \u090F\u0915\u0926\u092E \u0938\u0939\u0940 \u0939\u0948 , \u0917\u0932\u0924\
+      \  \u0939\u0948 \u092F\u093E \u0905\u0928\u093F\u0930\u094D\u0923\u0940\u0924\
+      \ \u0939\u0948 ? ||| {{ answer_choices[label] }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - hi
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Handcrafted MNLI crowdsource
+    reference: Hindi Version of Prompt Adapted from Williams et al. 2018's instructions
+      to crowdsourcing workers.
