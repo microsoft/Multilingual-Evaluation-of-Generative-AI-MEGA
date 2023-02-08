@@ -343,6 +343,7 @@ def main():
     results_dict["metrics"] = {"accuracy": accuracy}
     with open(f"{out_dir}/results.json", "w") as f:
         json.dump(results_dict, f, indent=4)
+    print(f"Results written in {out_dir}")
 
 
 if __name__ == "__main__":

@@ -17,8 +17,8 @@ templates:
     name: English MNLI crowdsource
     reference: Adapted from Williams et al. 2018's instructions to crowdsourcing workers.
   2c4e1fe1-1576-44ed-b7d8-6881039ef7ef: !Template
-    answer_choices: "\u0939\u093E\u0901 ||| \u0928\u0939\u0940\u0902 ||| \u0936\u093E\
-      \u092F\u0926"
+    answer_choices: "\u0939\u093E\u0901 ||| \u0936\u093E\u092F\u0926 ||| \u0928\u0939\
+      \u0940\u0902"
     id: 2c4e1fe1-1576-44ed-b7d8-6881039ef7ef
     jinja: "{{premise}} \u092A\u0940\u091B\u0947 \u0926\u093F\u090F \u0917\u090F \u092A\
       \u093E\u0920 \u0915\u0947 \u0906\u0927\u093E\u0930 \u092A\u0930 , \u0915\u094D\
@@ -36,8 +36,8 @@ templates:
     reference: "Hindi Version of Prompts Adapted from the BoolQ prompts in Schick\
       \ & Sch\xFCtze 2021."
   7131b3dd-38fa-4205-ab10-7a8353b6632b: !Template
-    answer_choices: "\u0938\u0939\u0940 ||| \u0917\u0932\u0924 ||| \u0926\u094B\u0928\
-      \u094B\u0902 \u0928\u0939\u0940\u0902"
+    answer_choices: "\u0938\u0939\u0940 ||| \u0926\u094B\u0928\u094B\u0902 \u0928\u0939\
+      \u0940\u0902  ||| \u0917\u0932\u0924"
     id: 7131b3dd-38fa-4205-ab10-7a8353b6632b
     jinja: "{{premise}}\n\u0938\u0935\u093E\u0932: {{hypothesis}} \u0938\u0939\u0940\
       , \u0917\u0932\u0924 , \u092F\u093E \u0926\u094B\u0928\u094B\u0902 \u0928\u0939\
@@ -84,8 +84,8 @@ templates:
     name: English based on the previous passage
     reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
   fd525de3-d327-41af-b7c7-c061289e4dec: !Template
-    answer_choices: "\u0938\u0939\u0940 ||| \u0917\u0932\u0924 ||| \u0905\u0928\u093F\
-      \u0930\u094D\u0923\u0940\u0924"
+    answer_choices: "\u0938\u0939\u0940 ||| \u0905\u0928\u093F\u0930\u094D\u0923\u0940\
+      \u0924 ||| \u0917\u0932\u0924 "
     id: fd525de3-d327-41af-b7c7-c061289e4dec
     jinja: "{{premise}} \u0915\u0947\u0935\u0932 \u0909\u092A\u0930\u094B\u0915\u094D\
       \u0924 \u0935\u093F\u0935\u0930\u0923 \u0915\u093E \u092A\u094D\u0930\u092F\u094B\
