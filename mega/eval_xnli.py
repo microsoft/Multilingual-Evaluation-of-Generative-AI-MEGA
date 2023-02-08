@@ -86,6 +86,25 @@ def parse_args(args: list) -> argparse.Namespace:
         action="store_true",
         help="Whether to use Validation Data for in-context examples",
     )
+    parser.add_argument(
+        "--parallel_eval",
+        dest="parallel_eval",
+        action="store_true",
+        help="Whether to run parallel evaluation for speedup",
+    )
+    parser.add_argument(
+        "--no-parallel_eval",
+        dest="parallel_eval",
+        action="store_false",
+        help="Whether to run parallel evaluation for speedup",
+    )
+    parser.set_defaults(parallel_eval=True)
+    parser.add_argument(
+        "--num_proc",
+        default=4,
+        type=int,
+        help="Number of processes to run parallely for evaluation. Only relevant for parallel_eval.",
+    )
     return parser.parse_args(args)
 
 
@@ -218,43 +237,33 @@ def get_model_pred(
                 logprobs=10,
             )
             break
-        except openai.error.APIConnectionError:
+        except (openai.error.APIConnectionError, openai.error.RateLimitError) as e:
             continue
 
     return {"prediction": response["choices"][0]["text"].strip(), "ground_truth": label}
 
 
-def evaluate_model(
-    train_dataset: Dataset,
+def run_seq_eval(
+    train_examples: List[Dict[str, Union[str, int]]],
     test_dataset: Dataset,
     train_prompt_template: Template,
     test_prompt_template: Template,
     model: str,
-    few_shot_size: int,
-    selection_criteria: int,
-    save_preds_path: Optional[str] = None,
-) -> float:
-    """Evaluates the accuracy of the model
-    Note: Currently compares the exact match between the generated answer and the verbalized label
-    ToDo: Find alternatives to exact match (embeddings?)
+) -> Tuple[float, pd.DataFrame]:
+    """Runs sequential evaluation. This is slower but would be better when limited API hits are available
 
     Args:
-        train_dataset (Dataset): _description_
+        train_examples (List[Dict[str, Union[str, int]]]): _description_
         test_dataset (Dataset): _description_
         train_prompt_template (Template): _description_
         test_prompt_template (Template): _description_
         model (str): _description_
-        few_shot_size (int): _description_
-        selection_criteria (int): _description_
         save_preds_path (Optional[str], optional): _description_. Defaults to None.
 
     Returns:
-        float: _description_
+        _type_: _description_
     """
 
-    train_examples = choose_few_shot_examples(
-        train_dataset, few_shot_size, selection_criteria
-    )
     preds = []
     labels = []
     matches = []
@@ -275,14 +284,118 @@ def evaluate_model(
         matches.append(float(pred == label))
 
     accuracy = num_matches / len(preds)
+    results_df = pd.DataFrame({"Label": labels, "Prediction": preds, "Match": matches})
+    if save_preds_path is not None:
+        preds_dir, _ = os.path.split(save_preds_path)
+        if not os.path.exists(preds_dir):
+            os.makedirs(preds_dir)
+
+        results_df.to_csv(save_preds_path)
+
+    return accuracy, results_df
+
+
+def run_parallel_eval(
+    train_examples: List[Dict[str, Union[str, int]]],
+    test_dataset: Dataset,
+    train_prompt_template: Template,
+    test_prompt_template: Template,
+    model: str,
+    num_proc: int = 4,
+) -> Tuple[float, pd.DataFrame]:
+    """Runs parallel evaluation.
+    This should be substanially fast but should be avoided when limited API hits are available
+
+    Args:
+        train_examples (List[Dict[str, Union[str, int]]]): _description_
+        test_dataset (Dataset): _description_
+        train_prompt_template (Template): _description_
+        test_prompt_template (Template): _description_
+        model (str): _description_
+        save_preds_path (Optional[str], optional): _description_. Defaults to None.
+        num_proc (int): _description_. Defaults to 4.
+    Returns:
+        _type_: _description_
+    """
+
+    results_dataset = test_dataset.map(
+        lambda example: get_model_pred(
+            train_examples,
+            example,
+            train_prompt_template,
+            test_prompt_template,
+            model,
+        ),
+        num_proc=num_proc,
+        load_from_cache_file=False
+    )
+    preds = results_dataset["prediction"]
+    labels = results_dataset["ground_truth"]
+    matches = [float(pred == label) for (pred, label) in zip(preds, labels)]
+    accuracy = sum(matches) / len(preds)
+    results_df = pd.DataFrame({"Label": labels, "Prediction": preds, "Match": matches})
+
+    return accuracy, results_df
+
+
+def evaluate_model(
+    train_dataset: Dataset,
+    test_dataset: Dataset,
+    train_prompt_template: Template,
+    test_prompt_template: Template,
+    model: str,
+    few_shot_size: int,
+    selection_criteria: int,
+    save_preds_path: Optional[str] = None,
+    parallel_eval: bool = False,
+    num_proc: Optional[int] = None,
+) -> float:
+    """Evaluates the accuracy of the model
+    Note: Currently compares the exact match between the generated answer and the verbalized label
+    ToDo: Find alternatives to exact match (embeddings?)
+
+    Args:
+        train_dataset (Dataset): _description_
+        test_dataset (Dataset): _description_
+        train_prompt_template (Template): _description_
+        test_prompt_template (Template): _description_
+        model (str): _description_
+        few_shot_size (int): _description_
+        selection_criteria (int): _description_
+        save_preds_path (Optional[str], optional): _description_. Defaults to None.
+        parallel_eval (bool): _description_
+
+    Returns:
+        float: _description_
+    """
+
+    train_examples = choose_few_shot_examples(
+        train_dataset, few_shot_size, selection_criteria
+    )
+
+    if parallel_eval:
+        num_proc = 4 if num_proc is None else num_proc
+        accuracy, results_df = run_parallel_eval(
+            train_examples,
+            test_dataset,
+            train_prompt_template,
+            test_prompt_template,
+            model=model,
+            num_proc=num_proc,
+        )
+    else:
+        accuracy, results_df = run_seq_eval(
+            train_examples,
+            test_dataset,
+            train_prompt_template,
+            test_prompt_template,
+            model=model
+        )
 
     if save_preds_path is not None:
         preds_dir, _ = os.path.split(save_preds_path)
         if not os.path.exists(preds_dir):
             os.makedirs(preds_dir)
-        results_df = pd.DataFrame(
-            {"Label": labels, "Prediction": preds, "Match": matches}
-        )
         results_df.to_csv(save_preds_path)
 
     return accuracy
@@ -336,6 +449,8 @@ def main():
         args.few_shot_k,
         args.few_shot_selection,
         save_preds_path=pred_file_path,
+        parallel_eval=args.parallel_eval,
+        num_proc=args.num_proc,
     )
     print(accuracy)
     # Store results
