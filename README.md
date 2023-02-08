@@ -128,9 +128,7 @@ There are 3 modes in the app:
 - **Prompted dataset viewer**: check the prompts you wrote (or the existing ones) on the entire dataset
 - **Helicopter view**: aggregate high-level metrics on the current state of P3
 
-<p align="center">
-  <img src="promptsource/assets/promptsource_app.png" width="800"/>
-</p>
+![ALT](promptsource/assets/promptsource_app.png)
 
 To launch the app locally, please first make sure you have followed the steps in [Setup](#setup), and from the root directory of the repo, run:
 ```bash
