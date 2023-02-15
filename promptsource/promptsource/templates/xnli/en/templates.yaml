@@ -31,6 +31,20 @@ templates:
       original_task: true
     name: does this imply
     reference: Sanh et al. 2021
+  212c616d-77e7-4b36-90e8-5d943cb6117a: !Template
+    answer_choices: yes |||neither ||| no
+    id: 212c616d-77e7-4b36-90e8-5d943cb6117a
+    jinja: '{{premise}} Is the following text: {{hypothesis}} follow the previous
+      text? Yes, No, or Neither? ||| {{answer_choices[label]}}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Test Prompt
+    reference: some reference
   37d2f061-06b0-4aa3-af53-871a2b06748f: !Template
     answer_choices: True ||| Neither ||| False
     id: 37d2f061-06b0-4aa3-af53-871a2b06748f

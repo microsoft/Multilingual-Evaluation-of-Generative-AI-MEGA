@@ -35,6 +35,17 @@ templates:
     name: Handcrafted based on the previous passage
     reference: "Hindi Version of Prompts Adapted from the BoolQ prompts in Schick\
       \ & Sch\xFCtze 2021."
+  65ce4a49-39b5-4e83-ac78-dd8c8655c319: !Template
+    answer_choices: null
+    id: 65ce4a49-39b5-4e83-ac78-dd8c8655c319
+    jinja: ''
+    metadata: !TemplateMetadata
+      choices_in_prompt: null
+      languages: null
+      metrics: null
+      original_task: null
+    name: test_prompt
+    reference: ''
   7131b3dd-38fa-4205-ab10-7a8353b6632b: !Template
     answer_choices: "\u0938\u0939\u0940 ||| \u0926\u094B\u0928\u094B\u0902 \u0928\u0939\
       \u0940\u0902  ||| \u0917\u0932\u0924"

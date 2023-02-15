@@ -96,6 +96,7 @@ results/*
 openai_key.txt
 data/*
 keys/*.txt
+wandb/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
