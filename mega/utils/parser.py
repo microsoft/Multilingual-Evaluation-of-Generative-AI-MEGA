@@ -102,6 +102,12 @@ def parse_args(args: list) -> argparse.Namespace:
         help="Whether to use Validation Data for in-evaluation",
     )
     parser.add_argument(
+        "--num_evals_per_sec",
+        default=2,
+        type=int,
+        help="Number of evaluations to run per second."
+    )
+    parser.add_argument(
         "--parallel_eval",
         dest="parallel_eval",
         action="store_true",

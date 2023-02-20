@@ -1,4 +1,5 @@
 import requests
+import time
 import openai
 from typing import List, Dict, Union
 from promptsource.templates import Template
@@ -63,13 +64,14 @@ def bloom_completion(prompt: str, **model_params) -> str:
         return response.json()
 
     model_output = query(prompt)
-    try:
-        return model_output[0]["generated_text"][len(prompt) :].split("\n")[0]
-    except:
-        import pdb
-
-        pdb.set_trace()
-
+    while True:
+        try:
+            return model_output[0]["generated_text"][len(prompt) :].split("\n")[0]
+            break
+        except Exception as e:
+            print("Exceeded Limit! Sleeping for a minute, will try again!")
+            time.sleep(60)
+            continue
 
 def model_completion(prompt: str, model: str, **model_params) -> str:
 

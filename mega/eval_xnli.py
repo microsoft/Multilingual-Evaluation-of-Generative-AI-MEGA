@@ -83,6 +83,7 @@ def main(sys_args):
         args.few_shot_k,
         args.few_shot_selection,
         save_preds_path=pred_file_path if not args.no_save else None,
+        num_evals_per_sec=args.num_evals_per_sec,
         parallel_eval=args.parallel_eval,
         num_proc=args.num_proc,
         temperature=args.temperature,
