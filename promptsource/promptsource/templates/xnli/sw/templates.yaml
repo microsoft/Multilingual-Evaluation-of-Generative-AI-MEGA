@@ -94,7 +94,7 @@ templates:
     id: 6c67e364-554d-486e-994e-1e3d1430b5ad
     jinja: '''{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
       Yes, no, or maybe? ||| {{ answer_choices[label] }}'''
-    metadata: !TemplateMetadata
+    metadata: &id002 !TemplateMetadata
       choices_in_prompt: true
       languages:
       - en
