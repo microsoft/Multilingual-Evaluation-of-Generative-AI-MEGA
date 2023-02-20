@@ -71,7 +71,7 @@ def translate_xnli(
     xnli_dataset = xnli_dataset.map(
         lambda example: {"premise": translate_with_bing(example["premise"], src, dest)},
         num_proc=4,
-        load_from_cache_file=False
+        load_from_cache_file=False,
     )
 
     # Translate hypothesis
@@ -80,7 +80,7 @@ def translate_xnli(
             "hypothesis": translate_with_bing(example["hypothesis"], src, dest)
         },
         num_proc=4,
-        load_from_cache_file=False
+        load_from_cache_file=False,
     )
 
     if save_path is not None:

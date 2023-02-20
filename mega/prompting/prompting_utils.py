@@ -1,6 +1,7 @@
 from typing import Union, List, Dict, Tuple, Optional
 from promptsource.templates import Template, DatasetTemplates
 
+
 def construct_prompt(
     train_examples: List[Dict[str, Union[str, int]]],
     test_example: Dict[str, Union[str, int]],
@@ -27,6 +28,7 @@ def construct_prompt(
     prompt_input = "\n".join(train_prompts + [test_prompt_input]) + "\n"
 
     return prompt_input, test_prompt_label
+
 
 def load_prompt_template(lang: str, prompt_name: str) -> Template:
     """Loads prompt template from promptsource

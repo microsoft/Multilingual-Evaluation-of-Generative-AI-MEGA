@@ -67,6 +67,7 @@ def bloom_completion(prompt: str, **model_params) -> str:
         return model_output[0]["generated_text"][len(prompt) :].split("\n")[0]
     except:
         import pdb
+
         pdb.set_trace()
 
 
@@ -87,6 +88,7 @@ def model_completion(prompt: str, model: str, **model_params) -> str:
 
     if model == "BLOOM":
         return bloom_completion(prompt, **model_params)
+
 
 def get_model_pred(
     train_examples: List[Dict[str, Union[str, int]]],

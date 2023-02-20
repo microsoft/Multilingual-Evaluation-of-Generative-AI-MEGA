@@ -13,10 +13,18 @@ def parse_args(args: list) -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser("Evaluate GPT-x models on XNLI")
     parser.add_argument(
+        "-d",
+        "--dataset",
+        default="xnli",
+        choices=["xnli"],
+        type=str,
+        help="(HF) Dataset to use",
+    )
+    parser.add_argument(
         "-p",
         "--pivot_lang",
         default="en",
-        choices=["en", "hi"],
+        # choices=["en", "hi"],
         type=str,
         help="Language in which few-shot examples are provided",
     )
@@ -24,10 +32,16 @@ def parse_args(args: list) -> argparse.Namespace:
         "-t",
         "--tgt_lang",
         default="en",
-        choices=["en", "hi"],
+        # choices=["en", "hi"],
         type=str,
         help="Language to evaluate on",
     )
+    parser.add_argument(
+            "--tgt_langs",
+            default="es,hi",
+            type=str,
+            help="Languages to translate to",
+        )
     parser.add_argument(
         "--pivot_prompt_name",
         default="GPT-3 style",
@@ -127,8 +141,6 @@ def parse_args(args: list) -> argparse.Namespace:
         help="Whether to log experiments and results on wandb",
     )
     parser.add_argument(
-        "--no-save",
-        action="store_true",
-        help="Whether to not save any results"
+        "--no-save", action="store_true", help="Whether to not save any results"
     )
     return parser.parse_args(args)

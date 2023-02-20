@@ -13,6 +13,7 @@ from mega.prompting.prompting_utils import load_prompt_template
 from mega.utils.parser import parse_args
 import pdb
 
+
 def main(sys_args):
     args = parse_args(sys_args)
 
@@ -41,7 +42,7 @@ def main(sys_args):
         args.pivot_lang, split="train" if not args.use_val_to_prompt else "validation"
     )
     test_dataset = load_xnli_dataset(
-        args.pivot_lang,
+        args.tgt_lang,
         split="test" if not args.eval_on_val else "validation",
         dataset_frac=args.test_frac,
     )

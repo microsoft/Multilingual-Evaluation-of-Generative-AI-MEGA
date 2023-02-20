@@ -8,6 +8,7 @@ from promptsource.templates import Template
 from mega.models.completion_models import get_model_pred
 from mega.data.data_utils import choose_few_shot_examples
 
+
 def run_seq_eval(
     train_examples: List[Dict[str, Union[str, int]]],
     test_dataset: Dataset,

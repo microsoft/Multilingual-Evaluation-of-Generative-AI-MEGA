@@ -2,6 +2,7 @@ from typing import Dict, List, Union
 import numpy as np
 from datasets import Dataset
 
+
 def choose_few_shot_examples(
     train_dataset: Dataset, few_shot_size: int, selection_criteria: str
 ) -> List[Dict[str, Union[str, int]]]:

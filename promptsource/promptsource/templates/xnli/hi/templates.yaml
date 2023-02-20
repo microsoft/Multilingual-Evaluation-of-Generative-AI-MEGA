@@ -1,5 +1,4 @@
-dataset: xnli
-subset: hi
+dataset: xnli/hi
 templates:
   07b3a8b1-ae81-4939-b125-d5860cc13099: !Template
     answer_choices: Correct ||| Inconclusive ||| Incorrect
@@ -35,6 +34,37 @@ templates:
     name: Handcrafted based on the previous passage
     reference: "Hindi Version of Prompts Adapted from the BoolQ prompts in Schick\
       \ & Sch\xFCtze 2021."
+  37d2f061-06b0-4aa3-af53-871a2b06748f: !Template
+    answer_choices: True ||| Neither ||| False
+    id: 37d2f061-06b0-4aa3-af53-871a2b06748f
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'
+  58536115-fd5c-4f29-a85b-420fde6fc5b0: !Template
+    answer_choices: Yes ||| Maybe ||| No
+    id: 58536115-fd5c-4f29-a85b-420fde6fc5b0
+    jinja: '{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
+      Yes, no, or maybe? ||| {{ answer_choices[label] }}'
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: based on the previous passage
+    reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
   65ce4a49-39b5-4e83-ac78-dd8c8655c319: !Template
     answer_choices: null
     id: 65ce4a49-39b5-4e83-ac78-dd8c8655c319
@@ -94,6 +124,31 @@ templates:
       original_task: true
     name: English based on the previous passage
     reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
+  b83f81c7-c712-427e-8289-94ae9b37260c: !Template
+    answer_choices: "\u0938\u091A\u094D\u091A\u093E ||| \u092D\u0940 \u0928\u0939\u0940\
+      \u0902 ||| \u0917\u0932\u0924"
+    id: b83f81c7-c712-427e-8289-94ae9b37260c
+    jinja: "{{premise}}\\n\u092A\u094D\u0930\u0936\u094D\u0928: {{hypothesis}} \u0938\
+      \u0924\u094D\u092F, \u0905\u0938\u0924\u094D\u092F \u092F\u093E \u0928 \u0924\
+      \u094B? ||| {{ answer_choices[label]}}"
+    metadata: *id001
+    name: Bing-Translated GPT-3 style
+    reference: 'Translated to hi version  of: Same as reported in Figure G7 of the
+      GPT-3 paper, except that there is no task identifying tokens like "anli R1:
+      ".'
+  d5dba5eb-ad9e-4136-b3d1-f5e2f32ce4f8: !Template
+    answer_choices: "\u0939\u093E\u0901 ||| \u0936\u093E\u092F\u0926 ||| \u0928\u0939\
+      \u0940\u0902"
+    id: d5dba5eb-ad9e-4136-b3d1-f5e2f32ce4f8
+    jinja: "{{premise}} \u092A\u093F\u091B\u0932\u0947 \u092A\u0930\u093F\u091A\u094D\
+      \u091B\u0947\u0926 \u0915\u0947 \u0906\u0927\u093E\u0930 \u092A\u0930, \u0915\
+      \u094D\u092F\u093E \u092F\u0939 \u0938\u091A \u0939\u0948 \u0915\u093F \"{{hypothesis}}\"\
+      ? \u0939\u093E\u0901, \u0928\u0939\u0940\u0902, \u092F\u093E \u0936\u093E\u092F\
+      \u0926? ||| {{ answer_choices[label]}}"
+    metadata: *id002
+    name: Bing-Translated based on the previous passage
+    reference: "Translated to hi version  of: Adapted from the BoolQ prompts in Schick\
+      \ & Sch\xFCtze 2021."
   fd525de3-d327-41af-b7c7-c061289e4dec: !Template
     answer_choices: "\u0938\u0939\u0940 ||| \u0905\u0928\u093F\u0930\u094D\u0923\u0940\
       \u0924 ||| \u0917\u0932\u0924 "

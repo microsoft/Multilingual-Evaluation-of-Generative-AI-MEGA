@@ -1,0 +1,53 @@
+dataset: xnli/fr
+templates:
+  37d2f061-06b0-4aa3-af53-871a2b06748f: !Template
+    answer_choices: True ||| Neither ||| False
+    id: 37d2f061-06b0-4aa3-af53-871a2b06748f
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'
+  58536115-fd5c-4f29-a85b-420fde6fc5b0: !Template
+    answer_choices: Yes ||| Maybe ||| No
+    id: 58536115-fd5c-4f29-a85b-420fde6fc5b0
+    jinja: '{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
+      Yes, no, or maybe? ||| {{ answer_choices[label] }}'
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: based on the previous passage
+    reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
+  69b27bae-b733-470f-8e78-84226458044b: !Template
+    answer_choices: Vrai ||| Ni ||| Faux
+    id: 69b27bae-b733-470f-8e78-84226458044b
+    jinja: "{{premise}}\nQuestion : {{hypothesis}} Vrai, faux ou ni l\u2019un ni l\u2019\
+      autre ? ||| {{ answer_choices[label] }}"
+    metadata: *id001
+    name: Bing-Translated GPT-3 style
+    reference: 'Translated to fr version  of: Same as reported in Figure G7 of the
+      GPT-3 paper, except that there is no task identifying tokens like "anli R1:
+      ".'
+  b891f86c-5cd9-42e8-9b25-37d7a38b8b40: !Template
+    answer_choices: "Oui ||| Peut-\xEAtre ||| Non"
+    id: b891f86c-5cd9-42e8-9b25-37d7a38b8b40
+    jinja: "{{premise}} D\u2019apr\xE8s le passage pr\xE9c\xE9dent, est-il vrai que\
+      \ \xAB\_{{hypothesis}}\_\xBB ? Oui, non ou peut-\xEAtre? ||| {{ answer_choices[label]\
+      \ }}"
+    metadata: *id002
+    name: Bing-Translated based on the previous passage
+    reference: "Translated to fr version  of: Adapted from the BoolQ prompts in Schick\
+      \ & Sch\xFCtze 2021."
