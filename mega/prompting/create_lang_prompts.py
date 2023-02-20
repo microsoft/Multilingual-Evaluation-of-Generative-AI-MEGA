@@ -106,7 +106,7 @@ def add_prompt_to_dataset(
 
 def main(sys_args):
     args = parse_args(sys_args)
-    prompt_template = load_prompt_template(args.pivot_lang, args.pivot_prompt_name)
+    prompt_template = load_prompt_template(args.pivot_lang, args.pivot_prompt_name, dataset=args.dataset)
     tgt_langs = args.tgt_langs.split(",") #Can provide multiple languages here as comma seperated values
     for tgt_lang in tgt_langs:
         print(f"Creating Translated Prompts for {tgt_lang}")

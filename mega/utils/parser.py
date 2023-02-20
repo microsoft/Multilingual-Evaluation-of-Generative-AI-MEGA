@@ -16,7 +16,7 @@ def parse_args(args: list) -> argparse.Namespace:
         "-d",
         "--dataset",
         default="xnli",
-        choices=["xnli"],
+        choices=["xnli", "paws-x"],
         type=str,
         help="(HF) Dataset to use",
     )

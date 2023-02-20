@@ -30,7 +30,7 @@ def construct_prompt(
     return prompt_input, test_prompt_label
 
 
-def load_prompt_template(lang: str, prompt_name: str) -> Template:
+def load_prompt_template(lang: str, prompt_name: str, dataset: str = "xnli") -> Template:
     """Loads prompt template from promptsource
 
     Args:
@@ -40,5 +40,5 @@ def load_prompt_template(lang: str, prompt_name: str) -> Template:
     Returns:
         Template
     """
-    dataset_prompts = DatasetTemplates(f"xnli/{lang}")
+    dataset_prompts = DatasetTemplates(f"{dataset}/{lang}")
     return dataset_prompts[prompt_name]

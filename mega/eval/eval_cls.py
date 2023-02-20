@@ -113,6 +113,7 @@ def evaluate_model(
     few_shot_size: int,
     selection_criteria: str = "random",
     save_preds_path: Optional[str] = None,
+    num_evals_per_sec: int = 2,
     parallel_eval: bool = False,
     num_proc: Optional[int] = None,
     **model_params,
@@ -158,6 +159,7 @@ def evaluate_model(
             train_prompt_template,
             test_prompt_template,
             model=model,
+            num_evals_per_sec=num_evals_per_sec,
             **model_params,
         )
 
