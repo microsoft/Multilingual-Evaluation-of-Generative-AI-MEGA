@@ -1,0 +1,281 @@
+dataset: paws-x/ja
+templates:
+  0be7cecd-b427-4ec9-9b0e-666d6dae00dd: !Template
+    answer_choices: No ||| Yes
+    id: 0be7cecd-b427-4ec9-9b0e-666d6dae00dd
+    jinja: "Determine if the following two sentences paraphrase each other or not.\n\
+      Sent 1: {{sentence1}}\nSent 2: {{sentence2}}\n||| \n{{answer_choices[label]}}"
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: task_description-no-label
+    reference: Generalized prompt format, task_description-input.
+  35e44028-013f-4fc2-82aa-fb7257024bf1: !Template
+    answer_choices: null
+    id: 35e44028-013f-4fc2-82aa-fb7257024bf1
+    jinja: "{% \u30E9\u30D9\u30EB == 1 %}\n\u6587\u3092\u8A00\u3044\u63DB\u3048\u308B\
+      : {{sentence1}}\n|||\n{{sentence2}}\n{% \u7D42\u4E86 %}"
+    metadata: &id004 !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+      - en
+      metrics:
+      - BLEU
+      - ROUGE
+      original_task: false
+    name: Bing-Translated paraphrase-task
+    reference: 'Translated to ja version  of: Create a generative paraphrase task'
+  36b3cf35-37dc-41f9-ac1f-45a863f2bb4d: !Template
+    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
+    id: 36b3cf35-37dc-41f9-ac1f-45a863f2bb4d
+    jinja: "\u6B21\u306E2\u3064\u306E\u6587\u304C\u4E92\u3044\u306B\u8A00\u3044\u63DB\
+      \u3048\u3066\u3044\u308B\u304B\u3069\u3046\u304B\u3092\u5224\u65AD\u3057\u307E\
+      \u3059\u3002\n\u9001\u4FE1\u6E08\u307F 1: {{sentence1}}\n\u9001\u4FE1\u6E08\u307F\
+      \ 2: {{sentence2}}\n|||\n{{answer_choices[label]}}"
+    metadata: *id001
+    name: Bing-Translated task_description-no-label
+    reference: 'Translated to ja version  of: Generalized prompt format, task_description-input.'
+  3d5d5482-5d6d-4946-9044-20c51571e14e: !Template
+    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
+    id: 3d5d5482-5d6d-4946-9044-20c51571e14e
+    jinja: "{{sentence1}}\u8CEA\u554F:{{sentence2}}\u8A00\u3044\u63DB\u3048\u304B\u3069\
+      \u3046\u304B?\n|||\n{{answer_choices[label]}}"
+    metadata: &id011 !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated PAWS-ANLI GPT3-no-label
+    reference: 'Translated to ja version  of: ANLI prompt format from Table G7 in
+      the GPT3 paper. Additionally added task information without any label.'
+  4456e497-6f84-4d13-a299-1ed5245300d0: !Template
+    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
+    id: 4456e497-6f84-4d13-a299-1ed5245300d0
+    jinja: "\u65871: {{sentence1}}\n\u65872: {{sentence2}}\n\u8CEA\u554F:\u65871\u306F\
+      \u65872\u3092\u8A00\u3044\u63DB\u3048\u307E\u3059\u304B?\u30A4\u30A8\u30B9\u304B\
+      \u30CE\u30FC\u304B\u7B54\u3048\u3066\u304F\u3060\u3055\u3044\u3002\n|||\n{{answer_choices[label]}}"
+    metadata: &id003 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated Concatenation
+    reference: 'Translated to ja version  of: Concatenation of sentence 1 and sentence
+      2'
+  472fe5eb-b499-4952-a930-f72f4ca9eddd: !Template
+    answer_choices: No ||| Yes
+    id: 472fe5eb-b499-4952-a930-f72f4ca9eddd
+    jinja: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Do Sentence\
+      \ 1 and Sentence 2 express the same meaning? Yes or No? \n||| \n{{answer_choices[label]}}"
+    metadata: &id010 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Meaning
+    reference: Natural question
+  4c8d4e4c-eae4-45f6-bdf0-d132ae198ddd: !Template
+    answer_choices: No ||| Yes
+    id: 4c8d4e4c-eae4-45f6-bdf0-d132ae198ddd
+    jinja: "{{sentence1}}\nIs that a paraphrase of the following sentence?\n{{sentence2}}?\n\
+      ||| \n{{answer_choices[label]}}"
+    metadata: &id009 !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: context-question-no-label
+    reference: Generalized prompt format, context-question without any label
+  65d716fe-4397-4eac-819f-05e9937bae80: !Template
+    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
+    id: 65d716fe-4397-4eac-819f-05e9937bae80
+    jinja: "{{sentence1}}\n\u305D\u308C\u306F\u6B21\u306E\u6587\u306E\u8A00\u3044\u63DB\
+      \u3048\u3067\u3059\u304B?\n{{sentence2}}?\n\u30A4\u30A8\u30B9\u304B\u30CE\u30FC\
+      \u304B\u7B54\u3048\u3066\u304F\u3060\u3055\u3044\u3002\n|||\n{{answer_choices[label]}}"
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated context-question
+    reference: 'Translated to ja version  of: Generalized prompt format, context-question'
+  678400f8-1a5c-4a40-b5ef-abeaa41e20dd: !Template
+    answer_choices: No ||| Yes
+    id: 678400f8-1a5c-4a40-b5ef-abeaa41e20dd
+    jinja: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Can we\
+      \ rewrite Sentence 1 to Sentence 2? \n||| \n{{answer_choices[label]}}"
+    metadata: &id006 !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Rewrite-no-label
+    reference: Natural Question without label
+  72a76997-def5-4966-836a-d85494d3c1e4: !Template
+    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
+    id: 72a76997-def5-4966-836a-d85494d3c1e4
+    jinja: "\u65871: {{sentence1}}\n\u65872: {{sentence2}}\n\u8CEA\u554F:\u65871\u3068\
+      \u65872\u306F\u540C\u3058\u610F\u5473\u3092\u8868\u3057\u3066\u3044\u307E\u3059\
+      \u304B?\n|||\n{{answer_choices[label]}}"
+    metadata: &id007 !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated Meaning-no-label
+    reference: 'Translated to ja version  of: Natural question without label'
+  74186c69-1264-42de-b8f2-db6cedcf5008: !Template
+    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
+    id: 74186c69-1264-42de-b8f2-db6cedcf5008
+    jinja: "\u65871: {{sentence1}}\n\u65872: {{sentence2}}\n\u8CEA\u554F:\u65871\u306F\
+      \u65872\u3092\u8A00\u3044\u63DB\u3048\u307E\u3059\u304B?\n|||\n{{answer_choices[label]}}"
+    metadata: &id005 !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated Concatenation-no-label
+    reference: 'Translated to ja version  of: Concatenation of sentence 1 and sentence
+      2 without any label'
+  7c205a61-64d4-4673-bb8e-bfa77562eedd: !Template
+    answer_choices: No ||| Yes
+    id: 7c205a61-64d4-4673-bb8e-bfa77562eedd
+    jinja: "{{sentence1}}\nIs that a paraphrase of the following sentence?\n{{sentence2}}?\n\
+      Yes or No.\n||| \n{{answer_choices[label]}}"
+    metadata: *id002
+    name: context-question
+    reference: Generalized prompt format, context-question
+  8c259e88-7646-4a50-a4ca-90393920f2dd: !Template
+    answer_choices: No ||| Yes
+    id: 8c259e88-7646-4a50-a4ca-90393920f2dd
+    jinja: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Does Sentence\
+      \ 1 paraphrase Sentence 2? Yes or No? \n||| \n{{answer_choices[label]}}"
+    metadata: *id003
+    name: Concatenation
+    reference: Concatenation of sentence 1 and sentence 2
+  a3ee450f-0d02-47c3-aa0b-00c3f80539dd: !Template
+    answer_choices: null
+    id: a3ee450f-0d02-47c3-aa0b-00c3f80539dd
+    jinja: "{% if label == 1 %} \nParaphrase the sentence: {{sentence1}} \n||| \n\
+      {{sentence2}} \n{% endif %}"
+    metadata: *id004
+    name: paraphrase-task
+    reference: Create a generative paraphrase task
+  a6d9ec4e-acd4-46cd-9eeb-ae32e0ab80dd: !Template
+    answer_choices: No ||| Yes
+    id: a6d9ec4e-acd4-46cd-9eeb-ae32e0ab80dd
+    jinja: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Does Sentence\
+      \ 1 paraphrase Sentence 2? \n||| \n{{answer_choices[label]}}"
+    metadata: *id005
+    name: Concatenation-no-label
+    reference: Concatenation of sentence 1 and sentence 2 without any label
+  a716eb73-5429-49f0-b43c-8646af8689f8: !Template
+    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
+    id: a716eb73-5429-49f0-b43c-8646af8689f8
+    jinja: "\u65871: {{sentence1}}\n\u65872: {{sentence2}}\n\u8CEA\u554F:\u65871\u3092\
+      \u65872\u306B\u66F8\u304D\u76F4\u3059\u3053\u3068\u306F\u3067\u304D\u307E\u3059\
+      \u304B?\n|||\n{{answer_choices[label]}}"
+    metadata: *id006
+    name: Bing-Translated Rewrite-no-label
+    reference: 'Translated to ja version  of: Natural Question without label'
+  c3520df3-dab4-4f2d-990b-3270344124a9: !Template
+    answer_choices: "\u507D|||\u771F"
+    id: c3520df3-dab4-4f2d-990b-3270344124a9
+    jinja: "{{sentence1}}\u8CEA\u554F: {{sentence2}} \u672C\u5F53\u3067\u3059\u304B\
+      \u3001\u305D\u308C\u3068\u3082\u507D\u3067\u3059\u304B?\n|||\n{{answer_choices[label]}}"
+    metadata: &id008 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated PAWS-ANLI GPT3
+    reference: 'Translated to ja version  of: ANLI prompt format from Table G7 in
+      the GPT3 paper'
+  d5239f5f-2014-47c9-a0c1-4896f76f82dd: !Template
+    answer_choices: No ||| Yes
+    id: d5239f5f-2014-47c9-a0c1-4896f76f82dd
+    jinja: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Do Sentence\
+      \ 1 and Sentence 2 express the same meaning? \n||| \n{{answer_choices[label]}}"
+    metadata: *id007
+    name: Meaning-no-label
+    reference: Natural question without label
+  d9911dad-75fe-4506-9843-3a46ba5e49dd: !Template
+    answer_choices: False ||| True
+    id: d9911dad-75fe-4506-9843-3a46ba5e49dd
+    jinja: "{{sentence1}} Question: {{sentence2}} True or False? \n||| \n{{answer_choices[label]}}"
+    metadata: *id008
+    name: PAWS-ANLI GPT3
+    reference: ANLI prompt format from Table G7 in the GPT3 paper
+  dd52359b-dc56-4241-8179-c98c636f03dd: !Template
+    answer_choices: No ||| Yes
+    id: dd52359b-dc56-4241-8179-c98c636f03dd
+    jinja: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Can we\
+      \ rewrite Sentence 1 to Sentence 2? Yes or No? \n||| \n{{answer_choices[label]}}"
+    metadata: &id012 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Rewrite
+    reference: Natural Question
+  dfedd904-3219-4cc4-b99a-62f3224270b4: !Template
+    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
+    id: dfedd904-3219-4cc4-b99a-62f3224270b4
+    jinja: "{{sentence1}}\n\u305D\u308C\u306F\u6B21\u306E\u6587\u306E\u8A00\u3044\u63DB\
+      \u3048\u3067\u3059\u304B?\n{{sentence2}}?\n|||\n{{answer_choices[label]}}"
+    metadata: *id009
+    name: Bing-Translated context-question-no-label
+    reference: 'Translated to ja version  of: Generalized prompt format, context-question
+      without any label'
+  e421d1ca-3ced-45e8-ab8f-ffbb039715a9: !Template
+    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
+    id: e421d1ca-3ced-45e8-ab8f-ffbb039715a9
+    jinja: "\u65871: {{sentence1}}\n\u65872: {{sentence2}}\n\u8CEA\u554F:\u65871\u3068\
+      \u65872\u306F\u540C\u3058\u610F\u5473\u3092\u8868\u3057\u3066\u3044\u307E\u3059\
+      \u304B?\u30A4\u30A8\u30B9\u304B\u30CE\u30FC\u304B\u7B54\u3048\u3066\u304F\u3060\
+      \u3055\u3044\u3002\n|||\n{{answer_choices[label]}}"
+    metadata: *id010
+    name: Bing-Translated Meaning
+    reference: 'Translated to ja version  of: Natural question'
+  f0866713-c59a-4c5d-a307-95e80a935fdd: !Template
+    answer_choices: No ||| Yes
+    id: f0866713-c59a-4c5d-a307-95e80a935fdd
+    jinja: "{{sentence1}} Question: {{sentence2}} Paraphrase or not?\n||| \n{{answer_choices[label]}}"
+    metadata: *id011
+    name: PAWS-ANLI GPT3-no-label
+    reference: ANLI prompt format from Table G7 in the GPT3 paper. Additionally added
+      task information without any label.
+  f8902648-2ca5-4c5c-9a25-e3918d46acaa: !Template
+    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
+    id: f8902648-2ca5-4c5c-9a25-e3918d46acaa
+    jinja: "\u65871: {{sentence1}}\n\u65872: {{sentence2}}\n\u8CEA\u554F:\u65871\u3092\
+      \u65872\u306B\u66F8\u304D\u76F4\u3059\u3053\u3068\u306F\u3067\u304D\u307E\u3059\
+      \u304B?\u30A4\u30A8\u30B9\u304B\u30CE\u30FC\u304B\u7B54\u3048\u3066\u304F\u3060\
+      \u3055\u3044\u3002\n|||\n{{answer_choices[label]}}"
+    metadata: *id012
+    name: Bing-Translated Rewrite
+    reference: 'Translated to ja version  of: Natural Question'
