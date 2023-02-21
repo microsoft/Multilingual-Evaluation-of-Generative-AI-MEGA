@@ -71,7 +71,6 @@ def bloom_completion(prompt: str, **model_params) -> str:
             break
         except Exception as e:
             print("Exceeded Limit! Sleeping for a minute, will try again!")
-            pdb.set_trace()
             time.sleep(60)
             continue
     
