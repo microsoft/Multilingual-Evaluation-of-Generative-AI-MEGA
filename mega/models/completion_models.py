@@ -20,10 +20,10 @@ with open("keys/hf_key.txt") as f:
 SUPPORTED_MODELS = ["DaVinci003", "BLOOM"]
 
 # Register an handler for the timeout
-def handler(signum, frame):
-    raise Exception("API Response Stuck!")
+# def handler(signum, frame):
+#     raise Exception("API Response Stuck!")
 
-signal.signal(signal.SIGALRM, handler)
+# signal.signal(signal.SIGALRM, handler)
 
 
 def gpt3x_completion(prompt: str, model: str, **model_params) -> str:

@@ -30,7 +30,7 @@ def construct_prompt(
     return prompt_input, test_prompt_label
 
 
-def load_prompt_template(lang: str, prompt_name: str, dataset: str = "xnli") -> Template:
+def load_prompt_template(lang: str, prompt_name: str, dataset: str) -> Template:
     """Loads prompt template from promptsource
 
     Args:

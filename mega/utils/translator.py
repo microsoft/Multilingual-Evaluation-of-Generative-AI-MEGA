@@ -90,3 +90,42 @@ def translate_xnli(
         xnli_dataset.save_to_disk(save_path)
 
     return xnli_dataset
+
+def translate_pawsx(
+    pawsx_dataset: Dataset, src: str, dest: str, save_path: Optional[str] = None
+) -> Dataset:
+    """Translate s1 and s2 of pawsx dataset
+
+    Args:
+        pawsx_dataset (Dataset): Some split (train, test, val) of pawsx dataset
+        src (str): Source language to translate from
+        dest (str): Language to translate to
+        save_path (str, optional): Path to store translated dataset. Doesn't store if set to None. Defaults to None.
+
+    Returns:
+        Dataset: Translated Dataset
+    """
+
+    # Translate premise
+    pawsx_dataset = pawsx_dataset.map(
+        lambda example: {"sentence1": translate_with_bing(example["sentence1"], src, dest)},
+        num_proc=4,
+        load_from_cache_file=False
+    )
+
+    # Translate hypothesis
+    pawsx_dataset = pawsx_dataset.map(
+        lambda example: {
+            "sentence2": translate_with_bing(example["sentence2"], src, dest)
+        },
+        num_proc=4,
+        load_from_cache_file=False
+    )
+
+    if save_path is not None:
+        save_dir, _ = os.path.split(save_path)
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
+        pawsx_dataset.save_to_disk(save_path)
+
+    return pawsx_dataset
