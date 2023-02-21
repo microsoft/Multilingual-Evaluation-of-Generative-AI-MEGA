@@ -1,4 +1,5 @@
 import requests
+import signal
 import time
 import openai
 from typing import List, Dict, Union
@@ -17,6 +18,12 @@ with open("keys/hf_key.txt") as f:
     HF_API_TOKEN = f.read().split("\n")[0]
 
 SUPPORTED_MODELS = ["DaVinci003", "BLOOM"]
+
+# Register an handler for the timeout
+def handler(signum, frame):
+    raise Exception("API Response Stuck!")
+
+signal.signal(signal.SIGALRM, handler)
 
 
 def gpt3x_completion(prompt: str, model: str, **model_params) -> str:
@@ -57,7 +64,7 @@ def bloom_completion(prompt: str, **model_params) -> str:
     Returns:
         str: generated string
     """
-    headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}
+    headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}    
 
     def query(payload):
         response = requests.post(HF_API_URL, headers=headers, json=payload)
@@ -66,11 +73,14 @@ def bloom_completion(prompt: str, **model_params) -> str:
     output = ""
     while True:
         try:
+            signal.alarm(60)  # Wait for a minute for the response to come
             model_output = query(prompt)
             output = model_output[0]["generated_text"][len(prompt) :].split("\n")[0]
+            signal.alarm(0)  # Reset the alarm
             break
         except Exception as e:
             print("Exceeded Limit! Sleeping for a minute, will try again!")
+            signal.alarm(0)  # Reset the alarm
             time.sleep(60)
             continue
     
