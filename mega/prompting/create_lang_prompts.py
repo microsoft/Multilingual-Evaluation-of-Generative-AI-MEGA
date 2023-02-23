@@ -7,9 +7,8 @@ from mega.prompting.prompting_utils import load_prompt_template
 from mega.utils.parser import parse_args
 import pdb
 
-dataset2langs ={
-    "xnli": "ar,bg,de,el,es,fr,hi,ru,sw,th,tr,ur,vi,zh"
-} 
+dataset2langs = {"xnli": "ar,bg,de,el,es,fr,hi,ru,sw,th,tr,ur,vi,zh"}
+
 
 def translate_jinja(jinja: str, tgt_lang: str, pivot_lang: str) -> str:
 
@@ -106,8 +105,12 @@ def add_prompt_to_dataset(
 
 def main(sys_args):
     args = parse_args(sys_args)
-    prompt_template = load_prompt_template(args.pivot_lang, args.pivot_prompt_name, dataset=args.dataset)
-    tgt_langs = args.tgt_langs.split(",") #Can provide multiple languages here as comma seperated values
+    prompt_template = load_prompt_template(
+        args.pivot_lang, args.pivot_prompt_name, dataset=args.dataset
+    )
+    tgt_langs = args.tgt_langs.split(
+        ","
+    )  # Can provide multiple languages here as comma seperated values
     for tgt_lang in tgt_langs:
         print(f"Creating Translated Prompts for {tgt_lang}")
         tgt_prompt_dataset = DatasetTemplates(f"{args.dataset}/{tgt_lang}")
@@ -116,7 +119,7 @@ def main(sys_args):
             prompt_template,
             tgt_lang,
             args.pivot_lang,
-            translate=True
+            translate=True,
         )
         print(f"Creating Identity Prompts for {tgt_lang}")
         add_prompt_to_dataset(
@@ -124,10 +127,8 @@ def main(sys_args):
             prompt_template,
             tgt_lang,
             args.pivot_lang,
-            translate=False
+            translate=False,
         )
-
-
 
     # trannslated_prompt = translate_prompt(prompt_template, "es", "en")
     # pdb.set_trace()

@@ -47,7 +47,7 @@ def main(sys_args):
         dataset_frac=args.test_frac,
     )
 
-    #ToDO: Add Translate Test Support
+    # ToDO: Add Translate Test Support
     # if args.translate_test:
     #     test_dataset = load_xnli_translate_test(
     #         args.tgt_lang, args.pivot_lang, test_dataset, data_dir="data"
@@ -59,7 +59,9 @@ def main(sys_args):
     train_prompt_template = load_prompt_template(
         args.pivot_lang, args.pivot_prompt_name, dataset="xcopa"
     )
-    test_prompt_template = load_prompt_template(args.tgt_lang, args.tgt_prompt_name, dataset="xcopa")
+    test_prompt_template = load_prompt_template(
+        args.tgt_lang, args.tgt_prompt_name, dataset="xcopa"
+    )
 
     train_examples = choose_few_shot_examples(
         train_dataset, args.few_shot_k, args.few_shot_selection

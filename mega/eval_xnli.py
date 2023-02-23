@@ -56,9 +56,11 @@ def main(sys_args):
     if args.same_prompt_name:
         args.pivot_prompt_name = args.tgt_prompt_name
     train_prompt_template = load_prompt_template(
-        args.pivot_lang, args.pivot_prompt_name
+        args.pivot_lang, args.pivot_prompt_name, dataset="xnli"
     )
-    test_prompt_template = load_prompt_template(args.tgt_lang, args.tgt_prompt_name)
+    test_prompt_template = load_prompt_template(
+        args.tgt_lang, args.tgt_prompt_name, dataset="xnli"
+    )
 
     train_examples = choose_few_shot_examples(
         train_dataset, args.few_shot_k, args.few_shot_selection

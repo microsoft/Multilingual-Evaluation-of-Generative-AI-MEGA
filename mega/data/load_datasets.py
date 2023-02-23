@@ -47,6 +47,7 @@ def load_xnli_translate_test(
 
     return tt_dataset
 
+
 def load_pawsx_dataset(
     lang: str, split: str, dataset_frac: float = 1.0
 ) -> Union[Dataset, DatasetDict]:
@@ -63,6 +64,7 @@ def load_pawsx_dataset(
     N = len(dataset)
     selector = np.arange(int(N * dataset_frac))
     return dataset.select(selector)
+
 
 def load_pawsx_translate_test(
     tgt_lang: str,
@@ -102,7 +104,9 @@ def load_xcopa_dataset(
     """
 
     if lang != "en" and split == "train":
-        warnings.warn("No Training Split for Non-English languages in XCOPA. Using Validation split!")
+        warnings.warn(
+            "No Training Split for Non-English languages in XCOPA. Using Validation split!"
+        )
         split = "validation"
 
     if lang == "en":
@@ -110,8 +114,7 @@ def load_xcopa_dataset(
         dataset = load_dataset("super_glue", "copa")[split]
     else:
         dataset = load_dataset("xcopa", lang)[split]
-    
-    
+
     N = len(dataset)
     selector = np.arange(int(N * dataset_frac))
     return dataset.select(selector)

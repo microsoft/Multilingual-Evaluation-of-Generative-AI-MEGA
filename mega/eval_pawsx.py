@@ -13,6 +13,7 @@ from mega.prompting.prompting_utils import load_prompt_template
 from mega.utils.parser import parse_args
 import pdb
 
+
 def main(sys_args):
     args = parse_args(sys_args)
 
@@ -60,7 +61,9 @@ def main(sys_args):
     train_prompt_template = load_prompt_template(
         args.pivot_lang, args.pivot_prompt_name, args.dataset
     )
-    test_prompt_template = load_prompt_template(args.tgt_lang, args.tgt_prompt_name, args.dataset)
+    test_prompt_template = load_prompt_template(
+        args.tgt_lang, args.tgt_prompt_name, args.dataset
+    )
 
     train_examples = choose_few_shot_examples(
         train_dataset, args.few_shot_k, args.few_shot_selection

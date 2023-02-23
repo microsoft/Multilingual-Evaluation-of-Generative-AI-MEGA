@@ -91,6 +91,7 @@ def translate_xnli(
 
     return xnli_dataset
 
+
 def translate_pawsx(
     pawsx_dataset: Dataset, src: str, dest: str, save_path: Optional[str] = None
 ) -> Dataset:
@@ -108,9 +109,11 @@ def translate_pawsx(
 
     # Translate premise
     pawsx_dataset = pawsx_dataset.map(
-        lambda example: {"sentence1": translate_with_bing(example["sentence1"], src, dest)},
+        lambda example: {
+            "sentence1": translate_with_bing(example["sentence1"], src, dest)
+        },
         num_proc=4,
-        load_from_cache_file=False
+        load_from_cache_file=False,
     )
 
     # Translate hypothesis
@@ -119,7 +122,7 @@ def translate_pawsx(
             "sentence2": translate_with_bing(example["sentence2"], src, dest)
         },
         num_proc=4,
-        load_from_cache_file=False
+        load_from_cache_file=False,
     )
 
     if save_path is not None:

@@ -2,6 +2,8 @@ import glob
 import json
 import pandas as pd
 from tqdm import tqdm
+
+
 def get_results(filename):
     with open(filename) as f:
         results = json.load(f)
@@ -19,8 +21,9 @@ def get_results(filename):
         "Prompt Setting": prompt_setting,
         "Prompt Type": results["tgt_prompt_name"],
         "# Few-shot Examples": results["few_shot_k"],
-        "Accuracy": results["metrics"]["accuracy"]
+        "Accuracy": results["metrics"]["accuracy"],
     }
+
 
 if __name__ == "__main__":
     model = "DaVinci003"

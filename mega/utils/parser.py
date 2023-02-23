@@ -37,11 +37,11 @@ def parse_args(args: list) -> argparse.Namespace:
         help="Language to evaluate on",
     )
     parser.add_argument(
-            "--tgt_langs",
-            default="es,hi",
-            type=str,
-            help="Languages to translate to",
-        )
+        "--tgt_langs",
+        default="es,hi",
+        type=str,
+        help="Languages to translate to",
+    )
     parser.add_argument(
         "--pivot_prompt_name",
         default="GPT-3 style",
@@ -105,7 +105,7 @@ def parse_args(args: list) -> argparse.Namespace:
         "--num_evals_per_sec",
         default=2,
         type=int,
-        help="Number of evaluations to run per second."
+        help="Number of evaluations to run per second.",
     )
     parser.add_argument(
         "--parallel_eval",
