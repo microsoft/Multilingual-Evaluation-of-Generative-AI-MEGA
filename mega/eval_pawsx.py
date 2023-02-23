@@ -53,6 +53,7 @@ def main(sys_args):
 
     # train_dataset = train_dataset.select(list(range(10)))
     # test_dataset = test_dataset.select(list(range(10)))
+    # test_dataset = test_dataset.select(list(range(1560,1570,1)))
     # Load prompt templates for train and test datasets
     if args.same_prompt_name:
         args.pivot_prompt_name = args.tgt_prompt_name

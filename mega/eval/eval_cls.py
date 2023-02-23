@@ -46,6 +46,8 @@ def run_seq_eval(
             **model_params,
         )
         pred = pred_dict["prediction"]
+        if pred == "Invalid request":
+            continue
         label = pred_dict["ground_truth"]
         num_matches += float(pred == label)
         preds.append(pred)

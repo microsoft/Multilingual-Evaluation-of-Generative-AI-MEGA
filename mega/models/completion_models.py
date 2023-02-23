@@ -52,6 +52,9 @@ def gpt3x_completion(prompt: str, model: str, **model_params) -> str:
         except (openai.error.APIConnectionError, openai.error.RateLimitError) as e:
             continue
 
+        except (openai.error.InvalidRequestError) as e:
+            return "Invalid request"
+
     return response["choices"][0]["text"].strip()
 
 
