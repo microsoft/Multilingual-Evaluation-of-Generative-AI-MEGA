@@ -2,6 +2,7 @@ from typing import Union, List, Dict, Tuple, Optional
 from promptsource.templates import Template, DatasetTemplates
 import pdb
 
+
 def construct_prompt(
     train_examples: List[Dict[str, Union[str, int]]],
     test_example: Dict[str, Union[str, int]],
@@ -38,16 +39,15 @@ def load_prompt_template(lang: str, prompt_name: str, dataset: str) -> Template:
     Returns:
         Template
     """
-<<<<<<< HEAD
-    if dataset == "xnli" and lang in set(['as','gu','kn','ml','mr','or','pa','ta','te','bn']):
+    if dataset == "xnli" and lang in set(
+        ["as", "gu", "kn", "ml", "mr", "or", "pa", "ta", "te", "bn"]
+    ):
         dataset_prompts = DatasetTemplates(f"Divyanshu/indicxnli/{lang}")
     elif dataset == "xcopa" and lang == "en":
         # For xcopa english data, we need to fetch from COPA in superglue instead
         dataset_prompts = DatasetTemplates("super_glue/copa")
-=======
     if dataset == "xnli" and lang in set([]):
         dataset_prompts = DatasetTemplates(f"Divyanshu/indicxnli/{lang}")
->>>>>>> 36ba5fb... support for IndicXNLI
     else:
         dataset_prompts = DatasetTemplates(f"{dataset}/{lang}")
     return dataset_prompts[prompt_name]
