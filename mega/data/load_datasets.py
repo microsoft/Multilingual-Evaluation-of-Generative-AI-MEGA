@@ -18,7 +18,9 @@ def load_xnli_dataset(
     Returns:
         Union[Dataset, DatasetDict]: huggingface dataset object
     """
-    if lang in set(['as','gu','kn','ml','mr','or','pa','ta','te','bn']):##PJ:To add except hindi
+    if lang in set(
+        ["as", "gu", "kn", "ml", "mr", "or", "pa", "ta", "te", "bn"]
+    ):  ##PJ:To add except hindi
         dataset = load_dataset("Divyanshu/indicxnli", lang)[split]
     else:
         dataset = load_dataset("xnli", lang)[split]
@@ -33,7 +35,6 @@ def load_xnli_translate_test(
     test_dataset: Optional[Dataset] = None,
     data_dir: str = "data",
 ) -> Dataset:
-
     tt_dir = os.path.join(
         data_dir, "xnli", "translate_test", f"{tgt_lang}_{pivot_lang}"
     )
@@ -75,7 +76,6 @@ def load_pawsx_translate_test(
     test_dataset: Optional[Dataset] = None,
     data_dir: str = "data",
 ) -> Dataset:
-
     tt_dir = os.path.join(
         data_dir, "paws-x", "translate_test", f"{tgt_lang}_{pivot_lang}"
     )
