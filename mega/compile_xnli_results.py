@@ -24,7 +24,8 @@ def get_results(filename):
 
 if __name__ == "__main__":
     model = "DaVinci003"
-    filenames = glob.glob(f"results/xnli/{model}/**/**/*.json")
+    task = "pawsx"
+    filenames = glob.glob(f"results/{task}/{model}/**/**/*.json")
     result_rows = []
     for filename in tqdm(filenames):
         result_rows.append(get_results(filename))

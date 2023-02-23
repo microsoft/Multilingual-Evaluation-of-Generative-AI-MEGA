@@ -1,11 +1,10 @@
-dataset: paws-x/ja
+dataset: paws-x/de
 templates:
-  596b9d19-6f3a-459d-acab-cc6044b371fc: !Template
-    answer_choices: "\u3044\u3044\u3048|||\u306F\u3044"
-    id: 596b9d19-6f3a-459d-acab-cc6044b371fc
-    jinja: "\u65871: {{sentence1}}\n\u65872: {{sentence2}}\n\u8CEA\u554F:\u65871\u306F\
-      \u65872\u3092\u8A00\u3044\u63DB\u3048\u307E\u3059\u304B?\u30A4\u30A8\u30B9\u304B\
-      \u30CE\u30FC\u304B\u7B54\u3048\u3066\u304F\u3060\u3055\u3044\u3002\n|||\n{{answer_choices[label]}}"
+  0587ab28-66da-4399-a705-cddfd2881078: !Template
+    answer_choices: Nein ||| Ja
+    id: 0587ab28-66da-4399-a705-cddfd2881078
+    jinja: "Satz 1: {{sentence1}}\nSatz 2: {{sentence2}}\nFrage: Umschreibt Satz 1\
+      \ Satz 2? Ja oder Nein? \n||| \n{{answer_choices[label]}}"
     metadata: &id001 !TemplateMetadata
       choices_in_prompt: true
       languages:
@@ -14,7 +13,7 @@ templates:
       - Accuracy
       original_task: true
     name: Bing-Translated Concatenation
-    reference: 'Translated to ja version  of: Concatenation of sentence 1 and sentence
+    reference: 'Translated to de version  of: Concatenation of sentence 1 and sentence
       2'
   8c259e88-7646-4a50-a4ca-90393920f2dd: !Template
     answer_choices: No ||| Yes
