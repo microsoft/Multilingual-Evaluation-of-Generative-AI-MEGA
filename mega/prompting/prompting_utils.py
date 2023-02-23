@@ -40,5 +40,9 @@ def load_prompt_template(lang: str, prompt_name: str, dataset: str) -> Template:
     Returns:
         Template
     """
-    dataset_prompts = DatasetTemplates(f"{dataset}/{lang}")
+    if dataset == "xcopa" and lang == "en":
+        # For xcopa english data, we need to fetch from COPA in superglue instead
+        dataset_prompts = DatasetTemplates("super_glue/copa")
+    else:
+        dataset_prompts = DatasetTemplates(f"{dataset}/{lang}")
     return dataset_prompts[prompt_name]
