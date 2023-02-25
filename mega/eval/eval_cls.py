@@ -2,12 +2,14 @@ import os
 from typing import List, Dict, Union, Tuple, Optional
 import time
 from tqdm import tqdm
+import numpy as np
 import pandas as pd
 from datasets import Dataset
 from promptsource.templates import Template
 from mega.models.completion_models import get_model_pred
 from mega.data.data_utils import choose_few_shot_examples
-
+import openai
+import pdb
 
 def run_seq_eval(
     train_examples: List[Dict[str, Union[str, int]]],
@@ -36,18 +38,38 @@ def run_seq_eval(
     labels = []
     matches = []
     num_matches = 0
+    valid_labels = test_prompt_template.answer_choices.split("|||")
+    valid_labels = [label.strip().split()[0] for label in valid_labels]
     for test_example in tqdm(test_dataset):
-        pred_dict = get_model_pred(
-            train_examples,
-            test_example,
-            train_prompt_template,
-            test_prompt_template,
-            model,
-            **model_params,
-        )
+        train_examples_i = train_examples
+
+        while len(train_examples_i) >= 0:
+            try:
+                pred_dict = get_model_pred(
+                    train_examples_i,
+                    test_example,
+                    train_prompt_template,
+                    test_prompt_template,
+                    model,
+                    **model_params,
+                )
+                break
+            except openai.error.InvalidRequestError:
+                if len(train_examples_i) == 0:
+                    pred_dict = {
+                        "prediction" : np.random.choice(valid_labels), #Initialize with a random prediction
+                        "ground_truth" : test_prompt_template.apply(test_example)[1]
+                    }
+                    print("Exausted Everything! Giving Random Prediction Now :(")
+                    break
+                train_examples_i = train_examples_i[:-1]
+                print(f"Unable To Fit Context Size. Reducing few-size by 1. New Size: {len(train_examples_i)}")
+                
+
         pred = pred_dict["prediction"]
-        if pred == "Invalid request":
-            continue
+        # if pred == "Invalid request":
+        #     pdb.set_trace()
+        #     continue
         label = pred_dict["ground_truth"]
         num_matches += float(pred == label)
         preds.append(pred)

@@ -1,0 +1,95 @@
+dataset: xcopa
+subset: th
+templates:
+  07dc5774-1e57-4c9a-8696-02f589051b53: !Template
+    answer_choices: choice1 ||| choice2
+    id: 07dc5774-1e57-4c9a-8696-02f589051b53
+    jinja: "{{ premise }} \n\nWhat's the best option?\n- choice1 : {{choice1}}\n-\
+      \ choice2 : {{choice2}}\n\nWe are looking for {% if question == \"cause\" %}\
+      \ a cause {% else %} an effect {% endif %}\n||| {% if label != -1 %}{{answer_choices[label]}}{%endif%}"
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: best_option discrete
+    reference: Discrete version of the best_option prompt
+  744047dc-1298-45a2-8d68-d67e3f834ded: !Template
+    answer_choices: '{{choice1 }} ||| {{choice2}}'
+    id: 744047dc-1298-45a2-8d68-d67e3f834ded
+    jinja: '"{{ answer_choices[0] }}" or "{{ answer_choices[1] }}"? {{ premise }}
+      {% if question == "cause" %} because {% else %} so {% endif %} ||| {% if label
+      != -1 %}{{ answer_choices[label] }}{% endif %}'
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: "C1 or C2? premise, so/because\u2026"
+    reference: "Adapted from Perez et al. 2021 and Schick & Sch\xFCtz 2021."
+  7c0f41a6-9b5b-4a4e-9769-ed2afdfde66b: !Template
+    answer_choices: '{{choice1 }} ||| {{choice2}}'
+    id: 7c0f41a6-9b5b-4a4e-9769-ed2afdfde66b
+    jinja: "\"{{ answer_choices[0] }}\" \u0E2B\u0E23\u0E37\u0E2D \"{{ answer_choices[1]\
+      \ }}\"? {{ premise }} {% if question == \"cause\" %} \u0E40\u0E1E\u0E23\u0E32\
+      \u0E30 {% else %} \u0E14\u0E31\u0E07\u0E19\u0E31\u0E49\u0E19 {% endif %} |||\
+      \ {% if label != -1 %} {{ answer_choices[label] }} {% endif %}"
+    metadata: *id001
+    name: "Bing-Translated C1 or C2? premise, so/because\u2026"
+    reference: "Translated to th version  of: Adapted from Perez et al. 2021 and Schick\
+      \ & Sch\xFCtz 2021."
+  cbb2f8b2-4104-42f0-bcd4-4ef4217f67a5: !Template
+    answer_choices: "\u0E17\u0E32\u0E07\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E17\u0E35\u0E48\
+      \ 1 ||| \u0E17\u0E32\u0E07\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E17\u0E35\u0E48 2"
+    id: cbb2f8b2-4104-42f0-bcd4-4ef4217f67a5
+    jinja: "{{ premise }} \n\n\u0E15\u0E31\u0E27\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E17\
+      \u0E35\u0E48\u0E14\u0E35\u0E17\u0E35\u0E48\u0E2A\u0E38\u0E14\u0E04\u0E37\u0E2D\
+      \u0E2D\u0E30\u0E44\u0E23?\n- \u0E17\u0E32\u0E07\u0E40\u0E25\u0E37\u0E2D\u0E01\
+      \u0E17\u0E35\u0E48 1 : {{choice1}}\n- \u0E17\u0E32\u0E07\u0E40\u0E25\u0E37\u0E2D\
+      \u0E01\u0E17\u0E35\u0E48 2 : {{choice2}}\n\n\u0E40\u0E23\u0E32\u0E01\u0E4D\u0E32\
+      \u0E25\u0E31\u0E07\u0E21\u0E2D\u0E07\u0E2B\u0E32 {% if question == \"cause\"\
+      \ %} \u0E2A\u0E32\u0E40\u0E2B\u0E15\u0E38 {% else %} \u0E1C\u0E25\u0E01\u0E23\
+      \u0E30\u0E17\u0E1A {% endif %}\n||| {% if label != -1 %} {{answer_choices[label]}}\
+      \ {%endif%}"
+    metadata: *id002
+    name: Bing-Translated best_option discrete
+    reference: 'Translated to th version  of: Discrete version of the best_option
+      prompt'
+  dfbd82a9-7d83-4bb1-9e8a-3eb949808358: !Template
+    answer_choices: "\u0E17\u0E32\u0E07\u0E40\u0E25\u0E37\u0E2D\u0E01 1 ||| \u0E17\
+      \u0E32\u0E07\u0E40\u0E25\u0E37\u0E2D\u0E01 2"
+    id: dfbd82a9-7d83-4bb1-9e8a-3eb949808358
+    jinja: "{{ \u0E2B\u0E25\u0E31\u0E01\u0E10\u0E32\u0E19 }} {% if question == \"\
+      cause\" %} \u0E2A\u0E34\u0E48\u0E07\u0E19\u0E35\u0E49\u0E40\u0E01\u0E34\u0E14\
+      \u0E02\u0E36\u0E49\u0E19\u0E40\u0E1E\u0E23\u0E32\u0E30... {% else %} \u0E40\u0E1B\
+      \u0E47\u0E19\u0E1C\u0E25\u0E43\u0E2B\u0E49... {% endif %}\n\u0E0A\u0E48\u0E27\
+      \u0E22\u0E09\u0E31\u0E19\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E15\u0E31\u0E27\u0E40\
+      \u0E25\u0E37\u0E2D\u0E01\u0E17\u0E35\u0E48\u0E40\u0E1B\u0E47\u0E19\u0E44\u0E1B\
+      \u0E44\u0E14\u0E49\u0E21\u0E32\u0E01\u0E02\u0E36\u0E49\u0E19:\n- \u0E17\u0E32\
+      \u0E07\u0E40\u0E25\u0E37\u0E2D\u0E01 1: {{choice1}}\n- \u0E17\u0E32\u0E07\u0E40\
+      \u0E25\u0E37\u0E2D\u0E01 2: {{choice2}} \n\u0E04\u0E4D\u0E32\u0E15\u0E2D\u0E1A\
+      : ||| {% if label != -1 %} {{ answer_choices[label] }} {%endif%}"
+    metadata: &id003 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated plausible_alternatives_discrete
+    reference: 'Translated to th version  of: Discrete version of plausible_alternatives
+      prompt'
+  f67eb599-4667-4d2e-88cf-d792cc08a1b6: !Template
+    answer_choices: choice1 ||| choice2
+    id: f67eb599-4667-4d2e-88cf-d792cc08a1b6
+    jinja: "{{ premise }} {% if question == \"cause\" %} This happened because...\
+      \ {% else %} As a consequence... {% endif %}\nHelp me pick the more plausible\
+      \ option:\n- choice1: {{choice1}}\n- choice2: {{choice2}} \nAnswer: ||| {% if\
+      \ label != -1 %}{{ answer_choices[label] }}{%endif%}"
+    metadata: *id003
+    name: plausible_alternatives_discrete
+    reference: Discrete version of plausible_alternatives prompt

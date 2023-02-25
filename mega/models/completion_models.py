@@ -45,16 +45,13 @@ def gpt3x_completion(prompt: str, model: str, **model_params) -> str:
             response = openai.Completion.create(
                 engine=model,
                 prompt=prompt,
-                max_tokens=model_params.get("max_tokens", 10),
+                max_tokens=model_params.get("max_tokens", 20),
                 temperature=model_params.get("temperature", 1),
                 top_p=model_params.get("top_p", 1),
             )
             break
         except (openai.error.APIConnectionError, openai.error.RateLimitError) as e:
             continue
-
-        except (openai.error.InvalidRequestError) as e:
-            return "Invalid request"
 
     return response["choices"][0]["text"].strip()
 

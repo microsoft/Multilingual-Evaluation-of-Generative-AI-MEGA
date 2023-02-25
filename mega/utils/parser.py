@@ -16,7 +16,7 @@ def parse_args(args: list) -> argparse.Namespace:
         "-d",
         "--dataset",
         default="xnli",
-        choices=["xnli", "paws-x"],
+        choices=["xnli", "paws-x", "xcopa"],
         type=str,
         help="(HF) Dataset to use",
     )
@@ -35,12 +35,6 @@ def parse_args(args: list) -> argparse.Namespace:
         # choices=["en", "hi"],
         type=str,
         help="Language to evaluate on",
-    )
-    parser.add_argument(
-        "--tgt_langs",
-        default="es,hi",
-        type=str,
-        help="Languages to translate to",
     )
     parser.add_argument(
         "--pivot_prompt_name",

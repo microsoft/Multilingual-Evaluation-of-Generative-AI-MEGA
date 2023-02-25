@@ -1,10 +1,10 @@
-import sys
+import argparse
 from typing import Optional
 from word2word import Word2word
 from promptsource.templates import Template, DatasetTemplates
 from mega.utils.translator import translate_with_bing
 from mega.prompting.prompting_utils import load_prompt_template
-from mega.utils.parser import parse_args
+from mega.models.completion_models import SUPPORTED_MODELS
 import pdb
 
 dataset2langs = {"xnli": "ar,bg,de,el,es,fr,hi,ru,sw,th,tr,ur,vi,zh"}
@@ -103,8 +103,49 @@ def add_prompt_to_dataset(
     tgt_prompt_dataset.add_template(tgt_prompt_template)
 
 
-def main(sys_args):
-    args = parse_args(sys_args)
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-d",
+        "--dataset",
+        default="xnli",
+        choices=["xnli", "paws-x", "xcopa"],
+        type=str,
+        help="(HF) Dataset to use",
+    )
+    parser.add_argument(
+        "-p",
+        "--pivot_lang",
+        default="en",
+        # choices=["en", "hi"],
+        type=str,
+        help="Language in which few-shot examples are provided",
+    )
+    parser.add_argument(
+        "--tgt_langs",
+        default="es,hi",
+        type=str,
+        help="Languages to translate to",
+    )    
+    parser.add_argument(
+        "--pivot_prompt_name",
+        default="GPT-3 style",
+        type=str,
+        help="Prompt name available in promptsource to use for Pivot",
+    )
+    parser.add_argument(
+        "--model",
+        default="DaVinci003",
+        choices=SUPPORTED_MODELS,
+        type=str,
+        help="GPT-x model to use to evaluate",
+    )
+    parser.add_argument(
+        "--no-translate",
+        action="store_true",
+        help="Whether to not run translation for generating prompts"
+    )
+    args = parser.parse_args()
     prompt_template = load_prompt_template(
         args.pivot_lang, args.pivot_prompt_name, dataset=args.dataset
     )
@@ -112,15 +153,16 @@ def main(sys_args):
         ","
     )  # Can provide multiple languages here as comma seperated values
     for tgt_lang in tgt_langs:
-        print(f"Creating Translated Prompts for {tgt_lang}")
         tgt_prompt_dataset = DatasetTemplates(f"{args.dataset}/{tgt_lang}")
-        add_prompt_to_dataset(
-            tgt_prompt_dataset,
-            prompt_template,
-            tgt_lang,
-            args.pivot_lang,
-            translate=True,
-        )
+        if not args.no_translate:
+            print(f"Creating Translated Prompts for {tgt_lang}")
+            add_prompt_to_dataset(
+                tgt_prompt_dataset,
+                prompt_template,
+                tgt_lang,
+                args.pivot_lang,
+                translate=True,
+            )
         print(f"Creating Identity Prompts for {tgt_lang}")
         add_prompt_to_dataset(
             tgt_prompt_dataset,
@@ -135,4 +177,4 @@ def main(sys_args):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()
