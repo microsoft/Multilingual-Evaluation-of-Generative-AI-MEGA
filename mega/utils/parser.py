@@ -16,7 +16,7 @@ def parse_args(args: list) -> argparse.Namespace:
         "-d",
         "--dataset",
         default="xnli",
-        choices=["xnli", "paws-x", "xcopa"],
+        choices=["xnli", "paws-x", "xcopa", "tydiqa", "xquad", "mlqa"],
         type=str,
         help="(HF) Dataset to use",
     )
@@ -143,4 +143,5 @@ def parse_args(args: list) -> argparse.Namespace:
     parser.add_argument(
         "--no-save", action="store_true", help="Whether to not save any results"
     )
+    parser.add_argument("--short_contexts", action="store_true", help="Whether to use short contexts for qa tasks")
     return parser.parse_args(args)

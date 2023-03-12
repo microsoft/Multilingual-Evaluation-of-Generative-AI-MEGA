@@ -97,6 +97,9 @@ openai_key.txt
 data/*
 keys/*.txt
 wandb/*
+.chroma/*
+Notebooks/*
+env.env
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -11,6 +11,7 @@ from mega.data.data_utils import choose_few_shot_examples
 import openai
 import pdb
 
+
 def run_seq_eval(
     train_examples: List[Dict[str, Union[str, int]]],
     test_dataset: Dataset,
@@ -57,14 +58,17 @@ def run_seq_eval(
             except openai.error.InvalidRequestError:
                 if len(train_examples_i) == 0:
                     pred_dict = {
-                        "prediction" : np.random.choice(valid_labels), #Initialize with a random prediction
-                        "ground_truth" : test_prompt_template.apply(test_example)[1]
+                        "prediction": np.random.choice(
+                            valid_labels
+                        ),  # Initialize with a random prediction
+                        "ground_truth": test_prompt_template.apply(test_example)[1],
                     }
                     print("Exausted Everything! Giving Random Prediction Now :(")
                     break
                 train_examples_i = train_examples_i[:-1]
-                print(f"Unable To Fit Context Size. Reducing few-size by 1. New Size: {len(train_examples_i)}")
-                
+                print(
+                    f"Unable To Fit Context Size. Reducing few-size by 1. New Size: {len(train_examples_i)}"
+                )
 
         pred = pred_dict["prediction"]
         # if pred == "Invalid request":

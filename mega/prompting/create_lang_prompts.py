@@ -126,7 +126,7 @@ def main():
         default="es,hi",
         type=str,
         help="Languages to translate to",
-    )    
+    )
     parser.add_argument(
         "--pivot_prompt_name",
         default="GPT-3 style",
@@ -143,7 +143,7 @@ def main():
     parser.add_argument(
         "--no-translate",
         action="store_true",
-        help="Whether to not run translation for generating prompts"
+        help="Whether to not run translation for generating prompts",
     )
     args = parser.parse_args()
     prompt_template = load_prompt_template(

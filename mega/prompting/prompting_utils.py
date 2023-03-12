@@ -1,6 +1,38 @@
 from typing import Union, List, Dict, Tuple, Optional
 from promptsource.templates import Template, DatasetTemplates
 import pdb
+from langchain.prompts.few_shot import FewShotPromptTemplate
+from langchain.prompts.prompt import PromptTemplate
+
+def construct_langchain_qa_prompt(
+    train_examples: List[Dict[str, Union[str, int]]],
+    train_prompt_template: str,
+    test_prompt_template: str = None,
+):
+    def preprocess_qa_examples(example):
+        return {
+            "context": example["context"],
+            "question": example["question"],
+            "answer": example["answers"]["text"][0],
+        }
+
+    if test_prompt_template is None:
+        test_prompt_template = train_prompt_template
+    example_prompt = PromptTemplate(input_variables=["context", "question", "answer"], template=train_prompt_template)
+    if len(train_examples) != 0:
+        train_examples = list(map(preprocess_qa_examples, train_examples))
+        prompt = FewShotPromptTemplate(
+            examples=train_examples,
+            example_prompt=example_prompt,
+            suffix=test_prompt_template.replace("{answer}", ""),
+            input_variables=["context", "question"],
+        )
+    else:
+        prompt = PromptTemplate(input_variables=["context", "question"], 
+                                template=test_prompt_template.replace("{answer}", ""))
+
+    return prompt
+
 
 
 def construct_prompt(
