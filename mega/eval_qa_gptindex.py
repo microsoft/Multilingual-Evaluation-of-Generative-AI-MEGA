@@ -98,7 +98,12 @@ class SpacySentenceTokenizer:
 
 
 def load_qa_dataset(dataset_name, lang, split, dataset_frac = 1, translate_test = False):
-    if dataset_name == "xquad":
+    if dataset_name == "indicqa":
+        if split != "train":
+            dataset = load_dataset("ai4bharat/IndicQA", f"indicqa.{lang}")[split]
+        else:
+            dataset = load_dataset("squad")[split]
+    elif dataset_name == "xquad":
         if split != "train":
             dataset = load_dataset("xquad", f"xquad.{lang}")[split]
         else:
