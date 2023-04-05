@@ -6,3 +6,5 @@ wandb
 word2word==1.0.0
 langchain==0.0.96
 python-dotenv
+evaluate
+spacy
