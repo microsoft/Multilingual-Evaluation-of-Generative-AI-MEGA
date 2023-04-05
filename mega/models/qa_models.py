@@ -1,4 +1,5 @@
 import os
+import requests
 import time
 from typing import Union
 from dotenv import load_dotenv
@@ -16,9 +17,14 @@ load_dotenv('env.env')
 openai.api_base = "https://gpttesting1.openai.azure.com/"
 openai.api_type = "azure"
 openai.api_version = "2022-12-01"  # this may change in the future
+HF_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloom"
+BLOOMZ_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloomz"
 
 with open("keys/openai_key.txt") as f:
     openai.api_key = f.read().split("\n")[0]
+    
+with open("keys/hf_key.txt") as f:
+    HF_API_TOKEN = f.read().split("\n")[0]
 
 openai.deployment_name = os.environ["MODEL_DEPLOYMENT_NAME"]
 openai.embedding_deployment_id = os.environ["EMBEDDING_DEPLOYMENT_ID"]
@@ -90,3 +96,82 @@ def answer_question_langchain(
         #     break
 
     return response
+
+
+def answer_question_bloomz(
+    question: str,
+    context: str,
+    prompt: Union[PromptTemplate, FewShotPromptTemplate],
+    chunk_size: int = 100,
+    chunk_overlap: int = 0,
+):
+    headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}
+
+    def query(payload):
+        payload = {"inputs": payload}
+        response = requests.post(BLOOMZ_API_URL, headers=headers, json=payload)
+        return response.json()
+    template_format = prompt.example_prompt.template
+    examples = prompt.examples
+    
+    few_shot_ex_prompt = ""
+    for example in examples:
+        context = context[0] if isinstance(example['context'], list) else example['context']
+        template_filled = template_format\
+                            .replace('{context}', context)\
+                            .replace('{question}', example['question'])\
+                            .replace('{answer}', example['answer'])
+        few_shot_ex_prompt += f"{template_filled}\n\n"
+    
+    test_ex_prompt = template_format.replace("{context}", context).replace("{question}", question).replace("{answer}","")
+    
+    full_prompt = few_shot_ex_prompt + test_ex_prompt
+    output = ""
+    # prompt = "\n".join([pr]) 
+    while True:
+        try:
+            # signal.alarm(60)  # Wait for a minute for the response to come
+            model_output = query(full_prompt)
+            output = model_output[0]["generated_text"][len(full_prompt):].split("\n")[0]
+            output = output.strip()
+            # signal.alarm(0)  # Reset the alarm
+            break
+        except Exception as e:
+            if "error" in model_output and "must have less than 1000 tokens." in model_output["error"]:
+                raise openai.error.InvalidRequestError(model_output["error"],
+                                                       model_output["error_type"])
+            print("Exceeded Limit! Sleeping for a minute, will try again!")
+            # signal.alarm(0)  # Reset the alarm
+            time.sleep(60)
+            continue
+
+    return output
+
+def answer_question(
+    model : str,
+    question: str,
+    context: str,
+    prompt: Union[PromptTemplate, FewShotPromptTemplate],
+    chunk_size: int = 100,
+    chunk_overlap: int = 0,
+):
+    if model == "BLOOMZ":
+        return answer_question_bloomz(
+            question,
+            context,
+            prompt,
+            chunk_size,
+            chunk_overlap
+        )
+    
+    elif model == "DaVinci003":
+        return answer_question_langchain(
+            question,
+            context,
+            prompt,
+            chunk_size,
+            chunk_overlap
+        )
+    
+    else:
+        raise NotImplementedError()

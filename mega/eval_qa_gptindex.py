@@ -27,7 +27,7 @@ import requests
 import numpy as np
 from mega.data.load_datasets import load_xnli_dataset, load_xnli_translate_test
 from mega.data.data_utils import choose_few_shot_examples
-from mega.models.qa_models import answer_question_langchain
+from mega.models.qa_models import answer_question
 from mega.prompting.prompting_utils import construct_langchain_qa_prompt
 from mega.utils.parser import parse_args
 import pdb
@@ -125,7 +125,7 @@ def load_qa_dataset(dataset_name, lang, split, dataset_frac = 1, translate_test 
     return dataset.select(selector)
 
 
-def eval_qa(test_dataset, prompt, num_evals_per_sec = 1, smaller_prompts = [], **model_kwargs):
+def eval_qa(test_dataset, prompt, model, num_evals_per_sec = 1, smaller_prompts = [], **model_kwargs):
     preds = []
     labels = []
     matches = []
@@ -137,7 +137,8 @@ def eval_qa(test_dataset, prompt, num_evals_per_sec = 1, smaller_prompts = [], *
         prompt_to_use = prompt
         for trial in range(0, len(smaller_prompts) + 1):
             try:
-                pred = answer_question_langchain(
+                pred = answer_question(
+                    model,
                     test_example["question"],
                     test_example["context"],
                     prompt=prompt_to_use,
@@ -214,7 +215,7 @@ def main():
         
         train_dataset = train_dataset.map(lambda example: {
             "context": [sent for sent in sent_tokenizer(example["context"]) if example["answers"]["text"][0] in sent]
-        }, num_proc = 24)
+        }, num_proc = 8)
 
     train_examples = choose_few_shot_examples(
         train_dataset, args.few_shot_k, args.few_shot_selection
@@ -248,6 +249,7 @@ def main():
     metrics, results_df = eval_qa(
         test_dataset,
         langchain_prompt,
+        args.model,
         num_evals_per_sec=args.num_evals_per_sec,
         smaller_prompts=smaller_prompts
     )
