@@ -39,6 +39,11 @@ def gpt3x_completion(prompt: str, model: str, **model_params) -> str:
         str: generated string
     """
 
+    if model == "gpt-35-turbo-deployment":
+        openai.api_version = "2023-03-15-preview"
+    else:
+        openai.api_version = "2022-12-01"
+
     # Hit the api repeatedly till response is obtained
     while True:
         try:

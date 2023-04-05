@@ -111,8 +111,13 @@ def answer_question_bloomz(
         payload = {"inputs": payload}
         response = requests.post(BLOOMZ_API_URL, headers=headers, json=payload)
         return response.json()
-    template_format = prompt.example_prompt.template
-    examples = prompt.examples
+
+    if isinstance(prompt, PromptTemplate):
+        template_format = prompt.template
+        examples = []
+    else:
+        template_format = prompt.example_prompt.template
+        examples = prompt.examples
     
     few_shot_ex_prompt = ""
     for example in examples:
