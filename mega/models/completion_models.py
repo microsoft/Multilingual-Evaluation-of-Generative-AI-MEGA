@@ -1,4 +1,5 @@
 import requests
+import warnings
 import signal
 import time
 import openai
@@ -18,7 +19,7 @@ with open("keys/openai_key.txt") as f:
 with open("keys/hf_key.txt") as f:
     HF_API_TOKEN = f.read().split("\n")[0]
 
-SUPPORTED_MODELS = ["DaVinci003", "BLOOM", "BLOOMZ"]
+SUPPORTED_MODELS = ["DaVinci003", "BLOOM", "BLOOMZ", "gpt-35-turbo-deployment"]
 
 # Register an handler for the timeout
 # def handler(signum, frame):
@@ -55,10 +56,13 @@ def gpt3x_completion(prompt: str, model: str, **model_params) -> str:
                 top_p=model_params.get("top_p", 1),
             )
             break
-        except (openai.error.APIConnectionError, openai.error.RateLimitError) as e:
+        except (openai.error.APIConnectionError, openai.error.RateLimitError, openai.error.APIError) as e:
             continue
+        except TypeError:
+            warnings.warn("Couldn't generate response, returning empty string as response")
+            return ""
 
-    return response["choices"][0]["text"].strip()
+    return response["choices"][0]["text"].strip().split("\n")[0]
 
 
 def bloom_completion(prompt: str, **model_params) -> str:
@@ -142,7 +146,7 @@ def model_completion(prompt: str, model: str, **model_params) -> str:
         str: generated string
     """
 
-    if model == "DaVinci003":
+    if model in ["DaVinci003","gpt-35-turbo-deployment"]:
         return gpt3x_completion(prompt, model, **model_params)
 
     if model == "BLOOM":

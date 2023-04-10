@@ -1,10 +1,12 @@
 import os
 import requests
+import warnings
 import time
 from typing import Union
 from dotenv import load_dotenv
 import openai
 from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.chat_models import AzureChatOpenAI
 from langchain.llms import AzureOpenAI
 from langchain.vectorstores import Chroma
 from langchain.text_splitter import TokenTextSplitter
@@ -13,6 +15,7 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts.few_shot import FewShotPromptTemplate, PromptTemplate
 import pdb
 load_dotenv('env.env')
+
 
 openai.api_base = "https://gpttesting1.openai.azure.com/"
 openai.api_type = "azure"
@@ -30,11 +33,16 @@ openai.deployment_name = os.environ["MODEL_DEPLOYMENT_NAME"]
 openai.embedding_deployment_id = os.environ["EMBEDDING_DEPLOYMENT_ID"]
 openai.embedding_deployment_name = os.environ["EMBEDDING_DEPLOYMENT_ID"]
 
+# os.environ["OPENAI_API_TYPE"] = "azure"
+# os.environ["OPENAI_API_BASE"] = openai.api_base
+# os.environ["OPENAI_API_KEY"] = openai.api_key
+# os.environ["OPENAI_API_VERSION"] = openai.api_version
+
 
 EMBEDDING_LLM = OpenAIEmbeddings(
     document_model_name=openai.embedding_deployment_name,
     query_model_name=openai.embedding_deployment_name,
-    openai_api_key=openai.api_key,
+    openai_api_key=openai.api_key
 )
 
 LLM = AzureOpenAI(
@@ -48,8 +56,28 @@ LLM = AzureOpenAI(
     },
 )
 
+CHAT_LLM = AzureChatOpenAI(
 
-def answer_question_langchain(
+    # deployment_name="gpt-35-turbo-deployment",
+    # openai_api_key=openai.api_key,
+    # temperature=0,
+    # logprobs=None,
+    # best_of=1,
+    # model_kwargs={
+    #     "api_base": openai.api_base,
+    #     "api_type": "azure",
+    #     "api_version": "2023-03-15-preview",
+    # },
+    openai_api_base=openai.api_base,
+    openai_api_version="2023-03-15-preview", 
+    deployment_name="gpt-35-turbo-deployment",
+    openai_api_key=openai.api_key,
+    openai_api_type = "azure",
+    temperature=0,
+)
+
+
+def answer_question_gpt(
     question: str,
     context: str,
     prompt: Union[PromptTemplate, FewShotPromptTemplate],
@@ -95,6 +123,55 @@ def answer_question_langchain(
         #     response = ""
         #     break
 
+    return response
+
+def answer_question_chatgpt(
+    question: str,
+    context: str,
+    prompt: Union[PromptTemplate, FewShotPromptTemplate],
+    chunk_size: int = 100,
+    chunk_overlap: int = 0,
+):
+    openai.api_version = "2023-03-15-preview"
+    text_splitter = TokenTextSplitter(
+        chunk_size=chunk_size, chunk_overlap=chunk_overlap
+    )
+    texts = text_splitter.split_text(context)
+
+    embedding = EMBEDDING_LLM
+    docsearch = Chroma.from_texts([texts[0]], embedding, metadatas=[{}])
+    for text in texts[1:]:
+        time.sleep(1/5)
+        while True:
+            try:
+                docsearch.add_texts([text], metadatas=[{}])
+                break
+            except (openai.error.APIConnectionError, openai.error.APIError):
+                continue
+    qa = VectorDBQA.from_chain_type(
+        llm=CHAT_LLM,
+        chain_type="stuff",
+        vectorstore=docsearch,
+        chain_type_kwargs={"prompt": prompt},
+        k = 1
+    )
+    
+    while True:
+        try:
+            response = qa.run(question)
+            break
+        except openai.error.APIConnectionError:
+            continue
+        except TypeError:
+            response = ""
+            break
+        except KeyError:
+            warnings.warn("ToDo: Some KeyError, yet to figrue out the root to this response. Report to t-kabirahuja if you see multiple instances of this")
+            return ""
+        # except openai.error.InvalidRequestError as e:
+        #     pdb.set_trace()
+        #     response = ""
+        #     break
     return response
 
 
@@ -170,7 +247,16 @@ def answer_question(
         )
     
     elif model == "DaVinci003":
-        return answer_question_langchain(
+        return answer_question_gpt(
+            question,
+            context,
+            prompt,
+            chunk_size,
+            chunk_overlap
+        )
+        
+    elif model == "gpt-35-turbo-deployment":
+        return answer_question_chatgpt(
             question,
             context,
             prompt,
