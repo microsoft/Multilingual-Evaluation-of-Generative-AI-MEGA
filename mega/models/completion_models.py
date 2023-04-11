@@ -56,10 +56,16 @@ def gpt3x_completion(prompt: str, model: str, **model_params) -> str:
                 top_p=model_params.get("top_p", 1),
             )
             break
-        except (openai.error.APIConnectionError, openai.error.RateLimitError, openai.error.APIError) as e:
+        except (
+            openai.error.APIConnectionError,
+            openai.error.RateLimitError,
+            openai.error.APIError,
+        ) as e:
             continue
         except TypeError:
-            warnings.warn("Couldn't generate response, returning empty string as response")
+            warnings.warn(
+                "Couldn't generate response, returning empty string as response"
+            )
             return ""
 
     return response["choices"][0]["text"].strip().split("\n")[0]
@@ -89,7 +95,10 @@ def bloom_completion(prompt: str, **model_params) -> str:
             signal.alarm(0)  # Reset the alarm
             break
         except Exception as e:
-            if "error_" in model_output and "must have less than 1000 tokens." in model_output["error"]:
+            if (
+                "error_" in model_output
+                and "must have less than 1000 tokens." in model_output["error"]
+            ):
                 raise openai.error.InvalidRequestError
             print("Exceeded Limit! Sleeping for a minute, will try again!")
             signal.alarm(0)  # Reset the alarm
@@ -97,6 +106,7 @@ def bloom_completion(prompt: str, **model_params) -> str:
             continue
 
     return output
+
 
 def bloomz_completion(prompt: str, **model_params) -> str:
     """Runs the prompt over BLOOM model for text completion
@@ -124,8 +134,13 @@ def bloomz_completion(prompt: str, **model_params) -> str:
             # signal.alarm(0)  # Reset the alarm
             break
         except Exception as e:
-            if "error" in model_output and "must have less than 1000 tokens." in model_output["error"]:
-                raise openai.error.InvalidRequestError(model_output["error"], model_output["error_type"])
+            if (
+                "error" in model_output
+                and "must have less than 1000 tokens." in model_output["error"]
+            ):
+                raise openai.error.InvalidRequestError(
+                    model_output["error"], model_output["error_type"]
+                )
             print("Exceeded Limit! Sleeping for a minute, will try again!")
             # signal.alarm(0)  # Reset the alarm
             time.sleep(60)
@@ -146,7 +161,7 @@ def model_completion(prompt: str, model: str, **model_params) -> str:
         str: generated string
     """
 
-    if model in ["DaVinci003","gpt-35-turbo-deployment"]:
+    if model in ["DaVinci003", "gpt-35-turbo-deployment"]:
         return gpt3x_completion(prompt, model, **model_params)
 
     if model == "BLOOM":

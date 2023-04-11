@@ -4,6 +4,7 @@ from typing import Union, Optional
 import numpy as np
 from datasets import Dataset, DatasetDict, load_dataset, load_from_disk
 from mega.utils.translator import translate_xnli, translate_pawsx
+from mega.data.data_utils import read_conll_data
 
 
 def load_xnli_dataset(
@@ -117,6 +118,33 @@ def load_xcopa_dataset(
         dataset = load_dataset("super_glue", "copa")[split]
     else:
         dataset = load_dataset("xcopa", lang)[split]
+
+    N = len(dataset)
+    selector = np.arange(int(N * dataset_frac))
+    return dataset.select(selector)
+
+
+def load_tagging_dataset(
+    dataset: str,
+    lang: str,
+    split: str,
+    dataset_frac: float = 1.0,
+    xtreme_dir: str = "xtreme/download",
+    delimiter: str = "_",
+) -> Union[Dataset, DatasetDict]:
+
+    split = "dev" if split == "validation" else split
+
+    filename = f"{xtreme_dir}/{dataset}/{split}-{lang}.tsv"
+    inputs, labels = read_conll_data(filename)
+
+    dataset = Dataset.from_dict({"tokens": inputs, "tags": labels})
+    dataset = dataset.map(
+        lambda example: {
+            "tagged_tokens": f"{token}{delimiter}{tag}"
+            for token, tag in zip(example["tokens"], example["tags"])
+        }
+    )
 
     N = len(dataset)
     selector = np.arange(int(N * dataset_frac))

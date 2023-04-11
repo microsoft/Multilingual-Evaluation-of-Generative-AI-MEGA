@@ -16,7 +16,7 @@ def parse_args(args: list) -> argparse.Namespace:
         "-d",
         "--dataset",
         default="xnli",
-        choices=["xnli", "paws-x", "xcopa", "tydiqa", "xquad", "mlqa","indicqa"],
+        choices=["xnli", "paws-x", "xcopa", "tydiqa", "xquad", "mlqa", "indicqa"],
         type=str,
         help="(HF) Dataset to use",
     )
@@ -143,5 +143,27 @@ def parse_args(args: list) -> argparse.Namespace:
     parser.add_argument(
         "--no-save", action="store_true", help="Whether to not save any results"
     )
-    parser.add_argument("--short_contexts", action="store_true", help="Whether to use short contexts for qa tasks")
+    parser.add_argument(
+        "--short_contexts",
+        action="store_true",
+        help="Whether to use short contexts for qa tasks",
+    )
+    parser.add_argument(
+        "--xtreme_dir",
+        type=str,
+        default="xtreme/download",
+        help="Directory containing xtreme datasets",
+    )
+    parser.add_argument(
+        "--delimiter",
+        type=str,
+        default="_",
+        help="Delimiter for token tags for tagging tasks",
+    )
+    parser.add_argument(
+        "--verbalizer",
+        type=str,
+        default="identity",
+        help="Verbalizer type to use. Only applicable for tagging tasks",
+    )
     return parser.parse_args(args)

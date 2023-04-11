@@ -4,6 +4,7 @@ import pdb
 from langchain.prompts.few_shot import FewShotPromptTemplate
 from langchain.prompts.prompt import PromptTemplate
 
+
 def construct_langchain_qa_prompt(
     train_examples: List[Dict[str, Union[str, int]]],
     train_prompt_template: str,
@@ -18,7 +19,10 @@ def construct_langchain_qa_prompt(
 
     if test_prompt_template is None:
         test_prompt_template = train_prompt_template
-    example_prompt = PromptTemplate(input_variables=["context", "question", "answer"], template=train_prompt_template)
+    example_prompt = PromptTemplate(
+        input_variables=["context", "question", "answer"],
+        template=train_prompt_template,
+    )
     if len(train_examples) != 0:
         train_examples = list(map(preprocess_qa_examples, train_examples))
         prompt = FewShotPromptTemplate(
@@ -28,8 +32,10 @@ def construct_langchain_qa_prompt(
             input_variables=["context", "question"],
         )
     else:
-        prompt = PromptTemplate(input_variables=["context", "question"], 
-                                template=test_prompt_template.replace("{answer}", ""))
+        prompt = PromptTemplate(
+            input_variables=["context", "question"],
+            template=test_prompt_template.replace("{answer}", ""),
+        )
 
     return prompt
 
@@ -57,6 +63,37 @@ def construct_prompt(
     ]
     test_prompt_input, test_prompt_label = test_prompt_template.apply(test_example)
     prompt_input = "\n".join(train_prompts + [test_prompt_input]) + "\n"
+
+    return prompt_input, test_prompt_label
+
+
+def construct_tagging_prompt(
+    train_examples: List[Dict[str, Union[str, int]]],
+    test_example: Dict[str, Union[str, int]],
+    prompt_template: str,
+    verbalizer: Dict[str, str] = {},
+    delimiter: str = "_",
+) -> Tuple[str, str]:
+    def apply_verbalizer(tagged_tokens):
+        verbalized_tagged_tokens = []
+        for tagged_token in tagged_tokens:
+            token, tag = tagged_token.split(delimiter)
+            verbalized_tagged_tokens.append(
+                f"{token}{delimiter}{verbalizer.get(tag, tag)}"
+            )
+
+    train_prompts = [
+        prompt_template.replace("{context}", " ".join(train_example["tokens"])).replace(
+            "{tagged}", " ".join(apply_verbalizer(train_example["tagged_tokens"]))
+        )
+        for train_example in train_examples
+    ]
+    test_prompt_input = prompt_template.replace(
+        "{context}", " ".join(test_example["tokens"])
+    ).replace("{tagged}", "")
+
+    prompt_input = "\n\n".join(train_prompts + [test_prompt_input])
+    test_prompt_label = test_example["tags"]
 
     return prompt_input, test_prompt_label
 

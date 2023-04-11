@@ -8,3 +8,5 @@ langchain==0.0.96
 python-dotenv
 evaluate
 spacy
+networkx==1.11
+seqeval

@@ -29,3 +29,24 @@ def choose_few_shot_examples(
         raise NotImplementedError()
 
     return [train_dataset[idx] for idx in example_idxs]
+
+
+def read_conll_data(filename: str):
+
+    inputs = []
+    labels = []
+    with open(filename, "r") as f:
+        tokens = []
+        tags = []
+        for line in f:
+            if line == "\n":
+                inputs.append(tokens)
+                labels.append(tags)
+                tokens = []
+                tags = []
+                continue
+            token, tag = line.split("\t")
+            tokens.append(token)
+            tags.append(tag)
+
+    return inputs, labels
