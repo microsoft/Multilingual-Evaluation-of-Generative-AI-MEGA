@@ -10,12 +10,15 @@ from mega.data.load_datasets import load_xnli_dataset, load_xnli_translate_test
 from mega.data.data_utils import choose_few_shot_examples
 from mega.eval.eval_cls import evaluate_model
 from mega.prompting.prompting_utils import load_prompt_template
+from mega.prompting.instructions import INSTRUCTIONS
 from mega.utils.parser import parse_args
+from mega.utils.env_utils import load_env
 import pdb
 
 
 def main(sys_args):
     args = parse_args(sys_args)
+    load_env(env_name=args.env)
 
     # Set seed
     random.seed(args.seed)
@@ -46,7 +49,6 @@ def main(sys_args):
         split="test" if not args.eval_on_val else "validation",
         dataset_frac=args.test_frac,
     )
-
     if args.translate_test:
         test_dataset = load_xnli_translate_test(
             args.tgt_lang, args.pivot_lang, test_dataset, data_dir="data"
@@ -66,7 +68,7 @@ def main(sys_args):
         train_dataset, args.few_shot_k, args.few_shot_selection
     )
 
-    out_dir = f"{args.save_dir}/xnli/{args.model}/{args.tgt_lang}/PivotLang_{args.pivot_lang}_PromptName_{args.tgt_prompt_name.replace('/','_')}_FewShotK_{args.few_shot_k}"
+    out_dir = f"{args.save_dir}/xnli/{args.model}/{args.tgt_lang}/PivotLang_{args.pivot_lang}_PromptName_{args.tgt_prompt_name.replace('/','_')}_FewShotK_{args.few_shot_k}_temperature_{args.temperature}"
     if args.translate_test:
         out_dir = f"{out_dir}_translate_test"
     if args.use_val_to_prompt:
@@ -84,6 +86,8 @@ def main(sys_args):
         args.model,
         args.few_shot_k,
         args.few_shot_selection,
+        chat_prompt=args.chat_prompt,
+        instruction=INSTRUCTIONS.get(args.dataset, ""),
         save_preds_path=pred_file_path if not args.no_save else None,
         num_evals_per_sec=args.num_evals_per_sec,
         parallel_eval=args.parallel_eval,

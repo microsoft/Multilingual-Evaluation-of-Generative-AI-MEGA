@@ -57,6 +57,7 @@ def gpt3x_tagger(
     model: str,
     test_tokens: List[str],
     delimiter: str = "_",
+    num_evals_per_second: int = 2,
     **model_params,
 ) -> str:
     def predict_tag(prompt, token):
@@ -98,8 +99,8 @@ def gpt3x_tagger(
     for token in test_tokens:
         predicted_tag = predict_tag(prompt_with_decodings, token)
         prompt_with_decodings += f" {token}{delimiter}{predicted_tag}"
-        predicted_tags.append(predicted_tags)
-
+        predicted_tags.append(predicted_tag)
+        # time.sleep(1/num_evals_per_second)
     return predicted_tags
 
 
@@ -135,7 +136,7 @@ def bloom_tagger(
                 model_output = query(prompt_with_token)
                 output = model_output[0]["generated_text"][
                     len(prompt_with_token) :
-                ].split()[0]
+                ].strip().split()[0]
                 output = output.strip()
                 break
             except Exception:
@@ -157,7 +158,7 @@ def bloom_tagger(
     for token in test_tokens:
         predicted_tag = predict_tag(prompt_with_decodings, token)
         prompt_with_decodings += f" {token}{delimiter}{predicted_tag}"
-        predicted_tags.append(predicted_tags)
+        predicted_tags.append(predicted_tag)
 
     return predicted_tags
 
@@ -211,11 +212,9 @@ def get_model_pred(
         **model_params,
     )
     model_prediction_tags = [
-        prediction.split(delimiter)[-1] for prediction in model_prediction
-    ]
-    model_prediction_tags = [
         reverse_verbalizer.get(prediction_tag, prediction_tag)
-        for prediction_tag in model_prediction_tags
+        for prediction_tag in model_prediction
     ]
+    
 
     return {"prediction": model_prediction_tags, "ground_truth": label}

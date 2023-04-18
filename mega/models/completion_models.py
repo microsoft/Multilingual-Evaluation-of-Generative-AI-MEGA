@@ -8,18 +8,19 @@ from promptsource.templates import Template
 from mega.prompting.prompting_utils import construct_prompt
 import pdb
 
-openai.api_base = "https://gpttesting1.openai.azure.com/"
-openai.api_type = "azure"
-openai.api_version = "2022-12-01"  # this may change in the future
-HF_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloom"
-BLOOMZ_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloomz"
-with open("keys/openai_key.txt") as f:
-    openai.api_key = f.read().split("\n")[0]
+# openai.api_base = "https://gpttesting1.openai.azure.com/"
+# openai.api_type = "azure"
+# openai.api_version = "2022-12-01"  # this may change in the future
+# HF_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloom"
+# BLOOMZ_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloomz"
+# with open("keys/openai_key.txt") as f:
+#     openai.api_key = f.read().split("\n")[0]
 
 with open("keys/hf_key.txt") as f:
     HF_API_TOKEN = f.read().split("\n")[0]
 
-SUPPORTED_MODELS = ["DaVinci003", "BLOOM", "BLOOMZ", "gpt-35-turbo-deployment"]
+SUPPORTED_MODELS = ["DaVinci003", "BLOOM", "BLOOMZ", "gpt-35-turbo-deployment", "gpt4_deployment", "gptturbo", "gpt003"]
+CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment", "gptturbo"]
 
 # Register an handler for the timeout
 # def handler(signum, frame):
@@ -28,7 +29,9 @@ SUPPORTED_MODELS = ["DaVinci003", "BLOOM", "BLOOMZ", "gpt-35-turbo-deployment"]
 # signal.signal(signal.SIGALRM, handler)
 
 
-def gpt3x_completion(prompt: str, model: str, **model_params) -> str:
+def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
+                     model: str,
+                     **model_params) -> str:
 
     """Runs the prompt over the GPT3.x model for text completion
 
@@ -40,21 +43,33 @@ def gpt3x_completion(prompt: str, model: str, **model_params) -> str:
         str: generated string
     """
 
-    if model == "gpt-35-turbo-deployment":
+    if model in CHAT_MODELS:
         openai.api_version = "2023-03-15-preview"
     else:
         openai.api_version = "2022-12-01"
 
     # Hit the api repeatedly till response is obtained
+    output = None
     while True:
         try:
-            response = openai.Completion.create(
-                engine=model,
-                prompt=prompt,
-                max_tokens=model_params.get("max_tokens", 20),
-                temperature=model_params.get("temperature", 1),
-                top_p=model_params.get("top_p", 1),
-            )
+            if isinstance(prompt, str):
+                response = openai.Completion.create(
+                    engine=model,
+                    prompt=prompt,
+                    max_tokens=model_params.get("max_tokens", 20),
+                    temperature=model_params.get("temperature", 1),
+                    top_p=model_params.get("top_p", 1),
+                )
+                output = response["choices"][0]["text"].strip().split("\n")[0]
+            else:
+                response = openai.ChatCompletion.create(
+                    engine=model,
+                    messages=prompt,
+                    max_tokens=model_params.get("max_tokens", 20),
+                    temperature=model_params.get("temperature", 1),
+                    top_p=model_params.get("top_p", 1),
+                )
+                output = response["choices"][0]["message"]['content'].strip().split("\n")[0]
             break
         except (
             openai.error.APIConnectionError,
@@ -68,7 +83,7 @@ def gpt3x_completion(prompt: str, model: str, **model_params) -> str:
             )
             return ""
 
-    return response["choices"][0]["text"].strip().split("\n")[0]
+    return output
 
 
 def bloom_completion(prompt: str, **model_params) -> str:
@@ -149,19 +164,19 @@ def bloomz_completion(prompt: str, **model_params) -> str:
     return output
 
 
-def model_completion(prompt: str, model: str, **model_params) -> str:
+def model_completion(prompt: Union[str, List[Dict[str, str]]], model: str, **model_params) -> str:
 
     """Runs the prompt over one of the `SUPPORTED_MODELS` for text completion
 
     Args:
-        - prompt (str) : Prompt String to be completed by the model
+        - prompt (Union[str, List[Dict[str, str]]]) : Prompt String to be completed by the model
         - model (str) : Model to use
 
     Returns:
         str: generated string
     """
 
-    if model in ["DaVinci003", "gpt-35-turbo-deployment"]:
+    if model in ["DaVinci003", "gpt-35-turbo-deployment", "gpt4_deployment", "gptturbo", "gpt003"]:
         return gpt3x_completion(prompt, model, **model_params)
 
     if model == "BLOOM":
@@ -177,6 +192,8 @@ def get_model_pred(
     train_prompt_template: Template,
     test_prompt_template: Template,
     model: str,
+    chat_prompt: bool = False,
+    instruction: str = "",
     **model_params,
 ) -> Dict[str, str]:
     """_summary_
@@ -193,8 +210,10 @@ def get_model_pred(
     """
 
     prompt_input, label = construct_prompt(
-        train_examples, test_example, train_prompt_template, test_prompt_template
+        train_examples, test_example,
+        train_prompt_template, test_prompt_template,
+        chat_prompt=(chat_prompt and model in CHAT_MODELS),
+        instruction=instruction
     )
-
     model_prediction = model_completion(prompt_input, model, **model_params)
     return {"prediction": model_prediction, "ground_truth": label}

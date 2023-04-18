@@ -19,6 +19,8 @@ def run_seq_eval(
     test_prompt_template: Template,
     model: str,
     num_evals_per_sec: int = 2,
+    chat_prompt: bool=False,
+    instruction: str="",
     **model_params,
 ) -> Tuple[float, pd.DataFrame]:
     """Runs sequential evaluation. This is slower but would be better when limited API hits are available
@@ -52,6 +54,8 @@ def run_seq_eval(
                     train_prompt_template,
                     test_prompt_template,
                     model,
+                    chat_prompt=chat_prompt,
+                    instruction=instruction,
                     **model_params,
                 )
                 break
@@ -125,7 +129,8 @@ def run_parallel_eval(
     )
     preds = results_dataset["prediction"]
     labels = results_dataset["ground_truth"]
-    matches = [float(pred == label) for (pred, label) in zip(preds, labels)]
+    # matches = [float(pred == label) for (pred, label) in zip(preds, labels)]
+    matches = [float(pred.startswith(label)) for (pred, label) in zip(preds, labels)]
     accuracy = sum(matches) / len(preds)
     results_df = pd.DataFrame({"Label": labels, "Prediction": preds, "Match": matches})
 
@@ -140,6 +145,8 @@ def evaluate_model(
     model: str,
     few_shot_size: int,
     selection_criteria: str = "random",
+    chat_prompt: bool=False,
+    instruction: str="",
     save_preds_path: Optional[str] = None,
     num_evals_per_sec: int = 2,
     parallel_eval: bool = False,
@@ -188,6 +195,8 @@ def evaluate_model(
             test_prompt_template,
             model=model,
             num_evals_per_sec=num_evals_per_sec,
+            chat_prompt=chat_prompt,
+            instruction=instruction,
             **model_params,
         )
 

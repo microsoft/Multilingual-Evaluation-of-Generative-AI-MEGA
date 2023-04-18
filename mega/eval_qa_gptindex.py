@@ -30,19 +30,20 @@ from mega.data.data_utils import choose_few_shot_examples
 from mega.models.qa_models import answer_question
 from mega.prompting.prompting_utils import construct_langchain_qa_prompt
 from mega.utils.parser import parse_args
+from mega.utils.env_utils import load_env
 import pdb
 
-load_dotenv('env.env')
-openai.api_base = "https://gpttesting1.openai.azure.com/"
-openai.api_type = "azure"
-openai.api_version = "2022-12-01"  # this may change in the future
+# load_dotenv('env.env')
+# openai.api_base = "https://gpttesting1.openai.azure.com/"
+# openai.api_type = "azure"
+# openai.api_version = "2022-12-01"  # this may change in the future
 
-with open("keys/openai_key.txt") as f:
-    openai.api_key = f.read().split("\n")[0]
+# with open("keys/openai_key.txt") as f:
+#     openai.api_key = f.read().split("\n")[0]
 
-openai.deployment_name = os.environ["MODEL_DEPLOYMENT_NAME"]
-openai.embedding_deployment_id = os.environ["EMBEDDING_DEPLOYMENT_ID"]
-openai.embedding_deployment_name = os.environ["EMBEDDING_DEPLOYMENT_ID"]
+# openai.deployment_name = os.environ["MODEL_DEPLOYMENT_NAME"]
+# openai.embedding_deployment_id = os.environ["EMBEDDING_DEPLOYMENT_ID"]
+# openai.embedding_deployment_name = os.environ["EMBEDDING_DEPLOYMENT_ID"]
 
 TYDIQA_LANG2CODES = {
     "bengali": "bn",
@@ -190,6 +191,7 @@ def eval_qa(test_dataset, prompt, model, num_evals_per_sec = 1, smaller_prompts 
 def main():
     
     args = parse_args(sys.argv[1:])
+    load_env(env_name=args.env)
 
     # Set seed
     random.seed(args.seed)

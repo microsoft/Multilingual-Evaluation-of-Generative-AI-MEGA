@@ -46,7 +46,7 @@ def read_conll_data(filename: str):
                 tags = []
                 continue
             token, tag = line.split("\t")
-            tokens.append(token)
-            tags.append(tag)
+            tokens.append(token.strip())
+            tags.append(tag.strip())
 
     return inputs, labels

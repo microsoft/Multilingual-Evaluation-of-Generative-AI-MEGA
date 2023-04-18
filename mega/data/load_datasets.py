@@ -141,8 +141,8 @@ def load_tagging_dataset(
     dataset = Dataset.from_dict({"tokens": inputs, "tags": labels})
     dataset = dataset.map(
         lambda example: {
-            "tagged_tokens": f"{token}{delimiter}{tag}"
-            for token, tag in zip(example["tokens"], example["tags"])
+            "tagged_tokens": [f"{token}{delimiter}{tag}"
+            for token, tag in zip(example["tokens"], example["tags"])]
         }
     )
 

@@ -13,10 +13,17 @@ def parse_args(args: list) -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser("Evaluate GPT-x models on XNLI")
     parser.add_argument(
+        "-e",
+        "--env",
+        default="melange",
+        choices=["melange", "scai", "vellm"],
+        help="Name of the environment located in envs/"
+    )
+    parser.add_argument(
         "-d",
         "--dataset",
         default="xnli",
-        choices=["xnli", "paws-x", "xcopa", "tydiqa", "xquad", "mlqa", "indicqa"],
+        choices=["xnli", "paws-x", "xcopa", "tydiqa", "xquad", "mlqa", "indicqa", "udpos", "panx"],
         type=str,
         help="(HF) Dataset to use",
     )
@@ -165,5 +172,10 @@ def parse_args(args: list) -> argparse.Namespace:
         type=str,
         default="identity",
         help="Verbalizer type to use. Only applicable for tagging tasks",
+    )
+    parser.add_argument(
+        "--chat-prompt",
+        action="store_true",
+        help="Whether to use chat type prompts",
     )
     return parser.parse_args(args)

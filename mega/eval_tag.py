@@ -1,9 +1,13 @@
 import os
+import sys
+import json
+import random
 from typing import List, Dict, Union, Tuple, Optional
 import time
 from tqdm import tqdm
 import numpy as np
 import pandas as pd
+import wandb
 from datasets import Dataset
 from seqeval.metrics import f1_score
 from promptsource.templates import Template
@@ -11,6 +15,7 @@ from mega.models.tag_models import get_model_pred
 from mega.data.data_utils import choose_few_shot_examples
 from mega.utils.parser import parse_args
 from mega.data.load_datasets import load_tagging_dataset
+from mega.utils.env_utils import load_env
 import openai
 import pdb
 
@@ -117,10 +122,16 @@ def evaluate(
                 print(
                     f"Unable To Fit Context Size. Reducing few-size by 1. New Size: {len(train_examples_i)}"
                 )
+        
+        pred_dict["prediction"] = [pred if pred != "" else np.random.choice(valid_labels) for pred in pred_dict["prediction"]]
+        
         preds.append(pred_dict["prediction"])
         labels.append(pred_dict["ground_truth"])
-        f1_scores.append(f1_score(pred_dict["ground_truth"],
-                                  pred_dict["prediction"]))
+        try:
+            f1_scores.append(f1_score([pred_dict["ground_truth"]],
+                                    [pred_dict["prediction"]]))
+        except IndexError:
+            breakpoint()
         time.sleep(1 / num_evals_per_sec)
         
     eval_score = f1_score(
@@ -133,8 +144,10 @@ def evaluate(
     return eval_score, results_df
 
 
-def main():
+def main(sys_args):
     args = parse_args(sys_args)
+    load_env(env_name=args.env)
+    
     # Set seed
     random.seed(args.seed)
     np.random.seed(args.seed)
@@ -172,7 +185,7 @@ def main():
         delimiter=args.delimiter
     )
 
-    out_dir = f"{args.save_dir}/xnli/{args.model}/{args.tgt_lang}/PivotLang_{args.pivot_lang}_PromptName_{args.tgt_prompt_name.replace('/','_')}_Verbalizer_{args.verbalizer}_FewShotK_{args.few_shot_k}"
+    out_dir = f"{args.save_dir}/{args.dataset}/{args.model}/{args.tgt_lang}/PivotLang_{args.pivot_lang}_PromptName_{args.tgt_prompt_name.replace('/','_')}_Verbalizer_{args.verbalizer}_FewShotK_{args.few_shot_k}"
     if args.use_val_to_prompt:
         out_dir = f"{out_dir}_use_val_to_prompt"
 
@@ -194,7 +207,7 @@ def main():
         temperature=args.temperature,
         top_p=args.top_p
     )
-    preds_df.to_csv(out_dir)
+    preds_df.to_csv(f"{out_dir}/preds.csv")
     print(eval_score)
     results_dict = vars(args)
     results_dict["metrics"] = {"f1-score": eval_score}
@@ -210,4 +223,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])

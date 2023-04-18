@@ -11,11 +11,13 @@ from mega.data.data_utils import choose_few_shot_examples
 from mega.eval.eval_cls import evaluate_model
 from mega.prompting.prompting_utils import load_prompt_template
 from mega.utils.parser import parse_args
+from mega.utils.env_utils import load_env
 import pdb
 
 
 def main(sys_args):
     args = parse_args(sys_args)
+    load_env(env_name=args.env)
 
     # Set seed
     random.seed(args.seed)
