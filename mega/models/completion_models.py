@@ -19,8 +19,14 @@ import pdb
 with open("keys/hf_key.txt") as f:
     HF_API_TOKEN = f.read().split("\n")[0]
 
-SUPPORTED_MODELS = ["DaVinci003", "BLOOM", "BLOOMZ", "gpt-35-turbo-deployment", "gpt4_deployment", "gptturbo", "gpt003"]
-CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment", "gptturbo"]
+SUPPORTED_MODELS = ["DaVinci003", "BLOOM", 
+                    "BLOOMZ", "gpt-35-turbo-deployment", 
+                    "gpt4_deployment", "gptturbo",
+                    "gpt003", "gpt-4-32k",
+                    "gpt-4", "gpt-35-turbo"]
+CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment",
+               "gptturbo", "gpt-4",
+               "gpt-35-turbo", "gpt-4-32k"]
 
 # Register an handler for the timeout
 # def handler(signum, frame):
@@ -176,7 +182,7 @@ def model_completion(prompt: Union[str, List[Dict[str, str]]], model: str, **mod
         str: generated string
     """
 
-    if model in ["DaVinci003", "gpt-35-turbo-deployment", "gpt4_deployment", "gptturbo", "gpt003"]:
+    if model in ["DaVinci003", "gpt-35-turbo-deployment", "gpt4_deployment", "gptturbo", "gpt003"] + CHAT_MODELS:
         return gpt3x_completion(prompt, model, **model_params)
 
     if model == "BLOOM":

@@ -16,7 +16,7 @@ def parse_args(args: list) -> argparse.Namespace:
         "-e",
         "--env",
         default="melange",
-        choices=["melange", "scai", "vellm"],
+        choices=["melange", "scai", "vellm", "gpt4"],
         help="Name of the environment located in envs/"
     )
     parser.add_argument(
