@@ -90,6 +90,8 @@ def main(sys_args):
         args.model,
         args.few_shot_k,
         args.few_shot_selection,
+        chat_prompt=args.chat_prompt,
+        instruction=INSTRUCTIONS.get(args.dataset, ""),
         save_preds_path=pred_file_path if not args.no_save else None,
         parallel_eval=args.parallel_eval,
         num_proc=args.num_proc,
