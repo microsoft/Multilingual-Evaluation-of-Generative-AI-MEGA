@@ -92,6 +92,7 @@ def main(sys_args):
         num_evals_per_sec=args.num_evals_per_sec,
         parallel_eval=args.parallel_eval,
         num_proc=args.num_proc,
+        log_wandb=args.log_wandb,
         temperature=args.temperature,
         top_p=args.top_p,
     )

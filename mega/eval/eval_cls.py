@@ -4,6 +4,7 @@ import time
 from tqdm import tqdm
 import numpy as np
 import pandas as pd
+import wandb
 from datasets import Dataset
 from promptsource.templates import Template
 from mega.models.completion_models import get_model_pred
@@ -21,6 +22,7 @@ def run_seq_eval(
     num_evals_per_sec: int = 2,
     chat_prompt: bool=False,
     instruction: str="",
+    log_wandb: bool=False,
     **model_params,
 ) -> Tuple[float, pd.DataFrame]:
     """Runs sequential evaluation. This is slower but would be better when limited API hits are available
@@ -40,10 +42,12 @@ def run_seq_eval(
     preds = []
     labels = []
     matches = []
+    running_acc = 0
     num_matches = 0
     valid_labels = test_prompt_template.answer_choices.split("|||")
     valid_labels = [label.strip().split()[0] for label in valid_labels]
-    for test_example in tqdm(test_dataset):
+    pbar = tqdm(test_dataset)
+    for test_example in pbar:
         train_examples_i = train_examples
 
         while len(train_examples_i) >= 0:
@@ -83,6 +87,10 @@ def run_seq_eval(
         preds.append(pred)
         labels.append(label)
         matches.append(float(pred == label))
+        running_acc = np.mean(matches)
+        pbar.set_description(f"Accuracy: {running_acc}")
+        if log_wandb:
+            wandb.log({"acuracy": running_acc})
         time.sleep(1 / num_evals_per_sec)
 
     accuracy = num_matches / len(preds)
@@ -151,6 +159,7 @@ def evaluate_model(
     num_evals_per_sec: int = 2,
     parallel_eval: bool = False,
     num_proc: Optional[int] = None,
+    log_wandb: bool=False,
     **model_params,
 ) -> float:
     """Evaluates the accuracy of the model
@@ -197,6 +206,7 @@ def evaluate_model(
             num_evals_per_sec=num_evals_per_sec,
             chat_prompt=chat_prompt,
             instruction=instruction,
+            log_wandb=log_wandb,
             **model_params,
         )
 

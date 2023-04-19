@@ -3,7 +3,7 @@ import warnings
 import signal
 import time
 import openai
-from typing import List, Dict, Union
+from typing import List, Dict, Union, Any
 from promptsource.templates import Template
 from mega.prompting.prompting_utils import construct_prompt
 import pdb
@@ -37,6 +37,7 @@ CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment",
 
 def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
                      model: str,
+                     run_details: Any = {},
                      **model_params) -> str:
 
     """Runs the prompt over the GPT3.x model for text completion
@@ -66,6 +67,8 @@ def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
                     temperature=model_params.get("temperature", 1),
                     top_p=model_params.get("top_p", 1),
                 )
+                if "num_calls" in run_details:
+                    run_details["num_calls"] += 1
                 output = response["choices"][0]["text"].strip().split("\n")[0]
             else:
                 response = openai.ChatCompletion.create(
@@ -75,7 +78,12 @@ def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
                     temperature=model_params.get("temperature", 1),
                     top_p=model_params.get("top_p", 1),
                 )
-                output = response["choices"][0]["message"]['content'].strip().split("\n")[0]
+                if "num_calls" in run_details:
+                    run_details["num_calls"] += 1
+                if response["choices"][0]["finish_reason"] == "content_filter":
+                    output = ""
+                else:
+                    output = response["choices"][0]["message"]['content'].strip().split("\n")[0]
             break
         except (
             openai.error.APIConnectionError,

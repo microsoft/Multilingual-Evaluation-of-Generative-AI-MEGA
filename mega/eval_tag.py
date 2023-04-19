@@ -78,6 +78,7 @@ def evaluate(
     num_evals_per_sec: int = 2,
     parallel_eval: bool = False,
     num_proc: Optional[int] = None,
+    log_wandb: bool = False,
     **model_params,
 ) -> float:
 
@@ -93,7 +94,8 @@ def evaluate(
     preds = []
     labels = []
     f1_scores = []
-    for test_example in tqdm(test_dataset):
+    pbar = tqdm(test_dataset)
+    for test_example in pbar:
         train_examples_i = train_examples
         
         while len(train_examples_i) >= 1:
@@ -132,6 +134,10 @@ def evaluate(
                                     [pred_dict["prediction"]]))
         except IndexError:
             breakpoint()
+        running_f1 = np.mean(f1_scores)
+        pbar.set_description(f"F1-Score: {running_f1}")
+        if log_wandb:
+            wandb.log({"f1": running_f1})
         time.sleep(1 / num_evals_per_sec)
         
     eval_score = f1_score(
@@ -204,6 +210,7 @@ def main(sys_args):
         num_evals_per_sec=args.num_evals_per_sec,
         parallel_eval=args.parallel_eval,
         num_proc=args.num_proc,
+        log_wandb=args.log_wandb,
         temperature=args.temperature,
         top_p=args.top_p
     )

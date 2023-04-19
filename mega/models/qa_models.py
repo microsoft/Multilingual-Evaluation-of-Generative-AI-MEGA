@@ -13,6 +13,7 @@ from langchain.text_splitter import TokenTextSplitter
 from langchain import OpenAI, VectorDBQA
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts.few_shot import FewShotPromptTemplate, PromptTemplate
+from mega.models.completion_models import gpt3x_completion
 import pdb
 
 load_dotenv("env.env")
@@ -176,6 +177,65 @@ def answer_question_chatgpt(
         #     break
     return response
 
+def answer_question_gpt4(
+    question: str,
+    context: str,
+    prompt: Union[List, str],
+    model: str,
+    **model_params
+):
+    return gpt3x_completion(
+        prompt,
+        model,
+        **model_params
+    )
+
+
+
+
+    text_splitter = TokenTextSplitter(
+        chunk_size=chunk_size, chunk_overlap=chunk_overlap
+    )
+    texts = text_splitter.split_text(context)
+
+    embedding = EMBEDDING_LLM
+    docsearch = Chroma.from_texts([texts[0]], embedding, metadatas=[{}])
+    for text in texts[1:]:
+        time.sleep(1 / 5)
+        while True:
+            try:
+                docsearch.add_texts([text], metadatas=[{}])
+                break
+            except (openai.error.APIConnectionError, openai.error.APIError):
+                continue
+    qa = VectorDBQA.from_chain_type(
+        llm=CHAT_LLM,
+        chain_type="stuff",
+        vectorstore=docsearch,
+        chain_type_kwargs={"prompt": prompt},
+        k=1,
+    )
+
+    while True:
+        try:
+            response = qa.run(question)
+            break
+        except openai.error.APIConnectionError:
+            continue
+        except TypeError:
+            response = ""
+            break
+        except KeyError:
+            warnings.warn(
+                "ToDo: Some KeyError, yet to figrue out the root to this response. Report to t-kabirahuja if you see multiple instances of this"
+            )
+            return ""
+        # except openai.error.InvalidRequestError as e:
+        #     pdb.set_trace()
+        #     response = ""
+        #     break
+    return response
+
 
 def answer_question_bloomz(
     question: str,
@@ -249,7 +309,7 @@ def answer_question(
     model: str,
     question: str,
     context: str,
-    prompt: Union[PromptTemplate, FewShotPromptTemplate],
+    prompt: Union[PromptTemplate, FewShotPromptTemplate, List, str],
     chunk_size: int = 100,
     chunk_overlap: int = 0,
 ):

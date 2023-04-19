@@ -39,6 +39,82 @@ def construct_langchain_qa_prompt(
 
     return prompt
 
+def construct_qa_prompt(
+    train_examples: List[Dict[str, Union[str, int]]],
+    test_example: Dict[str, Union[str, int]],
+    train_prompt_template: str,
+    test_prompt_template: str = None,
+    chat_prompt: bool = False,
+    instruction: str = ""
+):
+
+    def fill_template(template, example, fill_answer=True):
+        if fill_answer:
+            return template.replace("{context}", example["context"])\
+                    .replace("{question}", example["question"])\
+                    .replace("{answer}", example["answers"]["text"][0])
+        else:
+            return template.replace("{context}", example["context"])\
+                    .replace("{question}", example["question"])\
+                    .replace("{answer}", "").strip()
+
+    if not chat_prompt:
+        train_prompts = [
+            fill_template(train_prompt_template, example)
+            for example in train_examples
+        ]
+        test_prompt_input = fill_template(test_prompt_template, test_example, fill_answer=False)
+        prompt_input = "\n\n".join(train_prompts + [test_prompt_input])
+        test_prompt_label = test_example["answers"]["text"][0]
+
+    else:
+        messages = []
+        if instruction != "":
+            messages.append({"role": "system", "content": instruction})
+
+        for example in train_examples:
+            prompt_input = fill_template(train_prompt_template, example, fill_answer=False)
+            prompt_label = example["answers"]["text"][0]
+            messages.append({"role": "user", "content": prompt_input})
+            messages.append({"role": "assistant", "content": prompt_label})
+        
+        test_prompt_input = fill_template(test_prompt_template, test_example, fill_answer=False)
+        test_prompt_label = test_example["answers"]["text"][0]
+        messages.append({"role": "user", "content": test_prompt_input})
+        prompt_input = messages
+    
+    return prompt_input, test_prompt_label
+
+    def preprocess_qa_examples(example):
+        return {
+            "context": example["context"],
+            "question": example["question"],
+            "answer": example["answers"]["text"][0],
+        }
+
+
+    if test_prompt_template is None:
+        test_prompt_template = train_prompt_template
+    example_prompt = PromptTemplate(
+        input_variables=["context", "question", "answer"],
+        template=train_prompt_template,
+    )
+    if len(train_examples) != 0:
+        train_examples = list(map(preprocess_qa_examples, train_examples))
+        prompt = FewShotPromptTemplate(
+            examples=train_examples,
+            example_prompt=example_prompt,
+            suffix=test_prompt_template.replace("{answer}", ""),
+            input_variables=["context", "question"],
+        )
+    else:
+        prompt = PromptTemplate(
+            input_variables=["context", "question"],
+            template=test_prompt_template.replace("{answer}", ""),
+        )
+
+    return prompt
+
 
 
 def construct_prompt(
