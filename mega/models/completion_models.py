@@ -99,7 +99,7 @@ def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
             openai.error.RateLimitError,
             openai.error.APIError,
         ) as e:
-            backoff_count = max(backoff_count + 1, backoff_ceil)
+            backoff_count = min(backoff_count + 1, backoff_ceil)
             sleep_time = backoff_base ** backoff_count
             print(f"Exceeded Rate Limit. Waiting for {sleep_time} seconds")
             time.sleep(sleep_time)
