@@ -3,22 +3,29 @@ import warnings
 import signal
 import time
 import openai
-from typing import List, Dict, Union
+from typing import List, Dict, Union, Any
 from mega.prompting.prompting_utils import construct_tagging_prompt
 
 
-openai.api_base = "https://gpttesting1.openai.azure.com/"
-openai.api_type = "azure"
-openai.api_version = "2022-12-01"  # this may change in the future
+# openai.api_base = "https://gpttesting1.openai.azure.com/"
+# openai.api_type = "azure"
+# openai.api_version = "2022-12-01"  # this may change in the future
 HF_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloom"
 BLOOMZ_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloomz"
-with open("keys/openai_key.txt") as f:
-    openai.api_key = f.read().split("\n")[0]
+# with open("keys/openai_key.txt") as f:
+#     openai.api_key = f.read().split("\n")[0]
 
 with open("keys/hf_key.txt") as f:
     HF_API_TOKEN = f.read().split("\n")[0]
 
-SUPPORTED_MODELS = ["DaVinci003", "BLOOM", "BLOOMZ", "gpt-35-turbo-deployment"]
+SUPPORTED_MODELS = ["DaVinci003", "BLOOM", 
+                    "BLOOMZ", "gpt-35-turbo-deployment", 
+                    "gpt4_deployment", "gptturbo",
+                    "gpt003", "gpt-4-32k",
+                    "gpt-4", "gpt-35-turbo"]
+CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment",
+               "gptturbo", "gpt-4",
+               "gpt-35-turbo", "gpt-4-32k"]
 
 
 udpos_verbalizer = {
@@ -53,13 +60,21 @@ panx_verbalizer = {
 
 
 def gpt3x_tagger(
-    prompt: str,
+    prompt: Union[str, List[Dict[str, str]]],
     model: str,
     test_tokens: List[str],
     delimiter: str = "_",
     num_evals_per_second: int = 2,
+    one_shot_tag: bool = True,
+    run_details: Any = {},
     **model_params,
 ) -> str:
+    
+    chat_prompt = isinstance(prompt, list)
+    
+    if chat_prompt and not one_shot_tag:
+        raise ValueError("Chat Completion not supported for iterative tagging. Either set one_shot_tag = True or chat_prompts = False")
+    
     def predict_tag(prompt, token):
         prompt_with_token = f"{prompt} {token}{delimiter}"
 
@@ -73,6 +88,7 @@ def gpt3x_tagger(
                     temperature=model_params.get("temperature", 1),
                     top_p=model_params.get("top_p", 1),
                 )
+                time.sleep(1/num_evals_per_second)
                 break
             except (
                 openai.error.APIConnectionError,
@@ -88,20 +104,86 @@ def gpt3x_tagger(
                 return ""
 
         return response["choices"][0]["text"].strip().split()[0]
+        
+    def predict_one_shot():
+        output = None
+        while True:
+            try:
+                if isinstance(prompt, str):
+                    response = openai.Completion.create(
+                        engine=model,
+                        prompt=prompt,
+                        max_tokens=model_params.get("max_tokens", 20),
+                        temperature=model_params.get("temperature", 1),
+                        top_p=model_params.get("top_p", 1),
+                    )
+                    if "num_calls" in run_details:
+                        run_details["num_calls"] += 1
+                    output = response["choices"][0]["text"].strip().split("\n")[0]
+                    time.sleep(1/num_evals_per_second)
+                else:
+                    response = openai.ChatCompletion.create(
+                        engine=model,
+                        messages=prompt,
+                        max_tokens=model_params.get("max_tokens", 20),
+                        temperature=model_params.get("temperature", 1),
+                        top_p=model_params.get("top_p", 1),
+                    )
+                    if "num_calls" in run_details:
+                        run_details["num_calls"] += 1
+                    if response["choices"][0]["finish_reason"] == "content_filter":
+                        output = ""
+                    else:
+                        output = response["choices"][0]["message"]['content'].strip().split("\n")[0]
+                    time.sleep(1/num_evals_per_second)
+                break
+            except (
+                openai.error.APIConnectionError,
+                openai.error.RateLimitError,
+                openai.error.APIError,
+            ) as e:
+                continue
+            except TypeError:
+                warnings.warn(
+                    "Couldn't generate response, returning empty string as response"
+                )
+                return ""
+
+        return output
+            
 
     if model == "gpt-35-turbo-deployment":
         openai.api_version = "2023-03-15-preview"
     else:
         openai.api_version = "2022-12-01"
 
-    prompt_with_decodings = prompt
-    predicted_tags = []
-    for token in test_tokens:
-        predicted_tag = predict_tag(prompt_with_decodings, token)
-        prompt_with_decodings += f" {token}{delimiter}{predicted_tag}"
-        predicted_tags.append(predicted_tag)
-        # time.sleep(1/num_evals_per_second)
-    return predicted_tags
+    if one_shot_tag:
+        predicted_tokens_wth_tags =  predict_one_shot()
+        predicted_tokens_wth_tags = predicted_tokens_wth_tags.split()
+        predicted_tags = []
+        for i,token in enumerate(test_tokens):
+            if i >= len(predicted_tokens_wth_tags):
+                predicted_tags.append("")
+                continue
+            pred_token_nd_tag = predicted_tokens_wth_tags[i].split(delimiter)
+            if len(pred_token_nd_tag) == 2:
+                pred_token, pred_tag = pred_token_nd_tag
+            else:
+                pred_token = ""
+                pred_tag = ""
+            if token == pred_token:
+                predicted_tags.append(pred_tag)
+            else:
+                predicted_tags.append("")
+        return predicted_tags
+    else:
+        prompt_with_decodings = prompt
+        predicted_tags = []
+        for token in test_tokens:
+            predicted_tag = predict_tag(prompt_with_decodings, token)
+            prompt_with_decodings += f" {token}{delimiter}{predicted_tag}"
+            predicted_tags.append(predicted_tag)
+        return predicted_tags
 
 
 def bloom_tagger(
@@ -164,19 +246,26 @@ def bloom_tagger(
 
 
 def model_tagger(
-    prompt: str,
+    prompt: Union[str, List[Dict[str, str]]],
     model: str,
     test_tokens: List[str],
     delimiter: str = "_",
+    num_evals_per_second: int = 2,
+    chat_prompt: bool = False,
+    one_shot_tag: bool = True,
+    run_details: Any = {},
     **model_params,
 ) -> str:
 
-    if model in ["DaVinci003", "gpt-35-turbo-deployment"]:
+    if model in ["DaVinci003", "gpt003"] + CHAT_MODELS:
         return gpt3x_tagger(
             prompt,
             model,
             test_tokens,
             delimiter,
+            num_evals_per_second=num_evals_per_second,
+            one_shot_tag=one_shot_tag,
+            run_details=run_details,
             **model_params,
         )
     elif model in ["BLOOM", "BLOOMZ"]:
@@ -196,19 +285,32 @@ def get_model_pred(
     verbalizer: Dict[str, str],
     model: str,
     delimiter: str = "_",
+    num_evals_per_second: int = 2,
+    chat_prompt: bool = False,
+    instruction: str = "",
+    one_shot_tag: bool = True,
+    run_details: Any = {},
     **model_params,
 ):
 
     reverse_verbalizer = {value: key for key, value in verbalizer.items()}
 
     prompt_input, label = construct_tagging_prompt(
-        train_examples, test_example, prompt_template, verbalizer
+        train_examples, test_example,
+        prompt_template, verbalizer,
+        delimiter=delimiter,
+        chat_prompt=chat_prompt,
+        instruction=instruction
     )
     model_prediction = model_tagger(
         prompt_input,
         model,
         test_tokens=test_example["tokens"],
         delimiter=delimiter,
+        num_evals_per_second=num_evals_per_second,
+        chat_prompt=chat_prompt,
+        one_shot_tag=one_shot_tag,
+        run_details=run_details,
         **model_params,
     )
     model_prediction_tags = [

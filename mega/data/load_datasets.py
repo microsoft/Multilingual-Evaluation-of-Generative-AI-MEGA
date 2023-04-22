@@ -128,11 +128,12 @@ def load_tagging_dataset(
     dataset: str,
     lang: str,
     split: str,
+    max_examples: int = -1,
     dataset_frac: float = 1.0,
     xtreme_dir: str = "xtreme/download",
     delimiter: str = "_",
 ) -> Union[Dataset, DatasetDict]:
-
+    
     split = "dev" if split == "validation" else split
 
     filename = f"{xtreme_dir}/{dataset}/{split}-{lang}.tsv"
@@ -145,7 +146,9 @@ def load_tagging_dataset(
             for token, tag in zip(example["tokens"], example["tags"])]
         }
     )
-
     N = len(dataset)
-    selector = np.arange(int(N * dataset_frac))
+    if max_examples == -1:
+        selector = np.arange(int(N * dataset_frac))
+    else:
+        selector = np.arange(min(N, max_examples))
     return dataset.select(selector)

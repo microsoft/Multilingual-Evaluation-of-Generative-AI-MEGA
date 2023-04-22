@@ -16,7 +16,7 @@ def parse_args(args: list) -> argparse.Namespace:
         "-e",
         "--env",
         default="melange",
-        choices=["melange", "scai", "vellm", "gpt4"],
+        choices=["melange", "scai", "vellm", "gpt4",  "gpt4v2"],
         help="Name of the environment located in envs/"
     )
     parser.add_argument(
@@ -141,6 +141,11 @@ def parse_args(args: list) -> argparse.Namespace:
         help="An alternative to sampling with temperature, called nucleus sampling,\
             where the model considers the results of the tokens with top_p probability mass.\
             So 0.1 means only the tokens comprising the top 10% probability mass are considered.",
+    )
+    parser.add_argument(
+        "--max_tokens",
+        default=20,
+        type=int,
     )
     parser.add_argument(
         "--log_wandb",

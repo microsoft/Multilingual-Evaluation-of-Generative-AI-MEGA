@@ -164,6 +164,8 @@ def construct_tagging_prompt(
     prompt_template: str,
     verbalizer: Dict[str, str] = {},
     delimiter: str = "_",
+    chat_prompt: bool = False,
+    instruction: str = ""
 ) -> Tuple[str, str]:
     def apply_verbalizer(tagged_tokens):
         verbalized_tagged_tokens = []
@@ -174,18 +176,38 @@ def construct_tagging_prompt(
             )
         return verbalized_tagged_tokens
 
-    train_prompts = [
-        prompt_template.replace("{context}", " ".join(train_example["tokens"])).replace(
-            "{tagged}", " ".join(apply_verbalizer(train_example["tagged_tokens"]))
-        )
-        for train_example in train_examples
-    ]
-    test_prompt_input = prompt_template.replace(
-        "{context}", " ".join(test_example["tokens"])
-    ).replace("{tagged}", "")
+    if not chat_prompt:
+        train_prompts = [
+            prompt_template.replace("{context}", " ".join(train_example["tokens"])).replace(
+                "{tagged}", " ".join(apply_verbalizer(train_example["tagged_tokens"]))
+            )
+            for train_example in train_examples
+        ]
+        test_prompt_input = prompt_template.replace(
+            "{context}", " ".join(test_example["tokens"])
+        ).replace("{tagged}", "")
 
-    prompt_input = "\n\n".join(train_prompts + [test_prompt_input])
-    test_prompt_label = test_example["tags"]
+        prompt_input = "\n\n".join(train_prompts + [test_prompt_input])
+        test_prompt_label = test_example["tags"]
+    
+    else:
+        messages = []
+        if instruction != "":
+            messages.append({"role": "system", "content": instruction})
+        for train_example in train_examples:
+            prompt_input = prompt_template.replace("{context}", " ".join(train_example["tokens"])).replace(
+                "{tagged}", "").strip()
+            prompt_label = prompt_template.replace("{context}", "").replace(
+                "{tagged}", " ".join(apply_verbalizer(train_example["tagged_tokens"]))
+            ).strip()
+            messages.append({"role": "user", "content": prompt_input})
+            messages.append({"role": "assistant", "content": prompt_label})
+        
+        test_prompt_input = prompt_template.replace("{context}", " ".join(test_example["tokens"])).replace(
+                "{tagged}", "").strip()
+        messages.append({"role": "user", "content": test_prompt_input})
+        prompt_input = messages
+        test_prompt_label = test_example["tags"]
 
     return prompt_input, test_prompt_label
 

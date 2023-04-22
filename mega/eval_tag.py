@@ -62,7 +62,8 @@ verbalizers = {
 }
 
 PROMPTS_DICT = {
-    "structure_prompting": """C: {context}\nT: {tagged}"""
+    "structure_prompting": """C: {context}\nT: {tagged}""",
+    "structure_prompting_chat": """{context}\n{tagged}"""
 }
 
 def evaluate(
@@ -79,9 +80,13 @@ def evaluate(
     parallel_eval: bool = False,
     num_proc: Optional[int] = None,
     log_wandb: bool = False,
+    chat_prompt: bool = False,
+    one_shot_tag: bool = True,
     **model_params,
 ) -> float:
 
+    run_details = {"num_calls": 0}
+    
     train_examples = choose_few_shot_examples(
         train_dataset, few_shot_size, selection_criteria
     )
@@ -126,7 +131,6 @@ def evaluate(
                 )
         
         pred_dict["prediction"] = [pred if pred != "" else np.random.choice(valid_labels) for pred in pred_dict["prediction"]]
-        
         preds.append(pred_dict["prediction"])
         labels.append(pred_dict["ground_truth"])
         try:
@@ -138,7 +142,7 @@ def evaluate(
         pbar.set_description(f"F1-Score: {running_f1}")
         if log_wandb:
             wandb.log({"f1": running_f1})
-        time.sleep(1 / num_evals_per_sec)
+        # time.sleep(1 / num_evals_per_sec)
         
     eval_score = f1_score(
         labels, preds
@@ -186,6 +190,7 @@ def main(sys_args):
         args.dataset,
         args.pivot_lang,
         split="test" if not args.eval_on_val else "validation",
+        max_examples=1000,#args.max_examples,
         dataset_frac=args.test_frac,
         xtreme_dir=args.xtreme_dir,
         delimiter=args.delimiter
@@ -211,8 +216,11 @@ def main(sys_args):
         parallel_eval=args.parallel_eval,
         num_proc=args.num_proc,
         log_wandb=args.log_wandb,
+        chat_prompt=args.chat_prompt,
+        one_shot_tag=True,
         temperature=args.temperature,
-        top_p=args.top_p
+        top_p=args.top_p,
+        max_tokens=args.max_tokens
     )
     preds_df.to_csv(f"{out_dir}/preds.csv")
     print(eval_score)

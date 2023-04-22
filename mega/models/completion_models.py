@@ -38,6 +38,10 @@ CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment",
 def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
                      model: str,
                      run_details: Any = {},
+                     num_evals_per_sec: int = 2,
+                     backoff_base: int = 2,
+                     backoff_rate: int = 2,
+                     backoff_ceil: int: 10,
                      **model_params) -> str:
 
     """Runs the prompt over the GPT3.x model for text completion
@@ -57,6 +61,7 @@ def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
 
     # Hit the api repeatedly till response is obtained
     output = None
+    backoff_count = 0
     while True:
         try:
             if isinstance(prompt, str):
@@ -70,6 +75,8 @@ def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
                 if "num_calls" in run_details:
                     run_details["num_calls"] += 1
                 output = response["choices"][0]["text"].strip().split("\n")[0]
+                time.sleep(1/num_evals_per_sec)
+                backoff_count = 0
             else:
                 response = openai.ChatCompletion.create(
                     engine=model,
@@ -84,12 +91,18 @@ def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
                     output = ""
                 else:
                     output = response["choices"][0]["message"]['content'].strip().split("\n")[0]
+                time.sleep(1/num_evals_per_sec)
+                backoff_count = 0
             break
         except (
             openai.error.APIConnectionError,
             openai.error.RateLimitError,
             openai.error.APIError,
         ) as e:
+            backoff_count = max(backoff_count + 1, backoff_ceil)
+            sleep_time = backoff_base ** backoff_count
+            print(f"Exceeded Rate Limit. Waiting for {sleep_time} seconds")
+            time.sleep(sleep_time)
             continue
         except TypeError:
             warnings.warn(

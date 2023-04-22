@@ -91,7 +91,7 @@ def run_seq_eval(
         pbar.set_description(f"Accuracy: {running_acc}")
         if log_wandb:
             wandb.log({"acuracy": running_acc})
-        time.sleep(1 / num_evals_per_sec)
+        # time.sleep(1 / num_evals_per_sec)
 
     accuracy = num_matches / len(preds)
     results_df = pd.DataFrame({"Label": labels, "Prediction": preds, "Match": matches})
