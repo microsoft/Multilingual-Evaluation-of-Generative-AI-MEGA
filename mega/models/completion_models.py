@@ -41,7 +41,7 @@ def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
                      num_evals_per_sec: int = 2,
                      backoff_base: int = 2,
                      backoff_rate: int = 2,
-                     backoff_ceil: int: 10,
+                     backoff_ceil: int = 10,
                      **model_params) -> str:
 
     """Runs the prompt over the GPT3.x model for text completion
