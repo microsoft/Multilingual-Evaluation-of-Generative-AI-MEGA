@@ -96,15 +96,14 @@ def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
             break
         except (
             openai.error.APIConnectionError,
-            openai.error.RateLimitError,
-            openai.error.APIError,
+            openai.error.RateLimitError
         ) as e:
             backoff_count = min(backoff_count + 1, backoff_ceil)
             sleep_time = backoff_base ** backoff_count
             print(f"Exceeded Rate Limit. Waiting for {sleep_time} seconds")
             time.sleep(sleep_time)
             continue
-        except TypeError:
+        except (openai.error.APIError,TypeError):
             warnings.warn(
                 "Couldn't generate response, returning empty string as response"
             )

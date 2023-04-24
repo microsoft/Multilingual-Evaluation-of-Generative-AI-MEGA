@@ -67,6 +67,10 @@ def gpt3x_tagger(
     num_evals_per_second: int = 2,
     one_shot_tag: bool = True,
     run_details: Any = {},
+    num_evals_per_sec: int = 2,
+    backoff_base: int = 2,
+    backoff_rate: int = 2,
+    backoff_ceil: int = 10,
     **model_params,
 ) -> str:
     
@@ -77,7 +81,7 @@ def gpt3x_tagger(
     
     def predict_tag(prompt, token):
         prompt_with_token = f"{prompt} {token}{delimiter}"
-
+        backoff_count = 0
         # Hit the api repeatedly till response is obtained
         while True:
             try:
@@ -89,12 +93,17 @@ def gpt3x_tagger(
                     top_p=model_params.get("top_p", 1),
                 )
                 time.sleep(1/num_evals_per_second)
+                backoff_count = 0
                 break
             except (
                 openai.error.APIConnectionError,
                 openai.error.RateLimitError,
                 openai.error.APIError,
             ):
+                backoff_count = min(backoff_count + 1, backoff_ceil)
+                sleep_time = backoff_base ** backoff_count
+                print(f"Exceeded Rate Limit. Waiting for {sleep_time} seconds")
+                time.sleep(sleep_time)
                 continue
 
             except TypeError:
@@ -107,6 +116,7 @@ def gpt3x_tagger(
         
     def predict_one_shot():
         output = None
+        backoff_count = 0
         while True:
             try:
                 if isinstance(prompt, str):
@@ -121,6 +131,7 @@ def gpt3x_tagger(
                         run_details["num_calls"] += 1
                     output = response["choices"][0]["text"].strip().split("\n")[0]
                     time.sleep(1/num_evals_per_second)
+                    backoff_count = 0
                 else:
                     response = openai.ChatCompletion.create(
                         engine=model,
@@ -136,12 +147,17 @@ def gpt3x_tagger(
                     else:
                         output = response["choices"][0]["message"]['content'].strip().split("\n")[0]
                     time.sleep(1/num_evals_per_second)
+                    backoff_count = 0
                 break
             except (
                 openai.error.APIConnectionError,
                 openai.error.RateLimitError,
                 openai.error.APIError,
             ) as e:
+                backoff_count = min(backoff_count + 1, backoff_ceil)
+                sleep_time = backoff_base ** backoff_count
+                print(f"Exceeded Rate Limit. Waiting for {sleep_time} seconds")
+                time.sleep(sleep_time)
                 continue
             except TypeError:
                 warnings.warn(
@@ -152,7 +168,7 @@ def gpt3x_tagger(
         return output
             
 
-    if model == "gpt-35-turbo-deployment":
+    if model in CHAT_MODELS:
         openai.api_version = "2023-03-15-preview"
     else:
         openai.api_version = "2022-12-01"

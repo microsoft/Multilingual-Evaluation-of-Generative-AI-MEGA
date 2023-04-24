@@ -112,6 +112,7 @@ def evaluate(
                     verbalizer,
                     model,
                     delimiter=delimiter,
+                    chat_prompt=chat_prompt,
                     **model_params,
                 )
                 break
