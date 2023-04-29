@@ -22,10 +22,10 @@ SUPPORTED_MODELS = ["DaVinci003", "BLOOM",
                     "BLOOMZ", "gpt-35-turbo-deployment", 
                     "gpt4_deployment", "gptturbo",
                     "gpt003", "gpt-4-32k",
-                    "gpt-4", "gpt-35-turbo"]
+                    "gpt-4", "gpt-35-turbo", "gpt-35-tunro"]
 CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment",
                "gptturbo", "gpt-4",
-               "gpt-35-turbo", "gpt-4-32k"]
+               "gpt-35-turbo", "gpt-4-32k", "gpt-35-tunro"]
 
 
 udpos_verbalizer = {
@@ -152,14 +152,13 @@ def gpt3x_tagger(
             except (
                 openai.error.APIConnectionError,
                 openai.error.RateLimitError,
-                openai.error.APIError,
             ) as e:
                 backoff_count = min(backoff_count + 1, backoff_ceil)
                 sleep_time = backoff_base ** backoff_count
                 print(f"Exceeded Rate Limit. Waiting for {sleep_time} seconds")
                 time.sleep(sleep_time)
                 continue
-            except TypeError:
+            except (openai.error.APIError,TypeError):
                 warnings.warn(
                     "Couldn't generate response, returning empty string as response"
                 )

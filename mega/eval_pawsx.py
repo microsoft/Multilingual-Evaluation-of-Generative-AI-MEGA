@@ -10,6 +10,7 @@ from mega.data.load_datasets import load_pawsx_dataset, load_pawsx_translate_tes
 from mega.data.data_utils import choose_few_shot_examples
 from mega.eval.eval_cls import evaluate_model
 from mega.prompting.prompting_utils import load_prompt_template
+from mega.prompting.instructions import INSTRUCTIONS
 from mega.utils.parser import parse_args
 from mega.utils.env_utils import load_env
 import pdb
@@ -80,6 +81,9 @@ def main(sys_args):
 
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
+        
+    instruction = INSTRUCTIONS[args.dataset]
+    print(instruction)
 
     pred_file_path = f"{out_dir}/preds.csv"
     accuracy = evaluate_model(
@@ -91,7 +95,7 @@ def main(sys_args):
         args.few_shot_k,
         args.few_shot_selection,
         chat_prompt=args.chat_prompt,
-        instruction=INSTRUCTIONS.get(args.dataset, ""),
+        instruction=instruction,
         save_preds_path=pred_file_path if not args.no_save else None,
         parallel_eval=args.parallel_eval,
         num_proc=args.num_proc,

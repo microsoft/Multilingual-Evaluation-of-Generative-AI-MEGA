@@ -41,7 +41,7 @@ templates:
 
       Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
       }}'
-    metadata: &id001 !TemplateMetadata
+    metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
       - en
@@ -56,7 +56,7 @@ templates:
     id: 58536115-fd5c-4f29-a85b-420fde6fc5b0
     jinja: '{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
       Yes, no, or maybe? ||| {{ answer_choices[label] }}'
-    metadata: &id002 !TemplateMetadata
+    metadata: &id001 !TemplateMetadata
       choices_in_prompt: true
       languages:
       - en
@@ -131,7 +131,13 @@ templates:
     jinja: "{{premise}}\\n\u092A\u094D\u0930\u0936\u094D\u0928: {{hypothesis}} \u0938\
       \u0924\u094D\u092F, \u0905\u0938\u0924\u094D\u092F \u092F\u093E \u0928 \u0924\
       \u094B? ||| {{ answer_choices[label]}}"
-    metadata: *id001
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
     name: Bing-Translated GPT-3 style
     reference: 'Translated to hi version  of: Same as reported in Figure G7 of the
       GPT-3 paper, except that there is no task identifying tokens like "anli R1:
@@ -145,7 +151,7 @@ templates:
       \u094D\u092F\u093E \u092F\u0939 \u0938\u091A \u0939\u0948 \u0915\u093F \"{{hypothesis}}\"\
       ? \u0939\u093E\u0901, \u0928\u0939\u0940\u0902, \u092F\u093E \u0936\u093E\u092F\
       \u0926? ||| {{ answer_choices[label]}}"
-    metadata: *id002
+    metadata: *id001
     name: Bing-Translated based on the previous passage
     reference: "Translated to hi version  of: Adapted from the BoolQ prompts in Schick\
       \ & Sch\xFCtze 2021."

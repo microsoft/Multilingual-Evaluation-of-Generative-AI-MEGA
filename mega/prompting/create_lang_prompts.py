@@ -109,7 +109,7 @@ def main():
         "-d",
         "--dataset",
         default="xnli",
-        choices=["xnli", "paws-x", "xcopa"],
+        choices=["xnli", "paws-x", "xcopa", "Divyanshu/indicxnli"],
         type=str,
         help="(HF) Dataset to use",
     )

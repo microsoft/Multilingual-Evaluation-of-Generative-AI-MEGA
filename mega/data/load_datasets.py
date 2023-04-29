@@ -1,4 +1,5 @@
 import os
+import xml.etree.ElementTree as ET
 import warnings
 from typing import Union, Optional
 import numpy as np
@@ -94,8 +95,33 @@ def load_pawsx_translate_test(
     return tt_dataset
 
 
+def parse_copa_dataset(path, split = "test"):
+
+    tree = ET.parse(f"{path}/copa-{split}.xml")
+    root = tree.getroot()
+    items = root.findall('item')
+    
+    dataset = []
+    
+    for item in items:
+        dataset.append(
+            {
+                "idx": item.get("id"),
+                "question": item.get("asks-for"),
+                "label": int(item.get("most-plausible-alternative")) - 1,
+                "premise": item.find("p").text,
+                "choice1": item.find("a1").text,
+                "choice2": item.find("a2").text,
+            }
+        )
+    
+    return Dataset.from_list(dataset)
+            
+    
+
 def load_xcopa_dataset(
-    lang: str, split: str, dataset_frac: float = 1.0
+    lang: str, split: str, 
+    dataset_frac: float = 1.0, copa_dir="data/copa/"
 ) -> Union[Dataset, DatasetDict]:
     """
     Args:
@@ -112,10 +138,12 @@ def load_xcopa_dataset(
             "No Training Split for Non-English languages in XCOPA. Using Validation split!"
         )
         split = "validation"
-
     if lang == "en":
-        # For english fetch data from COPA in SuperGLUE
-        dataset = load_dataset("super_glue", "copa")[split]
+        if split in ["train", "validation"]:
+            # For english fetch data from COPA in SuperGLUE
+            dataset = load_dataset("super_glue", "copa")[split]
+        else:
+            dataset = parse_copa_dataset(copa_dir, split = "test")
     else:
         dataset = load_dataset("xcopa", lang)[split]
 

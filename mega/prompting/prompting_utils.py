@@ -158,6 +158,10 @@ def construct_prompt(
     return prompt_input, test_prompt_label
 
 
+
+
+
+
 def construct_tagging_prompt(
     train_examples: List[Dict[str, Union[str, int]]],
     test_example: Dict[str, Union[str, int]],
@@ -210,6 +214,107 @@ def construct_tagging_prompt(
         test_prompt_label = test_example["tags"]
 
     return prompt_input, test_prompt_label
+
+template = """{premise} Based on the previous passage, is it true that {hypothesis}? Yes or no? ||| {label}"""
+verbalizer = {
+    "entailed": "Yes",
+    "contradiction": "No"
+}
+def construct_cmxnli_prompt(
+    train_examples: List[Dict[str, Union[str, int]]],
+    test_example: Dict[str, Union[str, int]],
+    train_prompt_template: str,
+    test_prompt_template: str,
+    verbalizer: Dict[str, str],
+    chat_prompt: bool = False,
+    instruction: str = ""
+) -> Tuple[str, str]:
+    """Creates the prompt using training few-shot examples and test example to evaluate
+
+    Args:
+        train_examples (List[Dict[str, Union[str,int]]]): List of few-shot examples
+        test_example (Dict[str, Union[str,int]]): Test example to evaluate
+
+    Returns:
+        Tuple[str, str] : Final prompt string constructed to provide as input and the verbalized label
+    """
+
+    def fill_xnli_template(example, template):
+        premise = example["premise"]
+        hypothesis = example["hypothesis"]
+        label = example["label"]
+
+        filled_template = template.replace("{premise}", premise)\
+            .replace("{hypothesis}", hypothesis)
+
+        filled_template = filled_template.replace("{label}", "").strip()
+
+        return filled_template, verbalizer[label]
+
+    
+    if not chat_prompt:
+        train_prompts = [
+            "\n".join(fill_xnli_template(train_example, train_prompt_template))
+            for train_example in train_examples
+        ]
+        test_prompt_input, test_prompt_label = fill_xnli_template(test_example, test_prompt_template)
+        prompt_input = "\n".join(train_prompts + [test_prompt_input]) + "\n"
+    
+    else:
+        messages = []
+        if instruction != "":
+            messages.append({"role": "system", "content": instruction})
+        for example in train_examples:
+            prompt_input, prompt_label = fill_template(example, train_prompt_template)
+            messages.append({"role": "user", "content": prompt_input})
+            messages.append({"role": "assistant", "content": prompt_label})
+        test_prompt_input, test_prompt_label = fill_template(test_example, test_prompt_template)
+        messages.append({"role": "user", "content": test_prompt_input})
+        prompt_input = messages
+        
+    return prompt_input, test_prompt_label
+
+def construct_cmsentiment_prompt( 
+    train_examples: List[Dict[str, Union[str, int]]], 
+    test_example: Dict[str, Union[str, int]], 
+    train_prompt_template: str, 
+    test_prompt_template: str, 
+    verbalizer: Dict[str, str], 
+    chat_prompt: bool = False, 
+    instruction: str = ""
+) -> Tuple[str, str]: 
+    """Creates the prompt using training few-shot examples and test example to evaluate 
+    
+    Args: 
+    train_examples (List[Dict[str, Union[str,int]]]): List of few-shot examples 
+    test_example (Dict[str, Union[str,int]]): Test example to evaluate 
+    
+    Returns: Tuple[str, str] : Final prompt string constructed to provide as input and the verbalized label 
+    """ 
+    def fill_xnli_template(example, template): 
+        text = example["text"] 
+        label = example["label"] 
+        filled_template = template.replace("{text}", text)
+        return filled_template, verbalizer[label] 
+        
+    if not chat_prompt: 
+        train_prompts = [ "\n".join(fill_xnli_template(train_example, train_prompt_template)) for train_example in train_examples ] 
+        test_prompt_input, test_prompt_label = fill_xnli_template(test_example, test_prompt_template) 
+        prompt_input = "\n".join(train_prompts + [test_prompt_input]) + "\n" 
+    else: 
+        messages = [] 
+        if instruction != "": 
+            messages.append({"role": "system", "content": instruction}) 
+        for example in train_examples: 
+            prompt_input, prompt_label = fill_xnli_template(example, train_prompt_template) 
+            messages.append({"role": "user", "content": prompt_input}) 
+            messages.append({"role": "assistant", "content": prompt_label}) 
+        test_prompt_input, test_prompt_label = fill_xnli_template(test_example, test_prompt_template) 
+        messages.append({"role": "user", "content": test_prompt_input}) 
+        prompt_input = messages 
+            
+    return prompt_input, test_prompt_label
+
 
 
 def load_prompt_template(lang: str, prompt_name: str, dataset: str) -> Template:

@@ -13,6 +13,7 @@ from seqeval.metrics import f1_score
 from promptsource.templates import Template
 from mega.models.tag_models import get_model_pred
 from mega.data.data_utils import choose_few_shot_examples
+from mega.prompting.instructions import INSTRUCTIONS
 from mega.utils.parser import parse_args
 from mega.data.load_datasets import load_tagging_dataset
 from mega.utils.env_utils import load_env
@@ -81,6 +82,7 @@ def evaluate(
     num_proc: Optional[int] = None,
     log_wandb: bool = False,
     chat_prompt: bool = False,
+    instruction: str = "",
     one_shot_tag: bool = True,
     **model_params,
 ) -> float:
@@ -113,6 +115,7 @@ def evaluate(
                     model,
                     delimiter=delimiter,
                     chat_prompt=chat_prompt,
+                    instruction=instruction,
                     **model_params,
                 )
                 break
@@ -135,11 +138,10 @@ def evaluate(
         preds.append(pred_dict["prediction"])
         labels.append(pred_dict["ground_truth"])
         try:
-            f1_scores.append(f1_score([pred_dict["ground_truth"]],
-                                    [pred_dict["prediction"]]))
+            f1_scores.append(f1_score(preds, labels))
         except IndexError:
             breakpoint()
-        running_f1 = np.mean(f1_scores)
+        running_f1 = f1_scores[-1]
         pbar.set_description(f"F1-Score: {running_f1}")
         if log_wandb:
             wandb.log({"f1": running_f1})
@@ -189,15 +191,19 @@ def main(sys_args):
     )
     test_dataset = load_tagging_dataset(
         args.dataset,
-        args.pivot_lang,
+        args.tgt_lang,
         split="test" if not args.eval_on_val else "validation",
         max_examples=1000,#args.max_examples,
         dataset_frac=args.test_frac,
         xtreme_dir=args.xtreme_dir,
         delimiter=args.delimiter
     )
+    
+    # Loading instruction for the task
+    instruction = INSTRUCTIONS[args.dataset]
+    print(instruction)
 
-    out_dir = f"{args.save_dir}/{args.dataset}/{args.model}/{args.tgt_lang}/PivotLang_{args.pivot_lang}_PromptName_{args.tgt_prompt_name.replace('/','_')}_Verbalizer_{args.verbalizer}_FewShotK_{args.few_shot_k}"
+    out_dir = f"{args.save_dir}/{args.dataset}/{args.model}/{args.tgt_lang}/PivotLang_{args.pivot_lang}_PromptName_{args.tgt_prompt_name.replace('/','_')}_Verbalizer_{args.verbalizer}_FewShotK_{args.few_shot_k}wthInstruction"
     if args.use_val_to_prompt:
         out_dir = f"{out_dir}_use_val_to_prompt"
 
@@ -218,6 +224,7 @@ def main(sys_args):
         num_proc=args.num_proc,
         log_wandb=args.log_wandb,
         chat_prompt=args.chat_prompt,
+        instruction=instruction,
         one_shot_tag=True,
         temperature=args.temperature,
         top_p=args.top_p,

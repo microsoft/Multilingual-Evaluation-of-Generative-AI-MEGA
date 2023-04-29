@@ -10,6 +10,7 @@ from mega.data.load_datasets import load_xcopa_dataset
 from mega.data.data_utils import choose_few_shot_examples
 from mega.eval.eval_cls import evaluate_model
 from mega.prompting.prompting_utils import load_prompt_template
+from mega.prompting.instructions import INSTRUCTIONS
 from mega.utils.parser import parse_args
 from mega.utils.env_utils import load_env
 import pdb
@@ -48,7 +49,6 @@ def main(sys_args):
         split="test" if not args.eval_on_val else "validation",
         dataset_frac=args.test_frac,
     )
-
     # ToDO: Add Translate Test Support
     # if args.translate_test:
     #     test_dataset = load_xnli_translate_test(
@@ -77,6 +77,9 @@ def main(sys_args):
 
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
+
+    instruction = INSTRUCTIONS[args.dataset]
+    print(instruction)
 
     pred_file_path = f"{out_dir}/preds.csv"
     accuracy = evaluate_model(

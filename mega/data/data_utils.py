@@ -1,4 +1,6 @@
 from typing import Dict, List, Union
+from collections import Counter
+import random
 import numpy as np
 from datasets import Dataset
 
@@ -25,6 +27,24 @@ def choose_few_shot_examples(
             .astype(int)
             .tolist()
         )
+    elif selection_criteria == "random-stratified":
+        labels = list((train_dataset["label"]))
+        label_counts = Counter(labels)
+        total = len(train_dataset)
+        example_idxs = []
+        for label in label_counts:
+            label_example_idxs = [idx for idx,example in enumerate(train_dataset) if example["label"] == label]
+            sample_size = int(few_shot_size * label_counts[label] / total)
+            example_idxs += np.random.choice(label_example_idxs, size = sample_size, replace=False).astype(int).tolist()
+        random.shuffle(example_idxs)
+    elif selection_criteria == "random-classwise-uniform":
+        labels = list(set(train_dataset["label"]))
+        example_idxs = []
+        sample_size = few_shot_size // len(labels)
+        for label in labels:
+            label_example_idxs = [idx for idx,example in enumerate(train_dataset) if example["label"] == label]
+            example_idxs += np.random.choice(label_example_idxs, size = sample_size, replace=False).astype(int).tolist()
+        random.shuffle(example_idxs)
     else:
         raise NotImplementedError()
 

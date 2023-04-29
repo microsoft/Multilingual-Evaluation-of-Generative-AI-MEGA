@@ -23,10 +23,10 @@ SUPPORTED_MODELS = ["DaVinci003", "BLOOM",
                     "BLOOMZ", "gpt-35-turbo-deployment", 
                     "gpt4_deployment", "gptturbo",
                     "gpt003", "gpt-4-32k",
-                    "gpt-4", "gpt-35-turbo"]
+                    "gpt-4", "gpt-35-turbo","gpt-35-tunro"]
 CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment",
                "gptturbo", "gpt-4",
-               "gpt-35-turbo", "gpt-4-32k"]
+               "gpt-35-turbo", "gpt-4-32k", "gpt-35-tunro"]
 
 # Register an handler for the timeout
 # def handler(signum, frame):

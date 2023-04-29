@@ -1,0 +1,19 @@
+dataset: Divyanshu/indicxnli/or
+templates:
+  c04b6143-97ed-46c6-a419-a4d073a2edd7: !Template
+    answer_choices: True ||| Neither ||| False
+    id: c04b6143-97ed-46c6-a419-a4d073a2edd7
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'

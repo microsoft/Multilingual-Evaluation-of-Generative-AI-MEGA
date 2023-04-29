@@ -38,4 +38,5 @@ if __name__ == "__main__":
         result_rows.append(get_results(filename))
 
     results_final = pd.DataFrame(result_rows)
-    results_final.to_csv(f"results/{args.dataset}_final.csv")
+    results_final.to_csv(f"results/{args.dataset}_{args.model}_final_.csv")
+

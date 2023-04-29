@@ -167,6 +167,12 @@ def parse_args(args: list) -> argparse.Namespace:
         help="Directory containing xtreme datasets",
     )
     parser.add_argument(
+        "--copa_dir",
+        type=str,
+        default="data/copa/",
+        help="Directory containing copa datasets",
+    )
+    parser.add_argument(
         "--delimiter",
         type=str,
         default="_",
