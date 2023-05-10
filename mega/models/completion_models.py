@@ -23,7 +23,7 @@ SUPPORTED_MODELS = ["DaVinci003", "BLOOM",
                     "BLOOMZ", "gpt-35-turbo-deployment", 
                     "gpt4_deployment", "gptturbo",
                     "gpt003", "gpt-4-32k",
-                    "gpt-4", "gpt-35-turbo","gpt-35-tunro"]
+                    "gpt-4", "gpt-35-turbo","gpt-35-tunro", "text-davinci-003"]
 CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment",
                "gptturbo", "gpt-4",
                "gpt-35-turbo", "gpt-4-32k", "gpt-35-tunro"]
@@ -202,7 +202,7 @@ def model_completion(prompt: Union[str, List[Dict[str, str]]], model: str, **mod
         str: generated string
     """
 
-    if model in ["DaVinci003", "gpt-35-turbo-deployment", "gpt4_deployment", "gptturbo", "gpt003"] + CHAT_MODELS:
+    if model in ["DaVinci003", "gpt-35-turbo-deployment", "gpt4_deployment", "gptturbo", "gpt003", "text-davinci-003"] + CHAT_MODELS:
         return gpt3x_completion(prompt, model, **model_params)
 
     if model == "BLOOM":

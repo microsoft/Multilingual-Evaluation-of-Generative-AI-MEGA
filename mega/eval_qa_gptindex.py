@@ -7,6 +7,12 @@ from typing import List
 import numpy as np
 import pandas as pd
 import spacy
+
+import unicodedata
+from functools import partial
+import string
+import re
+
 from tqdm import tqdm
 import openai
 from transformers import GPT2Tokenizer
@@ -27,7 +33,6 @@ import requests
 import numpy as np
 from mega.data.load_datasets import load_xnli_dataset, load_xnli_translate_test
 from mega.data.data_utils import choose_few_shot_examples
-from mega.models.qa_models import answer_question
 from mega.prompting.prompting_utils import construct_langchain_qa_prompt
 from mega.utils.parser import parse_args
 from mega.utils.env_utils import load_env
@@ -44,6 +49,11 @@ import pdb
 # openai.deployment_name = os.environ["MODEL_DEPLOYMENT_NAME"]
 # openai.embedding_deployment_id = os.environ["EMBEDDING_DEPLOYMENT_ID"]
 # openai.embedding_deployment_name = os.environ["EMBEDDING_DEPLOYMENT_ID"]
+
+PUNCT = {chr(i) for i in range(sys.maxunicode) if unicodedata.category(chr(i)).startswith('P')}.union(string.punctuation)
+WHITESPACE_LANGS = ['en', 'es', 'hi', 'vi', 'de', 'ar']
+MIXED_SEGMENTATION_LANGS = ['zh']
+
 
 TYDIQA_LANG2CODES = {
     "bengali": "bn",
@@ -72,12 +82,97 @@ langcodes2lang = {
     "zh": "Mandarin"
 }
 
+def whitespace_tokenize(text):
+    return text.split()
+
+
+def mixed_segmentation(text):
+    segs_out = []
+    temp_str = ""
+    for char in text:
+        if re.search(r'[\u4e00-\u9fa5]', char) or char in PUNCT:
+            if temp_str != "":
+                ss = whitespace_tokenize(temp_str)
+                segs_out.extend(ss)
+                temp_str = ""
+            segs_out.append(char)
+        else:
+            temp_str += char
+
+    if temp_str != "":
+        ss = whitespace_tokenize(temp_str)
+        segs_out.extend(ss)
+
+    return segs_out
+
+
+def normalize_answer_mlqa(lang, s):
+    """Lower text and remove punctuation, articles and extra whitespace."""
+
+    def remove_articles(text, lang):
+        if lang == 'en':
+            return re.sub(r'\b(a|an|the)\b', ' ', text)
+        elif lang == 'es':
+            return re.sub(r'\b(un|una|unos|unas|el|la|los|las)\b', ' ', text)
+        elif lang == 'hi':
+            return text # Hindi does not have formal articles
+        elif lang == 'vi':
+            return re.sub(r'\b(của|là|cái|chiếc|những)\b', ' ', text)
+        elif lang == 'de':
+            return re.sub(r'\b(ein|eine|einen|einem|eines|einer|der|die|das|den|dem|des)\b', ' ', text)
+        elif lang == 'ar':
+            return re.sub('\sال^|ال', ' ', text)
+        elif lang == 'zh':
+            return text # Chinese does not have formal articles
+        else:
+            raise Exception('Unknown Language {}'.format(lang))
+
+    def white_space_fix(text, lang):
+        if lang in WHITESPACE_LANGS:
+            tokens = whitespace_tokenize(text)
+        elif lang in MIXED_SEGMENTATION_LANGS:
+            tokens = mixed_segmentation(text)
+        else:
+            raise Exception('Unknown Language {}'.format(lang))
+        return ' '.join([t for t in tokens if t.strip() != ''])
+
+    def remove_punc(text):
+        return ''.join(ch for ch in text if ch not in PUNCT)
+
+    def lower(text):
+        return text.lower()
+
+    return white_space_fix(remove_articles(remove_punc(lower(s)), lang), lang)
+
+def normalize_answer(s):
+    """Lower text and remove punctuation, articles and extra whitespace."""
+    def remove_articles(text):
+        return re.sub(r'\b(a|an|the)\b', ' ', text)
+
+    def white_space_fix(text):
+        return ' '.join(text.split())
+
+    def remove_punc(text):
+        exclude = set(PUNCT) #set(string.punctuation)
+        return ''.join(ch for ch in text if ch not in exclude)
+
+    def lower(text):
+        return text.lower()
+
+    return white_space_fix(remove_articles(remove_punc(lower(s))))
+
 
 PROMPTS_DICT = {
     "answer_given_context_and_question" : """{context}
     Q: {question}
 
     Referring to the passage above, the correct answer to the given question is:
+    {answer}""",
+    
+    "answer_given_context_and_question+unaswerable" : """{context}
+    Q: {question}
+
+    Referring to the passage above, what will be the correct answer to the given question? If you can't find the answer, please respond "unanswerable".
     {answer}""",
     
     "lang_instruct_answer_given_context_and_question" : """{context}
@@ -103,7 +198,7 @@ def load_qa_dataset(dataset_name, lang, split, dataset_frac = 1, translate_test 
         if split != "train":
             dataset = load_dataset("ai4bharat/IndicQA", f"indicqa.{lang}")[split]
         else:
-            dataset = load_dataset("squad")[split]
+            dataset = load_dataset("squad_v2")[split]
     elif dataset_name == "xquad":
         if split != "train":
             dataset = load_dataset("xquad", f"xquad.{lang}")[split]
@@ -131,15 +226,25 @@ def load_qa_dataset(dataset_name, lang, split, dataset_frac = 1, translate_test 
     return dataset.select(selector)
 
 
-def eval_qa(test_dataset, prompt, model, num_evals_per_sec = 1, smaller_prompts = [], **model_kwargs):
+def eval_qa(test_dataset, 
+            prompt, 
+            model, 
+            num_evals_per_sec = 1, 
+            smaller_prompts = [], 
+            metric="squad",
+            normalize_fn=normalize_answer,
+            **model_kwargs):
+    from mega.models.qa_models import answer_question
+
     preds = []
     labels = []
     matches = []
     f1_scores = []
     em_score = 0
     f1_score = 0
-    squad_metric = load("squad")
-    for test_example in tqdm(test_dataset):
+    squad_metric = load(metric)
+    pbar = tqdm(enumerate(test_dataset))
+    for i, test_example in pbar:
         prompt_to_use = prompt
         for trial in range(0, len(smaller_prompts) + 1):
             try:
@@ -161,37 +266,91 @@ def eval_qa(test_dataset, prompt, model, num_evals_per_sec = 1, smaller_prompts 
                     f"Unable To Fit Context Size. Reducing few-size by 1. New Size: {len(smaller_prompts) - trial - 1}"
                 )
                 prompt_to_use = smaller_prompts[trial]
-                
-        label = test_example["answers"]["text"][0]
-        preds.append(pred)
-        labels.append(label)
-        prediction = {"prediction_text": pred, "id": test_example["id"]}
+
+            except openai.error.APIError as e:
+                print("Content Policy Triggered! Giving Empty prediction for this!")
+                pred = ""
+                break
+            
+        pred = normalize_fn(pred)
+        if metric == "squad":
+            prediction = {"prediction_text": pred, "id": test_example["id"]}
+        else:
+            no_answer_probability =  float("unanswerable" in pred)
+            prediction = {"prediction_text": pred, "id": test_example["id"], "no_answer_probability": no_answer_probability}
+            
+        # if no_answer_probability == 1.0:
+        #     breakpoint()
+
         reference = {}
         reference["answers"] = test_example["answers"]
         reference["id"] = test_example["id"]
-        results = squad_metric.compute(
-            predictions=[prediction],
-            references=[reference]
-        
-        )
+        if reference["answers"]["text"][0] == "":
+            reference["answers"]["text"] = []
+            reference["answers"]["answer_start"] = []
 
-        matches.append(results["exact_match"]/100)
-        em_score += results["exact_match"]
+        if metric == "squad":
+            results = squad_metric.compute(
+                        predictions=[prediction],
+                        references=[reference])
+        else:
+            results = squad_metric.compute(
+                    predictions=[prediction],
+                    references=[reference],
+                    no_answer_threshold=0.9
+                    )
+            
+        # label = test_example["answers"]["text"][0]
+        # preds.append(pred)
+        # labels.append(label)
+        # prediction = {"prediction_text": pred, "id": test_example["id"]}
+        # reference = {}
+        # reference["answers"] = test_example["answers"]
+        # reference["id"] = test_example["id"]
+        # results = squad_metric.compute(
+        #     predictions=[prediction],
+        #     references=[reference]
+        
+        # )
+        
+        if metric == "squad":
+            em_score += results["exact_match"]
+            matches.append(results["exact_match"])
+        else:
+            em_score += results["exact"]
+            matches.append(results["exact"])
+        
         f1_scores.append(results["f1"])
         f1_score += results["f1"]
+        preds.append(prediction)
+        labels.append(reference)
         time.sleep(1 / num_evals_per_sec)
+        
+        avg_f1 = np.mean(f1_scores)
+        avg_em = np.mean(matches)
+        
+        pbar.set_description(f"em: {avg_em} f1: {avg_f1}. {i+1}/{len(test_dataset)}")
     
-    results_df = pd.DataFrame({"Label": labels, "Prediction": preds, "Match": matches, "F1": f1_scores})
+    results_df = pd.DataFrame({"Label": labels, "Prediction": preds, "EM": matches, "F1": f1_scores})
 
-    return {
-        "exact_match" : em_score / len(test_dataset),
-        "f1" : f1_score / len(test_dataset),
-    }, results_df
+    if metric == "squad":
+        metrics = squad_metric.compute(
+                        predictions=preds,
+                        references=labels)
+    else:
+        metrics = squad_metric.compute(
+                        predictions=preds,
+                        references=labels,
+                        no_answer_threshold=0.9)
+
+    return metrics, results_df
 
 def main():
     
     args = parse_args(sys.argv[1:])
     load_env(env_name=args.env)
+    from mega.models.qa_models import answer_question
+
 
     # Set seed
     random.seed(args.seed)
@@ -216,17 +375,32 @@ def main():
                                    translate_test=args.translate_test
                                    )
 
+    train_examples = choose_few_shot_examples(
+        train_dataset, args.few_shot_k, args.few_shot_selection
+    )
+    
     if args.short_contexts:
 
         sent_tokenizer = SpacySentenceTokenizer() 
         
-        train_dataset = train_dataset.map(lambda example: {
-            "context": [sent for sent in sent_tokenizer(example["context"]) if example["answers"]["text"][0] in sent]
-        }, num_proc = 8)
+        # train_dataset = train_dataset.map(lambda example: {
+        #     "context": [sent for sent in sent_tokenizer(example["context"]) if example["answers"]["text"] != [] and example["answers"]["text"][0] in sent][0]
+        # }, num_proc = 8)
 
-    train_examples = choose_few_shot_examples(
-        train_dataset, args.few_shot_k, args.few_shot_selection
-    )
+        for train_example in train_examples:
+            sents = sent_tokenizer(train_example["context"])
+            if train_example["answers"]["text"] == []:
+                context = sents[0]
+            else:
+                context = sents[0]
+                for sent in sents:
+                    if train_example["answers"]["text"][0] in sent:
+                        context = sent
+                        
+        # breakpoint()
+                        
+                
+
     train_prompt_template = PROMPTS_DICT[args.pivot_prompt_name]
     test_prompt_template = PROMPTS_DICT[args.tgt_prompt_name]
     if args.pivot_prompt_name == "lang_instruct_answer_given_context_and_question":
@@ -252,13 +426,18 @@ def main():
                 test_prompt_template=test_prompt_template,
             )
         )
-
+        
+    normalize_answer_mlqa_fn = partial(normalize_answer_mlqa, args.tgt_lang if not args.translate_test else "en")
+    normalize_fn = normalize_answer if args.dataset != "mlqa" else normalize_answer_mlqa_fn
+        
     metrics, results_df = eval_qa(
         test_dataset,
         langchain_prompt,
         args.model,
         num_evals_per_sec=args.num_evals_per_sec,
-        smaller_prompts=smaller_prompts
+        smaller_prompts=smaller_prompts,
+        metric="squad" if args.dataset != "indicqa" else "squad_v2",
+        normalize_fn=normalize_fn
     )
     
     print(metrics)

@@ -23,7 +23,7 @@ def parse_args(args: list) -> argparse.Namespace:
         "-d",
         "--dataset",
         default="xnli",
-        choices=["xnli", "paws-x", "xcopa", "tydiqa", "xquad", "mlqa", "indicqa", "udpos", "panx"],
+        choices=["xnli", "paws-x", "xcopa", "tydiqa", "xquad", "mlqa", "indicqa", "udpos", "panx", "xstory_cloze"],
         type=str,
         help="(HF) Dataset to use",
     )
@@ -66,7 +66,7 @@ def parse_args(args: list) -> argparse.Namespace:
     parser.add_argument(
         "--few_shot_selection",
         default="random",
-        choices=["random", "first_k"],
+        choices=["random", "first_k", "random_atleast_one_unanswerable"],
         type=str,
         help="How to select few-shot examples",
     )
@@ -129,7 +129,7 @@ def parse_args(args: list) -> argparse.Namespace:
     )
     parser.add_argument(
         "--temperature",
-        default=1,
+        default=0,
         type=float,
         help="What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random,\
             while lower values like 0.2 will make it more focused and deterministic",
@@ -183,6 +183,11 @@ def parse_args(args: list) -> argparse.Namespace:
         type=str,
         default="identity",
         help="Verbalizer type to use. Only applicable for tagging tasks",
+    )
+    parser.add_argument(
+        "--not_one_shot_tag",
+        action="store_true",
+        help="Whether to not use one-shot tagging. will be slower but more accurate",
     )
     parser.add_argument(
         "--chat-prompt",

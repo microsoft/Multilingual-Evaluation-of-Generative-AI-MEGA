@@ -11,4 +11,4 @@ def load_env(env_name="melange"):
     openai.api_key = os.environ["API_KEY"]
     openai.deployment_name = os.environ["MODEL_DEPLOYMENT_NAME"]
     openai.embedding_deployment_id = os.environ["EMBEDDING_DEPLOYMENT_ID"]
-    openai.embedding_deployment_name = os.environ["EMBEDDING_DEPLOYMENT_ID"]
+    openai.embedding_deployment_name = os.environ["EMBEDDING_DEPLOYMENT_NAME"]

@@ -64,7 +64,8 @@ verbalizers = {
 
 PROMPTS_DICT = {
     "structure_prompting": """C: {context}\nT: {tagged}""",
-    "structure_prompting_chat": """{context}\n{tagged}"""
+    "structure_prompting_chat": """{context}\n{tagged}""",
+    "structure_prompting_chat_wth_instruct": """Tag the following sentence: "{context}"\n{tagged}"""
 }
 
 def evaluate(
@@ -114,6 +115,7 @@ def evaluate(
                     verbalizer,
                     model,
                     delimiter=delimiter,
+                    one_shot_tag=one_shot_tag,
                     chat_prompt=chat_prompt,
                     instruction=instruction,
                     **model_params,
@@ -225,7 +227,7 @@ def main(sys_args):
         log_wandb=args.log_wandb,
         chat_prompt=args.chat_prompt,
         instruction=instruction,
-        one_shot_tag=True,
+        one_shot_tag= not args.not_one_shot_tag,
         temperature=args.temperature,
         top_p=args.top_p,
         max_tokens=args.max_tokens

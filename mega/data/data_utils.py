@@ -27,6 +27,27 @@ def choose_few_shot_examples(
             .astype(int)
             .tolist()
         )
+    elif selection_criteria == "random_atleast_one_unanswerable":
+        unanswerable_idx = None
+        for _ in range(100):
+            idx = np.random.choice(len(train_dataset))
+            if train_dataset[idx]["answers"]["text"] == []:
+                unanswerable_idx = idx
+                break
+        
+        breakpoint()
+        if unanswerable_idx is not None:
+            example_idxs = [unanswerable_idx]
+        else:
+            example_idxs = []
+        example_idxs += (
+            np.random.choice(len(train_dataset), size=few_shot_size - len(example_idxs), replace=False)
+            .astype(int)
+            .tolist()
+        )
+        random.shuffle(example_idxs)
+                
+        
     elif selection_criteria == "random-stratified":
         labels = list((train_dataset["label"]))
         label_counts = Counter(labels)

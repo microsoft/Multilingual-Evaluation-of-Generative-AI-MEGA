@@ -132,3 +132,82 @@ def translate_pawsx(
         pawsx_dataset.save_to_disk(save_path)
 
     return pawsx_dataset
+
+
+def translate_xstory_cloze(
+    xstory_cloze_dataset: Dataset, src: str, dest: str, save_path: Optional[str] = None
+) -> Dataset:
+    """Translate s1 and s2 of xstory_cloze dataset
+
+    Args:
+        xstory_cloze_dataset (Dataset): Some split (train, test, val) of xstory_cloze dataset
+        src (str): Source language to translate from
+        dest (str): Language to translate to
+        save_path (str, optional): Path to store translated dataset. Doesn't store if set to None. Defaults to None.
+
+    Returns:
+        Dataset: Translated Dataset
+    """
+
+    # Translate input_sentence_1
+    xstory_cloze_dataset = xstory_cloze_dataset.map(
+        lambda example: {
+            "input_sentence_1": translate_with_bing(example["input_sentence_1"], src, dest)
+        },
+        num_proc=4,
+        load_from_cache_file=False,
+    )
+
+    # Translate input_sentence_2
+    xstory_cloze_dataset = xstory_cloze_dataset.map(
+        lambda example: {
+            "input_sentence_2": translate_with_bing(example["input_sentence_2"], src, dest)
+        },
+        num_proc=4,
+        load_from_cache_file=False,
+    )
+    
+    # Translate input_sentence_3
+    xstory_cloze_dataset = xstory_cloze_dataset.map(
+        lambda example: {
+            "input_sentence_3": translate_with_bing(example["input_sentence_3"], src, dest)
+        },
+        num_proc=4,
+        load_from_cache_file=False,
+    )
+
+    # Translate input_sentence_4
+    xstory_cloze_dataset = xstory_cloze_dataset.map(
+        lambda example: {
+            "input_sentence_4": translate_with_bing(example["input_sentence_4"], src, dest)
+        },
+        num_proc=4,
+        load_from_cache_file=False,
+    )
+    
+    # Translate sentence_quiz1
+    xstory_cloze_dataset = xstory_cloze_dataset.map(
+        lambda example: {
+            "sentence_quiz1": translate_with_bing(example["sentence_quiz1"], src, dest)
+        },
+        num_proc=4,
+        load_from_cache_file=False,
+    )
+
+    # Translate sentence_quiz2
+    xstory_cloze_dataset = xstory_cloze_dataset.map(
+        lambda example: {
+            "sentence_quiz2": translate_with_bing(example["sentence_quiz2"], src, dest)
+        },
+        num_proc=4,
+        load_from_cache_file=False,
+    )
+    
+
+    if save_path is not None:
+        save_dir, _ = os.path.split(save_path)
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
+        xstory_cloze_dataset.save_to_disk(save_path)
+
+    return xstory_cloze_dataset

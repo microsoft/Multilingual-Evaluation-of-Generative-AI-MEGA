@@ -111,7 +111,8 @@ def gpt3x_tagger(
                     "Couldn't generate response, returning empty string as response"
                 )
                 return ""
-
+        # import pdb
+        # pdb.set_trace()
         return response["choices"][0]["text"].strip().split()[0]
         
     def predict_one_shot():

@@ -2,7 +2,7 @@ import os
 import requests
 import warnings
 import time
-from typing import Union
+from typing import Union, List
 from dotenv import load_dotenv
 import openai
 from langchain.embeddings.openai import OpenAIEmbeddings
@@ -16,24 +16,24 @@ from langchain.prompts.few_shot import FewShotPromptTemplate, PromptTemplate
 from mega.models.completion_models import gpt3x_completion
 import pdb
 
-load_dotenv("env.env")
+# load_dotenv("env.env")
 
 
-openai.api_base = "https://gpttesting1.openai.azure.com/"
-openai.api_type = "azure"
-openai.api_version = "2022-12-01"  # this may change in the future
-HF_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloom"
-BLOOMZ_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloomz"
+# openai.api_base = "https://gpttesting1.openai.azure.com/"
+# openai.api_type = "azure"
+# openai.api_version = "2022-12-01"  # this may change in the future
+# HF_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloom"
+# BLOOMZ_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloomz"
 
-with open("keys/openai_key.txt") as f:
-    openai.api_key = f.read().split("\n")[0]
+# with open("keys/openai_key.txt") as f:
+#     openai.api_key = f.read().split("\n")[0]
 
-with open("keys/hf_key.txt") as f:
-    HF_API_TOKEN = f.read().split("\n")[0]
+# with open("keys/hf_key.txt") as f:
+#     HF_API_TOKEN = f.read().split("\n")[0]
 
-openai.deployment_name = os.environ["MODEL_DEPLOYMENT_NAME"]
-openai.embedding_deployment_id = os.environ["EMBEDDING_DEPLOYMENT_ID"]
-openai.embedding_deployment_name = os.environ["EMBEDDING_DEPLOYMENT_ID"]
+# openai.deployment_name = os.environ["MODEL_DEPLOYMENT_NAME"]
+# openai.embedding_deployment_id = os.environ["EMBEDDING_DEPLOYMENT_ID"]
+# openai.embedding_deployment_name = os.environ["EMBEDDING_DEPLOYMENT_ID"]
 
 # os.environ["OPENAI_API_TYPE"] = "azure"
 # os.environ["OPENAI_API_BASE"] = openai.api_base
@@ -42,13 +42,13 @@ openai.embedding_deployment_name = os.environ["EMBEDDING_DEPLOYMENT_ID"]
 
 
 EMBEDDING_LLM = OpenAIEmbeddings(
-    document_model_name=openai.embedding_deployment_name,
-    query_model_name=openai.embedding_deployment_name,
+    deployment=openai.embedding_deployment_name,
+    model=openai.embedding_deployment_name,
     openai_api_key=openai.api_key,
 )
 
 LLM = AzureOpenAI(
-    deployment_name=openai.deployment_name,
+    deployment_name="text-davinci-003",
     openai_api_key=openai.api_key,
     temperature=0,
     model_kwargs={
@@ -318,7 +318,7 @@ def answer_question(
             question, context, prompt, chunk_size, chunk_overlap
         )
 
-    elif model == "DaVinci003":
+    elif model in ["DaVinci003", "text-davinci-003"]:
         return answer_question_gpt(question, context, prompt, chunk_size, chunk_overlap)
 
     elif model == "gpt-35-turbo-deployment":
