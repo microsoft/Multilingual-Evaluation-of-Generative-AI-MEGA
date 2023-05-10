@@ -132,5 +132,8 @@ VERBALIZERS = {
     },
     "panx": {
         "{tag_1} {tag_2} ... {tag_n}": "{token_1}_{tag_1} {token_2}_{tag_2} ... {token_n}_{tag_n}"
+    },
+    "udpos": {
+        "{tag_1} {tag_2} ... {tag_n}": "{token_1}_{tag_1} {token_2}_{tag_2} ... {token_n}_{tag_n}"
     }
 }
