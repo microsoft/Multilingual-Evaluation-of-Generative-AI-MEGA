@@ -1,0 +1,23 @@
+languages:
+- "en"
+- "de"
+pretty_name: "PAWS-X Dataset"
+tags:
+- "text classification"
+- "paraphrase detection"
+dataset_info:
+    features:
+        - name: "sentence1"
+          dtype: "string"
+        - name: "sentence2"
+          dtype: "string"
+        - name: "label"
+          dtype: "int64"
+    splits:
+        train:
+            num_examples: 49401
+        validation:
+            num_examples: 12476
+        test:
+            num_examples: 12476
+dataset_summary: "The PAWS-X dataset is a multilingual dataset for paraphrase identification and semantic similarity in natural language. It contains sentence pairs in English and German, with labels indicating whether the sentences are paraphrases or not."

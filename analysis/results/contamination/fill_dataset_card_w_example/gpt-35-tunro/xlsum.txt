@@ -1,0 +1,22 @@
+languages:
+- "List of ISO 639-1 code for languages covered in the dataset"
+- en
+pretty_name: "XLSum: A Large-scale Dataset for Extreme Multi-document Summarization"
+tags:
+- summarization
+- multi-document
+- extreme
+dataset_info:
+    features:
+        - name: "document"
+          dtype: "string"
+        - name: "summary"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 204045
+        validation:
+            num_examples: 2365
+        test:
+            num_examples: 2520
+dataset_summary: XLSum is a large-scale dataset for extreme multi-document summarization. It consists of over 1.5 million article and summary pairs, covering a diverse range of topics and domains. The dataset is designed to facilitate research in the area of extreme summarization, where the goal is to generate a summary of a large number of documents (e.g., hundreds or thousands) that is both concise and informative. The dataset is split into train, validation, and test sets, and is available in English.

@@ -1,0 +1,69 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XNLI Spanish dataset train split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+1 | En su opinión, ¿cuál es la causa principal de estos problemas? | La causa principal de estos problemas es la falta de educación. | 1
+2 | Los niños están jugando en el parque. | Los niños están en la escuela. | 2
+3 | El gato está durmiendo en el sofá. | El gato está despierto y jugando. | 2
+4 | María fue a la tienda a comprar pan. | María fue a la tienda a comprar leche. | 1
+5 | El coche se detuvo en la intersección. | El coche se detuvo en la gasolinera. | 1
+6 | El perro está ladrando en el jardín. | El perro está ladrando en el jardín. | 0
+7 | El avión despegó a tiempo. | El avión se retrasó. | 2
+8 | La película fue muy emocionante. | La película fue aburrida. | 2
+9 | El pastel de chocolate estaba delicioso. | El pastel de chocolate estaba demasiado dulce. | 1
+10 | El equipo ganó el campeonato. | El equipo perdió el campeonato. | 2
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XNLI Spanish dataset validation split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+1 | En su opinión, ¿cuál es la causa principal de estos problemas? | La causa principal de estos problemas es la falta de educación. | 1
+2 | El hombre está comiendo un plátano. | El hombre está comiendo una manzana. | 2
+3 | Los niños están jugando en el parque. | Los niños están en la escuela. | 1
+4 | El perro está durmiendo en el sofá. | El perro está despierto y jugando. | 2
+5 | La mujer está cocinando en la cocina. | La mujer está preparando la cena. | 0
+6 | El sol brilla en un día despejado. | Está lloviendo y el cielo está nublado. | 2
+7 | El coche está estacionado en la calle. | El coche está en movimiento. | 2
+8 | La película fue muy emocionante y entretenida. | La película fue aburrida y lenta. | 2
+9 | El equipo ganó el campeonato. | El equipo perdió el campeonato. | 2
+10 | El gato está trepando al árbol. | El gato está bajando del árbol. | 1
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XNLI Spanish dataset test split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+1 | El hombre está afuera de la casa. | El hombre está dentro de la casa. | 2
+2 | La mujer está cocinando en la cocina. | La mujer está preparando la comida. | 0
+3 | Los niños están jugando en el parque. | Los niños están en la escuela. | 1
+4 | El perro está durmiendo en su cama. | El perro está despierto. | 2
+5 | El sol brilla en el cielo. | Está lloviendo. | 2
+6 | El coche está estacionado en la calle. | El coche está en movimiento. | 2
+7 | La tienda está cerrada. | La tienda está abierta. | 2
+8 | El tren llega a la estación. | El tren sale de la estación. | 1
+9 | El gato está trepando al árbol. | El gato está bajando del árbol. | 1
+10 | La película es muy emocionante. | La película es aburrida. | 2
+==================================================
+

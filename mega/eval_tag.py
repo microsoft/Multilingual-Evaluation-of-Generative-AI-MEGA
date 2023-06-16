@@ -52,21 +52,16 @@ panx_verbalizer = {
 }
 
 verbalizers = {
-    "udpos": {
-        "literal": udpos_verbalizer,
-        "identity": {}
-    },
-    "panx": {
-        "literal": panx_verbalizer,
-        "identity": {}
-    }
+    "udpos": {"literal": udpos_verbalizer, "identity": {}},
+    "panx": {"literal": panx_verbalizer, "identity": {}},
 }
 
 PROMPTS_DICT = {
     "structure_prompting": """C: {context}\nT: {tagged}""",
     "structure_prompting_chat": """{context}\n{tagged}""",
-    "structure_prompting_chat_wth_instruct": """Tag the following sentence: "{context}"\n{tagged}"""
+    "structure_prompting_chat_wth_instruct": """Tag the following sentence: "{context}"\n{tagged}""",
 }
+
 
 def evaluate(
     train_dataset: Dataset,
@@ -87,25 +82,24 @@ def evaluate(
     one_shot_tag: bool = True,
     **model_params,
 ) -> float:
-
     run_details = {"num_calls": 0}
-    
+
     train_examples = choose_few_shot_examples(
         train_dataset, few_shot_size, selection_criteria
     )
-    
+
     valid_labels = set()
     for example in train_examples:
         valid_labels.update(example["tags"])
     valid_labels = list(valid_labels)
-    
+
     preds = []
     labels = []
     f1_scores = []
     pbar = tqdm(test_dataset)
     for test_example in pbar:
         train_examples_i = train_examples
-        
+
         while len(train_examples_i) >= 1:
             try:
                 pred_dict = get_model_pred(
@@ -121,13 +115,13 @@ def evaluate(
                     **model_params,
                 )
                 break
-            except openai.error.InvalidRequestError:
+            except (openai.error.InvalidRequestError, openai.error.Timeout):
                 if len(train_examples_i) == 0:
                     pred_dict = {
                         "prediction": np.random.choice(
                             valid_labels, len(test_example["tags"]), replace=True
                         ).tolist(),
-                        "ground_truth": test_example["tags"]
+                        "ground_truth": test_example["tags"],
                     }
                     print("Exausted Everything! Giving Random Prediction Now :(")
                     break
@@ -135,8 +129,11 @@ def evaluate(
                 print(
                     f"Unable To Fit Context Size. Reducing few-size by 1. New Size: {len(train_examples_i)}"
                 )
-        
-        pred_dict["prediction"] = [pred if pred != "" else np.random.choice(valid_labels) for pred in pred_dict["prediction"]]
+
+        pred_dict["prediction"] = [
+            pred if pred != "" else np.random.choice(valid_labels)
+            for pred in pred_dict["prediction"]
+        ]
         preds.append(pred_dict["prediction"])
         labels.append(pred_dict["ground_truth"])
         try:
@@ -148,21 +145,19 @@ def evaluate(
         if log_wandb:
             wandb.log({"f1": running_f1})
         # time.sleep(1 / num_evals_per_sec)
-        
-    eval_score = f1_score(
-        labels, preds
+
+    eval_score = f1_score(labels, preds)
+    results_df = pd.DataFrame(
+        {"Label": labels, "Prediction": preds, "F1-Score": f1_scores}
     )
-    results_df = pd.DataFrame({"Label": labels,
-                               "Prediction": preds,
-                               "F1-Score": f1_scores})
-   
+
     return eval_score, results_df
 
 
 def main(sys_args):
     args = parse_args(sys_args)
     load_env(env_name=args.env)
-    
+
     # Set seed
     random.seed(args.seed)
     np.random.seed(args.seed)
@@ -189,18 +184,18 @@ def main(sys_args):
         args.pivot_lang,
         split="train" if not args.use_val_to_prompt else "validation",
         xtreme_dir=args.xtreme_dir,
-        delimiter=args.delimiter
+        delimiter=args.delimiter,
     )
     test_dataset = load_tagging_dataset(
         args.dataset,
         args.tgt_lang,
         split="test" if not args.eval_on_val else "validation",
-        max_examples=1000,#args.max_examples,
+        max_examples=1000,  # args.max_examples,
         dataset_frac=args.test_frac,
         xtreme_dir=args.xtreme_dir,
-        delimiter=args.delimiter
+        delimiter=args.delimiter,
     )
-    
+
     # Loading instruction for the task
     instruction = INSTRUCTIONS[args.dataset]
     print(instruction)
@@ -211,7 +206,7 @@ def main(sys_args):
 
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
-    
+
     eval_score, preds_df = evaluate(
         train_dataset,
         test_dataset,
@@ -227,10 +222,10 @@ def main(sys_args):
         log_wandb=args.log_wandb,
         chat_prompt=args.chat_prompt,
         instruction=instruction,
-        one_shot_tag= not args.not_one_shot_tag,
+        one_shot_tag=not args.not_one_shot_tag,
         temperature=args.temperature,
         top_p=args.top_p,
-        max_tokens=args.max_tokens
+        max_tokens=args.max_tokens,
     )
     preds_df.to_csv(f"{out_dir}/preds.csv")
     print(eval_score)
@@ -243,8 +238,6 @@ def main(sys_args):
 
     if args.log_wandb:
         wandb.log({"f1-score": eval_score})
-    
-
 
 
 if __name__ == "__main__":

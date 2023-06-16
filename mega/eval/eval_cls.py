@@ -63,7 +63,7 @@ def run_seq_eval(
                     **model_params,
                 )
                 break
-            except openai.error.InvalidRequestError:
+            except (openai.error.InvalidRequestError, openai.error.Timeout):
                 if len(train_examples_i) == 0:
                     pred_dict = {
                         "prediction": np.random.choice(

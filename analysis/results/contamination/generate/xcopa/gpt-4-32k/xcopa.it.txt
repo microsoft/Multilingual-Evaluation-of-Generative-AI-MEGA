@@ -1,0 +1,183 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XCOPA Italian dataset train split in json format.
+Response:
+I cannot generate the dataset instances for you, but I can provide you with a template on how to create the first 10 instances of the XCOPA Italian dataset train split in JSON format. You can fill in the actual data yourself.
+
+Here's the template:
+
+```json
+[
+  {
+    "id": 1,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 2,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 3,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 4,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 5,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 6,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 7,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2":
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XCOPA Italian dataset validation split in json format.
+Response:
+I am an AI language model and I am unable to access external datasets. However, I can help you create a template for the first 10 instances of the XCOPA Italian dataset validation split in JSON format. You can fill in the actual data yourself. Here's the template:
+
+```json
+[
+  {
+    "id": 1,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 2,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 3,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 4,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 5,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 6,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+    "choice2": "INSERT_CHOICE2_HERE",
+    "answer": "INSERT_ANSWER_HERE"
+  },
+  {
+    "id": 7,
+    "premise": "INSERT_PREMISE_HERE",
+    "question": "INSERT_QUESTION_HERE",
+    "choice1": "INSERT_CHOICE1_HERE",
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XCOPA Italian dataset test split in json format.
+Response:
+I am an AI language model and I am unable to access external datasets. However, I can help you generate some sample instances in the format of the XCOPA dataset. Here are 10 sample instances in Italian for the test split in JSON format:
+
+```json
+[
+  {
+    "id": "1",
+    "premise": "Il cane stava correndo nel parco.",
+    "question": "Perché il cane stava correndo nel parco?",
+    "choice1": "Per fare esercizio",
+    "choice2": "Per mangiare",
+    "answer": "Per fare esercizio"
+  },
+  {
+    "id": "2",
+    "premise": "Maria ha comprato un nuovo vestito per la festa.",
+    "question": "Perché Maria ha comprato un nuovo vestito?",
+    "choice1": "Per andare al lavoro",
+    "choice2": "Per la festa",
+    "answer": "Per la festa"
+  },
+  {
+    "id": "3",
+    "premise": "Luca ha studiato tutta la notte per l'esame.",
+    "question": "Perché Luca ha studiato tutta la notte?",
+    "choice1": "Per l'esame",
+    "choice2": "Per guardare un film",
+    "answer": "Per l'esame"
+  },
+  {
+    "id": "4",
+    "premise": "Il bambino piangeva perché aveva fame.",
+    "question": "Perché il bambino piangeva?",
+    "choice1": "Perché aveva fame",
+    "choice2": "Perché era stanco",
+    "answer": "Perché aveva fame"
+  },
+  {
+    "id": "5",
+    "premise": "Giulia ha portato l'ombrello perché pioveva.",
+    "question": "Perché Giulia ha portato l'ombrello?",
+    "choice1": "Perché pioveva",
+    "choice2": "Perché faceva caldo",
+    "answer": "Perché pioveva"
+  },
+  {
+    "id": "6",
+    "premise": "Marco ha chiamato un taxi per andare all'aeroporto.",
+    "question": "Perché Marco ha
+==================================================
+

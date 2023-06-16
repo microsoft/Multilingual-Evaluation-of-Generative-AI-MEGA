@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Arabic dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | يركب الرجل حصاناً. | الرجل يمتطي الحصان. | 0\n2 | يركب الرجل حصاناً. | الرجل يقف بجانب الحصان. | 1\n3 | يركب الرجل حصاناً. | الرجل لا يمتطي الحصان. | 2\n4 | تقوم المرأة بتحضير الطعام. | المرأة تطبخ. | 0\n5 | تقوم المرأة بتحضير الطعام. | المرأة تشاهد التلفاز. | 1\n6 | تقوم المرأة بتحضير الطعام. | المرأة لا تطبخ. | 2\n7 | الأطفال يلعبون في الحديقة. | الأطفال يمرحون خارج المنزل. | 0\n8 | الأطفال يلعبون في الحديقة. | الأطفال يدرسون في المدرسة. | 1\n9 | الأطفال يلعبون في الحديقة. | الأطفال لا يلعبون في الحديقة. | 2\n10 | الكلب ينبح في الفناء. | الكلب يصدر صوتاً في الفناء. | 0"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Arabic dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | يركب الراكبون الدراجات الهوائية على طول ممر مزدحم. | الناس يركبون الدراجات في مكان مزدحم. | 0\n2 | يركب الراكبون الدراجات الهوائية على طول ممر مزدحم. | الناس يركبون الدراجات في مكان هادئ. | 2\n3 | يركب الراكبون الدراجات الهوائية على طول ممر مزدحم. | الناس يركبون الدراجات في مكان غير معروف. | 1\n4 | يقف رجل وامرأة على الرصيف ويتحدثان. | رجل وامرأة يتحدثان على الرصيف. | 0\n5 | يقف رجل وامرأة على الرصيف ويتحدثان. | رجل وامرأة يتحدثان داخل المنزل. | 2\n6 | يقف رجل وامرأة على الرصيف ويتحدثان. | رجل وامرأة يتحدثان في مكان غير محدد. | 1\n7 | يجلس الأطفال حول طاولة ويأكلون الفطور. | الأطفال يأكلون الفطور معًا. | 0\n8 | يجلس الأطفال حول طاولة ويأكلون الفطور. | الأطفال يأكلون العشاء معًا. | 2\n9 | يجلس الأطف"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Arabic dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | الولايات المتحدة تعتبر أن القرار الذي اتخذته الأمم المتحدة بشأن العراق يشكل تهديدا لسيادتها. | الأمم المتحدة تهدد سيادة الولايات المتحدة من خلال قرارها بشأن العراق. | 1\n2 | الرئيس الأمريكي يعتزم زيارة الهند في فبراير. | الرئيس الأمريكي سيزور الهند في فبراير. | 0\n3 | الشرطة تعتقل مشتبها به في تفجيرات باريس. | الشرطة تفشل في القبض على المشتبه به في تفجيرات باريس. | 2\n4 | العلماء يكتشفون كوكبا جديدا خارج المجموعة الشمسية. | تم اكتشاف كوكب جديد خارج المجموعة الشمسية. | 0\n5 | الفريق الوطني لكرة القدم يفوز بالمباراة النهائية. | الفريق الوطني لكرة القدم خسر المباراة النهائية. | 2\n6 | الطقس الساخن يؤدي إلى انقطاع التيار الكهربائي في المدينة. | انقطع التيار الكهربائي في المدينة بسبب الطقس البارد. | 1\n7 | الحكومة تعلن عن خطط لزياد"
+    }
+]

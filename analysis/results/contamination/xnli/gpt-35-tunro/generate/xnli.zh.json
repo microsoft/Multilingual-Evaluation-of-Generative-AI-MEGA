@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Mandarin dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | 一位男子在街上唱歌。 | 一位男子在街上跳舞。 | 2\n2 | 一位女子在厨房里做饭。 | 一位女子在厨房里洗碗。 | 2\n3 | 一位男子在沙滩上玩沙。 | 一位男子在沙滩上游泳。 | 2\n4 | 一位女子在公园里散步。 | 一位女子在公园里跑步。 | 2\n5 | 一位男子在办公室里工作。 | 一位男子在办公室里休息。 | 2\n6 | 一位女子在商店里购物。 | 一位女子在商店里工作。 | 2\n7 | 一位男子在火车站等车。 | 一位男子在火车站买票。 | 1\n8 | 一位女子在医院里看病。 | 一位女子在医院里工作。 | 0\n9 | 一位男子在学校里上课。 | 一位男子在学校里打篮球。 | 2\n10 | 一位女子在图书馆里看书。 | 一位女子在图书馆里聊天。 | 2"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Mandarin dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | 他们在一起玩游戏。 | 他们在一起学习。 | 2\n2 | 他们在一起玩游戏。 | 他们在一起玩游戏。 | 1\n3 | 他们在一起玩游戏。 | 他们在一起吃饭。 | 2\n4 | 他们在一起玩游戏。 | 他们在一起打篮球。 | 2\n5 | 他们在一起玩游戏。 | 他们在一起看电影。 | 2\n6 | 他们在一起玩游戏。 | 他们在一起聊天。 | 2\n7 | 他们在一起玩游戏。 | 他们在一起做作业。 | 2\n8 | 他们在一起玩游戏。 | 他们在一起旅游。 | 2\n9 | 他们在一起玩游戏。 | 他们在一起唱歌。 | 2\n10 | 他们在一起玩游戏。 | 他们在一起打牌。 | 2"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Mandarin dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | 他们在一起玩游戏。 | 他们在一起学习。 | 2\n2 | 他们在一起玩游戏。 | 他们在一起玩游戏。 | 1\n3 | 他们在一起玩游戏。 | 他们在一起吃饭。 | 2\n4 | 他们在一起玩游戏。 | 他们在一起打篮球。 | 2\n5 | 他们在一起玩游戏。 | 他们在一起看电影。 | 2\n6 | 他们在一起玩游戏。 | 他们在一起聊天。 | 2\n7 | 他们在一起玩游戏。 | 他们在一起旅游。 | 2\n8 | 他们在一起玩游戏。 | 他们在一起做作业。 | 2\n9 | 他们在一起玩游戏。 | 他们在一起唱歌。 | 2\n10 | 他们在一起玩游戏。 | 他们在一起打牌。 | 2"
+    }
+]

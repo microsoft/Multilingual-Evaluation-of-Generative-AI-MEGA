@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Haitian Creole dataset train split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Mwen te ale nan mache a pou mwen achte yon bannann | Bannann yo te trè bon | Mwen pa te renmen bannann yo | sentiment | 1\n2 | Mwen te ale nan sinema a pou mwen gade yon fim | Fim nan te enteresan | Mwen pa te renmen fim nan | sentiment | 1\n3 | Mwen te ale nan restoran an pou mwen manje | Manje a te bon anpil | Mwen pa te renmen manje a | sentiment | 1\n4 | Mwen te ale nan lekòl la pou mwen aprann | Mwen te aprann anpil bagay enteresan | Mwen pa te renmen klas la | sentiment | 1\n5 | Mwen te ale nan magazen an pou mwen achte yon rad | Rad la te byen fè | Mwen pa te renmen rad la | sentiment | 1\n6 | Mwen te ale nan plaj la pou mwen pran yon ti kou | Mwen te pase yon bon moman | Mwen pa te renmen plaj la | sentiment | 1\n7 | Mwen te ale nan bibliyotèk la pou mwen li yon liv | Liv la te enteresan | Mwen pa te renmen liv la | sentiment | 1\n8 | Mwen te ale nan klinik la pou mwen wè doktè a | Doktè a te trete mwen byen | Mwen pa te renmen doktè a | sentiment | 1\n9 | Mwen te ale nan magazen an pou mwen achte yon chemiz | Chemiz la te byen fè | Mwen pa te renmen chemiz la | sentiment | 1\n10 | Mwen te ale nan restoran an pou mwen manje | Manje a te pa bon | Mwen pa te renmen manje a | sentiment | 0"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Haitian Creole dataset validation split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | Li te manje yon bon manje. | Li te renmen manje a. | Li pa renmen manje a. | Negasyon | 1\n2 | Mwen te ale nan yon restoran ak zanmi mwen yo. | Mwen te renmen manje a. | Mwen pa renmen manje a. | Negasyon | 0\n3 | Mwen te ale nan yon restoran ak zanmi mwen yo. | Mwen te manje yon bon manje. | Mwen pa manje yon bon manje. | Negasyon | 1\n4 | Mwen te ale nan yon restoran ak zanmi mwen yo. | Mwen te manje yon bon manje. | Mwen pa manje yon bon manje. | Negasyon | 1\n5 | Mwen te ale nan yon restoran ak zanmi mwen yo. | Mwen te renmen manje a. | Mwen pa renmen manje a. | Negasyon | 0\n6 | Mwen te ale nan yon restoran ak zanmi mwen yo. | Mwen te renmen manje a. | Mwen pa renmen manje a. | Negasyon | 0\n7 | Mwen te ale nan yon restoran ak zanmi mwen yo. | Mwen te manje yon bon manje. | Mwen pa manje yon bon manje. | Negasyon | 1\n8 | Li te manje yon bon manje. | Li te renmen manje a. | Li pa renmen manje a. | Negasyon | 1\n9 | Li te manje yon bon manje. | Li te renmen manje a. | Li pa renmen manje a. | Negasyon | 1\n10 | Li te manje yon bon manje. | Li te renmen manje a. | Li pa renmen manje a. | Negasyon | 1"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Haitian Creole dataset test split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | Li te ale nan mache a. | Li te achte yon bannann, yon pòm ak yon grenn nan. | Li te achte yon bannann, yon pòm ak yon zoranj. | Negasyon | 1\n2 | Mwen te ale nan sinema a ak zanmi mwen yo. | Nou te gade yon fim ak yon aktris popilè. | Nou te gade yon fim ak yon aktè popilè. | Antonym | 0\n3 | Mwen te ale nan restoran an ak fanmi mwen yo. | Mwen te manje yon sòs pwa ak diri. | Mwen te manje yon sòs pwa ak makaroni. | Sinonim | 1\n4 | Mwen te ale nan magazen an pou mwen achte yon rad pou mwen. | Mwen te achte yon rad blan. | Mwen te achte yon rad nwa. | Antonym | 0\n5 | Mwen te ale nan lekòl la pou mwen rankontre avoka mwen an. | Avoka mwen an te la avèk yon lòt kliyan. | Avoka mwen an te la avèk yon lòt avoka. | Sinonim | 1\n6 | Mwen te ale nan bibliyotèk la pou mwen chèche yon liv. | Mwen te jwenn liv la nan premye rak la. | Mwen te jwenn liv la nan dezyèm rak la. | Antonym | 0\n7 | Mwen te ale nan magazen an pou mwen achte yon rad pou mwen. | Mwen te achte yon rad ki te twò piti. | Mwen te achte yon rad ki te twò gwo. | Antonym | 0\n8 | Mwen te ale nan sinema a ak zanmi mwen yo. | Nou te gade yon fim ki te tris. | Nou te gade yon fim ki te kòmik. | Antonym | 0\n9 | Mwen te ale nan restoran an ak fanmi mwen yo. | Mwen te manje yon sòs pwa ak diri. | Mwen te manje yon sòs pwa ak legim. | Sinonim | 1\n10 | Mwen te ale nan lekòl la pou mwen rankontre avoka mwen an. | Avoka mwen an te la avèk yon lòt kliyan. | Avoka mwen an te la avèk yon lòt avoka. | Sinonim | 1"
+    }
+]

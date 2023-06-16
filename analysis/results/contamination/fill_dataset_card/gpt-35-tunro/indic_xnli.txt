@@ -1,0 +1,28 @@
+languages:
+- "hi"
+- "bn"
+- "te"
+- "ta"
+- "mr"
+- "ml"
+pretty_name: "Indic-XNLI"
+tags:
+- "text classification"
+- "cross-lingual"
+- "natural language inference"
+dataset_info:
+    features:
+        - name: "premise"
+          dtype: "string"
+        - name: "hypothesis"
+          dtype: "string"
+        - name: "label"
+          dtype: "int64"
+    splits:
+        train:
+            num_examples: 392,702
+        validation:
+            num_examples: 2,490
+        test:
+            num_examples: 5,010
+dataset_summary: "Indic-XNLI is a cross-lingual natural language inference dataset for six Indic languages: Hindi, Bengali, Telugu, Tamil, Marathi, and Malayalam. The dataset is derived from the XNLI corpus and consists of sentence pairs with three labels: entailment, contradiction, and neutral. The dataset is intended for evaluating cross-lingual transfer learning models for natural language inference tasks."

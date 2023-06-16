@@ -1,0 +1,132 @@
+Split: train
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Los robando de crema conceptualmente tienen[MASK] | El producto y la geografía son los que[MASK] | [MASK]
+2 | Usted sabe durante la temporada y supongo que a su nivel uh los pierde al siguiente nivel si si deciden recordar al equipo de los padres los bravos decide[MASK] | Pierdes las cosas al siguiente[MASK] | [MASK]
+3 | Uno de nuestros números llevará a cabo[MASK] | Un miembro de mi equipo ejecutará[MASK] | [MASK]
+4 | Cómo lo sabes? Todo[MASK] | Esta información[MASK] | [MASK]
+5 | Si te digo lo que si vas a precio algunos de esos zapatos de tenis[MASK] | Las zapatillas de tenis[MASK] | [MASK]
+6 | Mi Walkman se rompió así que estoy molesto[MASK] | Me molesta que mi walkman se haya roto y[MASK] | [MASK]
+7 | Pero algunos mosaicos cristianos sobreviven por encima del ábside es la virgen con el niño Jesús, con el arcáng[MASK] | La mayoría de los mosaicos cristianos[MASK] | [MASK]
+8 | ( lectura para la toma de slate[MASK] | Slate tenía una opinión sobre[MASK] | [MASK]
+9 | Gays y[MASK] | Heteros[MASK] | [MASK]
+10 | Al final de la rue des francos - Bourgeois es lo que muchos consideran la plaza residencial más her[MASK] | Place des vosges está construido[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Los robando de crema conceptualmente tienen [un alto contenido de grasa] | El producto y la geografía son los que [determinan su calidad] | 1
+2 | Usted sabe durante la temporada y supongo que a su nivel uh los pierde al siguiente nivel si si deciden recordar al equipo de los padres los bravos decide [no volver a contratarlo] | Pierdes las cosas al siguiente [nivel] | 1
+3 | Uno de nuestros números llevará a cabo [la tarea] | Un miembro de mi equipo ejecutará [la tarea] | 0
+4 | Cómo lo sabes? Todo [el mundo lo sabe] | Esta información [es de dominio público] | 2
+5 | Si te digo lo que si vas a precio algunos de esos zapatos de tenis [te sorprenderías] | Las zapatillas de tenis [son muy caras] | 2
+6 | Mi Walkman se rompió así que estoy molesto [porque no puedo escuchar música] | Me molesta que mi walkman se haya roto y [no pueda escuchar música] | 0
+7 | Pero algunos mosaicos cristianos sobreviven por encima del ábside es la virgen con el niño Jesús, con el arcáng [el] | La mayoría de los mosaicos cristianos [han sido destruidos] | 2
+8 | ( lectura para la toma de slate [sobre la política] | Slate tenía una opinión sobre [el tema político] | 1
+9 | Gays y [lesbianas] | Heteros [y homosexuales] | 1
+10 | Al final de la rue des francos - Bourgeois es lo que muchos consideran la plaza residencial más her [mosa de París] | Place des vosges está construido [en el mismo estilo arquitectónico] | 0
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Los robando de crema conceptualmente tienen dos dimensiones básicas : producto y geografía . | El producto y la geografía son los que hacen que la crema funcione . | 1
+2 | Usted sabe durante la temporada y supongo que a su nivel uh los pierde al siguiente nivel si si deciden recordar al equipo de los padres los bravos deciden llamar para recordar a un tipo del triple a y luego un hombre doble se sube a reemplazar y un solo hombre sube para reemplazar . | Pierdes las cosas al siguiente nivel si la gente recuerda . | 0
+3 | Uno de nuestros números llevará a cabo sus instrucciones minuciosamente . | Un miembro de mi equipo ejecutará sus órdenes con una inmensa precisión . | 0
+4 | Cómo lo sabes ? Todo esto es su información de nuevo . | Esta información les pertenece . | 0
+5 | Si te digo lo que si vas a precio algunos de esos zapatos de tenis puedo ver por qué ahora sabes que se están subiendo en el rango de dólares | Las zapatillas de tenis tienen una gama de precios . | 1
+6 | Mi Walkman se rompió así que estoy molesto ahora solo tengo que girar el estéreo muy alto | Me molesta que mi walkman se haya roto y ahora tengo que girar el estéreo muy alto . | 0
+7 | Pero algunos mosaicos cristianos sobreviven por encima del ábside es la virgen con el niño Jesús , con el arcángel Gabriel a la derecha ( su compañero Michael , a la izquierda , ha desaparecido salvo por unas pocas plumas de sus alas ) . | La mayoría de los mosaicos cristianos fueron destruidos por los musulmanes . | 1
+8 | ( lectura para la toma de slate en los hallazgos de Jackson . ) | Slate tenía una opinión sobre los hallazgos de Jackson . | 0
+9 | Gays y lesbianas . | Heterosexuales . | 2
+10 | Al final de la rue des francos-Bourgeois es lo que muchos consideran la plaza residencial más hermosa de la ciudad , el place des vosges , con sus fachadas de piedra y ladrillo rojo . | Place des vosges está construido completamente de mármol gris . | 2
+
+==================================================
+
+Split: validation
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Y él dijo : Mamá[MASK] | Llamó a su madre tan pronto[MASK] | [MASK]
+2 | Y él dijo : Mamá[MASK] | Él no dijo[MASK] | [MASK]
+3 | Y él dijo : Mamá[MASK] | Le dijo a su madre[MASK] | [MASK]
+4 | No sabía para qué iba ni nada, así que[MASK] | Nunca he estado en Washington, así que cuando me asignar[MASK] | [MASK]
+5 | No sabía para qué iba ni nada, así que[MASK] | Sabía exactamente lo que tenía[MASK] | [MASK]
+6 | No sabía para qué iba ni nada, así que[MASK] | No estaba muy seguro de lo que iba a hacer, así que[MASK] | [MASK]
+7 | Él no[MASK] | Él fue el primero en ser invitado y[MASK] | [MASK]
+8 | Él no[MASK] | No se le[MASK] | [MASK]
+9 | Él no[MASK] | No se le permitió ir[MASK] | [MASK]
+10 | Y yo estaba bien,[MASK] | Después de que dije[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Y él dijo : Mamá llamó | Llamó a su madre tan pronto como pudo | 0
+2 | Y él dijo : Mamá no dijo | Él no dijo nada | 2
+3 | Y él dijo : Mamá le dijo | Le dijo a su madre lo que había pasado | 1
+4 | No sabía para qué iba ni nada, así que me asignaron | Nunca he estado en Washington, así que cuando me asignaron no sabía qué hacer | 2
+5 | No sabía para qué iba ni nada, así que sabía | Sabía exactamente lo que tenía que hacer | 0
+6 | No sabía para qué iba ni nada, así que no estaba | No estaba muy seguro de lo que iba a hacer, así que pregunté | 1
+7 | Él no fue | Él fue el primero en ser invitado y aceptó de inmediato | 0
+8 | Él no se le | No se le permitió entrar al edificio | 2
+9 | Él no se le permitió ir | No se le permitió ir a la reunión | 0
+10 | Y yo estaba bien, después de que dije | Después de que dije lo que pensaba, me sentí mejor | 1
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Y él dijo: Mamá, estoy en casa. | Llamó a su madre tan pronto como el autobús escolar lo dejó. | 1
+2 | Y él dijo: Mamá, estoy en casa. | Él no dijo una palabra. | 2
+3 | Y él dijo: Mamá, estoy en casa. | Le dijo a su madre que había llegado a casa. | 0
+4 | No sabía para qué iba ni nada, así que iba a informarmar a un lugar designado en Washington. | Nunca he estado en Washington, así que cuando me asignaron allí me perdí tratando de encontrar el lugar. | 1
+5 | No sabía para qué iba ni nada, así que iba a informarmar a un lugar designado en Washington. | Sabía exactamente lo que tenía que hacer mientras marchaba a Washington. | 2
+6 | No sabía para qué iba ni nada, así que iba a informarmar a un lugar designado en Washington. | No estaba muy seguro de lo que iba a hacer, así que fui a Washington, donde me asignaron informar. | 0
+7 | Él no pudo ir. | Él fue el primero en ser invitado y disfrutó de la experiencia. | 2
+8 | Él no pudo ir. | No se le permitió asistir. | 0
+9 | Él no pudo ir. | No se le permitió ir a la apertura del museo. | 1
+10 | Y yo estaba bien, ¡y eso fue todo! | Después de que dije que sí, terminó. | 0
+
+==================================================
+
+Split: test
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Bien, ni estaba pensando en eso, pero estaba tan[MASK] | No he vuelto[MASK] | [MASK]
+2 | Bien, ni estaba pensando en eso, pero estaba tan[MASK] | Estaba tan molesto que empec[MASK] | [MASK]
+3 | Bien, ni estaba pensando en eso, pero estaba tan[MASK] | Tuvimos una[MASK] | [MASK]
+4 | Y pensé que era un privilegio, y todavía es, todavía es, yo era[MASK] | No sabía que no era la[MASK] | [MASK]
+5 | Y pensé que era un privilegio, y todavía es, todavía es, yo era[MASK] | Tenía la impresión de que era el único con[MASK] | [MASK]
+6 | Y pensé que era un privilegio, y todavía es, todavía es, yo era[MASK] | A todos nos dieron el mismo número exacto, sin importar los privilegios[MASK] | [MASK]
+7 | Me dijeron que, esto... que[MASK] | Nunca me dijeron nada[MASK] | [MASK]
+8 | Me dijeron que, esto... que[MASK] | Me dijeron que llamarían a un[MASK] | [MASK]
+9 | Me dijeron que, esto... que[MASK] | El tipo apareció[MASK] | [MASK]
+10 | Hay tanto que se puede decir sobre eso, que[MASK] | ¡ Quiero contarte todo[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Bien, ni estaba pensando en eso, pero estaba tan cansado | No he vuelto todavía | 0
+2 | Bien, ni estaba pensando en eso, pero estaba tan molesto que empecé a gritar | Estaba tan molesto que empecé a gritar | 2
+3 | Bien, ni estaba pensando en eso, pero estaba tan ocupado | Tuvimos una reunión importante | 1
+4 | Y pensé que era un privilegio, y todavía es, todavía es, yo era el único | No sabía que no era la única persona con ese privilegio | 2
+5 | Y pensé que era un privilegio, y todavía es, todavía es, yo era el único que había recibido ese privilegio | Tenía la impresión de que era el único con ese privilegio | 1
+6 | Y pensé que era un privilegio, y todavía es, todavía es, yo era el único que había recibido ese privilegio | A todos nos dieron el mismo número exacto, sin importar los privilegios que teníamos | 2
+7 | Me dijeron que, esto... que tenía que esperar | Nunca me dijeron nada al respecto | 0
+8 | Me dijeron que, esto... que necesitaban mi ayuda | Me dijeron que llamarían a un experto | 1
+9 | Me dijeron que, esto... que el paquete había llegado | El tipo apareció con el paquete | 0
+10 | Hay tanto que se puede decir sobre eso, que no sé por dónde empezar | ¡ Quiero contarte todo lo que sé! | 0
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo. | No he vuelto a hablar con él. | 2
+2 | Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo. | Estaba tan molesto que empecé a hablar con él de nuevo. | 0
+3 | Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo. | Tuvimos una gran charla. | 1
+4 | Y pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea. | No sabía que no era la única persona en el campo ese día. | 1
+5 | Y pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea. | Tenía la impresión de que era el único con ese número en el campo AFFC Air Force Career. | 0
+6 | Y pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea. | A todos nos dieron el mismo número exacto, sin importar los privilegios que nos prometieron que se nos concedieran, todo era una mentira. | 2
+7 | Me dijeron que, esto... que un tipo me llamaría al final para vernos. | Nunca me dijeron nada sobre conocer a alguien. | 2
+8 | Me dijeron que, esto... que un tipo me llamaría al final para vernos. | Me dijeron que llamarían a un tipo para que me conociera. | 0
+9 | Me dijeron que, esto... que un tipo me llamaría al final para vernos. | El tipo apareció un poco tarde. | 1
+10 | Hay tanto que se puede decir sobre eso, que sencillamente me voy a saltar eso. | ¡Quiero contarte todo lo que sé sobre eso! | 2
+
+==================================================
+

@@ -1,0 +1,44 @@
+Split: test
+Completion Prompt:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Barang itu dikemas dalam[MASK] | Barang itu[MASK] | Barang[MASK] | [MASK] | [MASK]
+2 | Saya kosong[MASK] | Saya ambil sebuah[MASK] | Saya temu[MASK] | [MASK] | [MASK]
+3 | Rumah saya diser[MASK] | Rayap itu tiada[MASK] | Rayap itu memakan[MASK] | [MASK] | [MASK]
+4 | Para wisatawan sudah sampai[MASK] | Paspor mereka diperiksa[MASK] | Mereka dituduh atas penyel[MASK] | [MASK] | [MASK]
+5 | Kantor itu[MASK] | Saat itu sedang[MASK] | Saat itu sedang[MASK] | [MASK] | [MASK]
+6 | Gadis itu ke[MASK] | Ia telah main[MASK] | Ia telah main lo[MASK] | [MASK] | [MASK]
+7 | Wanita itu kehilangan tempat[MASK] | Banyak orang mengikuti[MASK] | Ia keluar dari[MASK] | [MASK] | [MASK]
+8 | Gadis itu mencu[MASK] | Bayi itu meneteskan air[MASK] | Bayi itu mengot[MASK] | [MASK] | [MASK]
+9 | Band ini memainkan[MASK] | Para penonton berte[MASK] | Para penonton dengan sopan men[MASK] | [MASK] | [MASK]
+10 | Gadis itu ingin berterima[MASK] | Gadis itu dita[MASK] | Gadis itu memberikan ap[MASK] | [MASK] | [MASK]
+
+Model's Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Barang itu dikemas dalam [MASK] plastik. | Barang itu dikemas dalam [MASK] plastik. | Barang dikemas dalam [MASK] plastik. | Bentuk | 1
+2 | Saya kosong [MASK] tadi pagi. | Saya ambil sebuah kopi tadi pagi. | Saya temukan dompet saya tadi pagi. | Kegiatan | 0
+3 | Rumah saya diser [MASK] rayap. | Rayap itu tiada di rumah saya. | Rayap itu memakan kayu di rumah saya. | Kondisi | 1
+4 | Para wisatawan sudah sampai [MASK] bandara. | Paspor mereka diperiksa di bandara. | Mereka dituduh atas penyelundupan di bandara. | Tempat | 0
+5 | Kantor itu [MASK] tutup. | Saat itu sedang dibangun. | Saat itu sedang direnovasi. | Kondisi | 1
+6 | Gadis itu ke [MASK] taman. | Ia telah main sepanjang hari di taman. | Ia telah main lompat tali di taman. | Tempat | 0
+7 | Wanita itu kehilangan tempat [MASK]. | Banyak orang mengikuti acara tersebut. | Ia keluar dari pekerjaannya. | Kondisi | 1
+8 | Gadis itu mencu [MASK] air. | Bayi itu meneteskan air mata. | Bayi itu mengotori air. | Kegiatan | 0
+9 | Band ini memainkan [MASK] musik. | Para penonton bertepuk tangan untuk musik mereka. | Para penonton dengan sopan menunggu musik mereka. | Kegiatan | 0
+10 | Gadis itu ingin berterima [MASK] kasih. | Gadis itu ditawari pekerjaan. | Gadis itu memberikan apel pada guru. | Kegiatan | 1
+Ground Truth:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Barang itu dikemas dalam bungkus gelembung. | Barang itu rapuh. | Barang itu kecil. | cause | 0
+2 | Saya kosongkan kantong saya. | Saya ambil sebuah potongan tiket. | Saya temukan sebuah senjata. | effect | 0
+3 | Rumah saya diserbu oleh rayap. | Rayap itu tiada lagi di rumah saya. | Rayap itu memakan kayu rumah saya. | effect | 1
+4 | Para wisatawan sudah sampai di perbatasan. | Paspor mereka diperiksa oleh agen patroli. | Mereka dituduh atas penyelundupan oleh agen patroli. | effect | 0
+5 | Kantor itu tutup. | Saat itu sedang hari libur. | Saat itu sedang musim panas. | cause | 0
+6 | Gadis itu kehabisan tenaga. | Ia telah main catur. | Ia telah main lompat tali. | cause | 1
+7 | Wanita itu kehilangan tempatnya di barisan. | Banyak orang mengikuti barisan itu. | Ia keluar dari barisan itu. | cause | 1
+8 | Gadis itu mencubit hidungnya. | Bayi itu meneteskan air liur ke kain alasanya. | Bayi itu mengotori popoknya. | cause | 1
+9 | Band ini memainkan lagu hit mereka. | Para penonton bertepuk tangan mengikuti musik. | Para penonton dengan sopan mendengarkan dalam kediaman. | effect | 0
+10 | Gadis itu ingin berterima kasih kepada guru matematiknya. | Gadis itu ditahan setelah sekolah selesai. | Gadis itu memberikan apel kepada gurunya. | effect | 1
+
+==================================================
+

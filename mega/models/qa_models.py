@@ -23,13 +23,13 @@ import pdb
 # openai.api_type = "azure"
 # openai.api_version = "2022-12-01"  # this may change in the future
 # HF_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloom"
-# BLOOMZ_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloomz"
+BLOOMZ_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloomz"
 
 # with open("keys/openai_key.txt") as f:
 #     openai.api_key = f.read().split("\n")[0]
 
-# with open("keys/hf_key.txt") as f:
-#     HF_API_TOKEN = f.read().split("\n")[0]
+with open("keys/hf_key.txt") as f:
+    HF_API_TOKEN = f.read().split("\n")[0]
 
 # openai.deployment_name = os.environ["MODEL_DEPLOYMENT_NAME"]
 # openai.embedding_deployment_id = os.environ["EMBEDDING_DEPLOYMENT_ID"]
@@ -177,21 +177,11 @@ def answer_question_chatgpt(
         #     break
     return response
 
+
 def answer_question_gpt4(
-    question: str,
-    context: str,
-    prompt: Union[List, str],
-    model: str,
-    **model_params
+    question: str, context: str, prompt: Union[List, str], model: str, **model_params
 ):
-    return gpt3x_completion(
-        prompt,
-        model,
-        **model_params
-    )
-
-
-
+    return gpt3x_completion(prompt, model, **model_params)
 
     text_splitter = TokenTextSplitter(
         chunk_size=chunk_size, chunk_overlap=chunk_overlap
@@ -282,6 +272,7 @@ def answer_question_bloomz(
     while True:
         try:
             # signal.alarm(60)  # Wait for a minute for the response to come
+            breakpoint()
             model_output = query(full_prompt)
             output = model_output[0]["generated_text"][len(full_prompt) :].split("\n")[
                 0

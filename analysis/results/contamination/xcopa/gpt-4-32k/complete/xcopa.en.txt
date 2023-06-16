@@ -1,0 +1,44 @@
+Split: test
+Completion Prompt:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | The item was packaged[MASK] | It was[MASK] | It was[MASK] | [MASK] | [MASK]
+2 | I emptied[MASK] | I retrieved a[MASK] | I found[MASK] | [MASK] | [MASK]
+3 | Termites in[MASK] | The termites disappeared[MASK] | The termites ate through[MASK] | [MASK] | [MASK]
+4 | The travelers[MASK] | The patrol agent check[MASK] | The patrol agent accused[MASK] | [MASK] | [MASK]
+5 | The office[MASK] | It was[MASK] | It was[MASK] | [MASK] | [MASK]
+6 | The girl ran[MASK] | She played[MASK] | She jumped[MASK] | [MASK] | [MASK]
+7 | The woman lost her[MASK] | More people entered[MASK] | She stepped out[MASK] | [MASK] | [MASK]
+8 | The girl pin[MASK] | The baby drooled[MASK] | The baby soiled[MASK] | [MASK] | [MASK]
+9 | The band played[MASK] | The audience clapped[MASK] | The audience politely[MASK] | [MASK] | [MASK]
+10 | The girl wanted to than[MASK] | The girl stayed after[MASK] | The girl brought the[MASK] | [MASK] | [MASK]
+
+Model's Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | The item was packaged poorly | It was damaged | It was expensive | cause | 0
+2 | I emptied the trash | I retrieved a lost item | I found money | effect | 1
+3 | Termites in the house | The termites disappeared | The termites ate through the wood | effect | 1
+4 | The travelers crossed the border | The patrol agent checked their passports | The patrol agent accused them of smuggling | effect | 0
+5 | The office was closed | It was a holiday | It was a weekend | cause | 1
+6 | The girl ran in the park | She played with her friends | She jumped in puddles | effect | 0
+7 | The woman lost her wallet | More people entered the store | She stepped out to search for it | effect | 1
+8 | The girl pinned a diaper | The baby drooled on her | The baby soiled the diaper | effect | 1
+9 | The band played a great show | The audience clapped loudly | The audience politely left | effect | 0
+10 | The girl wanted to thank her teacher | The girl stayed after class | The girl brought the teacher a gift | effect | 1
+Ground Truth:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | The item was packaged in bubble wrap. | It was fragile. | It was small. | cause | 0
+2 | I emptied my pockets. | I retrieved a ticket stub. | I found a weapon. | effect | 0
+3 | Termites invaded the house. | The termites disappeared from the house. | The termites ate through the wood in the house. | effect | 1
+4 | The travelers reached the border. | The patrol agent checked their passports. | The patrol agent accused them of smuggling. | effect | 0
+5 | The office was closed. | It was a holiday. | It was summer. | cause | 0
+6 | The girl ran out of energy. | She played checkers. | She jumped rope. | cause | 1
+7 | The woman lost her place in line. | More people entered the line. | She stepped out of the line. | cause | 1
+8 | The girl pinched her nose. | The baby drooled on her bib. | The baby soiled her diaper. | cause | 1
+9 | The band played their hit song. | The audience clapped along to the music. | The audience politely listened in silence. | effect | 0
+10 | The girl wanted to thank her math teacher. | The girl stayed after school for detention. | The girl brought the teacher an apple. | effect | 1
+
+==================================================
+

@@ -1,0 +1,69 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XCOPA Italian dataset train split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Un uomo suona il violino in un concerto. | Il pubblico applaude. | Il pubblico dorme. | cause | 0
+2 | Il cane ha mangiato tutto il cibo. | Il piatto è vuoto. | Il piatto è pieno. | effect | 0
+3 | La ragazza ha studiato molto per l'esame. | Ha preso un voto alto. | Ha preso un voto basso. | effect | 0
+4 | Il bambino ha rotto il vaso mentre giocava. | La madre si arrabbia. | La madre non se ne accorge. | effect | 0
+5 | Il semaforo è rosso. | Le auto si fermano. | Le auto accelerano. | effect | 0
+6 | Il telefono squilla. | La persona risponde. | La persona ignora la chiamata. | effect | 0
+7 | Il cielo è coperto di nuvole scure. | Inizia a piovere. | Il sole splende. | effect | 0
+8 | La batteria del telefono è scarica. | Il telefono si spegne. | Il telefono continua a funzionare. | effect | 0
+9 | Il ragazzo ha dimenticato l'ombrello a casa. | Si bagna sotto la pioggia. | Rimane asciutto. | effect | 0
+10 | La donna ha vinto alla lotteria. | Diventa ricca. | Rimane povera. | effect | 0
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XCOPA Italian dataset validation split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Un uomo sta suonando il violino. | Il suono del violino è dolce. | Il suono del violino è salato. | cause | 0
+2 | Il cane ha mangiato tutto il cibo. | Il cane è ancora affamato. | Il cane è sazio. | effect | 1
+3 | La ragazza ha studiato molto per l'esame. | La ragazza ha ottenuto un voto basso. | La ragazza ha ottenuto un voto alto. | effect | 1
+4 | Il bambino ha rotto il vaso. | Il vaso è intatto. | Il vaso è in frantumi. | effect | 1
+5 | Il sole splende intensamente. | Fa freddo fuori. | Fa caldo fuori. | effect | 1
+6 | La pioggia cadeva a dirotto. | Le strade erano asciutte. | Le strade erano bagnate. | effect | 1
+7 | Il ragazzo ha perso il portafoglio. | Il ragazzo ha tutti i suoi soldi. | Il ragazzo non ha più i suoi soldi. | effect | 1
+8 | La donna ha dimenticato di spegnere il ferro da stiro. | Il ferro da stiro è acceso. | Il ferro da stiro è spento. | cause | 0
+9 | Il gatto è saltato sulla tastiera del computer. | Il documento è rimasto inalterato. | Il documento è stato modificato. | effect | 1
+10 | La madre ha preparato una torta. | La torta è cruda. | La torta è cotta. | effect | 1
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XCOPA Italian dataset test split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Un uomo sta suonando il violino. | Il suono del violino si diffonde nell'aria. | L'uomo sta dormendo. | cause | 0
+2 | Il cane ha mangiato tutto il cibo. | Il cane è ancora affamato. | Il cane è sazio. | effect | 1
+3 | La ragazza ha studiato molto per l'esame. | La ragazza ha ottenuto un voto basso. | La ragazza ha ottenuto un voto alto. | effect | 1
+4 | Il ghiaccio si è sciolto sulla strada. | La temperatura è aumentata. | La temperatura è diminuita. | cause | 0
+5 | Il bambino ha rotto il vaso. | Il vaso è caduto a terra. | Il vaso è rimasto intatto. | effect | 0
+6 | La pioggia ha allagato le strade. | Le strade sono asciutte. | Le strade sono bagnate. | effect | 1
+7 | Il telefono è caduto in acqua. | Il telefono funziona perfettamente. | Il telefono si è rotto. | effect | 1
+8 | La donna ha vinto alla lotteria. | La donna ha speso tutti i suoi soldi. | La donna ha ricevuto una grande somma di denaro. | effect | 1
+9 | Il ragazzo ha dimenticato il suo ombrello a casa. | Il ragazzo è rimasto asciutto. | Il ragazzo si è bagnato sotto la pioggia. | effect | 1
+10 | La pianta ha ricevuto molta luce solare. | La pianta è cresciuta rigogliosa. | La pianta è morta. | effect | 0
+==================================================
+

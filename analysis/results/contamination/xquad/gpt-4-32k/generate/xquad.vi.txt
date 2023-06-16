@@ -1,0 +1,23 @@
+Split: test
+Prompt:
+Please generate the first 10 instances of XQuAD Vietnamese dataset test split. Use the following format:
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answers1}
+{id2} | {context2} | {question2} | {answers2}
+...
+.
+Response:
+1 | Công viên Yellowstone là công viên quốc gia đầu tiên trên thế giới, được thành lập vào năm 1872. Công viên này nằm ở phía tây bắc của Hoa Kỳ, chủ yếu ở bang Wyoming, nhưng cũng mở rộng sang Montana và Idaho. Công viên Yellowstone nổi tiếng với địa hình đa dạng của mình, đặc biệt là các hồ nước nóng và các đài phun nước, trong đó có Old Faithful, một trong những đài phun nước nổi tiếng nhất thế giới. | Công viên Yellowstone được thành lập vào năm nào? | 1872
+
+2 | Công viên quốc gia Yosemite là một khu vực bảo tồn thiên nhiên nổi tiếng ở bang California, Hoa Kỳ. Công viên này được thành lập vào năm 1890 và bao gồm hơn 3.000 km² diện tích đất. Yosemite nổi tiếng với các thác nước, những tảng đá khổng lồ và những khu rừng Sequoia cổ thụ. Một trong những điểm tham quan nổi tiếng nhất của công viên là Yosemite Valley, một thung lũng hẹp được tạo thành bởi sông Merced. | Công viên quốc gia Yosemite nằm ở bang nào của Hoa Kỳ? | California
+
+3 | Công viên quốc gia Grand Canyon nằm ở bang Arizona, Hoa Kỳ, và bảo vệ một phần của Grand Canyon, một hẻm núi sâu và rộng được tạo thành bởi sông Colorado. Công viên này được thành lập vào năm 1919 và hiện là một trong những điểm đến du lịch phổ biến nhất tại Hoa Kỳ. Grand Canyon được coi là một trong những kỳ quan thiên nhiên của thế giới và đã được UNESCO công nhận là di sản thế giới vào năm 1979. | Công viên quốc gia Grand Canyon được thành lập vào năm nào? | 1919
+
+4 | Công viên quốc gia Banff là công viên quốc gia đầu tiên của Canada, được thành lập vào năm 1885. Nằm ở tỉnh Alberta, công viên này bao gồm một phần của dãy núi Rocky và có diện tích hơn 6.600 km². Công viên Banff nổi tiếng với cảnh quan núi non hùng vĩ, hồ nước xanh trong và động vật hoang dã phong phú, bao gồm gấu, nai, hươu và cừu núi. | Công viên quốc gia Banff nằm ở tỉnh nào của Canada? | Alberta
+
+5 | Công viên quốc gia Kruger là một trong những công viên quốc gia lớn nhất và nổi tiếng nhất ở Nam Phi. Được thành lập vào năm 1898, công viên này bao gồm một diện tích hơn 19.000 km² và là nơi sinh sống của hơn 500 loài chim, 100 loài động vật có vú và 300 loài cây. Công viên Kruger cũng là một phần của Khu bảo tồn sinh quyển Kruger to Canyons, được UNESCO công nhận vào năm 2001. | Công viên quốc gia Kruger được thành lập vào năm nào? | 1898
+
+6 | Công viên quốc gia Iguazú nằm ở phía bắc Argentina, gần biên giới với Brazil. Công viên này được thành lập vào năm 193
+==================================================
+

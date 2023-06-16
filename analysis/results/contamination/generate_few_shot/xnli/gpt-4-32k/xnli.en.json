@@ -1,0 +1,44 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate instances of XNLI English dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            },
+            {
+                "role": "assistant",
+                "content": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | Conceptually cream skimming has two basic dimensions - product and geography . | Product and geography are what make cream skimming work . | 1 | \n2 | you know during the season and i guess at at your level uh you lose them to the next level if if they decide to recall the the parent team the Braves decide to call to recall a guy from triple A then a double A guy goes up to replace him and a single A guy goes up to replace him | You lose the things to the following level if the people recall . | 0 | \n3 | One of our number will carry out your instructions minutely . | A member of my team will execute your orders with immense precision . | 0 | \n4 | How do you know ? All this is their information again . | This information belongs to them . | 0 | \n"
+            }
+        ],
+        "response": "5 | my walkman broke so i'm upset now . | I am upset because my walkman is broken . | 0 | \n6 | The sanctions against the school were a punishing blow , and they seemed to what the efforts the school had made to change . | The sanctions against the school have not produced any noticeable improvement . | 1 | \n7 | The army corps of engineers , rushing to meet President Bush 's promise to protect New Orleans by the start of the 2006 hurricane season , installed defective flood-control pumps last year despite warnings from its own expert that the equipment would fail during a storm , according to documents obtained by The Associated Press . | The Army Corps of Engineers installed faulty pumps in New Orleans despite being warned that they would fail . | 0 | \n8 | The technology-laced Nasdaq Composite Index .IXIC inched down 0.84 points , or 0.03 percent , to 2,431.46 . | The Nasdaq Composite Index went down 0.03 percent to 2,431.46 . | 0 | \n9 | It is not clear who will take over from him . | The successor is not known . | 0 | \n10 | The current Lord Chancellor , Lord Falconer , is a close ally of Mr Blair and a former flatmate . | Lord Falconer is a close friend of Mr Blair and used to share a flat with him . | 0 |"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate instances of XNLI English dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            },
+            {
+                "role": "assistant",
+                "content": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | And he said, Mama, I'm home. | He called his mom as soon as the school bus dropped him off. | 1 | \n2 | And he said, Mama, I'm home. | He didn't say a word. | 2 | \n3 | And he said, Mama, I'm home. | He told his mom he had gotten home. | 0 | \n4 | I didn't know what I was going for or anything, so was to report to a designated place in Washington. | I have never been to Washington so when I was assigned there I got lost trying to find the place. | 1 | \n"
+            }
+        ],
+        "response": "5 | I didn't know what I was going for or anything, so was to report to a designated place in Washington. | I knew exactly what I was going for and where to report in Washington. | 2 |\n6 | I didn't know what I was going for or anything, so was to report to a designated place in Washington. | I was unsure of my purpose and had to report to a specific location in Washington. | 0 |\n7 | The sun was shining brightly, and the birds were singing. | It was a dark and stormy night. | 2 |\n8 | The sun was shining brightly, and the birds were singing. | The weather was pleasant, and the birds were chirping. | 0 |\n9 | The sun was shining brightly, and the birds were singing. | The sun was setting, and the birds were quiet. | 1 |\n10 | She carefully placed the cake in the oven and set the timer. | She threw the cake in the oven without setting the timer. | 2 |\n11 | She carefully placed the cake in the oven and set the timer. | She put the cake in the oven and started the timer. | 0 |\n12 | She carefully placed the cake in the oven and set the timer. | She put the cake in the refrigerator and set the timer. | 1 |\n13 | The dog barked loudly at the mailman. | The dog was friendly towards the mailman. | 2 |\n14 | The dog barked loudly at the mailman. | The dog made noise when the mailman arrived. | 0 |\n15 | The dog barked loudly at the mailman. | The cat hissed at the mailman. | 1 |"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate instances of XNLI English dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            },
+            {
+                "role": "assistant",
+                "content": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again. | I havent spoken to him again. | 2 | \n2 | Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again. | I was so upset that I just started talking to him again. | 0 | \n3 | Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again. | We had a great talk. | 1 | \n4 | And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field. | I was not aware that I was not the only person to be at the field that day. | 1 | \n"
+            }
+        ],
+        "response": "5 | And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field. | I was the only one in my Air Force Career field. | 0 |\n6 | And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field. | There were many others in my Air Force Career field. | 2 |\n7 | The weather was perfect for a day at the beach, so we packed our bags and headed out. | We decided to stay indoors due to the bad weather. | 2 |\n8 | The weather was perfect for a day at the beach, so we packed our bags and headed out. | We went to the beach because of the great weather. | 0 |\n9 | The weather was perfect for a day at the beach, so we packed our bags and headed out. | We went to the mountains instead of the beach. | 1 |\n10 | She was so excited to start her new job that she couldn't sleep the night before. | She was dreading her first day at work. | 2 |\n11 | She was so excited to start her new job that she couldn't sleep the night before. | She was looking forward to her new job. | 0 |\n12 | She was so excited to start her new job that she couldn't sleep the night before. | She slept well the night before her new job. | 1 |"
+    }
+]

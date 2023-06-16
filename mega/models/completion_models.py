@@ -19,14 +19,29 @@ import pdb
 with open("keys/hf_key.txt") as f:
     HF_API_TOKEN = f.read().split("\n")[0]
 
-SUPPORTED_MODELS = ["DaVinci003", "BLOOM", 
-                    "BLOOMZ", "gpt-35-turbo-deployment", 
-                    "gpt4_deployment", "gptturbo",
-                    "gpt003", "gpt-4-32k",
-                    "gpt-4", "gpt-35-turbo","gpt-35-tunro", "text-davinci-003"]
-CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment",
-               "gptturbo", "gpt-4",
-               "gpt-35-turbo", "gpt-4-32k", "gpt-35-tunro"]
+SUPPORTED_MODELS = [
+    "DaVinci003",
+    "BLOOM",
+    "BLOOMZ",
+    "gpt-35-turbo-deployment",
+    "gpt4_deployment",
+    "gptturbo",
+    "gpt003",
+    "gpt-4-32k",
+    "gpt-4",
+    "gpt-35-turbo",
+    "gpt-35-tunro",
+    "text-davinci-003",
+]
+CHAT_MODELS = [
+    "gpt-35-turbo-deployment",
+    "gpt4_deployment",
+    "gptturbo",
+    "gpt-4",
+    "gpt-35-turbo",
+    "gpt-4-32k",
+    "gpt-35-tunro",
+]
 
 # Register an handler for the timeout
 # def handler(signum, frame):
@@ -35,15 +50,16 @@ CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment",
 # signal.signal(signal.SIGALRM, handler)
 
 
-def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
-                     model: str,
-                     run_details: Any = {},
-                     num_evals_per_sec: int = 2,
-                     backoff_base: int = 2,
-                     backoff_rate: int = 2,
-                     backoff_ceil: int = 10,
-                     **model_params) -> str:
-
+def gpt3x_completion(
+    prompt: Union[str, List[Dict[str, str]]],
+    model: str,
+    run_details: Any = {},
+    num_evals_per_sec: int = 2,
+    backoff_base: int = 2,
+    backoff_rate: int = 2,
+    backoff_ceil: int = 10,
+    **model_params,
+) -> str:
     """Runs the prompt over the GPT3.x model for text completion
 
     Args:
@@ -75,7 +91,7 @@ def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
                 if "num_calls" in run_details:
                     run_details["num_calls"] += 1
                 output = response["choices"][0]["text"].strip().split("\n")[0]
-                time.sleep(1/num_evals_per_sec)
+                time.sleep(1 / num_evals_per_sec)
                 backoff_count = 0
             else:
                 response = openai.ChatCompletion.create(
@@ -90,20 +106,19 @@ def gpt3x_completion(prompt: Union[str, List[Dict[str, str]]],
                 if response["choices"][0]["finish_reason"] == "content_filter":
                     output = ""
                 else:
-                    output = response["choices"][0]["message"]['content'].strip().split("\n")[0]
-                time.sleep(1/num_evals_per_sec)
+                    output = response["choices"][0]["message"][
+                        "content"
+                    ].strip()  # .split("\n")[0]
+                time.sleep(1 / num_evals_per_sec)
                 backoff_count = 0
             break
-        except (
-            openai.error.APIConnectionError,
-            openai.error.RateLimitError
-        ) as e:
+        except (openai.error.APIConnectionError, openai.error.RateLimitError) as e:
             backoff_count = min(backoff_count + 1, backoff_ceil)
-            sleep_time = backoff_base ** backoff_count
+            sleep_time = backoff_base**backoff_count
             print(f"Exceeded Rate Limit. Waiting for {sleep_time} seconds")
             time.sleep(sleep_time)
             continue
-        except (openai.error.APIError,TypeError):
+        except (openai.error.APIError, TypeError):
             warnings.warn(
                 "Couldn't generate response, returning empty string as response"
             )
@@ -190,8 +205,9 @@ def bloomz_completion(prompt: str, **model_params) -> str:
     return output
 
 
-def model_completion(prompt: Union[str, List[Dict[str, str]]], model: str, **model_params) -> str:
-
+def model_completion(
+    prompt: Union[str, List[Dict[str, str]]], model: str, **model_params
+) -> str:
     """Runs the prompt over one of the `SUPPORTED_MODELS` for text completion
 
     Args:
@@ -202,7 +218,18 @@ def model_completion(prompt: Union[str, List[Dict[str, str]]], model: str, **mod
         str: generated string
     """
 
-    if model in ["DaVinci003", "gpt-35-turbo-deployment", "gpt4_deployment", "gptturbo", "gpt003", "text-davinci-003"] + CHAT_MODELS:
+    if (
+        model
+        in [
+            "DaVinci003",
+            "gpt-35-turbo-deployment",
+            "gpt4_deployment",
+            "gptturbo",
+            "gpt003",
+            "text-davinci-003",
+        ]
+        + CHAT_MODELS
+    ):
         return gpt3x_completion(prompt, model, **model_params)
 
     if model == "BLOOM":
@@ -236,10 +263,12 @@ def get_model_pred(
     """
 
     prompt_input, label = construct_prompt(
-        train_examples, test_example,
-        train_prompt_template, test_prompt_template,
+        train_examples,
+        test_example,
+        train_prompt_template,
+        test_prompt_template,
         chat_prompt=(chat_prompt and model in CHAT_MODELS),
-        instruction=instruction
+        instruction=instruction,
     )
     model_prediction = model_completion(prompt_input, model, **model_params)
     return {"prediction": model_prediction, "ground_truth": label}

@@ -1,0 +1,132 @@
+Split: train
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Sakata cream ya conceptually ina vipimo vi[MASK] | Bidhaa na geography ndio hu[MASK] | [MASK]
+2 | Unajua wakati wa msimu na i katika kiwango chako, uh kwa kiwango kinachofuata kama wakiamua kukumbuka timu ya m[MASK] | Wewe mambo kwa kiwango[MASK] | [MASK]
+3 | Moja ya nambari yetu will[MASK] | Mwanachama wa timu yangu will maa[MASK] | [MASK]
+4 | Vipi know? hii yote[MASK] | Maelezo[MASK] | [MASK]
+5 | Yeah i tell you what though ukienda bei baadhi ya hizo viatu za tennis na[MASK] | Viatu vya tennis zin[MASK] | [MASK]
+6 | My broke my sasa sasa sa[MASK] | I kwamba walkman broke na sasa[MASK] | [MASK]
+7 | Lakini mosaics kadhaa wa kikristo survive juu ya mountain ni bikira na mtoto wa yesu, pamoja na gabriel gabriel kwa[MASK] | Most of the christian mosaic[MASK] | [MASK]
+8 | ( soma kwa slate ' s take[MASK] | Slate alikuwa na maoni kuhusu[MASK] | [MASK]
+9 | Mashoga na[MASK] | Heterosex[MASK] | [MASK]
+10 | Mwisho wa rue des faranga - bourgeois ni nini wengi zingatia kuwa viwanja vya makazi bor[MASK] | Eneo la des vosges ni kwa[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Sakata cream ya conceptually ina vipimo vichache | Bidhaa na geography ndio huathiri vipimo vya cream ya Sakata | 0
+2 | Unajua wakati wa msimu na i katika kiwango chako, uh kwa kiwango kinachofuata kama wakiamua kukumbuka timu ya mpira wa miguu | Wewe hufuatilia mpira wa miguu kwa kiwango sawa kila wakati | 1
+3 | Moja ya nambari yetu itashinda | Mwanachama wa timu yangu atafurahi sana ikiwa timu yetu itashinda | 0
+4 | Vipi unaweza kuelezea haya yote? | Sijaelewa maelezo yako | 2
+5 | Yeah i tell you what though ukienda bei baadhi ya hizo viatu za tennis na kulinganisha na zile za kawaida | Viatu vya tennis ni ghali kuliko viatu vingine | 0
+6 | My walkman broke sasa sasa saa hii | Iliyokuwa walkman yangu imevunjika na sasa siwezi kusikiliza muziki | 0
+7 | Lakini mosaics kadhaa wa kikristo survive juu ya mountain ni bikira na mtoto wa yesu, pamoja na gabriel | Mosaics nyingi za kikristo zimeharibiwa kwenye mlima huo | 2
+8 | ( soma kwa slate ' s take) Slate alikuwa na maoni kuhusu hili | Slate ilikuwa na maoni yake kuhusu suala hili | 1
+9 | Mashoga na wasagaji | Heterosexual ni neno linalotumiwa kuelezea watu wanaovutiwa na jinsia tofauti nao | 2
+10 | Mwisho wa rue des faranga - bourgeois ni nini wengi zingatia kuwa viwanja vya makazi bora | Eneo la des vos
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Sakata cream ya conceptually ina vipimo viwili vya msingi - bidhaa na geography . | Bidhaa na geography ndio hufanya kazi ya utoaji wa cream . | 1
+2 | Unajua wakati wa msimu na i katika kiwango chako , uh kwa kiwango kinachofuata kama wakiamua kukumbuka timu ya mzazi ambayo braves kuamua kupiga simu ya kukumbuka jamaa wa triple a then a double guy goes up replace him and a single guy anaenda replace | Wewe mambo kwa kiwango kifuatacho kama watu alipo . | 0
+3 | Moja ya nambari yetu will maagizo yako minutely . | Mwanachama wa timu yangu will maagizo yako kwa usahihi mkubwa . | 0
+4 | Vipi know ? hii yote ni maelezo yao tena . | Maelezo haya ni yao . | 0
+5 | Yeah i tell you what though ukienda bei baadhi ya hizo viatu za tennis naona kwa nini sasa unajua they ' re getting up in the mia dollar range | Viatu vya tennis zina masafa ya bei . | 1
+6 | My broke my sasa sasa sasa up up up up up up up | I kwamba walkman broke na sasa lazima kwa stereo kwa sauti kubwa . | 0
+7 | Lakini mosaics kadhaa wa kikristo survive juu ya mountain ni bikira na mtoto wa yesu , pamoja na gabriel gabriel kwa haki ( rafiki yake michael , hadi kushoto , ana hifadhi kwa ajili ya manyoya kadhaa kutoka kwa mbawa zake ) . | Most of the christian mosaics walikuwa na waislamu . | 1
+8 | ( soma kwa slate ' s take kwa matokeo ya jackson . ) | Slate alikuwa na maoni kuhusu matokeo ya jackson . | 0
+9 | Mashoga na wasagaji . | Heterosexuals . | 2
+10 | Mwisho wa rue des faranga-bourgeois ni nini wengi zingatia kuwa viwanja vya makazi bora zaidi ya jiji , eneo des vosges , na jiwe lake na matofali nyekundu waliopora . | Eneo la des vosges ni kwa marumaru ya kijivu . | 2
+
+==================================================
+
+Split: validation
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Naye akasema, Mama[MASK] | Alimwita mama yake mara tu basi[MASK] | [MASK]
+2 | Naye akasema, Mama[MASK] | Hakusema[MASK] | [MASK]
+3 | Naye akasema, Mama[MASK] | Alimwambia mama yake alikuwa[MASK] | [MASK]
+4 | Sikujua nini nilichoendea au kitu chochote[MASK] | Sijawahi kwenda Washington hivyo wakati nilipotumwa[MASK] | [MASK]
+5 | Sikujua nini nilichoendea au kitu chochote[MASK] | Nilijua hasa kile nilichoh[MASK] | [MASK]
+6 | Sikujua nini nilichoendea au kitu chochote[MASK] | Sikuwa na hakika kabisa nilichokuwa nikienda kufanya hivyo[MASK] | [MASK]
+7 | Hakuweza[MASK] | Alikuwa wa kwanza kualikwa[MASK] | [MASK]
+8 | Hakuweza[MASK] | Hakuruhusiwa[MASK] | [MASK]
+9 | Hakuweza[MASK] | Hakuruhusiwa kuenda katika ufung[MASK] | [MASK]
+10 | Mimi nilikuwa nimerid[MASK] | Baada yangu kusema[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Naye akasema, Mama yangu alikuwa na furaha sana | Alimwita mama yake mara tu basi aje kushuhudia furaha yake | 0
+2 | Naye akasema, Mama yangu alikuwa na furaha sana | Hakusema chochote | 1
+3 | Naye akasema, Mama yangu alikuwa na furaha sana | Alimwambia mama yake alikuwa amepata kazi mpya | 2
+4 | Sikujua nini nilichoendea au kitu chochote kuhusu Washington | Sijawahi kwenda Washington hivyo wakati nilipotumwa sikuwa na uhakika | 1
+5 | Sikujua nini nilichoendea au kitu chochote kuhusu Washington | Nilijua hasa kile nilichokuwa nikienda kufanya hivyo | 0
+6 | Sikujua nini nilichoendea au kitu chochote kuhusu Washington | Sikuwa na hakika kabisa nilichokuwa nikienda kufanya hivyo | 1
+7 | Hakualikwa kwenye hafla hiyo | Alikuwa wa kwanza kualikwa kwenye hafla hiyo | 2
+8 | Hakualikwa kwenye hafla hiyo | Hakuruhusiwa kuhudhuria hafla hiyo | 0
+9 | Hakualikwa kwenye hafla hiyo | Hakuruhusiwa kuenda katika ufunguzi wa hafla hiyo | 1
+10 | Mimi nilikuwa nimeridhika na matokeo yangu | Baada yangu kusema hivyo, alikubaliana na mimi | 0
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Naye akasema, Mama, niko nyumbani. | Alimwita mama yake mara tu basi ya shule ilipomshukisha. | 1
+2 | Naye akasema, Mama, niko nyumbani. | Hakusema chochote. | 2
+3 | Naye akasema, Mama, niko nyumbani. | Alimwambia mama yake alikuwa amefika nyumbani. | 0
+4 | Sikujua nini nilichoendea au kitu chochote, hivyo ilikuwa na ni ripoti mahali paliopangwa huko Washington. | Sijawahi kwenda Washington hivyo wakati nilipotumwa huko nilipotea nikijaribu kutafuta mahali. | 1
+5 | Sikujua nini nilichoendea au kitu chochote, hivyo ilikuwa na ni ripoti mahali paliopangwa huko Washington. | Nilijua hasa kile nilichohitaji kufanya  nilipoingia Washington. | 2
+6 | Sikujua nini nilichoendea au kitu chochote, hivyo ilikuwa na ni ripoti mahali paliopangwa huko Washington. | Sikuwa na hakika kabisa nilichokuwa nikienda kufanya hivyo nilikwenda Washington ambako nilipewa kazi ya kuripoti. | 0
+7 | Hakuweza kuenda. | Alikuwa wa kwanza kualikwa na alipendezwa sana. | 2
+8 | Hakuweza kuenda. | Hakuruhusiwa kuhudhuria. | 0
+9 | Hakuweza kuenda. | Hakuruhusiwa kuenda katika ufunguzi wa jumba la makumbusho. | 1
+10 | Mimi nilikuwa nimeridhika nayo. | Baada yangu kusema ndiyo, ikaisha. | 0
+
+==================================================
+
+Split: test
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa[MASK] | Sijaongea[MASK] | [MASK]
+2 | Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa[MASK] | Nilikasirika sana kwamba nikaanza[MASK] | [MASK]
+3 | Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa[MASK] | Tulikuwa na majadili[MASK] | [MASK]
+4 | Nami nilifikiri kwamba ilikuwa ni fursa, na bado, bado, nilikuwa pekee wa[MASK] | Sikujua kwamba sikuwa mtu[MASK] | [MASK]
+5 | Nami nilifikiri kwamba ilikuwa ni fursa, na bado, bado, nilikuwa pekee wa[MASK] | Nilikuwa chini ya hisia kwamba nilikuwa pekee na nambari[MASK] | [MASK]
+6 | Nami nilifikiri kwamba ilikuwa ni fursa, na bado, bado, nilikuwa pekee wa[MASK] | Sisi sote tumepewa idadi sawa sawa bila kujali[MASK] | [MASK]
+7 | Walinieleza ya kwamba mwishowe ningeitiwa[MASK] | Sikuambiwa chochote kuhusu[MASK] | [MASK]
+8 | Walinieleza ya kwamba mwishowe ningeitiwa[MASK] | Niliambiwa mtu angeitwa[MASK] | [MASK]
+9 | Walinieleza ya kwamba mwishowe ningeitiwa[MASK] | Alikuja akiwa[MASK] | [MASK]
+10 | Kuna mengi ambayo unaweza kuzungumzia kuhusu[MASK] | Nataka kukuambia kila kitu nin[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa sana | Sijaongea sana | 1
+2 | Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa sana | Nilikasirika sana kwamba nikaanza kulia | 2
+3 | Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa sana | Tulikuwa na majadiliano mengi | 1
+4 | Nami nilifikiri kwamba ilikuwa ni fursa, na bado, bado, nilikuwa pekee wa kufanya hivyo | Sikujua kwamba sikuwa mtu pekee | 2
+5 | Nami nilifikiri kwamba ilikuwa ni fursa, na bado, bado, nilikuwa pekee wa kufanya hivyo | Nilikuwa chini ya hisia kwamba nilikuwa pekee na nambari yangu ilikuwa ndogo | 0
+6 | Nami nilifikiri kwamba ilikuwa ni fursa, na bado, bado, nilikuwa pekee wa kufanya hivyo | Sisi sote tumepewa idadi sawa sawa bila kujali uwezo wetu | 1
+7 | Walinieleza ya kwamba mwishowe ningeitiwa kwenye mkutano huo | Sikuambiwa chochote kuhusu mkutano huo | 2
+8 | Walinieleza ya kwamba mwishowe ningeitiwa kwenye mkutano huo | Niliambiwa mtu mwingine angeitwa badala yangu | 0
+9 | Walinieleza ya kwamba mwishowe ningeitiwa kwenye mkutano huo | Alikuja akiwa na habari zaidi kuhusu mkutano huo | 1
+10 | Kuna mengi ambayo unaweza kuzungumzia kuhusu mada hii | Nataka kukuambia kila kitu
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa sana, na, hatimaye nikaendelea kuzungumza naye tena. | Sijaongea na yeye tena. | 2
+2 | Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa sana, na, hatimaye nikaendelea kuzungumza naye tena. | Nilikasirika sana kwamba nikaanza kuzungumza naye tena. | 0
+3 | Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa sana, na, hatimaye nikaendelea kuzungumza naye tena. | Tulikuwa na majadiliano mazuri. | 1
+4 | Nami nilifikiri kwamba ilikuwa ni fursa, na bado, bado, nilikuwa pekee wa tisa mbili na mbili Ex-O ambayo ilikuwa uwanja wangu wa AFFC Air Force Career. | Sikujua kwamba sikuwa mtu wa pekee kuwa uwanjani leo. | 1
+5 | Nami nilifikiri kwamba ilikuwa ni fursa, na bado, bado, nilikuwa pekee wa tisa mbili na mbili Ex-O ambayo ilikuwa uwanja wangu wa AFFC Air Force Career. | Nilikuwa chini ya hisia kwamba nilikuwa pekee na nambari hiyo katika uwanja wa Kazi ya Air Force ya AFFC. | 0
+6 | Nami nilifikiri kwamba ilikuwa ni fursa, na bado, bado, nilikuwa pekee wa tisa mbili na mbili Ex-O ambayo ilikuwa uwanja wangu wa AFFC Air Force Career. | Sisi sote tumepewa idadi sawa sawa bila kujali marupurupu tuliyoahidi kupewa, ilikuwa ni uongo. | 2
+7 | Walinieleza ya kwamba mwishowe ningeitiwa jamaa fulani ambaye tungepatana naye. | Sikuambiwa chochote kuhusu kukutana na mtu yeyote. | 2
+8 | Walinieleza ya kwamba mwishowe ningeitiwa jamaa fulani ambaye tungepatana naye. | Niliambiwa mtu angeitwa aje ili nikutane naye. | 0
+9 | Walinieleza ya kwamba mwishowe ningeitiwa jamaa fulani ambaye tungepatana naye. | Alikuja akiwa amechelewa. | 1
+10 | Kuna mengi ambayo unaweza kuzungumzia kuhusu hilo lakini  nitaachana nayo tu. | Nataka kukuambia kila kitu ninachokijua kuhusu mambo hayo | 2
+
+==================================================
+

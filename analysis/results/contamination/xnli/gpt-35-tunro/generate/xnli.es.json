@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Spanish dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | El gato está durmiendo en la cama. | El gato está despierto. | 2\n2 | El hombre está corriendo en el parque. | El hombre está sentado en un banco. | 2\n3 | La mujer está cocinando en la cocina. | La mujer está viendo televisión en la sala. | 2\n4 | El niño está jugando con su pelota en el parque. | El niño está durmiendo en su cama. | 2\n5 | El perro está ladrando en el jardín. | El perro está durmiendo en su casa. | 2\n6 | El hombre está leyendo un libro en la biblioteca. | El hombre está viendo una película en el cine. | 2\n7 | La mujer está caminando por la calle. | La mujer está corriendo por la calle. | 1\n8 | El niño está comiendo un helado en la playa. | El niño está jugando con su pelota en la playa. | 1\n9 | El perro está saltando en el parque. | El perro está corriendo en el parque. | 1\n10 | El hombre está hablando por teléfono en la oficina. | El hombre está escribiendo un correo electrónico en la oficina. | 1"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Spanish dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | El hombre está corriendo en el parque. | El hombre está haciendo ejercicio al aire libre. | 0\n2 | El niño está jugando con un balón. | El niño está durmiendo. | 2\n3 | La mujer está cocinando en la cocina. | La mujer está viendo televisión en la sala. | 2\n4 | El perro está ladrando en el jardín. | El perro está durmiendo en la casa. | 2\n5 | El hombre está leyendo un libro en la biblioteca. | El hombre está trabajando en la oficina. | 2\n6 | El niño está comiendo un helado en la calle. | El niño está jugando con sus amigos en el parque. | 1\n7 | La mujer está caminando por la calle. | La mujer está corriendo en el parque. | 1\n8 | El perro está saltando en el jardín. | El perro está persiguiendo una pelota. | 0\n9 | El hombre está tocando la guitarra en el escenario. | El hombre está cantando en el escenario. | 1\n10 | El niño está dibujando en su cuaderno. | El niño está escribiendo en su cuaderno. | 1"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Spanish dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | El gato está durmiendo en la cama. | El gato está despierto en la cama. | 2\n2 | El hombre está corriendo en el parque. | El hombre está caminando en el parque. | 2\n3 | La mujer está cocinando en la cocina. | La mujer está durmiendo en la cocina. | 2\n4 | El perro está ladrando en el jardín. | El perro está durmiendo en el jardín. | 2\n5 | El niño está jugando con su pelota en el parque. | El niño está durmiendo en el parque. | 2\n6 | El hombre está leyendo un libro en la biblioteca. | El hombre está viendo una película en la biblioteca. | 2\n7 | La mujer está hablando por teléfono en la calle. | La mujer está caminando por la calle. | 1\n8 | El perro está saltando en el parque. | El perro está corriendo en el parque. | 1\n9 | El niño está comiendo un helado en la playa. | El niño está jugando con su pelota en la playa. | 1\n10 | El hombre está tocando la guitarra en el escenario. | El hombre está cantando en el escenario. | 1"
+    }
+]

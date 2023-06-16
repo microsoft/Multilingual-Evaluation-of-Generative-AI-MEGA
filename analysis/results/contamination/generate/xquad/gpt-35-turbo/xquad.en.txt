@@ -1,0 +1,7 @@
+Split: validation
+Prompt:
+Please generate the first instances of XQuAD English dataset validation split in squad format.
+Response:
+I'm sorry, as an AI language model, I don't have access to the XQuAD English dataset validation split in squad format. However, you can find the dataset and its splits on the official XQuAD website.
+==================================================
+

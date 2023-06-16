@@ -16,14 +16,14 @@ def parse_args(args: list) -> argparse.Namespace:
         "-e",
         "--env",
         default="melange",
-        choices=["melange", "scai", "vellm", "gpt4",  "gpt4v2"],
-        help="Name of the environment located in envs/"
+        choices=["melange", "scai", "vellm", "gpt4", "gpt4v2", "gpt4v3"],
+        help="Name of the environment located in envs/",
     )
     parser.add_argument(
         "-d",
         "--dataset",
         default="xnli",
-        choices=["xnli", "paws-x", "xcopa", "tydiqa", "xquad", "mlqa", "indicqa", "udpos", "panx", "xstory_cloze"],
+        # choices=["xnli", "paws-x", "xcopa", "tydiqa", "xquad", "mlqa", "indicqa", "udpos", "panx", "xstory_cloze"],
         type=str,
         help="(HF) Dataset to use",
     )
@@ -193,5 +193,29 @@ def parse_args(args: list) -> argparse.Namespace:
         "--chat-prompt",
         action="store_true",
         help="Whether to use chat type prompts",
+    )
+    parser.add_argument(
+        "--contam_lang",
+        default="",
+        help="For what languages to check data contamination",
+    )
+
+    parser.add_argument(
+        "--contam_method",
+        default="generate",
+        choices=[
+            "generate",
+            "generate_few_shot",
+            "complete",
+            "fill_dataset_card",
+            "fill_dataset_card_w_example",
+        ],
+        help="How to check data contamination",
+    )
+
+    parser.add_argument(
+        "--use_json_format",
+        action="store_true",
+        help="Whether to use json format for prompting for contamination",
     )
     return parser.parse_args(args)

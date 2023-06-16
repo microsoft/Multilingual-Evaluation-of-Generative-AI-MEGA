@@ -1,0 +1,66 @@
+languages:
+  - af
+  - ar
+  - bg
+  - bn
+  - de
+  - el
+  - en
+  - es
+  - et
+  - eu
+  - fa
+  - fi
+  - fr
+  - he
+  - hi
+  - hu
+  - id
+  - it
+  - ja
+  - jv
+  - ka
+  - kk
+  - ko
+  - ml
+  - mr
+  - ms
+  - my
+  - nl
+  - pa
+  - pl
+  - pt
+  - ro
+  - ru
+  - si
+  - sv
+  - sw
+  - ta
+  - te
+  - th
+  - tl
+  - tr
+  - uk
+  - ur
+  - vi
+  - xh
+  - zh
+  - zu
+pretty_name: PAN-X
+tags:
+  - text
+  - multilingual
+dataset_info:
+  features:
+    - name: sentence
+      dtype: string
+    - name: label
+      dtype: int32
+  splits:
+    train:
+      num_examples: 50000
+    validation:
+      num_examples: 3000
+    test:
+      num_examples: 2000
+dataset_summary: PAN-X is a multilingual dataset containing 50000 sentences in 40 languages, with each sentence annotated with a language identification label. The dataset is designed for language identification tasks and can be used to train and evaluate models on a diverse set of languages.

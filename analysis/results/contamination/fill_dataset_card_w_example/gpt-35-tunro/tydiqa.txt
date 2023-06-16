@@ -1,0 +1,42 @@
+languages:
+- "List of ISO 639-1 code for languages covered in the dataset"
+- en
+- ar
+- bn
+- fi
+- id
+- ko
+- ru
+- sw
+- te
+- zh
+pretty_name: "TyDiQA-GoldP"
+tags:
+- question answering
+- multilingual
+dataset_info:
+    features:
+        - name: "id"
+          dtype: "string"
+        - name: "language"
+          dtype: "string"
+        - name: "question"
+          dtype: "string"
+        - name: "answer"
+          dtype: "string"
+        - name: "start_position"
+          dtype: "int32"
+        - name: "end_position"
+          dtype: "int32"
+        - name: "document_title"
+          dtype: "string"
+        - name: "document_url"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 82,266
+        validation:
+            num_examples: 4,000
+        test:
+            num_examples: 4,327
+dataset_summary: TyDi QA is a question answering dataset covering 11 typologically diverse languages with 204K question-answer pairs. The languages of TyDi QA are diverse with regard to their typology -- the set of linguistic features that each language expresses -- such as morphology, syntax, and phonology. The dataset features language families such as Uralic (Finnish, Hungarian), Turkic (Turkish), and Niger-Congo (Swahili), among others. The dataset is created using a multi-stage process that emphasizes quality control and careful sampling of diverse, informative questions.

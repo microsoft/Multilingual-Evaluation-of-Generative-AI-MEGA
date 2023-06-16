@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Hindi dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | एक लड़का एक बैग में खेल खिलौने रखता है। | एक लड़का एक बैग में खाना रखता है। | 2\n2 | एक आदमी एक बार फिर से अपने घर के लिए एक नया दरवाजा खरीदता है। | एक आदमी अपने घर के लिए एक नया बाथरूम खरीदता है। | 2\n3 | एक लड़की एक बार फिर से अपने घर के लिए एक नया दरवाजा खरीदती है। | एक लड़की अपने घर के लिए एक नया बाथरूम खरीदती है। | 2\n4 | एक आदमी एक बार फिर से अपने घर के लिए एक नया दरवाजा खरीदता है। | एक आदमी अपने घर के लिए एक नया दरवाजा खरीदता है। | 0\n5 | एक लड़की एक"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Hindi dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | एक लड़का एक बैंक के बाहर खड़ा है। | एक लड़का एक बैंक में है। | 2\n2 | एक आदमी एक बाल्टी में पानी भर रहा है। | एक आदमी एक बाल्टी से पानी निकाल रहा है। | 1\n3 | एक लड़की एक बाइक पर सवार है। | एक लड़की एक स्कूटर पर सवार है। | 2\n4 | एक आदमी एक बाइक पर सवार है। | एक आदमी एक स्कूटर पर सवार है। | 2\n5 | एक लड़की एक बाइक पर सवार है। | एक लड़की एक साइकिल पर सवार है। | 2\n6 | एक आदमी एक बाइक पर सवार है। | एक आदमी एक साइकिल पर सवार है। | 2\n7 | एक लड़की एक बाइक पर सवार है। | एक लड़की एक ब"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Hindi dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | एक लड़का एक बैंक के बाहर खड़ा है। | एक लड़का एक बैंक में है। | 2\n2 | एक आदमी एक बार फिर से अपने घर के बाहर खड़ा है। | एक आदमी अपने घर के अंदर है। | 2\n3 | एक लड़की एक बार फिर से अपने घर के बाहर खड़ी है। | एक लड़की अपने घर के अंदर है। | 2\n4 | एक आदमी एक बार फिर से अपने घर के बाहर खड़ा है। | एक आदमी अपने घर के बाहर है। | 1\n5 | एक लड़की एक बार फिर से अपने घर के बाहर खड़ी है। | एक लड़की अपने घर के बाहर है। | 1\n6 | एक लड़का एक बैंक के बाहर खड़ा है। | एक लड़का एक बैं"
+    }
+]

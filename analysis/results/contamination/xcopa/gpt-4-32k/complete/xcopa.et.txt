@@ -1,0 +1,44 @@
+Split: test
+Completion Prompt:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Ese oli mullikil[MASK] | See oli[MASK] | See oli[MASK] | [MASK] | [MASK]
+2 | Ma tühjendas[MASK] | Ma leidsin pi[MASK] | Ma leids[MASK] | [MASK] | [MASK]
+3 | Termiidid tungisi[MASK] | Termiidid kad[MASK] | Termiidid sõid[MASK] | [MASK] | [MASK]
+4 | Reisidjad jõ[MASK] | Piirikontroll[MASK] | Piirikontroll süüd[MASK] | [MASK] | [MASK]
+5 | Kontor[MASK] | Oli pu[MASK] | Oli[MASK] | [MASK] | [MASK]
+6 | Tüdrukul[MASK] | Ta mängis[MASK] | Ta hüppas h[MASK] | [MASK] | [MASK]
+7 | Naine kaotas oma koha[MASK] | Veel inimesi liitus j[MASK] | Ta astus jär[MASK] | [MASK] | [MASK]
+8 | Tüdruk hoidi[MASK] | Beebi ilastas[MASK] | Beebi tegi oma mä[MASK] | [MASK] | [MASK]
+9 | Bänd mängis[MASK] | Publik plaksutas[MASK] | Publik kuulas[MASK] | [MASK] | [MASK]
+10 | Tüdruk tahtis oma mate[MASK] | Tüdruk j[MASK] | Tüdruk t[MASK] | [MASK] | [MASK]
+
+Model's Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Ese oli mullikilega kaetud | See oli pehme | See oli kõva | cause | 0
+2 | Ma tühjendasin kapi | Ma leidsin piima | Ma leidsin raamatuid | cause | 1
+3 | Termiidid tungisid majja | Termiidid kadusid | Termiidid sõid puitu | cause | 1
+4 | Reisijad jõudsid piirile | Piirikontroll kontrollis dokumente | Piirikontroll süüdistas neid | cause | 0
+5 | Kontor oli tühi | Oli puhkepäev | Oli tööpäev | cause | 0
+6 | Tüdrukul oli nöör | Ta mängis nööriga | Ta hüppas hüppenööriga | cause | 1
+7 | Naine kaotas oma koha järjekorras | Veel inimesi liitus järjekorraga | Ta astus järjekorrast välja | cause | 1
+8 | Tüdruk hoidis beebit | Beebi ilastas tüdruku peale | Beebi tegi oma mähkme täis | cause | 0
+9 | Bänd mängis muusikat | Publik plaksutas käsi | Publik kuulas vaikselt | cause | 0
+10 | Tüdruk tahtis oma matemaatikat õppida | Tüdruk jäi magama | Tüdruk tegi kodutööd | cause | 1
+Ground Truth:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Ese oli mullikilesse mässitud. | See oli õrn. | See oli väike. | cause | 0
+2 | Ma tühjendasin oma taskud. | Ma leidsin pileti tüki. | Ma leidsin relva. | effect | 0
+3 | Termiidid tungisid majja sisse. | Termiidid kadusid majast. | Termiidid sõid läbi majas oleva puidu. | effect | 1
+4 | Reisidjad jõudsid piirini. | Piirikontroll kontrollis nende passe. | Piirikontroll süüdistas neid smuugeldamises. | effect | 0
+5 | Kontor oli kinni. | Oli puhkus. | Oli suvi. | cause | 0
+6 | Tüdrukul sai energia otsa. | Ta mängis kabet. | Ta hüppas hüppenööriga. | cause | 1
+7 | Naine kaotas oma koha järjekorras. | Veel inimesi liitus järjekorraga. | Ta astus järjekorrast välja. | cause | 1
+8 | Tüdruk hoidis oma nina kinni. | Beebi ilastas oma põlle peale. | Beebi tegi oma mähkme täis. | cause | 1
+9 | Bänd mängis oma hittlugu. | Publik plaksutas muusikaga kaasa. | Publik kuulas vaikuses. | effect | 0
+10 | Tüdruk tahtis oma matemaatikaõpetajat tänada. | Tüdruk jäeti peale tunde. | Tüdruk tõi õpetajale õuna. | effect | 1
+
+==================================================
+

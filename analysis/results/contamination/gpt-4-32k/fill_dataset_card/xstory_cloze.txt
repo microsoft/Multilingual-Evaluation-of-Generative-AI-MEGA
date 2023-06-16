@@ -1,0 +1,24 @@
+language:
+- en
+pretty_name: "XStory Cloze Dataset"
+tags:
+- story_cloze
+- text_completion
+dataset_info:
+    features:
+        - name: "story"
+          dtype: "list of strings"
+        - name: "ending1"
+          dtype: "string"
+        - name: "ending2"
+          dtype: "string"
+        - name: "label"
+          dtype: "int32"
+    splits:
+        train:
+            num_examples: "30000"
+        validation:
+            num_examples: "1871"
+        test:
+            num_examples: "1871"
+dataset_summary: "The XStory Cloze dataset is a collection of 4-sentence stories with two alternative endings. The task is to choose the correct ending for each story. The dataset is designed to test the ability of language models to understand narrative structure and perform commonsense reasoning. It contains 30,000 training examples, 1,871 validation examples, and 1,871 test examples."

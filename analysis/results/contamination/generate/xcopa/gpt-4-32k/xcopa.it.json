@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Italian dataset train split in json format."
+            }
+        ],
+        "response": "I cannot generate the dataset instances for you, but I can provide you with a template on how to create the first 10 instances of the XCOPA Italian dataset train split in JSON format. You can fill in the actual data yourself.\n\nHere's the template:\n\n```json\n[\n  {\n    \"id\": 1,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 2,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 3,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 4,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 5,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 6,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 7,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\":"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Italian dataset validation split in json format."
+            }
+        ],
+        "response": "I am an AI language model and I am unable to access external datasets. However, I can help you create a template for the first 10 instances of the XCOPA Italian dataset validation split in JSON format. You can fill in the actual data yourself. Here's the template:\n\n```json\n[\n  {\n    \"id\": 1,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 2,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 3,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 4,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 5,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 6,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\",\n    \"choice2\": \"INSERT_CHOICE2_HERE\",\n    \"answer\": \"INSERT_ANSWER_HERE\"\n  },\n  {\n    \"id\": 7,\n    \"premise\": \"INSERT_PREMISE_HERE\",\n    \"question\": \"INSERT_QUESTION_HERE\",\n    \"choice1\": \"INSERT_CHOICE1_HERE\","
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Italian dataset test split in json format."
+            }
+        ],
+        "response": "I am an AI language model and I am unable to access external datasets. However, I can help you generate some sample instances in the format of the XCOPA dataset. Here are 10 sample instances in Italian for the test split in JSON format:\n\n```json\n[\n  {\n    \"id\": \"1\",\n    \"premise\": \"Il cane stava correndo nel parco.\",\n    \"question\": \"Perché il cane stava correndo nel parco?\",\n    \"choice1\": \"Per fare esercizio\",\n    \"choice2\": \"Per mangiare\",\n    \"answer\": \"Per fare esercizio\"\n  },\n  {\n    \"id\": \"2\",\n    \"premise\": \"Maria ha comprato un nuovo vestito per la festa.\",\n    \"question\": \"Perché Maria ha comprato un nuovo vestito?\",\n    \"choice1\": \"Per andare al lavoro\",\n    \"choice2\": \"Per la festa\",\n    \"answer\": \"Per la festa\"\n  },\n  {\n    \"id\": \"3\",\n    \"premise\": \"Luca ha studiato tutta la notte per l'esame.\",\n    \"question\": \"Perché Luca ha studiato tutta la notte?\",\n    \"choice1\": \"Per l'esame\",\n    \"choice2\": \"Per guardare un film\",\n    \"answer\": \"Per l'esame\"\n  },\n  {\n    \"id\": \"4\",\n    \"premise\": \"Il bambino piangeva perché aveva fame.\",\n    \"question\": \"Perché il bambino piangeva?\",\n    \"choice1\": \"Perché aveva fame\",\n    \"choice2\": \"Perché era stanco\",\n    \"answer\": \"Perché aveva fame\"\n  },\n  {\n    \"id\": \"5\",\n    \"premise\": \"Giulia ha portato l'ombrello perché pioveva.\",\n    \"question\": \"Perché Giulia ha portato l'ombrello?\",\n    \"choice1\": \"Perché pioveva\",\n    \"choice2\": \"Perché faceva caldo\",\n    \"answer\": \"Perché pioveva\"\n  },\n  {\n    \"id\": \"6\",\n    \"premise\": \"Marco ha chiamato un taxi per andare all'aeroporto.\",\n    \"question\": \"Perché Marco ha"
+    }
+]

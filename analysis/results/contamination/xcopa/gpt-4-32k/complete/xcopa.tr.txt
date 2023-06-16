@@ -1,0 +1,44 @@
+Split: test
+Completion Prompt:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Ürün balonlu nay[MASK] | Kırıl[MASK] | Küç[MASK] | [MASK] | [MASK]
+2 | Ceplerimi bo[MASK] | Bir bilet ko[MASK] | Bir silah[MASK] | [MASK] | [MASK]
+3 | Termitler evi[MASK] | Termitler ev[MASK] | Termitler evin içindeki[MASK] | [MASK] | [MASK]
+4 | Yolcular sınır[MASK] | Devriye ajanı[MASK] | Devriye ajanı onları ka[MASK] | [MASK] | [MASK]
+5 | Ofis kapal[MASK] | Tat[MASK] | Yaz me[MASK] | [MASK] | [MASK]
+6 | Kızın enerji[MASK] | Dama[MASK] | İp[MASK] | [MASK] | [MASK]
+7 | Kadın sıradaki[MASK] | Sıraya daha[MASK] | Sır[MASK] | [MASK] | [MASK]
+8 | Kız burnu[MASK] | Bebeğin salyası[MASK] | Bebek bezini[MASK] | [MASK] | [MASK]
+9 | Grup hit şarkı[MASK] | Seyirci müziğe al[MASK] | Seyirciler kibarca[MASK] | [MASK] | [MASK]
+10 | Kız matematik öğretmenine[MASK] | Kız okuldan[MASK] | Kız öğretmene[MASK] | [MASK] | [MASK]
+
+Model's Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Ürün balonlu naylona | Kırılmaz | Küçülür | effect | 1
+2 | Ceplerimi boşalttım | Bir bilet koydum | Bir silah koydum | in-order | 0
+3 | Termitler evi yedi | Termitler evi yıktı | Termitler evin içindeki eşyaları yedi | effect | 1
+4 | Yolcular sınırı geçti | Devriye ajanı yakaladı | Devriye ajanı onları kaçırdı | effect | 0
+5 | Ofis kapalıydı | Tatildeydi | Yaz mevsimiydi | reason | 0
+6 | Kızın enerjisi tükendi | Damacanayı taşıdı | İpi çekti | reason | 1
+7 | Kadın sıradaki müşteriydi | Sıraya daha fazla bekledi | Sıradan ayrıldı | in-order | 0
+8 | Kız burnunu sildi | Bebeğin salyasını sildi | Bebek bezini değiştirdi | reason | 0
+9 | Grup hit şarkı çaldı | Seyirci müziğe alkışladı | Seyirciler kibarca alkışladı | in-order | 0
+10 | Kız matematik öğretmenine teşekkür etti | Kız okuldan ayrıldı | Kız öğretmene sarıldı | in-order | 1
+Ground Truth:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Ürün balonlu naylonla paketlenmişti. | Kırılgandı. | Küçüktü. | effect | 0
+2 | Ceplerimi boşalttım. | Bir bilet koçanı aldım. | Bir silah buldum. | effect | 0
+3 | Termitler evi işgal etti. | Termitler evden kayboldu. | Termitler evin içindeki ahşabı yediler. | effect | 1
+4 | Yolcular sınıra ulaştı. | Devriye ajanı pasaportlarını kontrol etti. | Devriye ajanı onları kaçakçılıkla suçladı. | effect | 0
+5 | Ofis kapalıydı. | Tatildi. | Yaz mevsimiydi. | effect | 0
+6 | Kızın enerjisi tükendi. | Dama oynadı. | İp atladı. | effect | 1
+7 | Kadın sıradaki yerini kaybetti. | Sıraya daha fazla kişi girdi. | Sıradan çıktı. | effect | 1
+8 | Kız burnunu tıkadı. | Bebeğin salyası önlüğüne aktı. | Bebek bezini kirletti. | effect | 1
+9 | Grup hit şarkılarını çaldı. | Seyirci müziğe alkışla eşlik etti. | Seyirciler kibarca sessizce dinledi. | effect | 0
+10 | Kız matematik öğretmenine teşekkür etmek istedi. | Kız okuldan sonra cezaya kaldı. | Kız öğretmene bir elma getirdi. | effect | 1
+
+==================================================
+

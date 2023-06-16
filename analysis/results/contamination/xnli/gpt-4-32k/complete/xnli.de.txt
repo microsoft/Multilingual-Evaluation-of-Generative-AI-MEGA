@@ -1,0 +1,132 @@
+Split: train
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Konzeptionell cream abschöpfen hat zwei[MASK] | Produkt und Geographie sind das, was[MASK] | [MASK]
+2 | Du weißt, während der Saison und ich schätze, auf deiner Ebene verlierst du sie auf die nächste Ebene, wenn sie sich entschließen, sich an das Eltern - Team zu erinnern, ent[MASK] | Man verliert die Dinge auf die folgende[MASK] | [MASK]
+3 | Eine unserer Nummer wird ihre An[MASK] | Ein Mitglied meines Teams wird ihre Aufträge[MASK] | [MASK]
+4 | - woher weißt du das[MASK] | Diese Information[MASK] | [MASK]
+5 | Ja, ich sag dir was, wenn du ein paar dieser Tennis Schuhe gehen, kann[MASK] | Die Tennis Schuhe haben[MASK] | [MASK]
+6 | Mein Walkman ist kaputt, also bin ich sauer,[MASK] | Ich bin sauer, dass mein Walkman kaputt ist,[MASK] | [MASK]
+7 | Aber ein paar christliche Mosaiken überleben über der Apsis ist die Jungfrau mit dem Kleinkind Jesus, mit dem Er[MASK] | Die meisten christlichen Mosaiken[MASK] | [MASK]
+8 | ( lesen sie die Ergebnisse von Jackson in[MASK] | Schiefer hatte eine Meinung[MASK] | [MASK]
+9 | Schwule[MASK] | Heteros[MASK] | [MASK]
+10 | Am Ende der Rue des Francs - Bourgeois ist das, was viele für den sch[MASK] | Der Place des Vosges ist komplett[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Konzeptionell cream abschöpfen hat zwei Hauptaspekte | Produkt und Geographie sind das, was wichtig ist | 0
+2 | Du weißt, während der Saison und ich schätze, auf deiner Ebene verlierst du sie auf die nächste Ebene, wenn sie sich entschließen, sich an das Eltern - Team zu erinnern, entweder | Man verliert die Dinge auf die folgende Ebene | 1
+3 | Eine unserer Nummer wird ihre Anweisungen erhalten | Ein Mitglied meines Teams wird ihre Aufträge bekommen | 0
+4 | - woher weißt du das überhaupt? | Diese Information ist geheim | 2
+5 | Ja, ich sag dir was, wenn du ein paar dieser Tennis Schuhe gehen, kann ich sie verkaufen | Die Tennis Schuhe haben einen guten Preis | 1
+6 | Mein Walkman ist kaputt, also bin ich sauer, weil ich ihn reparieren muss | Ich bin sauer, dass mein Walkman kaputt ist, und ich kann nicht hören | 1
+7 | Aber ein paar christliche Mosaiken überleben über der Apsis ist die Jungfrau mit dem Kleinkind Jesus, mit dem Erzengel Gabriel | Die meisten christlichen Mosaiken wurden zerstört | 2
+8 | ( lesen sie die Ergebnisse von Jackson in der Zeitung ) | Schiefer hatte eine Meinung über Jackson | 1
+9 | Schwule Menschen haben Rechte | Heteros haben auch Rechte | 0
+10 | Am Ende der Rue des Francs - Bourgeois ist das, was viele für den schönsten Platz in Paris halten | Der Place des Vosges ist komplett renoviert | 1
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Konzeptionell cream abschöpfen hat zwei grundlegende Dimensionen - Produkt und Geographie . | Produkt und Geographie sind das , was creme abschöpfen Arbeit macht . | 1
+2 | Du weißt , während der Saison und ich schätze , auf deiner Ebene verlierst du sie auf die nächste Ebene , wenn sie sich entschließen , sich an das Eltern-Team zu erinnern , entscheiden die braves , einen Kerl von Triple A zu rufen , dann geht ein Double ein Kerl auf die nächste Stufe . Ersetzen sie ihn und ein einziger Mann geht hoch , um ihn zu ersetzen . | Man verliert die Dinge auf die folgende Ebene , wenn sich die Leute erinnern . | 0
+3 | Eine unserer Nummer wird ihre Anweisungen genauestens ausführen . | Ein Mitglied meines Teams wird ihre Aufträge mit großer Präzision ausführen . | 0
+4 | - woher weißt du das ? All das sind ihre Informationen . | Diese Information gehört ihnen . | 0
+5 | Ja , ich sag dir was , wenn du ein paar dieser Tennis Schuhe gehen , kann ich sehen , warum du jetzt weißt , dass sie in der-Dollar-Reichweite stehen . | Die Tennis Schuhe haben eine Reihe von Preisen . | 1
+6 | Mein Walkman ist kaputt , also bin ich sauer , jetzt muss ich nur noch die Stereoanlage ganz laut drehen . | Ich bin sauer , dass mein Walkman kaputt ist , und jetzt muss ich die Stereoanlage richtig laut drehen . | 0
+7 | Aber ein paar christliche Mosaiken überleben über der Apsis ist die Jungfrau mit dem Kleinkind Jesus , mit dem Erzengel Gabriel rechts ( sein Begleiter Michael , links , ist verschwunden für ein paar Federn von seinen Flügeln ) . | Die meisten christlichen Mosaiken wurden von Muslimen zerstört . | 1
+8 | ( lesen sie die Ergebnisse von Jackson in Bezug auf die Ergebnisse von Jackson . ) | Schiefer hatte eine Meinung zu den Ergebnissen von Jackson . | 0
+9 | Schwule und Lesben . | Heterosexuelle . | 2
+10 | Am Ende der Rue des Francs-Bourgeois ist das , was viele für den schönsten Platz der Stadt , den Place des Vosges , mit seinen Stein-und roten Brick halten . | Der Place des Vosges ist komplett aus grauem Marmor gebaut . | 2
+
+==================================================
+
+Split: validation
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | und er hat gesagt,[MASK] | Er rief seine Mutter an, sob[MASK] | [MASK]
+2 | und er hat gesagt,[MASK] | Er sagte[MASK] | [MASK]
+3 | und er hat gesagt,[MASK] | Er sagte seiner Mutter,[MASK] | [MASK]
+4 | Ich wusste nicht was ich vorhatte oder so[MASK] | Ich war noch nie in Washington, deshalb habe ich mich auf der Suche[MASK] | [MASK]
+5 | Ich wusste nicht was ich vorhatte oder so[MASK] | Ich wusste genau, was ich tun[MASK] | [MASK]
+6 | Ich wusste nicht was ich vorhatte oder so[MASK] | Ich war mir nicht ganz sicher was ich tun soll und deswegen bin[MASK] | [MASK]
+7 | Er konnte[MASK] | Er war der Erste, der eingeladen[MASK] | [MASK]
+8 | Er konnte[MASK] | Er durfte nicht[MASK] | [MASK]
+9 | Er konnte[MASK] | Ihm wurde nicht erlaubt zu[MASK] | [MASK]
+10 | Und ich dachte OK[MASK] | Nachdem ich ja gesagt[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | und er hat gesagt, dass er anruft | Er rief seine Mutter an, sobald er konnte | 0
+2 | und er hat gesagt, dass es stimmt | Er sagte die Wahrheit | 0
+3 | und er hat gesagt, dass er sie informiert | Er sagte seiner Mutter, was passiert ist | 1
+4 | Ich wusste nicht was ich vorhatte oder so, aber ich ging trotzdem | Ich war noch nie in Washington, deshalb habe ich mich auf der Suche nach einer Karte gemacht | 1
+5 | Ich wusste nicht was ich vorhatte oder so, aber ich fand es heraus | Ich wusste genau, was ich tun musste | 1
+6 | Ich wusste nicht was ich vorhatte oder so, und das machte mich unsicher | Ich war mir nicht ganz sicher was ich tun soll und deswegen bin ich zögerlich | 0
+7 | Er konnte die Party organisieren | Er war der Erste, der eingeladen wurde | 1
+8 | Er konnte nicht teilnehmen | Er durfte nicht hingehen | 2
+9 | Er konnte nicht kommen | Ihm wurde nicht erlaubt zu erscheinen | 2
+10 | Und ich dachte OK, ich mache es | Nachdem ich ja gesagt habe, habe ich es getan | 0
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | und er hat gesagt, Mama ich bin daheim. | Er rief seine Mutter an, sobald er aus dem Schulbus stieg. | 1
+2 | und er hat gesagt, Mama ich bin daheim. | Er sagte kein Wort. | 2
+3 | und er hat gesagt, Mama ich bin daheim. | Er sagte seiner Mutter, er sei nach Hause gekommen. | 0
+4 | Ich wusste nicht was ich vorhatte oder so, ich musste mich an einen bestimmten Ort in Washington melden. | Ich war noch nie in Washington, deshalb habe ich mich auf der Suche nach dem Ort verirrt, als ich dahin entsandt wurde. | 1
+5 | Ich wusste nicht was ich vorhatte oder so, ich musste mich an einen bestimmten Ort in Washington melden. | Ich wusste genau, was ich tun musste, als ich nach Washington marschierte. | 2
+6 | Ich wusste nicht was ich vorhatte oder so, ich musste mich an einen bestimmten Ort in Washington melden. | Ich war mir nicht ganz sicher was ich tun soll und deswegen bin ich nach Washington gereist wo ich zugewiesen wurde zu berichten. | 0
+7 | Er konnte nicht gehen. | Er war der Erste, der eingeladen wurde und die Erfahrung genossen hat. | 2
+8 | Er konnte nicht gehen. | Er durfte nicht teilnehmen. | 0
+9 | Er konnte nicht gehen. | Ihm wurde nicht erlaubt zu der Eröffnung des Museums zu gehen. | 1
+10 | Und ich dachte OK und das war es dann! | Nachdem ich ja gesagt hatte, endete es. | 0
+
+==================================================
+
+Split: test
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Nun, daran dachte ich nicht einmal, aber ich war so[MASK] | Ich habe nicht wieder[MASK] | [MASK]
+2 | Nun, daran dachte ich nicht einmal, aber ich war so[MASK] | Ich war so mitgenommen, dass ich[MASK] | [MASK]
+3 | Nun, daran dachte ich nicht einmal, aber ich war so[MASK] | Wir hatten ein toll[MASK] | [MASK]
+4 | „ Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist esi mm[MASK] | Mir war nicht bewusst, dass ich nicht die[MASK] | [MASK]
+5 | „ Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist esi mm[MASK] | Ich hatte den Eindruck, dass ich im AFCF[MASK] | [MASK]
+6 | „ Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist esi mm[MASK] | Uns wurde allen die gleiche Anzahl gegeben, unabhängig davon, was für Pri[MASK] | [MASK]
+7 | Sie sagten mir, dass ich am Ende von einem[MASK] | Mir wurde nie gesagt, dass[MASK] | [MASK]
+8 | Sie sagten mir, dass ich am Ende von einem[MASK] | Mir wurde gesagt, dass ein Typ Be[MASK] | [MASK]
+9 | Sie sagten mir, dass ich am Ende von einem[MASK] | Der Typ kam[MASK] | [MASK]
+10 | Es gibt so viel was ich darüber erz[MASK] | Ich möchte dir alles erz[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Nun, daran dachte ich nicht einmal, aber ich war so überrascht | Ich habe nicht wieder daran gedacht | 1
+2 | Nun, daran dachte ich nicht einmal, aber ich war so aufgeregt | Ich war so mitgenommen, dass ich weinte | 1
+3 | Nun, daran dachte ich nicht einmal, aber ich war so beschäftigt | Wir hatten ein tolles Erlebnis | 1
+4 | „ Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist es immer | Mir war nicht bewusst, dass ich nicht die einzige war | 1
+5 | „ Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist es immer | Ich hatte den Eindruck, dass ich im AFCF bevorzugt wurde | 1
+6 | „ Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist es immer | Uns wurde allen die gleiche Anzahl gegeben, unabhängig davon, was für Privilegien | 0
+7 | Sie sagten mir, dass ich am Ende von einem langen Tag | Mir wurde nie gesagt, dass ich gehen sollte | 1
+8 | Sie sagten mir, dass ich am Ende von einem wichtigen Projekt | Mir wurde gesagt, dass ein Typ Bescheid wusste | 1
+9 | Sie sagten mir, dass ich am Ende von einem erfolgreichen Jahr | Der Typ kam zu spät | 1
+10 | Es gibt so viel, was ich darüber erzählen kann | Ich möchte dir alles erzählen | 0
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Nun, daran dachte ich nicht einmal, aber ich war so frustriert, dass ich am Ende doch mit ihm redete. | Ich habe nicht wieder mit ihm gesprochen. | 2
+2 | Nun, daran dachte ich nicht einmal, aber ich war so frustriert, dass ich am Ende doch mit ihm redete. | Ich war so mitgenommen, dass ich einfach wieder anfing mit ihm zu reden. | 0
+3 | Nun, daran dachte ich nicht einmal, aber ich war so frustriert, dass ich am Ende doch mit ihm redete. | Wir hatten ein tolles Gespräch. | 1
+4 | „Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist esi mmer noch. Ich war der einzige 229 Ex-O, was mein AFCF Air Force-Karriere-Feld war.“ | Mir war nicht bewusst, dass ich nicht die einzige Person auf dem Feld war an diesem Tag. | 1
+5 | „Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist esi mmer noch. Ich war der einzige 229 Ex-O, was mein AFCF Air Force-Karriere-Feld war.“ | Ich hatte den Eindruck, dass ich im AFCF Air Force Career Field der einzige mit dieser Nummer war. | 0
+6 | „Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist esi mmer noch. Ich war der einzige 229 Ex-O, was mein AFCF Air Force-Karriere-Feld war.“ | Uns wurde allen die gleiche Anzahl gegeben, unabhängig davon, was für Privilegien uns vorher versprochen worden waren. Es war alles gelogen. | 2
+7 | Sie sagten mir, dass ich am Ende von einem Kerl angerufen werden würde, um mich zu treffen. | Mir wurde nie gesagt, dass ich jemanden treffen würde. | 2
+8 | Sie sagten mir, dass ich am Ende von einem Kerl angerufen werden würde, um mich zu treffen. | Mir wurde gesagt, dass ein Typ Bescheid bekommen würde, sich mit mir zu treffen. | 0
+9 | Sie sagten mir, dass ich am Ende von einem Kerl angerufen werden würde, um mich zu treffen. | Der Typ kam etwas spät. | 1
+10 | Es gibt so viel was ich darüber erzählen könnte, ich überspringe das einfach. | Ich möchte dir alles erzählen, was ich darüber weiß! | 2
+
+==================================================
+

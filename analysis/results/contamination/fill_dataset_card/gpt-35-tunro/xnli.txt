@@ -1,0 +1,37 @@
+languages:
+- "en"
+- "ar"
+- "bg"
+- "de"
+- "el"
+- "es"
+- "fr"
+- "hi"
+- "ru"
+- "sw"
+- "th"
+- "tr"
+- "ur"
+- "vi"
+- "zh"
+pretty_name: "Cross-lingual NLI (XNLI)"
+tags:
+- "natural language inference"
+- "cross-lingual"
+- "multilingual"
+dataset_info:
+    features:
+        - name: "premise"
+          dtype: "string"
+        - name: "hypothesis"
+          dtype: "string"
+        - name: "label"
+          dtype: "int64"
+    splits:
+        train:
+            num_examples: 392,702
+        validation:
+            num_examples: 2,490
+        test:
+            num_examples: 5,010
+dataset_summary: "The XNLI dataset is a cross-lingual natural language inference dataset that contains sentence pairs in 15 languages. The task is to determine whether the hypothesis is entailed, contradicted, or neutral given the premise. The dataset is derived from the Multi-Genre Natural Language Inference (MultiNLI) dataset and is designed to evaluate cross-lingual transfer of NLI models."

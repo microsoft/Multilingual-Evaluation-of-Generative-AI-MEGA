@@ -1,0 +1,116 @@
+languages: 
+- af
+- am
+- ar
+- as
+- az
+- be
+- bg
+- bn
+- br
+- bs
+- ca
+- cs
+- cy
+- da
+- de
+- el
+- en
+- es
+- et
+- eu
+- fa
+- fi
+- fr
+- ga
+- gl
+- gu
+- he
+- hi
+- hr
+- ht
+- hu
+- hy
+- id
+- is
+- it
+- ja
+- jv
+- ka
+- kk
+- km
+- kn
+- ko
+- ku
+- ky
+- la
+- lb
+- lo
+- lt
+- lv
+- mg
+- mk
+- ml
+- mn
+- mr
+- ms
+- mt
+- my
+- ne
+- nl
+- no
+- oc
+- or
+- pa
+- pl
+- ps
+- pt
+- ro
+- ru
+- sa
+- sd
+- sh
+- si
+- sk
+- sl
+- sq
+- sr
+- sv
+- sw
+- ta
+- te
+- th
+- tl
+- tr
+- uk
+- ur
+- uz
+- vi
+- xh
+- yi
+- zu
+
+pretty_name: "WikiANN"
+
+tags:
+- named_entity_recognition
+- multilingual
+
+dataset_info:
+    features:
+        - name: "tokens"
+          dtype: "List of strings"
+        - name: "ner_tags"
+          dtype: "List of integers"
+        - name: "langs"
+          dtype: "List of strings"
+
+    splits:
+        train:
+            num_examples: "1,000,000"
+        validation:
+            num_examples: "200,000"
+        test:
+            num_examples: "200,000"
+
+dataset_summary: "WikiANN is a multilingual named entity recognition dataset consisting of over 1.4 million annotated sentences in 282 languages. The dataset is derived from Wikipedia articles and is designed for training and evaluating NER models across multiple languages."

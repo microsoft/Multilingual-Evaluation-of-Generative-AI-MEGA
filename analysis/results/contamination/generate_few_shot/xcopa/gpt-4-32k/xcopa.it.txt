@@ -1,0 +1,48 @@
+Split: train
+Prompt:
+Please generate instances of XCOPA Italian dataset train split. Use the following format:
+{'premise': '{premise}', 'choice1': '{choice1}', 'choice2': '{choice2}', 'question': '{question}', 'label': '{label}', 'idx': '{idx}', 'changed': '{changed}'}.
+{"premise": "L'uomo apr\u00ec il rubinetto.", "choice1": "Il gabinetto si riemp\u00ec d'acqua.", "choice2": "Dell'acqua flu\u00ec dal beccuccio.", "question": "effect", "label": 1, "idx": 0, "changed": false}
+{"premise": "La ragazza trov\u00f2 un insetto nei cereali.", "choice1": "Vers\u00f2 il latte nella ciotola.", "choice2": "Perse l'appetito.", "question": "effect", "label": 1, "idx": 1, "changed": false}
+{"premise": "La donna and\u00f2 in pensione.", "choice1": "Ricevette la sua pensione.", "choice2": "Ripag\u00f2 il suo mutuo.", "question": "effect", "label": 0, "idx": 2, "changed": false}
+{"premise": "Volevo conservare le energie.", "choice1": "Spazzai a terra nella stanza vuota.", "choice2": "Spensi la luce nella stanza vuota.", "question": "effect", "label": 1, "idx": 3, "changed": false}
+
+Response:
+{"premise": "Il bambino ha rotto il vaso.", "choice1": "Il vaso è caduto a terra.", "choice2": "Il vaso è stato riparato.", "question": "effect", "label": 0, "idx": 4, "changed": false}
+{"premise": "Il cane ha mangiato il cibo del gatto.", "choice1": "Il gatto è rimasto affamato.", "choice2": "Il gatto ha mangiato il cibo del cane.", "question": "effect", "label": 0, "idx": 5, "changed": false}
+{"premise": "Il ragazzo ha dimenticato il suo ombrello a casa.", "choice1": "Il ragazzo è rimasto asciutto.", "choice2": "Il ragazzo si è bagnato sotto la pioggia.", "question": "effect", "label": 1, "idx": 6, "changed": false}
+{"premise": "La donna ha vinto alla lotteria.", "choice1": "La donna ha ricevuto un premio in denaro.", "choice2": "La donna ha perso tutti i suoi soldi.", "question": "effect", "label": 0, "idx": 7, "changed": false}
+==================================================
+
+Split: validation
+Prompt:
+Please generate instances of XCOPA Italian dataset validation split. Use the following format:
+{'premise': '{premise}', 'choice1': '{choice1}', 'choice2': '{choice2}', 'question': '{question}', 'label': '{label}', 'idx': '{idx}', 'changed': '{changed}'}.
+{"premise": "L'uomo apr\u00ec il rubinetto.", "choice1": "Il gabinetto si riemp\u00ec d'acqua.", "choice2": "Dell'acqua flu\u00ec dal beccuccio.", "question": "effect", "label": 1, "idx": 0, "changed": false}
+{"premise": "La ragazza trov\u00f2 un insetto nei cereali.", "choice1": "Vers\u00f2 il latte nella ciotola.", "choice2": "Perse l'appetito.", "question": "effect", "label": 1, "idx": 1, "changed": false}
+{"premise": "La donna and\u00f2 in pensione.", "choice1": "Ricevette la sua pensione.", "choice2": "Ripag\u00f2 il suo mutuo.", "question": "effect", "label": 0, "idx": 2, "changed": false}
+{"premise": "Volevo conservare le energie.", "choice1": "Spazzai a terra nella stanza vuota.", "choice2": "Spensi la luce nella stanza vuota.", "question": "effect", "label": 1, "idx": 3, "changed": false}
+
+Response:
+{"premise": "Il ragazzo ha rotto il vetro della finestra.", "choice1": "Il vetro si è frantumato.", "choice2": "Il vetro è diventato più forte.", "question": "effect", "label": 0, "idx": 4, "changed": false}
+{"premise": "Il gatto ha catturato un topo.", "choice1": "Il topo è scappato.", "choice2": "Il topo è stato preso.", "question": "effect", "label": 1, "idx": 5, "changed": false}
+{"premise": "La pioggia ha bagnato il terreno.", "choice1": "Il terreno è diventato asciutto.", "choice2": "Il terreno è diventato umido.", "question": "effect", "label": 1, "idx": 6, "changed": false}
+{"premise": "Il bambino ha mangiato troppi dolci.", "choice1": "Il bambino ha avuto mal di stomaco.", "choice2": "Il bambino ha mangiato una mela.", "question": "effect", "label": 0, "idx": 7, "changed": false}
+==================================================
+
+Split: test
+Prompt:
+Please generate instances of XCOPA Italian dataset test split. Use the following format:
+{'premise': '{premise}', 'choice1': '{choice1}', 'choice2': '{choice2}', 'question': '{question}', 'label': '{label}', 'idx': '{idx}', 'changed': '{changed}'}.
+{"premise": "L'oggetto era incartato nella plastica bollata.", "choice1": "Era delicato.", "choice2": "Era piccolo.", "question": "cause", "label": 0, "idx": 0, "changed": false}
+{"premise": "Avevo svuotato le mie tasche.", "choice1": "Estrassi la matrice di un biglietto.", "choice2": "Trovai un'arma.", "question": "effect", "label": 0, "idx": 1, "changed": false}
+{"premise": "Le termiti invasero la casa.", "choice1": "Le termiti sparirono dalla casa.", "choice2": "Le termiti rosero il legno della casa.", "question": "effect", "label": 1, "idx": 2, "changed": false}
+{"premise": "I viaggiatori raggiunsero il confine.", "choice1": "L'agente di pattuglia controll\u00f2 i loro passaporti.", "choice2": "L'agente di pattuglia li accus\u00f2 di contrabbando.", "question": "effect", "label": 0, "idx": 3, "changed": false}
+
+Response:
+{"premise": "Il bambino ha mangiato troppi dolci.", "choice1": "Il bambino aveva fame.", "choice2": "Il bambino ha avuto mal di stomaco.", "question": "effect", "label": 1, "idx": 4, "changed": false}
+{"premise": "Il telefono squillò mentre dormivo.", "choice1": "Mi svegliai per rispondere al telefono.", "choice2": "Continuai a dormire senza rispondere al telefono.", "question": "effect", "label": 0, "idx": 5, "changed": false}
+{"premise": "Il ghiaccio sulla strada si è sciolto.", "choice1": "La temperatura è aumentata.", "choice2": "La temperatura è diminuita.", "question": "cause", "label": 0, "idx": 6, "changed": false}
+{"premise": "Il cane ha rotto il vaso di fiori.", "choice1": "Il cane era eccitato.", "choice2": "Il cane era addormentato.", "question": "cause", "label": 0, "idx": 7, "changed": false}
+==================================================
+

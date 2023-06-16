@@ -1,0 +1,75 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XNLI German dataset train split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Die Sonne scheint. | Es ist Tag. | 0
+2 | Der Hund bellt. | Das Tier schläft. | 2
+3 | Ich esse gerne Pizza. | Pizza ist mein Lieblingsessen. | 0
+4 | Der Himmel ist blau. | Die Wolken sind weiß. | 2
+5 | Ich trinke Kaffee. | Tee ist mein Lieblingsgetränk. | 2
+6 | Der Mann liest ein Buch. | Die Frau schaut fern. | 2
+7 | Ich gehe gerne spazieren. | Ich mag keine frische Luft. | 2
+8 | Der Apfel ist rot. | Die Banane ist gelb. | 2
+9 | Ich spiele gerne Fußball. | Ich bin kein Sportler. | 2
+10 | Die Katze schläft. | Das Tier ist wach. | 2
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XNLI German dataset validation split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Die Sonne scheint. | Es ist Tag. | 0
+2 | Der Hund bellt. | Das Tier schläft. | 2
+3 | Ich esse gerne Pizza. | Pizza ist mein Lieblingsessen. | 1
+4 | Der Mann liest ein Buch. | Die Frau schaut fern. | 2
+5 | Der Himmel ist blau. | Es regnet. | 2
+6 | Ich trinke Kaffee. | Tee ist mein Lieblingsgetränk. | 2
+7 | Die Katze jagt eine Maus. | Die Maus jagt die Katze. | 0
+8 | Der Junge spielt Fußball. | Das Mädchen liest ein Buch. | 2
+9 | Ich gehe gerne spazieren. | Ich hasse es, draußen zu sein. | 2
+10 | Die Blumen blühen im Frühling. | Im Winter schneit es oft. | 2
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XNLI German dataset test split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Die Sonne scheint. | Es ist Tag. | 0
+2 | Der Hund bellt. | Das Auto fährt. | 2
+3 | Ich esse gerne Pizza. | Pizza ist mein Lieblingsessen. | 0
+4 | Der Himmel ist blau. | Die Wolken sind weiß. | 2
+5 | Ich trinke Kaffee. | Tee ist mein Lieblingsgetränk. | 2
+6 | Der Mann liest ein Buch. | Die Frau schaut fern. | 2
+7 | Ich gehe gerne spazieren. | Ich mag es drinnen zu bleiben. | 2
+8 | Der Apfel ist rot. | Die Banane ist gelb. | 2
+9 | Ich spiele gerne Fußball. | Ich mag keine Sportarten. | 2
+10 | Die Katze schläft. | Der Hund spielt. | 2
+==================================================
+

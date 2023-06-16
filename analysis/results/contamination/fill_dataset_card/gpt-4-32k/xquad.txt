@@ -1,0 +1,34 @@
+languages: 
+- ar
+- de
+- el
+- en
+- es
+- hi
+- ru
+- th
+- tr
+- vi
+- zh
+pretty_name: "XQuAD"
+tags:
+- question_answering
+- multilingual
+dataset_info:
+    features:
+        - name: "id"
+          dtype: "string"
+        - name: "context"
+          dtype: "string"
+        - name: "question"
+          dtype: "string"
+        - name: "answers"
+          dtype: "list of dictionaries"
+    splits:
+        train:
+            num_examples: "0"
+        validation:
+            num_examples: "11900"
+        test:
+            num_examples: "0"
+dataset_summary: "XQuAD (Cross-lingual Question Answering Dataset) is a benchmark dataset for evaluating cross-lingual question answering performance. The dataset consists of a subset of 240 paragraphs and 1190 question-answer pairs from the development set of SQuAD v1.1, which have been translated into 10 languages: Arabic, German, Greek, English, Spanish, Hindi, Russian, Thai, Turkish, and Vietnamese."

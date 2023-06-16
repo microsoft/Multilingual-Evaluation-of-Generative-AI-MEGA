@@ -1,0 +1,27 @@
+Split: test
+Prompt:
+Please generate the first 10 instances of XQuAD German dataset test split. Use the following format:
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answers1}
+{id2} | {context2} | {question2} | {answers2}
+...
+.
+Response:
+1 | Die Normandie ist eine Region im Nordwesten Frankreichs, die an den Ärmelkanal grenzt. Sie besteht aus fünf Grafschaften: Calvados, Eure, Manche, Orne und Seine-Maritime. Die Hauptstadt der Normandie ist Rouen. Die Region ist bekannt für ihre Küstenlandschaft, ihre reiche Geschichte und ihre kulturellen Sehenswürdigkeiten wie die Kathedrale von Rouen, das Mont-Saint-Michel und die D-Day Strände. | Was sind die fünf Grafschaften der Normandie? | Calvados, Eure, Manche, Orne, Seine-Maritime
+
+2 | Die Sonne ist ein Stern im Zentrum unseres Sonnensystems. Sie ist eine fast perfekte Kugel aus heißem Plasma und hat einen Durchmesser von etwa 1,4 Millionen Kilometern. Die Sonne besteht hauptsächlich aus Wasserstoff und Helium und erzeugt ihre Energie durch Kernfusion. Die Sonne ist für das Leben auf der Erde von entscheidender Bedeutung, da sie Licht und Wärme liefert. | Aus welchen zwei Hauptelementen besteht die Sonne? | Wasserstoff und Helium
+
+3 | Der Amazonas-Regenwald ist das größte tropische Regenwaldgebiet der Welt und erstreckt sich über neun Länder in Südamerika: Brasilien, Peru, Kolumbien, Venezuela, Ecuador, Bolivien, Guyana, Suriname und Französisch-Guayana. Der Amazonas-Regenwald ist bekannt für seine unglaubliche Artenvielfalt und spielt eine wichtige Rolle im globalen Klima, da er große Mengen an Kohlendioxid speichert und Sauerstoff produziert. | In wie vielen Ländern erstreckt sich der Amazonas-Regenwald? | Neun
+
+4 | Die Mona Lisa ist ein Ölgemälde von Leonardo da Vinci, das in der ersten Hälfte des 16. Jahrhunderts entstanden ist. Es ist eines der bekanntesten und am meisten geschätzten Kunstwerke der Welt und wird im Louvre in Paris ausgestellt. Die Mona Lisa ist bekannt für ihr geheimnisvolles Lächeln und ihre faszinierenden Augen, die den Betrachter scheinbar verfolgen. | In welchem Museum wird die Mona Lisa ausgestellt? | Louvre
+
+5 | Die Olympischen Spiele sind ein internationales Sportereignis, das alle vier Jahre stattfindet. Sie bestehen aus den Olympischen Sommerspielen und den Olympischen Winterspielen, die im Wechsel alle zwei Jahre stattfinden. Die Olympischen Spiele wurden erstmals im Jahr 776 v. Chr. im antiken Griechenland abgehalten und wurden 1896 in Athen, Griechenland, wiederbelebt. | In welchem Jahr wurden die modernen Olympischen Spiele wiederbelebt? | 1896
+
+6 | Der Eiffelturm ist ein Eisenfachwerkturm in Paris, der nach dem Ingenieur Gustave Eiffel benannt ist, der den Turm entworfen und dessen Firma den Turm gebaut hat. Der Eiffelturm wurde ursprünglich für die Weltausstellung von 1889 errichtet und ist heute eines der bekanntesten Wahrzeichen der Welt. Der Turm ist 324 Meter hoch und war bei seiner Fertigstellung das höchste Bauwerk der Welt. | Für welche Veranstaltung wurde der Eiffelturm ursprünglich errichtet? | Weltausstellung von 1889
+
+7 | Die DNA, oder Desoxyribonukleinsäure, ist eine lange, doppelsträngige Molekülstruktur, die die genetische Information aller lebenden Organismen und einiger Viren enthält. Die DNA ist in Chromosomen verpackt, die sich im Zellkern befinden. Die DNA besteht aus vier verschiedenen Nukleotiden: Adenin, Thymin, Guanin und Cytosin, die in einer bestimmten Reihenfolge angeordnet sind und den genetischen Code bilden. | Aus welchen vier Nukleotiden besteht die DNA? | Adenin, Thymin, Guanin, Cytosin
+
+8 | Die Vereinten Nationen (UN) sind eine internationale Organisation, die 1945 gegründet wurde, um den Weltfrieden und die internationale Zusammen
+==================================================
+

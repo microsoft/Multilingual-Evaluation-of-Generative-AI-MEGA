@@ -1,0 +1,75 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XNLI Arabic dataset train split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | الرجل يرتدي قميصًا أحمر | الرجل يرتدي قميصًا أخضر | 2
+2 | الفتاة ترتدي فستانًا أحمر | الفتاة ترتدي فستانًا أزرق | 2
+3 | الرجل يركب دراجة هوائية | الرجل يركب سيارة | 2
+4 | الفتاة تحمل حقيبة كبيرة | الفتاة تحمل حقيبة صغيرة | 2
+5 | الرجل يقرأ كتابًا | الرجل يشاهد التلفزيون | 2
+6 | الفتاة ترتدي نظارات | الفتاة لا ترتدي نظارات | 0
+7 | الرجل يرتدي قبعة | الرجل لا يرتدي قبعة | 1
+8 | الفتاة ترتدي حذاءً أسود | الفتاة ترتدي حذاءً أحمر | 2
+9 | الرجل يجلس على الأريكة | الرجل يجلس على الكرسي | 1
+10 | الفتاة ترتدي ساعة | الفتاة لا ترتدي ساعة | 0
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XNLI Arabic dataset validation split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | الرجل يرتدي قميصًا أحمر | الرجل يرتدي قميصًا أخضر | 2
+2 | الفتاة ترتدي فستانًا أحمر | الفتاة ترتدي فستانًا أحمر | 1
+3 | الولد يلعب كرة القدم في الملعب | الولد يلعب كرة السلة في الملعب | 2
+4 | الكلب يجري في الحديقة | الكلب ينام في الحديقة | 0
+5 | الأم تحمل طفلها في حضنها | الأم تحمل كتابًا في حضنها | 2
+6 | الرجل يقود السيارة بسرعة | الرجل يقود السيارة ببطء | 2
+7 | الفتاة ترتدي نظارات | الفتاة ترتدي قبعة | 2
+8 | الأولاد يلعبون في الحديقة | الأولاد يلعبون في المدرسة | 0
+9 | الرجل يشرب الشاي في المقهى | الرجل يشرب القهوة في المقهى | 1
+10 | الفتاة ترتدي فستانًا أحمر | الفتاة ترتدي بنطلونًا أحمر | 2
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XNLI Arabic dataset test split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | الرجل يرتدي قميصًا أحمر | الرجل يرتدي قميصًا أخضر | 2
+2 | الفتاة ترتدي فستانًا أحمر | الفتاة ترتدي فستانًا أزرق | 2
+3 | الرجل يقود السيارة | الرجل يجلس في السيارة | 1
+4 | الفتاة ترتدي نظارات | الفتاة ترتدي قبعة | 2
+5 | الرجل يشرب الشاي | الرجل يشرب القهوة | 2
+6 | الفتاة ترتدي حذاءً أسود | الفتاة ترتدي حذاءً أحمر | 2
+7 | الرجل يقرأ الجريدة | الرجل يشاهد التلفاز | 2
+8 | الفتاة ترتدي ساعة | الفتاة ترتدي أساور | 2
+9 | الرجل يرتدي نظارات | الرجل يرتدي قميصًا | 2
+10 | الفتاة ترتدي فستانًا أحمر | الفتاة ترتدي فستانًا أحمر وأسود | 0
+==================================================
+

@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Estonian dataset train split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | Kass on laual. | Kass on põrandal. | Kass on toolil. | Negation | 0\n2 | Kass on laual. | Kass on laual ja põrandal. | Kass on ainult põrandal. | Quantification | 1\n3 | Kass on laual. | Kass on laual. | Kass on aknalaual. | Location | 0\n4 | Kass on laual. | Kass on laual. | Kass on laual ja toolil. | Quantification | 1\n5 | Kass on laual. | Kass on laual. | Kass on laual ja põrandal. | Quantification | 1\n6 | Kass on laual. | Kass on laual. | Kass on põrandal. | Negation | 0\n7 | Kass on laual. | Kass on laual. | Kass on aknalaual. | Location | 0\n8 | Kass on laual. | Kass on laual. | Kass on toolil. | Location | 0\n9 | Kass on laual. | Kass on laual. | Kass on ainult laual. | Quantification | 1\n10 | Kass on laual. | Kass on laual. | Kass on ainult põrandal. | Quantification | 0"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Estonian dataset validation split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | Kass on laual. | Kass on põrandal. | Kass on toolil. | Negation | 0\n2 | Mari ja Kati lähevad kinno. | Mari ja Kati lähevad teatrisse. | Mari ja Kati lähevad poodi. | Quantification | 0\n3 | Kõik lapsed armastavad jäätist. | Mõned lapsed armastavad jäätist. | Kõik lapsed vihkavad jäätist. | Quantification | 1\n4 | Kass on must. | Kass on valge. | Kass on pruun. | Negation | 1\n5 | Kõik linnud lendavad. | Mõned linnud ei lenda. | Kõik linnud ujuvad. | Quantification | 0\n6 | Kass joob piima. | Kass joob vett. | Kass joob mahla. | Coreference | 0\n7 | Kõik koerad on loomad. | Mõned koerad on kassid. | Kõik koerad on kassid. | Quantification | 1\n8 | Kass on laual. | Kass on põrandal. | Kass on aknalaual. | Coreference | 0\n9 | Kõik lapsed armastavad jäätist. | Kõik täiskasvanud armastavad jäätist. | Mõned lapsed armastavad jäätist. | Quantification | 0\n10 | Kass on must. | Kass on valge. | Kass on triibuline. | Negation | 1"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Estonian dataset test split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | Kass on laual. | Kass on põrandal. | Kass on toolil. | Negation | 0\n2 | Mari ja Kati räägivad telefonis. | Mari ja Kati kirjutavad kirja. | Mari ja Kati räägivad näost-näkku. | Coreference | 1\n3 | Kõik lapsed mängivad õues. | Mõned lapsed mängivad toas. | Kõik lapsed mängivad toas. | Quantification | 0\n4 | Kass on must. | Kass on valge. | Kass on triibuline. | Property Concept | 0\n5 | Kõik lapsed armastavad jäätist. | Mõned lapsed armastavad jäätist. | Kõik lapsed vihkavad jäätist. | Quantification | 1\n6 | Kass joob piima. | Kass sööb kala. | Kass joob vett. | Property Concept | 0\n7 | Mari ja Kati on õed. | Mari ja Kati on sõbrad. | Mari ja Kati on vaenlased. | Coreference | 0\n8 | Kõik lapsed armastavad šokolaadi. | Mõned lapsed armastavad šokolaadi. | Kõik lapsed vihkavad šokolaadi. | Quantification | 0\n9 | Kass on laual. | Kass on põrandal. | Kass on aknalaual. | Negation | 0\n10 | Mari ja Kati räägivad telefonis. | Mari ja Kati kirjutavad kirja. | Mari ja Kati räägivad näost-näkku. | Coreference | 1"
+    }
+]

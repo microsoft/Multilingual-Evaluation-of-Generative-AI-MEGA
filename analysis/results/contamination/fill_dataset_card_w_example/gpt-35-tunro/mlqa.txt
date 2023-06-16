@@ -1,0 +1,35 @@
+languages:
+- en
+- ar
+- de
+- es
+- hi
+- vi
+- zh
+pretty_name: Multilingual Question Answering
+tags:
+- question answering
+- multilingual
+dataset_info:
+    features:
+        - name: "context"
+          dtype: "string"
+        - name: "question"
+          dtype: "string"
+        - name: "answers"
+          dtype: "List of dictionaries"
+          value: 
+            - "text": "string"
+              "answer_start": "int"
+        - name: "id"
+          dtype: "string"
+        - name: "title"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 86821
+        validation:
+            num_examples: 1140
+        test:
+            num_examples: 1140
+dataset_summary: MLQA is a benchmark dataset for cross-lingual question answering. It consists of questions and answers pairs in 7 languages (English, Arabic, German, Spanish, Hindi, Vietnamese, and Chinese) and their corresponding contexts. The dataset is designed to evaluate the ability of models to transfer knowledge across languages and answer questions in a multilingual setting.
