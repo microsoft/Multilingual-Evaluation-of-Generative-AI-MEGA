@@ -1,6 +1,6 @@
 import os
 import argparse
-from typing import Dict, Any,  Optional
+from typing import Dict, Any, Optional
 import openai
 import sys
 import time
@@ -11,7 +11,10 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from datasets import Dataset
-from mega.data.load_datasets import load_xstory_cloze_dataset, load_xstory_cloze_translate_test
+from mega.data.load_datasets import (
+    load_xstory_cloze_dataset,
+    load_xstory_cloze_translate_test,
+)
 from mega.data.data_utils import choose_few_shot_examples
 from mega.models.completion_models import model_completion
 from mega.prompting.prompting_utils import construct_xstory_prompt
@@ -24,15 +27,11 @@ PROMPT_TEMPLATES = {
     "Choose Story Ending": """Read the following story :\n\n{input_sentence_1}\n{input_sentence_2}\n{input_sentence_3}\n{input_sentence_4}\n\nChoose a possible ending for the previous story from the following options:\n-Option1: {sentence_quiz1}\n-Option2: {sentence_quiz2}""",
     "Movie What Happens Next": """Yesterday, I watched a movie. Here''s what happened: {input_sentence_1} {input_sentence_2} {input_sentence_3} {input_sentence_4} What happens next? \n-Option1: {sentence_quiz1}\n-Option2: {sentence_quiz2}""",
     "Story Continuation and Options": """What is a possible continuation for the following story ? \n\n{input_sentence_1}\n{input_sentence_2}\n{input_sentence_3}\n{input_sentence_4}\n\nChoose from the following options:\n-Option1: {sentence_quiz1}\n-Option2: {sentence_quiz2}""",
-    "Novel Correct Ending": """I read the following novel: {input_sentence_1} {input_sentence_2} {input_sentence_3} {input_sentence_4} What do you think is the most probable ending? You can choose from the following options:\n-Option1: {sentence_quiz1}\n-Option2: {sentence_quiz2}"""
+    "Novel Correct Ending": """I read the following novel: {input_sentence_1} {input_sentence_2} {input_sentence_3} {input_sentence_4} What do you think is the most probable ending? You can choose from the following options:\n-Option1: {sentence_quiz1}\n-Option2: {sentence_quiz2}""",
 }
 
-VERBALIZER = {
-    "default": {
-        1: "Option1",
-        2: "Option2"
-    }
-}
+VERBALIZER = {"default": {1: "Option1", 2: "Option2"}}
+
 
 def evaluate(
     train_dataset: Dataset,
@@ -49,17 +48,17 @@ def evaluate(
     log_wandb: bool = False,
     chat_prompt: bool = False,
     instruction: str = "",
+    timeout: int = 0,
     **model_params,
 ) -> float:
-
     run_details = {"num_calls": 0}
-    
+
     train_examples = choose_few_shot_examples(
         train_dataset, few_shot_size, selection_criteria
     )
-    
+
     valid_labels = [1, 2]
-    
+
     preds = []
     labels = []
     matches = []
@@ -77,16 +76,17 @@ def evaluate(
                 prompt_template,
                 verbalizer,
                 chat_prompt,
-                instruction
+                instruction,
             )
             try:
                 pred = model_completion(
                     prompt,
                     model,
+                    timeout=timeout,
                     **model_params,
                 )
                 break
-            except openai.error.InvalidRequestError as e:
+            except (openai.error.InvalidRequestError, openai.error.Timeout):
                 if len(train_examples_i) == 0:
                     pred = np.random.choice(valid_labels)
                     print("Exausted Everything! Giving Random Prediction Now :(")
@@ -95,7 +95,7 @@ def evaluate(
                 print(
                     f"Unable To Fit Context Size. Reducing few-size by 1. New Size: {len(train_examples_i)}"
                 )
-        
+
         preds.append(pred)
         labels.append(label)
         matches.append(float(pred == label))
@@ -105,19 +105,17 @@ def evaluate(
         if log_wandb:
             wandb.log({"acuracy": running_acc})
         # time.sleep(1 / num_evals_per_sec)
-        
+
     accuracy = num_matches / len(preds)
     results_df = pd.DataFrame({"Label": labels, "Prediction": preds, "Match": matches})
-   
+
     return accuracy, results_df
-
-
 
 
 def main(sys_args):
     args = parse_args(sys_args)
     load_env(env_name=args.env)
-    
+
     args.dataset = "xstory_cloze"
 
     # Set seed
@@ -156,11 +154,11 @@ def main(sys_args):
     # Loading instruction for the task
     instruction = INSTRUCTIONS.get(args.dataset, "")
     print(instruction)
-    
+
     # Loading prompt template
     prompt_template = PROMPT_TEMPLATES[args.tgt_prompt_name]
     verbalizer = VERBALIZER["default"]
-    
+
     out_dir = f"{args.save_dir}/{args.dataset}/{args.model}/{args.tgt_lang}/PivotLang_{args.pivot_lang}_PromptName_{args.tgt_prompt_name.replace('/','_')}_Verbalizer_{args.verbalizer}_FewShotK_{args.few_shot_k}wthInstruction"
     if args.translate_test:
         out_dir = f"{out_dir}_translate_test"
@@ -171,7 +169,6 @@ def main(sys_args):
 
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
-        
 
     eval_score, preds_df = evaluate(
         train_dataset,
@@ -189,7 +186,8 @@ def main(sys_args):
         instruction=instruction,
         temperature=args.temperature,
         top_p=args.top_p,
-        max_tokens=args.max_tokens
+        max_tokens=args.max_tokens,
+        timeout=args.timeout,
     )
     preds_df.to_csv(f"{out_dir}/preds.csv")
     print(eval_score)

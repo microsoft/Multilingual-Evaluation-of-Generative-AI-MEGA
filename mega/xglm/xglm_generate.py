@@ -230,7 +230,7 @@ if __name__ == "__main__":
     )
 
     # Initialize XGLM model
-    xglm_model_name = "facebook/xglm-564M"
+    xglm_model_name = "facebook/xglm-7.5B"
     tokenizer = XGLMTokenizer.from_pretrained(xglm_model_name)
     model = XGLMForCausalLM.from_pretrained(xglm_model_name, load_in_8bit=True)
     model.eval()

@@ -77,6 +77,9 @@ DATASET2PROPER_NAMES = {
     "udpos": "UDPOS",
     "panx": "PAN-X",
     "wikiann": "WikiANN",
+    "gluecos": "GLUECoS",
+    "en-es-cs": "EN-ES-CS",
+    "jigsaw": "Jigsaw Multilingual Toxic Comment Classification",
 }
 cls_datasets = ["xnli", "mnli", "xcopa", "copa", "pawsx", "xstory_cloze"]
 qa_datasets = ["xquad", "squad", "tydiqa", "indicqa", "mlqa"]

@@ -1,0 +1,11 @@
+{
+"model": "gpt-35-turbo",
+"dataset": "xcopa",
+"lang": "ht",
+"include_cot": false,
+"system_prompt_role": "user",
+"seed": 42,
+"metrics": {
+"accuracy": 0.63
+}
+}

@@ -25,57 +25,58 @@ from mega.utils.parser import parse_args
 from tqdm import tqdm
 from evaluate import load
 
-PUNCT = {chr(i) for i in range(sys.maxunicode) if unicodedata.category(chr(i)).startswith('P')}.union(string.punctuation)
-WHITESPACE_LANGS = ['en', 'es', 'hi', 'vi', 'de', 'ar']
-MIXED_SEGMENTATION_LANGS = ['zh']
+PUNCT = {
+    chr(i)
+    for i in range(sys.maxunicode)
+    if unicodedata.category(chr(i)).startswith("P")
+}.union(string.punctuation)
+WHITESPACE_LANGS = ["en", "es", "hi", "vi", "de", "ar"]
+MIXED_SEGMENTATION_LANGS = ["zh"]
 
 TYDIQA_LANG2CODES = {
     "bengali": "bn",
-    "korean" : "ko",
-    "swahili" : "sw",
-    "english" : "en",
-    "indonesian" :"id",
-    "arabic" : "ar",
-    "finnish" : "fi",
-    "telugu" : "te",
-    "russian" : "ru"
+    "korean": "ko",
+    "swahili": "sw",
+    "english": "en",
+    "indonesian": "id",
+    "arabic": "ar",
+    "finnish": "fi",
+    "telugu": "te",
+    "russian": "ru",
 }
 
 langcodes2lang = {
-    "en" : "English",
-    "ar" : "Arabic",
-    "de" : "German",
-    "el" : "Greek",
-    "es" : "Spanish",
-    "hi" : "Hindi",
-    "ro" : "Romanian",
+    "en": "English",
+    "ar": "Arabic",
+    "de": "German",
+    "el": "Greek",
+    "es": "Spanish",
+    "hi": "Hindi",
+    "ro": "Romanian",
     "ru": "Russian",
     "th": "Thai",
     "tr": "Turkish",
     "vi": "Vietnamese",
-    "zh": "Mandarin"
+    "zh": "Mandarin",
 }
 
 
 PROMPTS_DICT = {
-    "answer_given_context_and_question" : """{context}
+    "answer_given_context_and_question": """{context}
     Q: {question}
 
     Referring to the passage above, the correct answer to the given question is:
     {answer}""",
-    
-    "answer_given_context_and_question+unaswerable" : """{context}
+    "answer_given_context_and_question+unaswerable": """{context}
     Q: {question}
 
     Referring to the passage above, what will be the correct answer to the given question? If you can't find the answer, please respond "unanswerable".
     {answer}""",
-    
-    "lang_instruct_answer_given_context_and_question" : """{context}
+    "lang_instruct_answer_given_context_and_question": """{context}
     Q: {question}
 
     Referring to the passage above, the correct answer to the given question is? Please try to answer in {language} and ensure that the answer appears as it is in the passage.
     A: {answer}""",
-    
 }
 
 
@@ -87,7 +88,7 @@ def mixed_segmentation(text):
     segs_out = []
     temp_str = ""
     for char in text:
-        if re.search(r'[\u4e00-\u9fa5]', char) or char in PUNCT:
+        if re.search(r"[\u4e00-\u9fa5]", char) or char in PUNCT:
             if temp_str != "":
                 ss = whitespace_tokenize(temp_str)
                 segs_out.extend(ss)
@@ -107,22 +108,26 @@ def normalize_answer_mlqa(lang, s):
     """Lower text and remove punctuation, articles and extra whitespace."""
 
     def remove_articles(text, lang):
-        if lang == 'en':
-            return re.sub(r'\b(a|an|the)\b', ' ', text)
-        elif lang == 'es':
-            return re.sub(r'\b(un|una|unos|unas|el|la|los|las)\b', ' ', text)
-        elif lang == 'hi':
-            return text # Hindi does not have formal articles
-        elif lang == 'vi':
-            return re.sub(r'\b(của|là|cái|chiếc|những)\b', ' ', text)
-        elif lang == 'de':
-            return re.sub(r'\b(ein|eine|einen|einem|eines|einer|der|die|das|den|dem|des)\b', ' ', text)
-        elif lang == 'ar':
-            return re.sub('\sال^|ال', ' ', text)
-        elif lang == 'zh':
-            return text # Chinese does not have formal articles
+        if lang == "en":
+            return re.sub(r"\b(a|an|the)\b", " ", text)
+        elif lang == "es":
+            return re.sub(r"\b(un|una|unos|unas|el|la|los|las)\b", " ", text)
+        elif lang == "hi":
+            return text  # Hindi does not have formal articles
+        elif lang == "vi":
+            return re.sub(r"\b(của|là|cái|chiếc|những)\b", " ", text)
+        elif lang == "de":
+            return re.sub(
+                r"\b(ein|eine|einen|einem|eines|einer|der|die|das|den|dem|des)\b",
+                " ",
+                text,
+            )
+        elif lang == "ar":
+            return re.sub("\sال^|ال", " ", text)
+        elif lang == "zh":
+            return text  # Chinese does not have formal articles
         else:
-            raise Exception('Unknown Language {}'.format(lang))
+            raise Exception("Unknown Language {}".format(lang))
 
     def white_space_fix(text, lang):
         if lang in WHITESPACE_LANGS:
@@ -130,28 +135,30 @@ def normalize_answer_mlqa(lang, s):
         elif lang in MIXED_SEGMENTATION_LANGS:
             tokens = mixed_segmentation(text)
         else:
-            raise Exception('Unknown Language {}'.format(lang))
-        return ' '.join([t for t in tokens if t.strip() != ''])
+            raise Exception("Unknown Language {}".format(lang))
+        return " ".join([t for t in tokens if t.strip() != ""])
 
     def remove_punc(text):
-        return ''.join(ch for ch in text if ch not in PUNCT)
+        return "".join(ch for ch in text if ch not in PUNCT)
 
     def lower(text):
         return text.lower()
 
     return white_space_fix(remove_articles(remove_punc(lower(s)), lang), lang)
 
+
 def normalize_answer(s):
     """Lower text and remove punctuation, articles and extra whitespace."""
+
     def remove_articles(text):
-        return re.sub(r'\b(a|an|the)\b', ' ', text)
+        return re.sub(r"\b(a|an|the)\b", " ", text)
 
     def white_space_fix(text):
-        return ' '.join(text.split())
+        return " ".join(text.split())
 
     def remove_punc(text):
-        exclude = set(PUNCT) #set(string.punctuation)
-        return ''.join(ch for ch in text if ch not in exclude)
+        exclude = set(PUNCT)  # set(string.punctuation)
+        return "".join(ch for ch in text if ch not in exclude)
 
     def lower(text):
         return text.lower()
@@ -159,8 +166,7 @@ def normalize_answer(s):
     return white_space_fix(remove_articles(remove_punc(lower(s))))
 
 
-
-def load_qa_dataset(dataset_name, lang, split, dataset_frac = 1, translate_test = False):
+def load_qa_dataset(dataset_name, lang, split, dataset_frac=1, translate_test=False):
     if dataset_name == "indicqa":
         if split != "train":
             dataset = load_dataset("ai4bharat/IndicQA", f"indicqa.{lang}")[split]
@@ -172,8 +178,10 @@ def load_qa_dataset(dataset_name, lang, split, dataset_frac = 1, translate_test 
         else:
             dataset = load_dataset("squad")[split]
     elif dataset_name == "tydiqa":
-        dataset = load_dataset("tydiqa", 'secondary_task')[split]
-        dataset = dataset.map(lambda example: {"lang" : TYDIQA_LANG2CODES[example["id"].split("-")[0]]})
+        dataset = load_dataset("tydiqa", "secondary_task")[split]
+        dataset = dataset.map(
+            lambda example: {"lang": TYDIQA_LANG2CODES[example["id"].split("-")[0]]}
+        )
         dataset = dataset.filter(lambda example: example["lang"] == lang)
     elif dataset_name == "mlqa":
         if split == "train":
@@ -183,9 +191,9 @@ def load_qa_dataset(dataset_name, lang, split, dataset_frac = 1, translate_test 
             dataset_name = f"mlqa-translate-test.{lang}"
         else:
             dataset_name = f"mlqa.{lang}.{lang}"
-        
+
         dataset = load_dataset("mlqa", dataset_name)[split]
-    
+
     else:
         raise NotImplementedError()
     N = len(dataset)
@@ -205,7 +213,7 @@ def evaluate_qa_chatgpt(
     temperature=0,
     max_tokens=20,
     log_wandb=True,
-    metric="squad"
+    metric="squad",
 ):
     f1_sum = 0
     em_sum = 0
@@ -217,7 +225,7 @@ def evaluate_qa_chatgpt(
     run_details = {"num_calls": 0}
 
     pbar = tqdm(enumerate(test_dataset))
-    
+
     preds = []
     labels = []
     f1s, ems = [], []
@@ -230,7 +238,7 @@ def evaluate_qa_chatgpt(
                 train_prompt_template=prompt_template,
                 test_prompt_template=prompt_template,
                 chat_prompt=chat_prompt,
-                instruction=instruction
+                instruction=instruction,
             )
             try:
                 pred = gpt3x_completion(
@@ -239,10 +247,10 @@ def evaluate_qa_chatgpt(
                     temperature=0,
                     run_details=run_details,
                     num_evals_per_sec=num_evals_per_sec,
-                    max_tokens=max_tokens
+                    max_tokens=max_tokens,
                 )
                 break
-            except openai.error.InvalidRequestError:
+            except (openai.error.InvalidRequestError, openai.error.Timeout):
                 if len(train_examples_i) == 0:
                     pred = ""
                     print("Exausted Everything! Giving Empty Prediction Now :(")
@@ -253,16 +261,20 @@ def evaluate_qa_chatgpt(
                 )
 
         pred = normalize_fn(pred)
-        
+
         if metric == "squad":
             prediction = {"prediction_text": pred, "id": test_example["id"]}
         else:
-            no_answer_probability =  float("unanswerable" in pred)
-            prediction = {"prediction_text": pred, "id": test_example["id"], "no_answer_probability": no_answer_probability}
-        
+            no_answer_probability = float("unanswerable" in pred)
+            prediction = {
+                "prediction_text": pred,
+                "id": test_example["id"],
+                "no_answer_probability": no_answer_probability,
+            }
+
         # if no_answer_probability == 1:
         #     breakpoint()
-        
+
         # if metric == "squad":
         reference = {}
         reference["answers"] = test_example["answers"]
@@ -270,7 +282,7 @@ def evaluate_qa_chatgpt(
         if reference["answers"]["text"][0] == "":
             reference["answers"]["text"] = []
             reference["answers"]["answer_start"] = []
-        
+
             # reference["answers"]["text"] = None if reference["answers"]["text"][0] == "" else reference["answers"]["text"]
         # else:
         #     reference = {}
@@ -281,31 +293,31 @@ def evaluate_qa_chatgpt(
         #             "text": test_example["answers"]["text"][idx],
         #             "answer_start": test_example["answers"]["answer_start"][idx]
         #         })
-                
+
         #         breakpoint()
-        
+
         if metric == "squad":
             results = squad_metric.compute(
-                        predictions=[prediction],
-                        references=[reference])
+                predictions=[prediction], references=[reference]
+            )
         else:
             results = squad_metric.compute(
-                    predictions=[prediction],
-                    references=[reference],
-                    no_answer_threshold=0.9
-                    )
+                predictions=[prediction],
+                references=[reference],
+                no_answer_threshold=0.9,
+            )
         f1_sum += results["f1"]
         if metric == "squad":
             em_sum += results["exact_match"]
         else:
             em_sum += results["exact"]
-        avg_f1 = f1_sum / (i+1)
-        avg_em = em_sum / (i+1)
+        avg_f1 = f1_sum / (i + 1)
+        avg_em = em_sum / (i + 1)
         if log_wandb:
-            wandb.log({"f1": avg_f1, "em": avg_em}, step = i + 1)
-            wandb.log(run_details, step = i + 1)
+            wandb.log({"f1": avg_f1, "em": avg_em}, step=i + 1)
+            wandb.log(run_details, step=i + 1)
         pbar.set_description(f"em: {avg_em} f1: {avg_f1}. {i+1}/{len(test_dataset)}")
-        
+
         preds.append(prediction)
         labels.append(reference)
         f1s.append(results["f1"])
@@ -313,22 +325,19 @@ def evaluate_qa_chatgpt(
             ems.append(results["exact_match"])
         else:
             ems.append(results["exact"])
-    results_df = pd.DataFrame({"Label": labels,
-                            "Prediction": preds,
-                            "F1-Score": f1s,
-                            "EM": ems})
-    
+    results_df = pd.DataFrame(
+        {"Label": labels, "Prediction": preds, "F1-Score": f1s, "EM": ems}
+    )
+
     if metric == "squad":
-        metrics = squad_metric.compute(
-                        predictions=preds,
-                        references=labels)
+        metrics = squad_metric.compute(predictions=preds, references=labels)
     else:
         metrics = squad_metric.compute(
-                        predictions=preds,
-                        references=labels,
-                        no_answer_threshold=0.9)
-    
+            predictions=preds, references=labels, no_answer_threshold=0.9
+        )
+
     return metrics, results_df
+
 
 def main(sys_args):
     args = parse_args(sys_args)
@@ -354,42 +363,47 @@ def main(sys_args):
         args.temperature = wandb.config.temperature
         args.num_proc = wandb.config.num_proc
 
-
-    train_dataset = load_qa_dataset(args.dataset,
-                                lang = args.pivot_lang,
-                                split="train" if not args.use_val_to_prompt else "validation")
-    test_dataset = load_qa_dataset(args.dataset,
-                                    lang = args.tgt_lang,
-                                    split="test" if not args.eval_on_val else "validation",
-                                    dataset_frac=args.test_frac,
-                                    translate_test=args.translate_test)
+    train_dataset = load_qa_dataset(
+        args.dataset,
+        lang=args.pivot_lang,
+        split="train" if not args.use_val_to_prompt else "validation",
+    )
+    test_dataset = load_qa_dataset(
+        args.dataset,
+        lang=args.tgt_lang,
+        split="test" if not args.eval_on_val else "validation",
+        dataset_frac=args.test_frac,
+        translate_test=args.translate_test,
+    )
     train_examples = choose_few_shot_examples(
-        train_dataset, args.few_shot_k,
-        selection_criteria=args.few_shot_selection)
-        
+        train_dataset, args.few_shot_k, selection_criteria=args.few_shot_selection
+    )
+
     prompt_template = PROMPTS_DICT[args.tgt_prompt_name]
-    
+
     # Loading instruction for the task
     instruction = INSTRUCTIONS["xquad"]
     print(instruction)
-    
-    
+
     out_dir = f"{args.save_dir}/{args.dataset}/{args.model}/{args.tgt_lang}/PivotLang_{args.pivot_lang}_PromptName_{args.tgt_prompt_name.replace('/','_')}_Verbalizer_{args.verbalizer}_FewShotK_{args.few_shot_k}"
     if args.translate_test:
         out_dir = f"{out_dir}_translate_test"
-    
+
     if args.use_val_to_prompt:
         out_dir = f"{out_dir}_use_val_to_prompt"
-        
+
     if args.dataset == "indicqa":
         out_dir += f"_with_unanswerable"
-        
 
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
-    
-    normalize_answer_mlqa_fn = partial(normalize_answer_mlqa, args.tgt_lang if not args.translate_test else "en")
-    normalize_fn = normalize_answer if args.dataset != "mlqa" else normalize_answer_mlqa_fn
+
+    normalize_answer_mlqa_fn = partial(
+        normalize_answer_mlqa, args.tgt_lang if not args.translate_test else "en"
+    )
+    normalize_fn = (
+        normalize_answer if args.dataset != "mlqa" else normalize_answer_mlqa_fn
+    )
     metrics, preds_df = evaluate_qa_chatgpt(
         train_examples,
         test_dataset,
@@ -402,9 +416,9 @@ def main(sys_args):
         max_tokens=args.max_tokens,
         log_wandb=True,
         metric="squad" if args.dataset != "indicqa" else "squad_v2",
-        normalize_fn=normalize_fn
+        normalize_fn=normalize_fn,
     )
-    
+
     preds_df.to_csv(f"{out_dir}/preds.csv")
     print(metrics)
     results_dict = vars(args)
@@ -416,9 +430,7 @@ def main(sys_args):
 
     if args.log_wandb:
         wandb.log(metrics)
-    
+
+
 if __name__ == "__main__":
     main(sys.argv[1:])
-    
-    
-    

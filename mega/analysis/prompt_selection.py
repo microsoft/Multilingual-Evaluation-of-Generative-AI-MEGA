@@ -127,6 +127,7 @@ def main():
     print("XCOPA")
     xcopa_results_file = "mega/analysis/results/prompt_selection_xcopa.json"
     langs = ["ht", "ta"]
+    langs = ["ta"]
     lang2train_dataset = {
         lang: load_xcopa_dataset(lang, split="train") for lang in langs
     }
@@ -185,6 +186,7 @@ def main():
             lang2prompt2acc = json.load(f)
 
     # Get best prompts for each language and evaluate on test data using them
+    breakpoint()
     test_accs = {}
     for lang in langs:
         best_prompt = max(lang2prompt2acc[lang], key=lang2prompt2acc[lang].get)

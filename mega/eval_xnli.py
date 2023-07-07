@@ -95,6 +95,7 @@ def main(sys_args):
         log_wandb=args.log_wandb,
         temperature=args.temperature,
         top_p=args.top_p,
+        timeout=args.timeout,
     )
     print(accuracy)
     # Store results

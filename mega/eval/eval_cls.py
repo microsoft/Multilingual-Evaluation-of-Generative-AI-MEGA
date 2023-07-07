@@ -20,9 +20,10 @@ def run_seq_eval(
     test_prompt_template: Template,
     model: str,
     num_evals_per_sec: int = 2,
-    chat_prompt: bool=False,
-    instruction: str="",
-    log_wandb: bool=False,
+    chat_prompt: bool = False,
+    instruction: str = "",
+    log_wandb: bool = False,
+    timeout: int = 0,
     **model_params,
 ) -> Tuple[float, pd.DataFrame]:
     """Runs sequential evaluation. This is slower but would be better when limited API hits are available
@@ -60,6 +61,7 @@ def run_seq_eval(
                     model,
                     chat_prompt=chat_prompt,
                     instruction=instruction,
+                    timeout=timeout,
                     **model_params,
                 )
                 break
@@ -153,13 +155,14 @@ def evaluate_model(
     model: str,
     few_shot_size: int,
     selection_criteria: str = "random",
-    chat_prompt: bool=False,
-    instruction: str="",
+    chat_prompt: bool = False,
+    instruction: str = "",
     save_preds_path: Optional[str] = None,
     num_evals_per_sec: int = 2,
     parallel_eval: bool = False,
     num_proc: Optional[int] = None,
-    log_wandb: bool=False,
+    log_wandb: bool = False,
+    timeout: int = 0,
     **model_params,
 ) -> float:
     """Evaluates the accuracy of the model
@@ -207,6 +210,7 @@ def evaluate_model(
             chat_prompt=chat_prompt,
             instruction=instruction,
             log_wandb=log_wandb,
+            timeout=timeout,
             **model_params,
         )
 

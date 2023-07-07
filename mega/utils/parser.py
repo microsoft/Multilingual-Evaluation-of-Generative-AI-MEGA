@@ -218,4 +218,10 @@ def parse_args(args: list) -> argparse.Namespace:
         action="store_true",
         help="Whether to use json format for prompting for contamination",
     )
+    parser.add_argument(
+        "--timeout",
+        type=int,
+        default=0,
+        help="Timeout for each call to the model. 0 means no timeout",
+    )
     return parser.parse_args(args)

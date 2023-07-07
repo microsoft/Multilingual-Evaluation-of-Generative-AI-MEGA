@@ -50,6 +50,10 @@ CHAT_MODELS = [
 # signal.signal(signal.SIGALRM, handler)
 
 
+def timeout_handler(signum, frame):
+    raise openai.error.Timeout("API Response Stuck!")
+
+
 def gpt3x_completion(
     prompt: Union[str, List[Dict[str, str]]],
     model: str,
@@ -58,6 +62,7 @@ def gpt3x_completion(
     backoff_base: int = 2,
     backoff_rate: int = 2,
     backoff_ceil: int = 10,
+    timeout: int = 0,
     **model_params,
 ) -> str:
     """Runs the prompt over the GPT3.x model for text completion
@@ -81,6 +86,12 @@ def gpt3x_completion(
     while True:
         try:
             if isinstance(prompt, str):
+                if timeout != 0:
+                    # Set the signal handler for the SIGALRM signa
+                    signal.signal(signal.SIGALRM, timeout_handler)
+                    signal.alarm(
+                        timeout
+                    )  # Wait for timeout seconds for the response to come
                 response = openai.Completion.create(
                     engine=model,
                     prompt=prompt,
@@ -88,12 +99,20 @@ def gpt3x_completion(
                     temperature=model_params.get("temperature", 1),
                     top_p=model_params.get("top_p", 1),
                 )
+                if timeout != 0:
+                    signal.alarm(0)  # Disable the alarm
                 if "num_calls" in run_details:
                     run_details["num_calls"] += 1
                 output = response["choices"][0]["text"].strip().split("\n")[0]
                 time.sleep(1 / num_evals_per_sec)
                 backoff_count = 0
             else:
+                if timeout != 0:
+                    # Set the signal handler for the SIGALRM signa
+                    signal.signal(signal.SIGALRM, timeout_handler)
+                    signal.alarm(
+                        timeout
+                    )  # Wait for timeout seconds for the response to come
                 response = openai.ChatCompletion.create(
                     engine=model,
                     messages=prompt,
@@ -101,6 +120,8 @@ def gpt3x_completion(
                     temperature=model_params.get("temperature", 1),
                     top_p=model_params.get("top_p", 1),
                 )
+                if timeout != 0:
+                    signal.alarm(0)  # Disable the alarm
                 if "num_calls" in run_details:
                     run_details["num_calls"] += 1
                 if response["choices"][0]["finish_reason"] == "content_filter":
@@ -206,7 +227,10 @@ def bloomz_completion(prompt: str, **model_params) -> str:
 
 
 def model_completion(
-    prompt: Union[str, List[Dict[str, str]]], model: str, **model_params
+    prompt: Union[str, List[Dict[str, str]]],
+    model: str,
+    timeout: int = 0,
+    **model_params,
 ) -> str:
     """Runs the prompt over one of the `SUPPORTED_MODELS` for text completion
 
@@ -230,7 +254,7 @@ def model_completion(
         ]
         + CHAT_MODELS
     ):
-        return gpt3x_completion(prompt, model, **model_params)
+        return gpt3x_completion(prompt, model, timeout=timeout, **model_params)
 
     if model == "BLOOM":
         return bloom_completion(prompt, **model_params)
@@ -247,6 +271,7 @@ def get_model_pred(
     model: str,
     chat_prompt: bool = False,
     instruction: str = "",
+    timeout: int = 0,
     **model_params,
 ) -> Dict[str, str]:
     """_summary_
@@ -270,5 +295,7 @@ def get_model_pred(
         chat_prompt=(chat_prompt and model in CHAT_MODELS),
         instruction=instruction,
     )
-    model_prediction = model_completion(prompt_input, model, **model_params)
+    model_prediction = model_completion(
+        prompt_input, model, timeout=timeout, **model_params
+    )
     return {"prediction": model_prediction, "ground_truth": label}

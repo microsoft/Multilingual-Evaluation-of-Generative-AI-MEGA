@@ -142,39 +142,40 @@ def get_results(filename):
         exact_match = results["metrics"]["exact_match"]
         f1 = results["metrics"]["f1"]
 
-    # preds_path = "/".join(filename.split("/")[:-1])
-    # preds_filename = f"{preds_path}/preds.csv"
-    # preds_df = pd.read_csv(preds_filename)
-    
-    # if results["dataset"] == "indicqa":
-    #     print(f"Initial Size: {len(preds_df)}")
-    #     preds_df = preds_df[preds_df["Label"].apply(lambda x : ast.literal_eval(x)["answers"]["text"][0] != "")]
-    #     print(f"Final Size: {len(preds_df)}")
-    #     results["metrics"]["f1"] = preds_df["F1-Score"].mean()
-    #     results["metrics"]["exact_match"] = preds_df["EM"].mean()
-    
-    # labels = preds_df["Label"].values
-    # preds = preds_df["Prediction"].values
-    # exact_match = 0
-    # f1 = 0
-    # total = len(labels)
-    # normalize_answer_mlqa_fn = partial(normalize_answer_mlqa, results['tgt_lang'] if prompt_setting != "Translate Test" else "en")
-    # normalize_fn = normalize_answer if results["dataset"] != "mlqa" else normalize_answer_mlqa_fn
-    # for pred,label in zip(preds, labels):
-    #     pred = ast.literal_eval(pred)
-    #     label = ast.literal_eval(label)
-    #     ground_truths = label["answers"]["text"]#list(map(lambda x: x['text'], label['answers']))
-    #     prediction = pred["prediction_text"]
-    #     exact_match += metric_max_over_ground_truths(
-    #             exact_match_score, prediction, ground_truths, normalize_fn = normalize_fn)
-    #     f1 += metric_max_over_ground_truths(
-    #             f1_score, prediction, ground_truths, normalize_fn = normalize_fn)
+    if results["dataset"] == "mlqa":
+        preds_path = "/".join(filename.split("/")[:-1])
+        preds_filename = f"{preds_path}/preds.csv"
+        preds_df = pd.read_csv(preds_filename)
         
-    # exact_match = 100.0 * exact_match / total
-    # f1 = 100.0 * f1 / total
-    
-    # print(f"F1 was off by {f1 - results['metrics']['f1']}")
-    # print(f"EM was off by {exact_match - results['metrics']['exact_match']}")
+        if results["dataset"] == "indicqa":
+            print(f"Initial Size: {len(preds_df)}")
+            preds_df = preds_df[preds_df["Label"].apply(lambda x : ast.literal_eval(x)["answers"]["text"][0] != "")]
+            print(f"Final Size: {len(preds_df)}")
+            results["metrics"]["f1"] = preds_df["F1-Score"].mean()
+            results["metrics"]["exact_match"] = preds_df["EM"].mean()
+        
+        labels = preds_df["Label"].values
+        preds = preds_df["Prediction"].values
+        exact_match = 0
+        f1 = 0
+        total = len(labels)
+        normalize_answer_mlqa_fn = partial(normalize_answer_mlqa, results['tgt_lang'] if prompt_setting != "Translate Test" else "en")
+        normalize_fn = normalize_answer if results["dataset"] != "mlqa" else normalize_answer_mlqa_fn
+        for pred,label in zip(preds, labels):
+            pred = ast.literal_eval(pred)
+            label = ast.literal_eval(label)
+            ground_truths = label["answers"]["text"]#list(map(lambda x: x['text'], label['answers']))
+            prediction = pred["prediction_text"]
+            exact_match += metric_max_over_ground_truths(
+                    exact_match_score, prediction, ground_truths, normalize_fn = normalize_fn)
+            f1 += metric_max_over_ground_truths(
+                    f1_score, prediction, ground_truths, normalize_fn = normalize_fn)
+            
+        exact_match = 100.0 * exact_match / total
+        f1 = 100.0 * f1 / total
+        
+        print(f"F1 was off by {f1 - results['metrics']['f1']}")
+        print(f"EM was off by {exact_match - results['metrics']['exact_match']}")
         
         
     return {
