@@ -5,17 +5,17 @@ import requests, uuid, json
 from typing import Union, Optional
 import copy
 from datasets import Dataset, load_dataset
+from mega.utils.env_utils import BING_TRANSLATE_KEY, BING_TRANSLATE_ENDPOINT
 
 # Translator setup for bing
-endpoint = "https://api.cognitive.microsofttranslator.com/"
-with open("keys/bing_translate_key.txt") as f:
-    subscription_key = f.read().split("\n")[0]
 
+
+subscription_key = BING_TRANSLATE_KEY
 # Add your location, also known as region. The default is global.
 # This is required if using a Cognitive Services resource.
 location = "centralindia"
 path = "/translate?api-version=3.0"
-constructed_url = endpoint + path
+constructed_url = BING_TRANSLATE_ENDPOINT + path
 
 headers = {
     "Ocp-Apim-Subscription-Key": subscription_key,
@@ -152,7 +152,9 @@ def translate_xstory_cloze(
     # Translate input_sentence_1
     xstory_cloze_dataset = xstory_cloze_dataset.map(
         lambda example: {
-            "input_sentence_1": translate_with_bing(example["input_sentence_1"], src, dest)
+            "input_sentence_1": translate_with_bing(
+                example["input_sentence_1"], src, dest
+            )
         },
         num_proc=4,
         load_from_cache_file=False,
@@ -161,16 +163,20 @@ def translate_xstory_cloze(
     # Translate input_sentence_2
     xstory_cloze_dataset = xstory_cloze_dataset.map(
         lambda example: {
-            "input_sentence_2": translate_with_bing(example["input_sentence_2"], src, dest)
+            "input_sentence_2": translate_with_bing(
+                example["input_sentence_2"], src, dest
+            )
         },
         num_proc=4,
         load_from_cache_file=False,
     )
-    
+
     # Translate input_sentence_3
     xstory_cloze_dataset = xstory_cloze_dataset.map(
         lambda example: {
-            "input_sentence_3": translate_with_bing(example["input_sentence_3"], src, dest)
+            "input_sentence_3": translate_with_bing(
+                example["input_sentence_3"], src, dest
+            )
         },
         num_proc=4,
         load_from_cache_file=False,
@@ -179,12 +185,14 @@ def translate_xstory_cloze(
     # Translate input_sentence_4
     xstory_cloze_dataset = xstory_cloze_dataset.map(
         lambda example: {
-            "input_sentence_4": translate_with_bing(example["input_sentence_4"], src, dest)
+            "input_sentence_4": translate_with_bing(
+                example["input_sentence_4"], src, dest
+            )
         },
         num_proc=4,
         load_from_cache_file=False,
     )
-    
+
     # Translate sentence_quiz1
     xstory_cloze_dataset = xstory_cloze_dataset.map(
         lambda example: {
@@ -202,7 +210,6 @@ def translate_xstory_cloze(
         num_proc=4,
         load_from_cache_file=False,
     )
-    
 
     if save_path is not None:
         save_dir, _ = os.path.split(save_path)

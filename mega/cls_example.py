@@ -26,7 +26,7 @@ accuracy = evaluate_model(
     test_dataset,
     train_prompt,
     test_prompt,
-    model="DaVinci003",  # Can change this to BLOOM also
+    model="gpt-35-turbo",  # Can change this to BLOOM also
     few_shot_size=4,  # Number of few-shot examples
     save_preds_path="results/preds.csv",  # Any path where you would like to store predictions,
     temperature=0.1,  # Temperature parameter for GPT-3x generations

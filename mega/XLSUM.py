@@ -11,15 +11,12 @@ import openai
 from mega.data.data_utils import choose_few_shot_examples
 from mega.models.completion_models import gpt3x_completion
 from mega.prompting.instructions import INSTRUCTIONS
-from mega.utils.env_utils import load_env
+from mega.utils.env_utils import load_openai_env_variables
 from yaml.loader import SafeLoader
 import numpy as np
 from rouge_score import rouge_scorer
 from tqdm import tqdm
 import wandb
-
-
-# In[4]:
 
 
 def read_parameters(args_path):
@@ -151,7 +148,7 @@ def compute_rouge(scorer, pred, label):
 if __name__ == "__main__":
     args = read_parameters("./scripts/parameters.yaml")
     env_name = "gpt4v2"
-    load_env(env_name=env_name)
+    load_openai_env_variables()
     lang = sys.argv[1]
     prompt_name = args["prompt_names"][0]
 
@@ -159,16 +156,10 @@ if __name__ == "__main__":
     wandb.config.lang = lang
     wandb.run.name = f"{lang}"
 
-    # openai.api_key = get_key(args['key_path'])
-    # openai.api_base = "https://gcrgpt4aoai6c.openai.azure.com/"
-    # openai.api_type = "azure"
-    # openai.api_version = "2023-03-15-preview"  # this may change in the future
     instruction = INSTRUCTIONS[args["instruction_identifier"]]
 
     if not os.path.exists(args["response_logger_root"]):
         os.mkdir(args["response_logger_root"])
-
-    # In[15]:
 
     response_logger_file = f"{args['response_logger_root']}/{lang}_predictions.csv"
     # Loading k in context examples to pass to the model

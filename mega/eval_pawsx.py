@@ -1,7 +1,5 @@
 import os
-import argparse
 import sys
-import time
 import random
 import json
 import wandb
@@ -12,13 +10,12 @@ from mega.eval.eval_cls import evaluate_model
 from mega.prompting.prompting_utils import load_prompt_template
 from mega.prompting.instructions import INSTRUCTIONS
 from mega.utils.parser import parse_args
-from mega.utils.env_utils import load_env
-import pdb
+from mega.utils.env_utils import load_openai_env_variables
 
 
 def main(sys_args):
     args = parse_args(sys_args)
-    load_env(env_name=args.env)
+    load_openai_env_variables()
 
     # Set seed
     random.seed(args.seed)
@@ -49,16 +46,11 @@ def main(sys_args):
         split="test" if not args.eval_on_val else "validation",
         dataset_frac=args.test_frac,
     )
-    # print("LENGTH::::::::::",len(test_dataset))
-    # sys.exit
     if args.translate_test:
         test_dataset = load_pawsx_translate_test(
             args.tgt_lang, args.pivot_lang, test_dataset, data_dir="data"
         )
 
-    # train_dataset = train_dataset.select(list(range(10)))
-    # test_dataset = test_dataset.select(list(range(10)))
-    # test_dataset = test_dataset.select(list(range(1560,1570,1)))
     # Load prompt templates for train and test datasets
     if args.same_prompt_name:
         args.pivot_prompt_name = args.tgt_prompt_name

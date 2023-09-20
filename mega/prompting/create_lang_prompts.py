@@ -135,7 +135,7 @@ def main():
     )
     parser.add_argument(
         "--model",
-        default="DaVinci003",
+        default="gpt-35-turbo",
         choices=SUPPORTED_MODELS,
         type=str,
         help="GPT-x model to use to evaluate",

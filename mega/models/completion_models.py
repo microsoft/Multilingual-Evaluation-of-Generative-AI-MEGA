@@ -6,41 +6,28 @@ import openai
 from typing import List, Dict, Union, Any
 from promptsource.templates import Template
 from mega.prompting.prompting_utils import construct_prompt
-import pdb
+from mega.utils.env_utils import (
+    load_openai_env_variables,
+    HF_API_KEY,
+    BLOOMZ_API_URL,
+    HF_API_URL,
+)
 
-# openai.api_base = "https://gpttesting1.openai.azure.com/"
-# openai.api_type = "azure"
-# openai.api_version = "2022-12-01"  # this may change in the future
-# HF_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloom"
-# BLOOMZ_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloomz"
-# with open("keys/openai_key.txt") as f:
-#     openai.api_key = f.read().split("\n")[0]
-
-with open("keys/hf_key.txt") as f:
-    HF_API_TOKEN = f.read().split("\n")[0]
+load_openai_env_variables()
 
 SUPPORTED_MODELS = [
-    "DaVinci003",
     "BLOOM",
     "BLOOMZ",
-    "gpt-35-turbo-deployment",
-    "gpt4_deployment",
-    "gptturbo",
-    "gpt003",
+    "gpt-35-turbo",
     "gpt-4-32k",
     "gpt-4",
-    "gpt-35-turbo",
-    "gpt-35-tunro",
-    "text-davinci-003",
 ]
+
 CHAT_MODELS = [
-    "gpt-35-turbo-deployment",
-    "gpt4_deployment",
-    "gptturbo",
-    "gpt-4",
     "gpt-35-turbo",
+    "gpt4_deployment",
+    "gpt-4",
     "gpt-4-32k",
-    "gpt-35-tunro",
 ]
 
 # Register an handler for the timeout
@@ -157,7 +144,7 @@ def bloom_completion(prompt: str, **model_params) -> str:
     Returns:
         str: generated string
     """
-    headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}
+    headers = {"Authorization": f"Bearer {HF_API_KEY}"}
 
     def query(payload):
         response = requests.post(HF_API_URL, headers=headers, json=payload)
@@ -194,7 +181,7 @@ def bloomz_completion(prompt: str, **model_params) -> str:
     Returns:
         str: generated string
     """
-    headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}
+    headers = {"Authorization": f"Bearer {HF_API_KEY}"}
 
     def query(payload):
         payload = {"inputs": payload}
@@ -244,15 +231,7 @@ def model_completion(
 
     if (
         model
-        in [
-            "DaVinci003",
-            "gpt-35-turbo-deployment",
-            "gpt4_deployment",
-            "gptturbo",
-            "gpt003",
-            "text-davinci-003",
-        ]
-        + CHAT_MODELS
+        in CHAT_MODELS
     ):
         return gpt3x_completion(prompt, model, timeout=timeout, **model_params)
 

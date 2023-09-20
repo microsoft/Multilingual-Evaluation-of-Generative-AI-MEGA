@@ -1,47 +1,23 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-# In[63]:
-
 
 import os
 import re
-import argparse
-import sys
-import time
-import random
 import json
-import wandb
 import numpy as np
 from tqdm import tqdm
-import glob
 import pandas as pd
 import openai
 from datasets import load_dataset
-from mega.data.load_datasets import load_xcopa_dataset
-from mega.data.data_utils import choose_few_shot_examples
-from mega.eval.eval_cls import evaluate_model
 from mega.models.completion_models import gpt3x_completion
-from mega.prompting.prompting_utils import load_prompt_template
-from mega.prompting.instructions import INSTRUCTIONS
-from mega.utils.parser import parse_args
-from mega.utils.env_utils import load_env
+from mega.utils.env_utils import load_openai_env_variables
 
 
-# In[30]:
-
-
-load_env("gpt4v2")
-
-
-# In[38]:
+load_openai_env_variables
 
 
 model = "gpt-35-turbo"
-
-
-# In[33]:
 
 
 MAX_VAL_SIZE = 500
@@ -145,99 +121,9 @@ If the woman called a real estate agent, then it makes sense that the woman plan
         prompt += construct_cot_prompt_example(fs_example, return_out=True)
 
     prompt += construct_cot_prompt_example(test_example, return_out=False)
-
-    # label = (
-    #     f"{test_example['choice1']}"
-    #     if test_example["label"] == 0
-    #     else f"{test_example['choice2']}"
-    # )
     label = str(test_example["label"])
 
     return prompt, label
-
-
-# langs = ["ht", "ta"]
-# include_cot = True
-# system_prompt_role = "user"
-# lang2score = {}
-# out_dir = "analysis/results/COT/xcopa/{}"
-# valid_labels = ["1", "2"]
-# for lang in langs:
-#     for seed in [42]:
-#         out_dir = f"analysis/results/COT/xcopa/{model}/{lang}/explanations{include_cot}_system_prompt_role{system_prompt_role}_seed{seed}"
-#         if not os.path.exists(out_dir):
-#             os.makedirs(out_dir)
-#         preds_w_exp = []
-#         preds_wo_exp = []
-#         labels = []
-#         matches = []
-#         test_dataset = load_dataset("xcopa", lang)["test"]
-#         pbar = tqdm(test_dataset)
-#         for test_example in pbar:
-#             num_fs = K
-#             while True:
-#                 try:
-#                     prompt, label = construct_cot_prompt(
-#                         test_example,
-#                         include_cot=include_cot,
-#                         system_prompt_role=system_prompt_role,
-#                     )
-#                     out = gpt3x_completion(
-#                         prompt,
-#                         model=model,
-#                         max_tokens=500,
-#                         temperature=TEMPERATURE,
-#                         timeout=30,
-#                     )
-#                     break
-#                 except openai.error.Timeout:
-#                     if num_fs >= 0:
-#                         num_fs -= 1
-#                         print(
-#                             f"Unable To Fit Context Size. Reducing few-size by 1. New Size: {(num_fs)}"
-#                         )
-#                     else:
-#                         print("Exausted Everything! Giving Random Prediction Now :(")
-#                         out = np.random.choice(valid_labels)
-#                         break
-#             preds_w_exp.append(out)
-#             ans_matches = re.findall(r'"([^"]*)"', out)
-#             # Extract the last match
-#             if ans_matches:
-#                 pred = ans_matches[-1]
-#             else:
-#                 pred = ""
-#             preds_wo_exp.append(pred)
-#             labels.append(label)
-#             matches.append(int(preds_wo_exp[-1] == labels[-1]))
-#             running_acc = np.mean(matches)
-#             pbar.set_description(f"Accuracy: {running_acc}")
-
-#         results_df = pd.DataFrame(
-#             {
-#                 "Label": labels,
-#                 "Prediction": preds_wo_exp,
-#                 "Match": matches,
-#                 "Prediction With Explanation": preds_w_exp,
-#             }
-#         )
-#         acc = np.mean(matches)
-
-#         results_df.to_csv(f"{out_dir}/predictions.csv")
-#         results_dict = {
-#             "model": model,
-#             "dataset": "xcopa",
-#             "lang": lang,
-#             "include_cot": include_cot,
-#             "system_prompt_role": system_prompt_role,
-#             "seed": seed,
-#             "metrics": {"accuracy": acc},
-#         }
-#         with open(f"{out_dir}/results.json", "w") as f:
-#             json.dump(results_dict, f, indent=False)
-
-
-# In[69]:
 
 
 langs = ["ht", "ta"]
@@ -320,6 +206,3 @@ for lang in langs:
         }
         with open(f"{out_dir}/results.json", "w") as f:
             json.dump(results_dict, f, indent=False)
-
-
-# In[ ]:

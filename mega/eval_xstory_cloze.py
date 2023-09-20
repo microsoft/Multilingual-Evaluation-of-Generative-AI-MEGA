@@ -20,7 +20,7 @@ from mega.models.completion_models import model_completion
 from mega.prompting.prompting_utils import construct_xstory_prompt
 from mega.prompting.instructions import INSTRUCTIONS
 from mega.utils.parser import parse_args
-from mega.utils.env_utils import load_env
+from mega.utils.env_utils import load_openai_env_variables
 
 PROMPT_TEMPLATES = {
     "Answer Given options": """{input_sentence_1} {input_sentence_2} {input_sentence_3} {input_sentence_4}\nWhat is a possible continuation for the story given the following options ?\n-Option1: {sentence_quiz1}\n-Option2: {sentence_quiz2}""",
@@ -114,7 +114,7 @@ def evaluate(
 
 def main(sys_args):
     args = parse_args(sys_args)
-    load_env(env_name=args.env)
+    load_openai_env_variables()
 
     args.dataset = "xstory_cloze"
 

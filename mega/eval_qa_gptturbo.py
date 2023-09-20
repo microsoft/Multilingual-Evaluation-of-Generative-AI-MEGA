@@ -18,7 +18,7 @@ from mega.data.load_datasets import load_xnli_dataset
 from mega.data.data_utils import choose_few_shot_examples
 from mega.prompting.instructions import INSTRUCTIONS
 from mega.prompting.prompting_utils import load_prompt_template
-from mega.utils.env_utils import load_env
+from mega.utils.env_utils import load_openai_env_variables
 from mega.models.completion_models import get_model_pred, gpt3x_completion
 from mega.prompting.prompting_utils import construct_prompt, construct_qa_prompt
 from mega.utils.parser import parse_args
@@ -341,7 +341,7 @@ def evaluate_qa_chatgpt(
 
 def main(sys_args):
     args = parse_args(sys_args)
-    load_env(env_name=args.env)
+    load_openai_env_variables()
 
     # Set seed
     random.seed(args.seed)

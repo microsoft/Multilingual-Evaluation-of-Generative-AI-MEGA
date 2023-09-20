@@ -1,9 +1,7 @@
 import os
 import sys
-import json
 import random
-from typing import List, Dict, Union, Tuple, Optional
-import time
+
 from tqdm import tqdm
 import numpy as np
 import pandas as pd
@@ -13,13 +11,11 @@ import torch
 import torch.nn.functional as F
 from transformers import XGLMTokenizer, XGLMForCausalLM
 from seqeval.metrics import f1_score
-from promptsource.templates import Template
 from mega.data.data_utils import choose_few_shot_examples
 from mega.prompting.prompting_utils import construct_tagging_prompt
-from mega.prompting.instructions import INSTRUCTIONS
 from mega.utils.parser import parse_args
 from mega.data.load_datasets import load_tagging_dataset
-from mega.utils.env_utils import load_env
+from mega.utils.env_utils import load_openai_env_variables
 import openai
 
 udpos_verbalizer = {

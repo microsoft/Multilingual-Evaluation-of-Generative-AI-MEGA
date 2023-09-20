@@ -1,31 +1,30 @@
-import requests
-import warnings
 import signal
 import time
+import warnings
+from typing import Any, Dict, List, Union
+
 import openai
-from typing import List, Dict, Union, Any
+import requests
+
 from mega.prompting.prompting_utils import construct_tagging_prompt
+from mega.utils.env_utils import (
+    BLOOMZ_API_URL,
+    HF_API_KEY,
+    HF_API_URL,
+    load_openai_env_variables,
+)
+
+load_openai_env_variables()
 
 
-# openai.api_base = "https://gpttesting1.openai.azure.com/"
-# openai.api_type = "azure"
-# openai.api_version = "2022-12-01"  # this may change in the future
-HF_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloom"
-BLOOMZ_API_URL = "https://api-inference.huggingface.co/models/bigscience/bloomz"
-# with open("keys/openai_key.txt") as f:
-#     openai.api_key = f.read().split("\n")[0]
-
-with open("keys/hf_key.txt") as f:
-    HF_API_TOKEN = f.read().split("\n")[0]
-
-SUPPORTED_MODELS = ["DaVinci003", "BLOOM", 
-                    "BLOOMZ", "gpt-35-turbo-deployment", 
-                    "gpt4_deployment", "gptturbo",
-                    "gpt003", "gpt-4-32k",
-                    "gpt-4", "gpt-35-turbo", "gpt-35-tunro"]
-CHAT_MODELS = ["gpt-35-turbo-deployment", "gpt4_deployment",
-               "gptturbo", "gpt-4",
-               "gpt-35-turbo", "gpt-4-32k", "gpt-35-tunro"]
+SUPPORTED_MODELS = [
+    "BLOOM",
+    "BLOOMZ",
+    "gpt-4-32k",
+    "gpt-4",
+    "gpt-35-turbo",
+]
+CHAT_MODELS = ["gpt-35-turbo-16k", "gpt-4", "gpt-35-turbo", "gpt-4-32k"]
 
 
 udpos_verbalizer = {
@@ -73,12 +72,13 @@ def gpt3x_tagger(
     backoff_ceil: int = 10,
     **model_params,
 ) -> str:
-    
     chat_prompt = isinstance(prompt, list)
-    
+
     if chat_prompt and not one_shot_tag:
-        raise ValueError("Chat Completion not supported for iterative tagging. Either set one_shot_tag = True or chat_prompts = False")
-    
+        raise ValueError(
+            "Chat Completion not supported for iterative tagging. Either set one_shot_tag = True or chat_prompts = False"
+        )
+
     def predict_tag(prompt, token):
         prompt_with_token = f"{prompt} {token}{delimiter}"
         backoff_count = 0
@@ -92,7 +92,7 @@ def gpt3x_tagger(
                     temperature=model_params.get("temperature", 1),
                     top_p=model_params.get("top_p", 1),
                 )
-                time.sleep(1/num_evals_per_second)
+                time.sleep(1 / num_evals_per_second)
                 backoff_count = 0
                 break
             except (
@@ -101,7 +101,7 @@ def gpt3x_tagger(
                 openai.error.APIError,
             ):
                 backoff_count = min(backoff_count + 1, backoff_ceil)
-                sleep_time = backoff_base ** backoff_count
+                sleep_time = backoff_base**backoff_count
                 print(f"Exceeded Rate Limit. Waiting for {sleep_time} seconds")
                 time.sleep(sleep_time)
                 continue
@@ -114,7 +114,7 @@ def gpt3x_tagger(
         # import pdb
         # pdb.set_trace()
         return response["choices"][0]["text"].strip().split()[0]
-        
+
     def predict_one_shot():
         output = None
         backoff_count = 0
@@ -131,7 +131,7 @@ def gpt3x_tagger(
                     if "num_calls" in run_details:
                         run_details["num_calls"] += 1
                     output = response["choices"][0]["text"].strip().split("\n")[0]
-                    time.sleep(1/num_evals_per_second)
+                    time.sleep(1 / num_evals_per_second)
                     backoff_count = 0
                 else:
                     response = openai.ChatCompletion.create(
@@ -146,8 +146,12 @@ def gpt3x_tagger(
                     if response["choices"][0]["finish_reason"] == "content_filter":
                         output = ""
                     else:
-                        output = response["choices"][0]["message"]['content'].strip().split("\n")[0]
-                    time.sleep(1/num_evals_per_second)
+                        output = (
+                            response["choices"][0]["message"]["content"]
+                            .strip()
+                            .split("\n")[0]
+                        )
+                    time.sleep(1 / num_evals_per_second)
                     backoff_count = 0
                 break
             except (
@@ -155,18 +159,17 @@ def gpt3x_tagger(
                 openai.error.RateLimitError,
             ) as e:
                 backoff_count = min(backoff_count + 1, backoff_ceil)
-                sleep_time = backoff_base ** backoff_count
+                sleep_time = backoff_base**backoff_count
                 print(f"Exceeded Rate Limit. Waiting for {sleep_time} seconds")
                 time.sleep(sleep_time)
                 continue
-            except (openai.error.APIError,TypeError):
+            except (openai.error.APIError, TypeError):
                 warnings.warn(
                     "Couldn't generate response, returning empty string as response"
                 )
                 return ""
 
         return output
-            
 
     if model in CHAT_MODELS:
         openai.api_version = "2023-03-15-preview"
@@ -174,10 +177,10 @@ def gpt3x_tagger(
         openai.api_version = "2022-12-01"
 
     if one_shot_tag:
-        predicted_tokens_wth_tags =  predict_one_shot()
+        predicted_tokens_wth_tags = predict_one_shot()
         predicted_tokens_wth_tags = predicted_tokens_wth_tags.split()
         predicted_tags = []
-        for i,token in enumerate(test_tokens):
+        for i, token in enumerate(test_tokens):
             if i >= len(predicted_tokens_wth_tags):
                 predicted_tags.append("")
                 continue
@@ -209,10 +212,9 @@ def bloom_tagger(
     delimiter: str = "_",
     **model_params,
 ) -> str:
-
     assert model in ["BLOOM", "BLOOMZ"]
 
-    headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}
+    headers = {"Authorization": f"Bearer {HF_API_KEY}"}
 
     def query(payload):
         if model == "bloom":
@@ -232,9 +234,11 @@ def bloom_tagger(
         while True:
             try:
                 model_output = query(prompt_with_token)
-                output = model_output[0]["generated_text"][
-                    len(prompt_with_token) :
-                ].strip().split()[0]
+                output = (
+                    model_output[0]["generated_text"][len(prompt_with_token) :]
+                    .strip()
+                    .split()[0]
+                )
                 output = output.strip()
                 break
             except Exception:
@@ -272,8 +276,7 @@ def model_tagger(
     run_details: Any = {},
     **model_params,
 ) -> str:
-
-    if model in ["DaVinci003", "gpt003"] + CHAT_MODELS:
+    if model in CHAT_MODELS:
         return gpt3x_tagger(
             prompt,
             model,
@@ -308,15 +311,16 @@ def get_model_pred(
     run_details: Any = {},
     **model_params,
 ):
-
     reverse_verbalizer = {value: key for key, value in verbalizer.items()}
 
     prompt_input, label = construct_tagging_prompt(
-        train_examples, test_example,
-        prompt_template, verbalizer,
+        train_examples,
+        test_example,
+        prompt_template,
+        verbalizer,
         delimiter=delimiter,
         chat_prompt=chat_prompt,
-        instruction=instruction
+        instruction=instruction,
     )
     model_prediction = model_tagger(
         prompt_input,
@@ -333,6 +337,5 @@ def get_model_pred(
         reverse_verbalizer.get(prediction_tag, prediction_tag)
         for prediction_tag in model_prediction
     ]
-    
 
     return {"prediction": model_prediction_tags, "ground_truth": label}

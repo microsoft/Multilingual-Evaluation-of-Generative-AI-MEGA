@@ -16,7 +16,7 @@ from mega.data.data_utils import choose_few_shot_examples
 from mega.prompting.instructions import INSTRUCTIONS
 from mega.utils.parser import parse_args
 from mega.data.load_datasets import load_tagging_dataset
-from mega.utils.env_utils import load_env
+from mega.utils.env_utils import load_openai_env_variables
 import openai
 import pdb
 
@@ -156,7 +156,7 @@ def evaluate(
 
 def main(sys_args):
     args = parse_args(sys_args)
-    load_env(env_name=args.env)
+    load_openai_env_variables()
 
     # Set seed
     random.seed(args.seed)

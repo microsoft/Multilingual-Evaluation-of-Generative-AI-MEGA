@@ -18,7 +18,7 @@ from mega.eval.eval_cls import evaluate_model
 from mega.prompting.prompting_utils import load_prompt_template
 from mega.prompting.instructions import INSTRUCTIONS
 from mega.utils.parser import parse_args
-from mega.utils.env_utils import load_env
+from mega.utils.env_utils import load_openai_env_variables
 from mega.prompting.create_lang_prompts import add_prompt_to_dataset
 
 

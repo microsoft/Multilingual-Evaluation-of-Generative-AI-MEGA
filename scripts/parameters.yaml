@@ -2,7 +2,7 @@ key_path: /home/t-hdiddee/MultilingualBlanketEval/keys/openai_key.txt
 k: 1
 model: gpt-4-32k
 chat_prompt: True
-turbo_identifier: gpt-35-tunro
+turbo_identifier: gpt-35-turbo
 instruction_identifier: xlsum
 response_logger_root: ./gpt-4-all-lang-eval/
 prompt_selection: False
