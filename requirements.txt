@@ -12,3 +12,4 @@ networkx==1.11
 seqeval
 tiktoken
 chromadb
+torch
