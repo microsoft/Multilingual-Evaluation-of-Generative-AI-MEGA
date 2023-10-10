@@ -1,8 +1,8 @@
 echo "Monolingual Evaluation"
 for k in 8
 do
-    # for lang in en ar bn fi id sw ko ru te
-    for lang in te bn
+    for lang in en ar bn fi id sw ko ru te
+    # for lang in te bn
     do
         if [[ $lang == "te"  || $lang == "bn" ]];
         then

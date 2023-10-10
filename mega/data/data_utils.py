@@ -34,37 +34,56 @@ def choose_few_shot_examples(
             if train_dataset[idx]["answers"]["text"] == []:
                 unanswerable_idx = idx
                 break
-        
+
         breakpoint()
         if unanswerable_idx is not None:
             example_idxs = [unanswerable_idx]
         else:
             example_idxs = []
         example_idxs += (
-            np.random.choice(len(train_dataset), size=few_shot_size - len(example_idxs), replace=False)
+            np.random.choice(
+                len(train_dataset),
+                size=few_shot_size - len(example_idxs),
+                replace=False,
+            )
             .astype(int)
             .tolist()
         )
         random.shuffle(example_idxs)
-                
-        
+
     elif selection_criteria == "random-stratified":
         labels = list((train_dataset["label"]))
         label_counts = Counter(labels)
         total = len(train_dataset)
         example_idxs = []
         for label in label_counts:
-            label_example_idxs = [idx for idx,example in enumerate(train_dataset) if example["label"] == label]
+            label_example_idxs = [
+                idx
+                for idx, example in enumerate(train_dataset)
+                if example["label"] == label
+            ]
             sample_size = int(few_shot_size * label_counts[label] / total)
-            example_idxs += np.random.choice(label_example_idxs, size = sample_size, replace=False).astype(int).tolist()
+            example_idxs += (
+                np.random.choice(label_example_idxs, size=sample_size, replace=False)
+                .astype(int)
+                .tolist()
+            )
         random.shuffle(example_idxs)
     elif selection_criteria == "random-classwise-uniform":
         labels = list(set(train_dataset["label"]))
         example_idxs = []
         sample_size = few_shot_size // len(labels)
         for label in labels:
-            label_example_idxs = [idx for idx,example in enumerate(train_dataset) if example["label"] == label]
-            example_idxs += np.random.choice(label_example_idxs, size = sample_size, replace=False).astype(int).tolist()
+            label_example_idxs = [
+                idx
+                for idx, example in enumerate(train_dataset)
+                if example["label"] == label
+            ]
+            example_idxs += (
+                np.random.choice(label_example_idxs, size=sample_size, replace=False)
+                .astype(int)
+                .tolist()
+            )
         random.shuffle(example_idxs)
     else:
         raise NotImplementedError()
@@ -73,7 +92,6 @@ def choose_few_shot_examples(
 
 
 def read_conll_data(filename: str):
-
     inputs = []
     labels = []
     with open(filename, "r") as f:

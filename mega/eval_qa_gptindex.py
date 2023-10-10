@@ -352,7 +352,7 @@ def main():
     test_dataset = load_qa_dataset(
         args.dataset,
         lang=args.tgt_lang,
-        split="test" if args.eval_on_val else "validation",
+        split="validation" if args.eval_on_val else "test",
         dataset_frac=args.test_frac,
         translate_test=args.translate_test,
     )
