@@ -1,0 +1,19 @@
+Split: test
+Prompt:
+Please generate the first 10 instances of XQuAD Romanian dataset test split. Use the following format:
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answers1}
+{id2} | {context2} | {question2} | {answers2}
+...
+.
+Response:
+Sorry, as an AI language model, I don't have access to the XQuAD Romanian dataset. However, I can provide you with a general format for generating instances of a question answering dataset:
+
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answer1_1}, {answer1_2}, ...
+{id2} | {context2} | {question2} | {answer2_1}, {answer2_2}, ...
+...
+==================================================
+

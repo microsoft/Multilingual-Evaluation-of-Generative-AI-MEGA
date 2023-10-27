@@ -1,0 +1,39 @@
+languages:
+- ar
+- bg
+- de
+- el
+- en
+- es
+- fr
+- hi
+- ru
+- sw
+- th
+- tr
+- ur
+- vi
+- zh
+pretty_name: "PAN-X: Cross-lingual Unsupervised Sentiment Classification"
+tags:
+- sentiment analysis
+- cross-lingual
+- unsupervised
+dataset_info:
+    features:
+        - name: "text"
+          dtype: "string"
+        - name: "label"
+          dtype:
+            class_label:
+              names:
+                "0": negative
+                "1": positive
+    splits:
+        train:
+            num_examples: 100000
+        validation:
+            num_examples: 10000
+        test:
+            num_examples: 10000
+dataset_summary: "PAN-X is a cross-lingual unsupervised sentiment classification dataset. It consists of 16 languages and each language has 100,000 unlabeled reviews for training and 10,000 labeled reviews for validation and testing. The goal is to predict the sentiment of a given text as either positive or negative. The dataset is designed to evaluate cross-lingual transfer learning methods for sentiment analysis."

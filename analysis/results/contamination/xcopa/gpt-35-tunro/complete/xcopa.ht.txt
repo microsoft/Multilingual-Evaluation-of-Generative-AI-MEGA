@@ -1,0 +1,44 @@
+Split: test
+Completion Prompt:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Atik la te vlope[MASK] | Li te[MASK] | Li te[MASK] | [MASK] | [MASK]
+2 | Mwen te vide[MASK] | Mwen jwenn[MASK] | Mwen te jwen[MASK] | [MASK] | [MASK]
+3 | Foumi yo te anv[MASK] | Foumi yo dispar[MASK] | Foumi yo fin wonje[MASK] | [MASK] | [MASK]
+4 | Vwayajè yo te[MASK] | Ajan frontalye a te[MASK] | Ajan frontalye a te aki[MASK] | [MASK] | [MASK]
+5 | Biwo a[MASK] | Se te va[MASK] | Se te[MASK] | [MASK] | [MASK]
+6 | Fi a te pèdi[MASK] | Li te jwe[MASK] | Li te sot[MASK] | [MASK] | [MASK]
+7 | Madanm nan te pèdi[MASK] | Pi plis moun te vin ran[MASK] | Li te sòti[MASK] | [MASK] | [MASK]
+8 | Fi a te[MASK] | Ti bebe a te ba[MASK] | Ti bebe a te[MASK] | [MASK] | [MASK]
+9 | Bann nan te j[MASK] | Piblik la bat bra[MASK] | Piblik la rete ko[MASK] | [MASK] | [MASK]
+10 | Fi a te vle remèsye[MASK] | Fi a te rete aprè[MASK] | Fi a te pote yon po[MASK] | [MASK] | [MASK]
+
+Model's Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Atik la te vlope yon kado | Li te kriye | Li te kontan | emotion | 1
+2 | Mwen te vide sak mwen | Mwen jwenn li | Mwen te jwen li | fact | 0
+3 | Foumi yo te anvèmi nan kay la | Foumi yo disparèt | Foumi yo fin wonje | fact | 1
+4 | Vwayajè yo te nan yon machin | Ajan frontalye a te chèche yo | Ajan frontalye a te aki yo | fact | 0
+5 | Biwo a te fèmen | Se te va rive | Se te pa rive | fact | 1
+6 | Fi a te pèdi yon jwèt | Li te jwe byen | Li te sot | emotion | 1
+7 | Madanm nan te pèdi yon bous | Pi plis moun te vin rantre | Li te sòti | fact | 1
+8 | Fi a te gen yon ti bebe | Ti bebe a te bay li yon kado | Ti bebe a te dòmi | fact | 0
+9 | Bann nan te jwenn yon viktwa | Piblik la bat bra yo | Piblik la rete ko | fact | 0
+10 | Fi a te vle remèsye moun yo | Fi a te rete aprè yo | Fi a te pote yon pòm | fact | 1
+Ground Truth:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Atik la te vlope ak papye bul. | Li te frajil. | Li te piti. | cause | 0
+2 | Mwen te vide posh mwen. | Mwen jwenn yon bout biye. | Mwen te jwenn yon zam. | effect | 0
+3 | Foumi yo te anvayi kay la. | Foumi yo disparèt nan kay la. | Foumi yo fin wonje bwa nan kay la. | effect | 1
+4 | Vwayajè yo te rive sou frontyè a. | Ajan frontalye a te enspekte paspò yo. | Ajan frontalye a te akize yo de kontrabann. | effect | 0
+5 | Biwo a te fèmen. | Se te vakans. | Se te ete. | cause | 0
+6 | Fi a te pèdi ènèji li. | Li te jwe je de dam. | Li te sote kod. | cause | 1
+7 | Madanm nan te pèdi plas li nan liy nan. | Pi plis moun te vin rantre nan liy nan. | Li te sòti nan liy la. | cause | 1
+8 | Fi a te pense nen li. | Ti bebe a te bave sou bavèt li. | Ti bebe a te sali couch li. | cause | 1
+9 | Bann nan te jwe chanson hit yo. | Piblik la bat bravo ak mizik la. | Piblik la rete koute an silans. | effect | 0
+10 | Fi a te vle remèsye profesè matematkik li. | Fi a te rete aprè lekòl an pinisyon. | Fi a te pote yon pom bay profese li a. | effect | 1
+
+==================================================
+

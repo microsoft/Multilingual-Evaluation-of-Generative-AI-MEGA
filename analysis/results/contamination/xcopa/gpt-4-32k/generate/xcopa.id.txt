@@ -1,0 +1,69 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XCOPA Indonesian dataset train split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Orang itu mengecat pagar. | pagar menjadi lebih indah | pagar menjadi lebih tinggi | cause | 0
+2 | Orang itu mengecat pagar. | pagar menjadi lebih indah | pagar menjadi lebih tinggi | effect | 0
+3 | Anak itu menangis. | dia jatuh dari sepeda | dia melihat kue ulang tahun | cause | 0
+4 | Anak itu menangis. | dia jatuh dari sepeda | dia melihat kue ulang tahun | effect | 1
+5 | Pohon itu tumbang. | ada angin kencang | ada banyak burung di pohon | cause | 0
+6 | Pohon itu tumbang. | ada angin kencang | ada banyak burung di pohon | effect | 1
+7 | Seseorang mencuri dompet saya. | saya kehilangan uang | saya menemukan dompet kosong | cause | 0
+8 | Seseorang mencuri dompet saya. | saya kehilangan uang | saya menemukan dompet kosong | effect | 1
+9 | Saya lupa mematikan kompor. | saya terburu-buru pergi | rumah menjadi hangat | cause | 0
+10 | Saya lupa mematikan kompor. | saya terburu-buru pergi | rumah menjadi hangat | effect | 1
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XCOPA Indonesian dataset validation split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Seorang pria sedang memasak di dapur. | Pria itu merasa lapar. | Pria itu merasa kenyang. | cause | 0
+2 | Seorang wanita sedang berbicara di telepon. | Wanita itu ingin berkomunikasi dengan seseorang. | Wanita itu ingin memotong kuku. | cause | 0
+3 | Anjing itu menggonggong keras. | Anjing itu melihat kucing. | Anjing itu sedang tidur. | cause | 0
+4 | Seorang anak laki-laki sedang bermain video game. | Anak laki-laki itu ingin bersenang-senang. | Anak laki-laki itu ingin belajar matematika. | cause | 0
+5 | Seorang gadis sedang menangis. | Gadis itu sedih. | Gadis itu bahagia. | cause | 0
+6 | Seorang pria sedang mengendarai sepeda. | Pria itu ingin berolahraga. | Pria itu ingin makan es krim. | cause | 0
+7 | Seorang wanita sedang membaca buku. | Wanita itu ingin mendapatkan informasi. | Wanita itu ingin menonton film. | cause | 0
+8 | Seorang anak perempuan sedang menggambar. | Anak perempuan itu ingin mengekspresikan kreativitasnya. | Anak perempuan itu ingin berenang. | cause | 0
+9 | Seorang pria sedang menonton televisi. | Pria itu ingin menghibur diri. | Pria itu ingin memasak makan malam. | cause | 0
+10 | Seorang wanita sedang berjogging di taman. | Wanita itu ingin menjaga kesehatannya. | Wanita itu ingin membeli baju baru. | cause | 0
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XCOPA Indonesian dataset test split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Seorang pria sedang bermain gitar di taman. | Dia ingin menghibur orang. | Dia ingin menjual gitarnya. | cause | 0
+2 | Anjing itu menggonggong keras di halaman belakang. | Anjing itu melihat kucing. | Anjing itu sedang tidur. | cause | 0
+3 | Seseorang mencuri dompet Lisa di keramaian. | Lisa kehilangan uangnya. | Lisa menemukan uang tambahan. | effect | 0
+4 | Hujan turun dengan derasnya. | Orang-orang membuka payung. | Orang-orang berjemur di bawah matahari. | effect | 0
+5 | Budi lupa mematikan kompor setelah memasak. | Kompor tetap menyala. | Budi menonton televisi. | effect | 0
+6 | Rani merasa sangat gugup sebelum presentasi. | Rani mempersiapkan presentasinya dengan baik. | Rani khawatir tentang performanya. | cause | 1
+7 | Kucing itu terjebak di pohon yang tinggi. | Kucing itu mencoba mengejar burung. | Kucing itu ingin tidur di pohon. | cause | 0
+8 | Pohon itu tumbang setelah badai. | Badai mengakibatkan kerusakan. | Pohon itu tumbuh lebih tinggi. | effect | 0
+9 | Tom menangis setelah menonton film sedih. | Film tersebut membuat Tom sedih. | Tom merasa bahagia setelah menonton film. | cause | 0
+10 | Pabrik itu menghasilkan banyak polusi. | Pabrik itu menciptakan lingkungan yang bersih. | Pabrik itu berdampak negatif pada lingkungan. | effect | 1
+==================================================
+

@@ -1,0 +1,73 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XCOPA Turkish dataset train split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanmıyor. Adamın söylediği şey ne olabilir? | Kadın adamın söylediklerine inanmıyor çünkü adam yalan söylüyor. | Kadın adamın söylediklerine inanmıyor çünkü kadın adamı anlamıyor. | neden | 0
+2 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanıyor. Adamın söylediği şey ne olabilir? | Kadın adamın söylediklerine inanıyor çünkü adam doğru söylüyor. | Kadın adamın söylediklerine inanıyor çünkü kadın adamı anlıyor. | neden | 1
+3 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanmıyor. Adamın söylediği şey ne olabilir? | Kadın adamın söylediklerine inanmıyor çünkü adam yalan söylüyor. | Kadın adamın söylediklerine inanıyor çünkü kadın adamı anlıyor. | neden | 0
+4 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanıyor. Adamın söylediği şey ne olabilir? | Kadın adamın söylediklerine inanıyor çünkü adam doğru söylüyor. | Kadın adamın söylediklerine inanmıyor çünkü kadın adamı anlamıyor. | neden | 1
+5 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanmıyor. Adamın söylediği şey ne olabilir? | Kadın adamın söylediklerine inanıyor çünkü adam doğru söylüyor. | Kadın adamın söylediklerine inanmıyor çünkü adam yalan söylüyor. | neden | 0
+6 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanıyor. Adamın söylediği şey ne olabilir? | Kadın adamın söylediklerine inanıyor çünkü kadın adamı anlıyor. | Kadın adamın söylediklerine inanıyor çünkü adam yalan söylüyor. | neden | 1
+7 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanıyor. Adamın söylediği şey ne olabilir? | Kadın adamın söylediklerine inanıyor çünkü kadın adamı anlıyor. | Kadın adamın söylediklerine inanmıyor çünkü adam yalan söylüyor. | neden | 1
+8 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanmıyor. Adamın söylediği şey ne olabilir? | Kadın adamın söylediklerine inanmıyor çünkü kadın adamı anlamıyor. | Kadın adamın söylediklerine inanıyor çünkü adam doğru söylüyor. | neden | 0
+9 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanıyor. Adamın söylediği şey ne olabilir? | Kadın adamın söylediklerine inanıyor çünkü kadın adamı anlıyor. | Kadın adamın söylediklerine inanıyor çünkü adam doğru söylüyor. | neden | 1
+10 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanmıyor. Adamın söylediği şey ne olabilir? | Kadın adamın söylediklerine inanmıyor çünkü kadın adamı anlamıyor
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XCOPA Turkish dataset validation split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanmıyor. Adamın söylediği şey ne olabilir? | Kadın, adamın söylediklerine inanmıyor çünkü adamın yalan söylediğini düşünüyor. | Kadın, adamın söylediklerine inanmıyor çünkü adamın gerçekleri söylemediğini düşünüyor. | neden | 1
+2 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanıyor. Adamın söylediği şey ne olabilir? | Kadın, adamın söylediklerine inanıyor çünkü adamın yalan söylediğini düşünmüyor. | Kadın, adamın söylediklerine inanıyor çünkü adamın gerçekleri söylediğini düşünüyor. | neden | 0
+3 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanmıyor. Adamın söylediği şey ne olabilir? | Kadın, adamın söylediklerine inanmıyor çünkü kadın adamın söylediklerinin doğru olmadığını biliyor. | Kadın, adamın söylediklerine inanmıyor çünkü kadın adamın söylediklerinin yanlış olduğunu biliyor. | neden | 1
+4 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanıyor. Adamın söylediği şey ne olabilir? | Kadın, adamın söylediklerine inanıyor çünkü kadın adamın söylediklerinin doğru olduğunu biliyor. | Kadın, adamın söylediklerine inanıyor çünkü kadın adamın söylediklerinin yanlış olduğunu biliyor. | neden | 0
+5 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanmıyor. Adamın söylediği şey ne olabilir? | Kadın, adamın söylediklerine inanmıyor çünkü kadın adamın söylediklerinin mantıksız olduğunu düşünüyor. | Kadın, adamın söylediklerine inanmıyor çünkü kadın adamın söylediklerinin mantıklı olduğunu düşünüyor. | neden | 1
+6 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanıyor. Adamın söylediği şey ne olabilir? | Kadın, adamın söylediklerine inanıyor çünkü kadın adamın söylediklerinin mantıksız olduğunu düşünmüyor. | Kadın, adamın söylediklerine inanıyor çünkü kadın adamın söylediklerinin mantıklı olduğunu düşünüyor. | neden | 0
+7 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanmıyor. Adamın söylediği şey ne olabilir? | Kadın, adamın söylediklerine inanmıyor çünkü kadın adamın söylediklerinin doğru olmadığını düşünüyor. | Kadın, adamın söylediklerine inanmıyor çünkü kadın adamın söylediklerinin yanlış olduğunu düşünüyor. | neden | 1
+8 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerine inanıyor. Adamın söylediği şey ne olabilir? | Kadın, adamın söylediklerine inanıyor çünkü kadın adamın söylediklerinin doğru olduğunu düşünüyor. | Kadın, adamın söylediklerine inanıyor çünkü kadın adamın söylediklerinin
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XCOPA Turkish dataset test split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerini anlamıyor. Adam ne yapar? | Kadınla konuşmaya devam eder. | Kadından ayrılır. | neden-sonuç | 1
+2 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerini anlamıyor. Adam ne yapar? | Başka bir şey anlatmaya çalışır. | Kadına bağırır. | neden-sonuç | 0
+3 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerini anlamıyor. Adam ne yapar? | Kadına yardım eder. | Kadını suçlar. | neden-sonuç | 0
+4 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerini anlamıyor. Adam ne yapar? | Kadına tekrar tekrar anlatır. | Kadından uzaklaşır. | neden-sonuç | 0
+5 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerini anlamıyor. Adam ne yapar? | Kadına bir şeyler gösterir. | Kadına bir şeyler yazarak anlatır. | neden-sonuç | 1
+6 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerini anlamıyor. Adam ne yapar? | Kadına bir şeyler çizerek anlatır. | Kadına bir şeyler okur. | neden-sonuç | 0
+7 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerini anlamıyor. Adam ne yapar? | Kadına bir şeyler gösterir. | Kadına bir şeyler okur. | neden-sonuç | 1
+8 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerini anlamıyor. Adam ne yapar? | Kadına bir şeyler yazarak anlatır. | Kadına bir şeyler çizerek anlatır. | neden-sonuç | 1
+9 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerini anlamıyor. Adam ne yapar? | Kadına bir şeyler okur. | Kadına bir şeyler yazarak anlatır. | neden-sonuç | 1
+10 | Bir adam bir kadına bir şeyler anlatıyor. Kadın adamın söylediklerini anlamıyor. Adam ne yapar? | Kadına bir şeyler yazarak anlatır. | Kadına bir şeyler gösterir. | neden-sonuç | 0
+==================================================
+

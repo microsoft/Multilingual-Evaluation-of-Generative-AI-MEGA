@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Haitian Creole dataset train split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | Yon moun ap kouri nan lapli. | Li pral mouye. | Li pral rete sèk. | cause | 0\n2 | Yon timoun ap jwe ak yon balon. | Timoun nan ap divèti. | Timoun nan ap dòmi. | cause | 0\n3 | Yon moun ap koute mizik. | Li ap aprann yon lang etranje. | Li ap detann. | cause | 1\n4 | Yon moun ap prepare yon manje. | Li ap manje. | Li ap vann manje yo. | cause | 0\n5 | Yon moun ap li yon liv. | Li ap aprann kèk bagay. | Li ap gade televizyon. | cause | 0\n6 | Yon moun ap travay nan jaden. | Li ap plante legim. | Li ap naje. | cause | 0\n7 | Yon moun ap peze bouton sou yon telekòmand. | Li ap etenn televizyon an. | Li ap prepare yon manje. | cause | 0\n8 | Yon moun ap kouri nan yon kous. | Li ap eseye genyen kous la. | Li ap chèche yon bagay li pèdi. | cause | 0\n9 | Yon moun ap achte yon tikè lòtobis. | Li pral pran lòtobis la. | Li pral kouri. | cause | 0\n10 | Yon moun ap mete rad li nan yon valiz. | Li pral vwayaje. | Li pral lave rad yo. | cause | 0"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Haitian Creole dataset validation split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Yon moun ap mache nan yon sous bwa. | Li pral chache bwa pou fè dife. | Li pral achte manje nan yon boutik. | cause | 0\n2 | Yon timoun ap jwe ak yon pil fatra. | Timoun nan ap pran plezi. | Timoun nan ap aprann matematik. | cause | 0\n3 | Yon fanm ap kriye paske li pèdi bous li. | Li tris paske li pèdi lajan li. | Li kontan paske li jwenn yon kado. | cause | 0\n4 | Yon moun ap kouri nan lapli. | Li vle jwenn kote pou li ka kache. | Li vle pran yon ti solèy. | cause | 0\n5 | Yon moun ap prepare yon plat manje pou yon fèt. | Li vle bay moun yo manje. | Li vle manje tout manje a poukont li. | cause | 0\n6 | Yon moun ap li yon liv sou zistwa. | Li vle aprann plis sou zistwa. | Li vle aprann kijan pou li fè manje. | cause | 0\n7 | Yon moun ap plante pye bannann nan jaden li. | Li vle rekòlte bannann nan lavni. | Li vle vann pye bannann yo. | cause | 0\n8 | Yon moun ap koute mizik nan yon konsè. | Li vle pran plezi nan mizik la. | Li vle aprann kijan pou li fè manje. | cause | 0\n9 | Yon moun ap fè menaj nan kay li. | Li vle kay la rete pwòp. | Li vle kay la vin sal. | cause | 0\n10 | Yon moun ap etidye pou yon egzamen. | Li vle pase egzamen an. | Li vle manje yon bon manje. | cause | 0"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Haitian Creole dataset test split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | Yon moun ap prepare manje nan kwizin li. | Li pral manje. | Li pral danse. | cause | 0\n2 | Yon timoun ap kouri nan lakou lekòl la. | Li te tande yon bri. | Li vle jwe. | cause | 1\n3 | Yon moun ap plante pye bwa nan jaden li. | Li vle fè yon jaden. | Li vle vann pye bwa yo. | cause | 0\n4 | Yon moun ap li yon liv nan bibliyotèk la. | Li vle aprann kèk bagay. | Li vle fè yon ti dòmi. | cause | 0\n5 | Yon moun ap koute mizik nan salon li. | Li renmen mizik la. | Li pa tande mizik la. | cause | 0\n6 | Yon moun ap peze bouton sou yon telekòmand. | Li vle chanje chanel. | Li vle etenn televizyon an. | cause | 0\n7 | Yon moun ap travèse yon pon. | Li vle rive sou lòt bò a. | Li vle rete nan mitan pon an. | cause | 0\n8 | Yon moun ap achte yon tikè pou yon konsè. | Li vle ale nan konsè a. | Li vle vann tikè a. | cause | 0\n9 | Yon moun ap mete rad nan yon valiz. | Li pral vwayaje. | Li pral lave rad yo. | cause | 0\n10 | Yon moun ap pran yon pilil pou tèt li. | Li gen tèt chaje. | Li vle jwe ak pilil la. | cause | 0"
+    }
+]

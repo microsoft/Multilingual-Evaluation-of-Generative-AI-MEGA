@@ -1,0 +1,44 @@
+Split: test
+Completion Prompt:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Ürün balonlu nay[MASK] | Kırıl[MASK] | Küç[MASK] | [MASK] | [MASK]
+2 | Ceplerimi bo[MASK] | Bir bilet ko[MASK] | Bir silah[MASK] | [MASK] | [MASK]
+3 | Termitler evi[MASK] | Termitler ev[MASK] | Termitler evin içindeki[MASK] | [MASK] | [MASK]
+4 | Yolcular sınır[MASK] | Devriye ajanı[MASK] | Devriye ajanı onları ka[MASK] | [MASK] | [MASK]
+5 | Ofis kapal[MASK] | Tat[MASK] | Yaz me[MASK] | [MASK] | [MASK]
+6 | Kızın enerji[MASK] | Dama[MASK] | İp[MASK] | [MASK] | [MASK]
+7 | Kadın sıradaki[MASK] | Sıraya daha[MASK] | Sır[MASK] | [MASK] | [MASK]
+8 | Kız burnu[MASK] | Bebeğin salyası[MASK] | Bebek bezini[MASK] | [MASK] | [MASK]
+9 | Grup hit şarkı[MASK] | Seyirci müziğe al[MASK] | Seyirciler kibarca[MASK] | [MASK] | [MASK]
+10 | Kız matematik öğretmenine[MASK] | Kız okuldan[MASK] | Kız öğretmene[MASK] | [MASK] | [MASK]
+
+Model's Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Ürün balonlu naylon poşetlerle paketlenmişti. | Kırılmaz | Küçülür | physical | 1
+2 | Ceplerimi boşalttığımda biletleri bulamadım. | Bir bilet koymuştum | Bir silah koymuştum | factual | 0
+3 | Termitler evin ahşap kısımlarını yiyerek zarar veriyorlar. | Termitler evi yıkmıştı | Termitler evin içindeki ahşap kısımları yiyerek zarar veriyorlar | factual | 1
+4 | Yolcular sınırda beklerken devriye ajanı onları kaçırdı. | Devriye ajanı yolculara yardım etti | Devriye ajanı onları kaçırdı | factual | 1
+5 | Ofis kapalı olduğu için içeri giremedik. | Tatilde olduğu için kapalıydı | Yaz mevsimi olduğu için kapalıydı | factual | 1
+6 | Kızın enerjisi tavan yapmıştı ve hareketliydi. | Dama oynuyordu | İp atlama yapıyordu | physical | 0
+7 | Kadın sıradaki müşteriyi bekliyordu. | Sıraya daha yeni girmişti | Sırada bekleyen biri yoktu | factual | 0
+8 | Kızın burnu bebek bezinden dolayı tahriş olmuştu. | Bebeğin salyası burnunu tahriş etmişti | Bebek bezini kullanmak zorunda kalmıştı | factual | 0
+9 | Grup hit şarkısını söylerken seyirciler de eşlik etti. | Seyirci müziğe alışkın değildi | Seyirciler kibarca şarkıya eşlik etti | social | 1
+10 | Kız matematik öğretmenine soru sormak için yanına gitti. | Kız okuldan çıktıktan sonra öğretmene sordu | Kız öğretmenin yanına giderek soru sordu | factual | 1
+Ground Truth:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Ürün balonlu naylonla paketlenmişti. | Kırılgandı. | Küçüktü. | effect | 0
+2 | Ceplerimi boşalttım. | Bir bilet koçanı aldım. | Bir silah buldum. | effect | 0
+3 | Termitler evi işgal etti. | Termitler evden kayboldu. | Termitler evin içindeki ahşabı yediler. | effect | 1
+4 | Yolcular sınıra ulaştı. | Devriye ajanı pasaportlarını kontrol etti. | Devriye ajanı onları kaçakçılıkla suçladı. | effect | 0
+5 | Ofis kapalıydı. | Tatildi. | Yaz mevsimiydi. | effect | 0
+6 | Kızın enerjisi tükendi. | Dama oynadı. | İp atladı. | effect | 1
+7 | Kadın sıradaki yerini kaybetti. | Sıraya daha fazla kişi girdi. | Sıradan çıktı. | effect | 1
+8 | Kız burnunu tıkadı. | Bebeğin salyası önlüğüne aktı. | Bebek bezini kirletti. | effect | 1
+9 | Grup hit şarkılarını çaldı. | Seyirci müziğe alkışla eşlik etti. | Seyirciler kibarca sessizce dinledi. | effect | 0
+10 | Kız matematik öğretmenine teşekkür etmek istedi. | Kız okuldan sonra cezaya kaldı. | Kız öğretmene bir elma getirdi. | effect | 1
+
+==================================================
+

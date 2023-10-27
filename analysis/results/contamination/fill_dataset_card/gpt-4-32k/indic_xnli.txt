@@ -1,0 +1,32 @@
+languages:
+- as
+- bn
+- gu
+- hi
+- kn
+- ml
+- mr
+- or
+- pa
+- ta
+- te
+pretty_name: "Indic-XNLI"
+tags:
+- natural language inference
+- translation
+dataset_info:
+    features:
+        - name: "premise"
+          dtype: "string"
+        - name: "hypothesis"
+          dtype: "string"
+        - name: "label"
+          dtype: "integer"
+    splits:
+        train:
+            num_examples: "392702"
+        validation:
+            num_examples: "9405"
+        test:
+            num_examples: "9420"
+dataset_summary: "Indic-XNLI is a natural language inference dataset covering 11 languages from the Indian subcontinent. It is a translated version of the English XNLI dataset, which is an extension of the MultiNLI dataset. The dataset contains 392,702 training examples, 9,405 validation examples, and 9,420 test examples."

@@ -1,0 +1,38 @@
+dataset: paws-x/es
+templates:
+  66ceef87-b135-427d-8edd-fd68e612aa54: !Template
+    answer_choices: "No ||| S\xED"
+    id: 66ceef87-b135-427d-8edd-fd68e612aa54
+    jinja: "Oraci\xF3n 1: {{sentence1}}\nOraci\xF3n 1: {{sentence2}}\nPregunta: \xBF\
+      La oraci\xF3n 1 parafrasea la oraci\xF3n 2? \xBFS\xED o No?\n||| \n{{answer_choices[label]}}"
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated Concatenation
+    reference: 'Translated to es version  of: Concatenation of sentence 1 and sentence
+      2'
+  8c259e88-7646-4a50-a4ca-90393920f2dd: !Template
+    answer_choices: No ||| Yes
+    id: 8c259e88-7646-4a50-a4ca-90393920f2dd
+    jinja: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Does Sentence\
+      \ 1 paraphrase Sentence 2? Yes or No? \n||| \n{{answer_choices[label]}}"
+    metadata: *id001
+    name: Concatenation
+    reference: Concatenation of sentence 1 and sentence 2
+  d9911dad-75fe-4506-9843-3a46ba5e49dd: !Template
+    answer_choices: False ||| True
+    id: d9911dad-75fe-4506-9843-3a46ba5e49dd
+    jinja: "{{sentence1}} Question: {{sentence2}} True or False? \n||| \n{{answer_choices[label]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: PAWS-ANLI GPT3
+    reference: ANLI prompt format from Table G7 in the GPT3 paper

@@ -1,0 +1,20 @@
+languages:
+  - en
+pretty_name: XStory Cloze
+tags:
+  - language modeling
+  - cloze task
+dataset_info:
+  features:
+    - name: "text"
+      dtype: "string"
+    - name: "target"
+      dtype: "string"
+  splits:
+    train:
+      num_examples: 100000
+    validation:
+      num_examples: 10000
+    test:
+      num_examples: 10000
+dataset_summary: XStory Cloze is a dataset for language modeling and cloze task. It consists of short stories with one sentence removed, and the task is to predict the missing sentence. The dataset is in English.

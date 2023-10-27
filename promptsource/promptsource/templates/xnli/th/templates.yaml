@@ -1,0 +1,58 @@
+dataset: xnli/th
+templates:
+  37d2f061-06b0-4aa3-af53-871a2b06748f: !Template
+    answer_choices: True ||| Neither ||| False
+    id: 37d2f061-06b0-4aa3-af53-871a2b06748f
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'
+  58536115-fd5c-4f29-a85b-420fde6fc5b0: !Template
+    answer_choices: Yes ||| Maybe ||| No
+    id: 58536115-fd5c-4f29-a85b-420fde6fc5b0
+    jinja: '{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
+      Yes, no, or maybe? ||| {{ answer_choices[label] }}'
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: based on the previous passage
+    reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
+  6f48e72e-1d05-40ee-896b-bb2c383b2f4a: !Template
+    answer_choices: "\u0E08\u0E23\u0E34\u0E07 ||| \u0E44\u0E21\u0E48 ||| \u0E1B\u0E25\
+      \u0E2D\u0E21"
+    id: 6f48e72e-1d05-40ee-896b-bb2c383b2f4a
+    jinja: "{{premise}}\\n\u0E04\u0E33\u0E16\u0E32\u0E21: {{hypothesis}} \u0E08\u0E23\
+      \u0E34\u0E07 \u0E40\u0E17\u0E47\u0E08 \u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48\
+      \u0E40\u0E25\u0E22 ||| {{ answer_choices[label] }}"
+    metadata: *id001
+    name: Bing-Translated GPT-3 style
+    reference: 'Translated to th version  of: Same as reported in Figure G7 of the
+      GPT-3 paper, except that there is no task identifying tokens like "anli R1:
+      ".'
+  ee92b676-4240-4f9c-8b03-a062a33ce7b2: !Template
+    answer_choices: "\u0E43\u0E0A\u0E48 ||| \u0E1A\u0E32\u0E07\u0E17\u0E35 ||| \u0E44\
+      \u0E21\u0E48\u0E43\u0E0A\u0E48"
+    id: ee92b676-4240-4f9c-8b03-a062a33ce7b2
+    jinja: "{{premise}} \u0E08\u0E32\u0E01\u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21\
+      \u0E01\u0E48\u0E2D\u0E19\u0E2B\u0E19\u0E49\u0E32\u0E19\u0E35\u0E49\u0E08\u0E23\
+      \u0E34\u0E07\u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48\u0E17\u0E35\u0E48 \"\
+      {{hypothesis}}\"? \u0E43\u0E0A\u0E48\u0E44\u0E21\u0E48\u0E2B\u0E23\u0E37\u0E2D\
+      \u0E2D\u0E32\u0E08\u0E08\u0E30? ||| {{ answer_choices[label] }}"
+    metadata: *id002
+    name: Bing-Translated based on the previous passage
+    reference: "Translated to th version  of: Adapted from the BoolQ prompts in Schick\
+      \ & Sch\xFCtze 2021."

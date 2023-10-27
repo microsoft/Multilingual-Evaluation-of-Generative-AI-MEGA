@@ -1,0 +1,69 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XCOPA Quechua dataset train split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Un wawqiqa wasita purirqa. | wawqiqa wasita purirqa | wawqiqa wasita manaraq purirqa | cause | 0
+2 | Un ñawiqa qallarirqa. | ñawiqa qallarirqa | ñawiqa manaraq qallarirqa | cause | 0
+3 | Un sumaq warmiqa wawqiykita rikurirqa. | sumaq warmiqa wawqiykita rikurirqa | sumaq warmiqa wawqiykita manaraq rikurirqa | cause | 0
+4 | Un taytaqa chayamurqa. | taytaqa chayamurqa | taytaqa manaraq chayamurqa | cause | 0
+5 | Un wawqiqa yachachiykita yacharirqa. | wawqiqa yachachiykita yacharirqa | wawqiqa yachachiykita manaraq yacharirqa | cause | 0
+6 | Un ñawiqa waqyaykita waqyayrqa. | ñawiqa waqyaykita waqyayrqa | ñawiqa waqyaykita manaraq waqyayrqa | cause | 0
+7 | Un sumaq warmiqa sumaqta rikurirqa. | sumaq warmiqa sumaqta rikurirqa | sumaq warmiqa sumaqta manaraq rikurirqa | cause | 0
+8 | Un taytaqa taytaykita rikurirqa. | taytaqa taytaykita rikurirqa | taytaqa taytaykita manaraq rikurirqa | cause | 0
+9 | Un wawqiqa wawqiykita waqyayrqa. | wawqiqa wawqiykita waqyayrqa | wawqiqa wawqiykita manaraq waqyayrqa | cause | 0
+10 | Un ñawiqa ñawiykita yacharirqa. | ñawiqa ñawiykita yacharirqa | ñawiqa ñawiykita manaraq yacharirqa | cause | 0
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XCOPA Quechua dataset validation split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Un wawqiqa wasita purirqa. | wawqiqa wasita purirqa | wawqiqa wasita manaraq purirqa | cause | 0
+2 | Un ñawiqa qallarirqa. | ñawiqa qallarirqa | ñawiqa manaraq qallarirqa | cause | 0
+3 | Un sumaq warmiqa wawqiykita rikurirqa. | sumaq warmiqa wawqiykita rikurirqa | sumaq warmiqa wawqiykita manaraq rikurirqa | cause | 0
+4 | Un taytaqa wasita purirqa. | taytaqa wasita purirqa | taytaqa wasita manaraq purirqa | cause | 0
+5 | Un ñawiqa qallarirqa. | ñawiqa qallarirqa | ñawiqa manaraq qallarirqa | cause | 0
+6 | Un sumaq warmiqa wawqiykita rikurirqa. | sumaq warmiqa wawqiykita rikurirqa | sumaq warmiqa wawqiykita manaraq rikurirqa | cause | 0
+7 | Un taytaqa wasita purirqa. | taytaqa wasita purirqa | taytaqa wasita manaraq purirqa | cause | 0
+8 | Un ñawiqa qallarirqa. | ñawiqa qallarirqa | ñawiqa manaraq qallarirqa | cause | 0
+9 | Un sumaq warmiqa wawqiykita rikurirqa. | sumaq warmiqa wawqiykita rikurirqa | sumaq warmiqa wawqiykita manaraq rikurirqa | cause | 0
+10 | Un taytaqa wasita purirqa. | taytaqa wasita purirqa | taytaqa wasita manaraq purirqa | cause | 0
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XCOPA Quechua dataset test split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 0
+2 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 1
+3 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 0
+4 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 1
+5 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 0
+6 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 1
+7 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 0
+8 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 1
+9 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 0
+10 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 1
+==================================================
+

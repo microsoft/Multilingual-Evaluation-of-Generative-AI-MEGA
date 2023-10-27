@@ -1,0 +1,1 @@
+Create a file called `openai_key.txt` with key to OpenAI API and a file named `bing_translate_key.txt` with key to bing translator API.

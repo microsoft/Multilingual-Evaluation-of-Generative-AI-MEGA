@@ -1,0 +1,69 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XNLI German dataset train split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+1 | Ein Mann mit einem orangefarbenen Hut, der etwas anstarrt. | Ein Mann trägt einen orangefarbenen Hut. | 0
+2 | Ein Mann mit einem orangefarbenen Hut, der etwas anstarrt. | Ein Mann starrt auf sein Handy. | 1
+3 | Ein Mann mit einem orangefarbenen Hut, der etwas anstarrt. | Ein Mann schläft in seinem orangefarbenen Hut. | 2
+4 | Ein Mädchen in einem Karateanzug bricht einen Stock mit einem Tritt. | Das Mädchen übt Karate. | 0
+5 | Ein Mädchen in einem Karateanzug bricht einen Stock mit einem Tritt. | Das Mädchen spielt Fußball. | 2
+6 | Ein Mädchen in einem Karateanzug bricht einen Stock mit einem Tritt. | Das Mädchen bereitet sich auf ein Ballett vor. | 1
+7 | Fünf Leute in Winterjacken und Helmen stehen im Schnee mit Schneemobilen im Hintergrund. | Fünf Leute bereiten sich auf eine Schneemobilfahrt vor. | 0
+8 | Fünf Leute in Winterjacken und Helmen stehen im Schnee mit Schneemobilen im Hintergrund. | Fünf Leute stehen am Strand und tragen Winterjacken. | 2
+9 | Fünf Leute in Winterjacken und Helmen stehen im Schnee mit Schneemobilen im Hintergrund. | Fünf Leute warten auf den Bus. | 1
+10 | Leute Reparieren das Dach eines Hauses. | Die Leute bauen ein Haus. | 1
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XNLI German dataset validation split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+1 | Die Kirche hat ein knappes Budget und kann den Kindern keine Geschenke kaufen. | Die Kirche hat genug Geld, um den Kindern Geschenke zu kaufen. | 2
+2 | Ein Mann mit einem orangefarbenen Hut, der etwas anstarrt. | Ein Mann trägt einen orangefarbenen Hut und schaut auf etwas. | 0
+3 | Ein Boston Terrier läuft über saftig-grünes Gras vor einem weißen Zaun. | Ein Hund läuft auf dem Gras. | 0
+4 | Ein Mädchen in einem Karateanzug bricht einen Stock mit einem Tritt. | Das Mädchen übt Kampfsport. | 0
+5 | Fünf Leute in Winterjacken und Helmen stehen im Schnee mit Schneemobilen im Hintergrund. | Leute stehen draußen im Schnee. | 0
+6 | Leute Reparieren das Dach eines Hauses. | Die Leute bauen ein Haus. | 1
+7 | Ein Mann in einer Weste sitzt auf einem Stuhl und hält Magazine. | Der Mann liest Magazine. | 1
+8 | Eine Gruppe von Menschen steht vor einem Iglu. | Die Menschen betrachten das Iglu. | 0
+9 | Ein Junge in einem roten Trikot versucht, die Home Base zu erreichen, während der Catcher im blauen Trikot versucht, ihn zu fangen. | Der Junge spielt Baseball. | 0
+10 | Ein Typ arbeitet an einem Gebäude. | Ein Mann baut ein Gebäude. | 0
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XNLI German dataset test split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+1 | Die Kirche hat ein knappes Budget und kann den Kindern keine Geschenke kaufen. | Die Kirche hat genug Geld, um den Kindern Geschenke zu kaufen. | 2
+2 | Ein Mann sitzt auf einem Stuhl und hält ein großes Buch. | Der Mann liest ein Buch. | 1
+3 | Eine Gruppe von Menschen steht vor einem Gebäude. | Die Menschen warten auf jemanden. | 1
+4 | Ein Junge spielt mit seinem Hund im Park. | Der Junge und sein Hund haben Spaß im Park. | 0
+5 | Die Frau trägt eine rote Jacke und einen schwarzen Hut. | Die Frau trägt eine blaue Jacke und einen schwarzen Hut. | 2
+6 | Ein Mann fährt mit seinem Fahrrad über eine Brücke. | Der Mann geht zu Fuß über die Brücke. | 2
+7 | Die Sonne scheint und die Menschen genießen den Tag am Strand. | Es ist ein sonniger Tag am Strand. | 0
+8 | Ein Paar tanzt auf einer Party. | Die Leute auf der Party haben Spaß. | 1
+9 | Ein kleines Mädchen spielt auf dem Spielplatz. | Das Mädchen ist zu Hause und spielt. | 2
+10 | Ein Mann kocht in der Küche. | Der Mann bereitet das Essen zu. | 0
+==================================================
+

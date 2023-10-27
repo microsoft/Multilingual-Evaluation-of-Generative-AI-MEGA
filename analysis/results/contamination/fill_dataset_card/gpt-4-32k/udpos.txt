@@ -1,0 +1,59 @@
+languages: 
+- af
+- ar
+- bg
+- de
+- el
+- en
+- es
+- et
+- eu
+- fa
+- fi
+- fr
+- he
+- hi
+- hu
+- id
+- it
+- ja
+- ko
+- mr
+- nl
+- pt
+- ru
+- ta
+- te
+- tr
+- ur
+- vi
+- yo
+- zh
+pretty_name: "Universal Dependencies POS"
+tags:
+- pos_tagging
+- dependency_parsing
+dataset_info:
+    features:
+        - name: "tokens"
+          dtype: "List of strings"
+        - name: "upos"
+          dtype: "List of strings"
+        - name: "xpos"
+          dtype: "List of strings"
+        - name: "feats"
+          dtype: "List of strings"
+        - name: "head"
+          dtype: "List of integers"
+        - name: "deprel"
+          dtype: "List of strings"
+        - name: "misc"
+          dtype: "List of strings"
+    splits:
+        train:
+            num_examples: "150,832"
+        validation:
+            num_examples: "19,579"
+        test:
+            num_examples: "19,781"
+dataset_summary: "The Universal Dependencies POS dataset contains 25 languages with annotations for part-of-speech tagging and dependency parsing. The dataset is based on the Universal Dependencies project, which aims to develop cross-linguistically consistent treebank annotation for many languages."

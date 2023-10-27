@@ -1,0 +1,33 @@
+languages:
+- "hi"
+- "bn"
+- "ta"
+- "te"
+- "mr"
+- "ml"
+- "en"
+pretty_name: "IndicQA"
+tags:
+- "question answering"
+- "Indic languages"
+- "multilingual"
+dataset_info:
+    features:
+        - name: "question"
+          dtype: "string"
+        - name: "answer"
+          dtype: "string"
+        - name: "context"
+          dtype: "string"
+        - name: "id"
+          dtype: "string"
+        - name: "source"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 100,000
+        validation:
+            num_examples: 10,000
+        test:
+            num_examples: 10,000
+dataset_summary: "IndicQA is a multilingual question answering dataset consisting of questions and answers in seven Indian languages (Hindi, Bengali, Tamil, Telugu, Marathi, Malayalam, and English) covering a wide range of topics. The dataset is designed to promote research in multilingual question answering and natural language processing for Indic languages."

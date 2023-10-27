@@ -1,0 +1,83 @@
+dataset: xcopa
+subset: vi
+templates:
+  07dc5774-1e57-4c9a-8696-02f589051b53: !Template
+    answer_choices: choice1 ||| choice2
+    id: 07dc5774-1e57-4c9a-8696-02f589051b53
+    jinja: "{{ premise }} \n\nWhat's the best option?\n- choice1 : {{choice1}}\n-\
+      \ choice2 : {{choice2}}\n\nWe are looking for {% if question == \"cause\" %}\
+      \ a cause {% else %} an effect {% endif %}\n||| {% if label != -1 %}{{answer_choices[label]}}{%endif%}"
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: best_option discrete
+    reference: Discrete version of the best_option prompt
+  37d24b45-e5c5-4ec9-8e6a-8bf0d6c44356: !Template
+    answer_choices: "L\u1EF1a ch\u1ECDn1 ||| L\u1EF1a ch\u1ECDn2"
+    id: 37d24b45-e5c5-4ec9-8e6a-8bf0d6c44356
+    jinja: "{{ premise }} {% if question == \"cause\" %} \u0110i\u1EC1u n\xE0y x\u1EA3\
+      y ra b\u1EDFi v\xEC... {% else %} K\u1EBFt qu\u1EA3 l\xE0... {% endif %}\nGi\xFA\
+      p t\xF4i ch\u1ECDn t\xF9y ch\u1ECDn h\u1EE3p l\xFD h\u01A1n:\n- L\u1EF1a ch\u1ECD\
+      n1: {{choice1}}\n- L\u1EF1a ch\u1ECDn2: {{choice2}} \nTr\u1EA3 l\u1EDDi: |||\
+      \ {% if label != -1 %} {{ answer_choices[label] }} {%endif%}"
+    metadata: &id003 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated plausible_alternatives_discrete
+    reference: 'Translated to vi version  of: Discrete version of plausible_alternatives
+      prompt'
+  37fa4089-bce9-4e10-a296-b925f7fbc61f: !Template
+    answer_choices: '{{choice1 }} ||| {{choice2}}'
+    id: 37fa4089-bce9-4e10-a296-b925f7fbc61f
+    jinja: "\"{{ answer_choices[0] }}\" hay \"{{ answer_choices[1] }}\"? {{ premise\
+      \ }} {% if question == \"cause\" %} v\xEC {% else %} so {% endif %} ||| {% if\
+      \ label != -1 %} {{ answer_choices[label] }} {% endif %}"
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: "Bing-Translated C1 or C2? premise, so/because\u2026"
+    reference: "Translated to vi version  of: Adapted from Perez et al. 2021 and Schick\
+      \ & Sch\xFCtz 2021."
+  3f5cc163-5955-4c79-9f0d-5ab15beddb2b: !Template
+    answer_choices: "L\u1EF1a ch\u1ECDn1 ||| L\u1EF1a ch\u1ECDn2"
+    id: 3f5cc163-5955-4c79-9f0d-5ab15beddb2b
+    jinja: "{{ premise }} \n\nL\u1EF1a ch\u1ECDn t\u1ED1t nh\u1EA5t l\xE0 g\xEC?\n\
+      - L\u1EF1a ch\u1ECDn1 : {{choice1}}\n- L\u1EF1a ch\u1ECDn2 : {{choice2}}\n\n\
+      Ch\xFAng t\xF4i \u0111ang t\xECm ki\u1EBFm {% if question == \"cause\"%} m\u1ED9\
+      t nguy\xEAn nh\xE2n {% else %} m\u1ED9t hi\u1EC7u \u1EE9ng {% endif %}\n|||\
+      \ {% if label != -1 %} {{answer_choices[label]}} {%endif%}"
+    metadata: *id001
+    name: Bing-Translated best_option discrete
+    reference: 'Translated to vi version  of: Discrete version of the best_option
+      prompt'
+  744047dc-1298-45a2-8d68-d67e3f834ded: !Template
+    answer_choices: '{{choice1 }} ||| {{choice2}}'
+    id: 744047dc-1298-45a2-8d68-d67e3f834ded
+    jinja: '"{{ answer_choices[0] }}" or "{{ answer_choices[1] }}"? {{ premise }}
+      {% if question == "cause" %} because {% else %} so {% endif %} ||| {% if label
+      != -1 %}{{ answer_choices[label] }}{% endif %}'
+    metadata: *id002
+    name: "C1 or C2? premise, so/because\u2026"
+    reference: "Adapted from Perez et al. 2021 and Schick & Sch\xFCtz 2021."
+  f67eb599-4667-4d2e-88cf-d792cc08a1b6: !Template
+    answer_choices: choice1 ||| choice2
+    id: f67eb599-4667-4d2e-88cf-d792cc08a1b6
+    jinja: "{{ premise }} {% if question == \"cause\" %} This happened because...\
+      \ {% else %} As a consequence... {% endif %}\nHelp me pick the more plausible\
+      \ option:\n- choice1: {{choice1}}\n- choice2: {{choice2}} \nAnswer: ||| {% if\
+      \ label != -1 %}{{ answer_choices[label] }}{%endif%}"
+    metadata: *id003
+    name: plausible_alternatives_discrete
+    reference: Discrete version of plausible_alternatives prompt

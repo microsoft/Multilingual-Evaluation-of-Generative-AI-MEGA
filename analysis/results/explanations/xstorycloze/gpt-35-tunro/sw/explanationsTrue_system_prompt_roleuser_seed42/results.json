@@ -1,0 +1,1 @@
+{"model": "gpt-35-tunro", "dataset": "xstory_cloze", "lang": "sw", "include_explanation": true, "system_prompt_role": "user", "seed": 42, "metrics": {"accuracy": 0.8649900727994706}}

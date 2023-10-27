@@ -1,0 +1,57 @@
+languages:
+  - af
+  - ar
+  - bg
+  - de
+  - el
+  - en
+  - es
+  - et
+  - eu
+  - fa
+  - fi
+  - fr
+  - he
+  - hi
+  - hr
+  - hu
+  - id
+  - it
+  - ja
+  - kk
+  - ko
+  - mr
+  - nl
+  - no
+  - pl
+  - pt
+  - ro
+  - ru
+  - sv
+  - ta
+  - te
+  - th
+  - tl
+  - tr
+  - uk
+  - ur
+  - vi
+  - zh
+pretty_name: Universal Dependencies Part-of-Speech Tagging
+tags:
+  - pos_tagging
+  - dependency_parsing
+dataset_info:
+  features:
+    - name: tokens
+      dtype: List[string]
+    - name: pos_tags
+      dtype: List[int]
+  splits:
+    train:
+      num_examples: 207301
+    validation:
+      num_examples: 25424
+    test:
+      num_examples: 20761
+dataset_summary: UDPOS is a dataset for 40 languages, with over 200k annotated sentences for part-of-speech (POS) tagging and dependency parsing. The dataset is in the Universal Dependencies format, which is a project that seeks to develop cross-linguistically consistent treebank annotation for many languages, with the goal of facilitating multilingual parser development, cross-lingual learning, and parsing research from a language typology perspective.

@@ -1,0 +1,25 @@
+languages:
+- "en"
+- "es"
+pretty_name: "XCOPA Dataset"
+tags:
+- "natural language understanding"
+- "commonsense reasoning"
+dataset_info:
+    features:
+        - name: "premise"
+          dtype: "string"
+        - name: "choice1"
+          dtype: "string"
+        - name: "choice2"
+          dtype: "string"
+        - name: "label"
+          dtype: "int"
+    splits:
+        train:
+            num_examples: 5000
+        validation:
+            num_examples: 500
+        test:
+            num_examples: 1000
+dataset_summary: "The XCOPA dataset is a benchmark for evaluating natural language understanding and commonsense reasoning. It consists of 6,000 multiple-choice questions in English and Spanish, where each question is a sentence with a blank to be filled in with one of two possible choices. The questions are designed to test the ability to reason about causal relationships, spatial and temporal relations, and other common sense concepts."

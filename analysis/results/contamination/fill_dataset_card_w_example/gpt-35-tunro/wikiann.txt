@@ -1,0 +1,51 @@
+languages:
+- "List of ISO 639-1 code for languages covered in the dataset"
+- en
+- es
+- de
+- fr
+- ru
+- it
+- pt
+- pl
+- uk
+- sv
+- tr
+- nl
+- id
+- no
+- fi
+- da
+- cs
+- ro
+- hu
+- sk
+- bg
+- hr
+- sl
+- et
+- lt
+- lv
+- el
+- he
+- ar
+pretty_name: "WikiANN"
+tags:
+- multilingual
+- named entity recognition
+- part-of-speech tagging
+- language modeling
+dataset_info:
+    features:
+        - name: "text"
+          dtype: "string"
+        - name: "label"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 587,367
+        validation:
+            num_examples: 73,420
+        test:
+            num_examples: 73,420
+dataset_summary: WikiANN is a multilingual corpus consisting of Wikipedia articles annotated with named entities, part-of-speech tags, and lemmas. The dataset covers 25 languages and is suitable for tasks such as named entity recognition, part-of-speech tagging, and language modeling.

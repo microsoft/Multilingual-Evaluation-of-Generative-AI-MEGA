@@ -1,0 +1,52 @@
+dataset: xnli/es
+templates:
+  194311f7-ba13-4eae-a8b4-31c46f2fcd18: !Template
+    answer_choices: Verdadero ||| Ninguno ||| Falso
+    id: 194311f7-ba13-4eae-a8b4-31c46f2fcd18
+    jinja: "{{premise}}\nPregunta: {{hypothesis}} \xBFverdadero, falso o ninguno?\
+      \ ||| {{ answer_choices[label] }}"
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated GPT-3 style
+    reference: 'Translated to es version  of: Same as reported in Figure G7 of the
+      GPT-3 paper, except that there is no task identifying tokens like "anli R1:
+      ".'
+  1e2bc524-86a7-4caf-9036-6594f17168ad: !Template
+    answer_choices: "S\xED ||| Tal vez ||| No"
+    id: 1e2bc524-86a7-4caf-9036-6594f17168ad
+    jinja: "{{premise}} Basado en el pasaje anterior, \xBFes cierto que \"{{hypothesis}}\"\
+      ? S\xED, no, \xBFo tal vez? ||| {{ answer_choices[label] }}"
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated based on the previous passage
+    reference: "Translated to es version  of: Adapted from the BoolQ prompts in Schick\
+      \ & Sch\xFCtze 2021."
+  37d2f061-06b0-4aa3-af53-871a2b06748f: !Template
+    answer_choices: True ||| Neither ||| False
+    id: 37d2f061-06b0-4aa3-af53-871a2b06748f
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: *id001
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'
+  58536115-fd5c-4f29-a85b-420fde6fc5b0: !Template
+    answer_choices: Yes ||| Maybe ||| No
+    id: 58536115-fd5c-4f29-a85b-420fde6fc5b0
+    jinja: '{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
+      Yes, no, or maybe? ||| {{ answer_choices[label] }}'
+    metadata: *id002
+    name: based on the previous passage
+    reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."

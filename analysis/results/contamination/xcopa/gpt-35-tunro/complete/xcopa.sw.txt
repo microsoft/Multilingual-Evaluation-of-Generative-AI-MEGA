@@ -1,0 +1,12 @@
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Kifaa kilikuwa kimefunguliwa | Kikuwa nyepesi | Kilikuwa kizito | Passive Voice | 1
+2 | Niliiacha mitupu kwa bahati mbaya | Nilikipata tena kisogoni | Niliona nikikanyaga | Cause and Effect | 0
+3 | Mchwa walivuka barabara | Mchwa waliondokana na chakula | Mchwa walikula kupitia majani | Verb Sense | 1
+4 | Wasafiri wamefika uwanjani | Afisa doria alikagua mizigo yao | Afisa doria aliwatuhumu kwa kusafirisha madawa ya kulevya | Inference | 0
+5 | Ofisi ilikuwa imefungwa | Ilikuwa ni siku ya mapumziko | Ilikuwa nikipinda kona | Verb Sense | 1
+6 | Msichana alipunguza mwendo | Alicheza na mbwa | Aliruka ukuta | Verb Sense | 1
+7 | Mwanamke amepotea | Watu zaidi walimtafuta | Alitoka nje ya jiji | Inference | 0
+8 | Msichana alifunika uso wake | Mtoto alitoka maziwa | Mtoto alichafua nguo zake | Verb Sense | 0
+9 | Bendi ilipiga nyimbo kali | Hadhira walipiga makofi | Hadhira walisikiliza kwa makini | Verb Sense | 1
+10 | Msichana alitaka kumshukuru daktari | Msichana alibakia kimya | Msichana alimletea zawadi | Inference | 1

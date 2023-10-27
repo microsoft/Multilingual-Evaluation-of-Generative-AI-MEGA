@@ -1,0 +1,81 @@
+dataset: xcopa
+subset: tr
+templates:
+  07dc5774-1e57-4c9a-8696-02f589051b53: !Template
+    answer_choices: choice1 ||| choice2
+    id: 07dc5774-1e57-4c9a-8696-02f589051b53
+    jinja: "{{ premise }} \n\nWhat's the best option?\n- choice1 : {{choice1}}\n-\
+      \ choice2 : {{choice2}}\n\nWe are looking for {% if question == \"cause\" %}\
+      \ a cause {% else %} an effect {% endif %}\n||| {% if label != -1 %}{{answer_choices[label]}}{%endif%}"
+    metadata: &id003 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: best_option discrete
+    reference: Discrete version of the best_option prompt
+  0a2c77b1-2fa2-41ae-8b2d-4d3a80be258e: !Template
+    answer_choices: "se\xE7im1 ||| se\xE7im2"
+    id: 0a2c77b1-2fa2-41ae-8b2d-4d3a80be258e
+    jinja: "{{ premise }} {% if question == \"cause\" %} Bu oldu \xE7\xFCnk\xFC...\
+      \ {% else %} Sonu\xE7 olarak... {% endif %}\nDaha makul se\xE7ene\u011Fi se\xE7\
+      meme yard\u0131m et:\n- se\xE7im1: {{choice1}}\n- se\xE7im2: {{choice2}} \n\
+      Cevap: ||| {% if label != -1 %} {{ answer_choices[label] }} {%endif%}"
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated plausible_alternatives_discrete
+    reference: 'Translated to tr version  of: Discrete version of plausible_alternatives
+      prompt'
+  744047dc-1298-45a2-8d68-d67e3f834ded: !Template
+    answer_choices: '{{choice1 }} ||| {{choice2}}'
+    id: 744047dc-1298-45a2-8d68-d67e3f834ded
+    jinja: '"{{ answer_choices[0] }}" or "{{ answer_choices[1] }}"? {{ premise }}
+      {% if question == "cause" %} because {% else %} so {% endif %} ||| {% if label
+      != -1 %}{{ answer_choices[label] }}{% endif %}'
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: "C1 or C2? premise, so/because\u2026"
+    reference: "Adapted from Perez et al. 2021 and Schick & Sch\xFCtz 2021."
+  84c71154-2ddb-45c3-bcd3-b857b88b0f70: !Template
+    answer_choices: '{{choice1 }} ||| {{choice2}}'
+    id: 84c71154-2ddb-45c3-bcd3-b857b88b0f70
+    jinja: '"{{ answer_choices[0] }}" veya "{{ answer_choices[1] }}"? {{ premise }}
+      {% if question == "cause" %} because {% else %} so {% endif %} ||| {% if label
+      != -1 %} {{ answer_choices[label] }} {% endif %}'
+    metadata: *id001
+    name: "Bing-Translated C1 or C2? premise, so/because\u2026"
+    reference: "Translated to tr version  of: Adapted from Perez et al. 2021 and Schick\
+      \ & Sch\xFCtz 2021."
+  f67eb599-4667-4d2e-88cf-d792cc08a1b6: !Template
+    answer_choices: choice1 ||| choice2
+    id: f67eb599-4667-4d2e-88cf-d792cc08a1b6
+    jinja: "{{ premise }} {% if question == \"cause\" %} This happened because...\
+      \ {% else %} As a consequence... {% endif %}\nHelp me pick the more plausible\
+      \ option:\n- choice1: {{choice1}}\n- choice2: {{choice2}} \nAnswer: ||| {% if\
+      \ label != -1 %}{{ answer_choices[label] }}{%endif%}"
+    metadata: *id002
+    name: plausible_alternatives_discrete
+    reference: Discrete version of plausible_alternatives prompt
+  f81bb227-b983-43f2-8a5c-16ab921e5247: !Template
+    answer_choices: "se\xE7im1 ||| se\xE7im2"
+    id: f81bb227-b983-43f2-8a5c-16ab921e5247
+    jinja: "{{ premise }} \n\nEn iyi se\xE7enek nedir?\n- se\xE7im1 : {{choice1}}\n\
+      - se\xE7im2 : {{choice2}}\n\n{% if question == \"cause\" %} a cause {% else\
+      \ %} an effect {% endif %}\n||| {% if label != -1 %} {{answer_choices[label]}}\
+      \ {%endif%}"
+    metadata: *id003
+    name: Bing-Translated best_option discrete
+    reference: 'Translated to tr version  of: Discrete version of the best_option
+      prompt'

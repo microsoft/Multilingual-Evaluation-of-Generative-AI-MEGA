@@ -1,0 +1,75 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XNLI Swahili dataset train split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Mimi ni mwalimu. | Mimi ni daktari. | 2
+2 | Mimi hupenda kula matunda. | Matunda ni chakula kizuri. | 0
+3 | Nimechoka sana. | Nataka kwenda kulala. | 0
+4 | Mimi hupenda kusoma vitabu. | Vitabu ni vya kusoma. | 0
+5 | Mimi ni mwanafunzi. | Mimi ni mfanyakazi. | 2
+6 | Mimi hupenda kusikiliza muziki. | Muziki ni kelele. | 2
+7 | Mimi ni mwalimu. | Wanafunzi wangu ni wazuri. | 0
+8 | Mimi hupenda kula nyama. | Nyama ni mbaya kwa afya. | 2
+9 | Mimi ni mwanafunzi. | Nataka kufaulu mtihani wangu. | 0
+10 | Mimi hupenda kusafiri. | Kusafiri ni gharama kubwa. | 2
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XNLI Swahili dataset validation split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Mimi hupenda kula matunda | Mimi hupenda kula nyama | 2
+2 | Mimi hupenda kusoma vitabu | Mimi hupenda kusikiliza muziki | 1
+3 | Mimi hupenda kuogelea | Mimi hupenda kucheza mpira | 2
+4 | Mimi hupenda kusafiri | Mimi hupenda kukaa nyumbani | 0
+5 | Mimi hupenda kula chakula kizuri | Mimi hupenda kula chakula kibaya | 2
+6 | Mimi hupenda kusoma habari | Mimi hupenda kusoma riwaya | 1
+7 | Mimi hupenda kusikiliza redio | Mimi hupenda kusoma vitabu | 2
+8 | Mimi hupenda kucheza mpira | Mimi hupenda kucheza tenisi | 1
+9 | Mimi hupenda kusafiri | Mimi hupenda kusoma vitabu | 2
+10 | Mimi hupenda kula matunda | Mimi hupenda kula mboga | 2
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XNLI Swahili dataset test split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Kwa kawaida, watu hupata homa ya mafua wakati wa msimu wa baridi. | Watu hawapati homa ya mafua wakati wa msimu wa baridi. | 2
+2 | Mwanafunzi aliyefaulu mtihani wa mwisho atapata alama ya juu. | Mwanafunzi aliyefeli mtihani wa mwisho atapata alama ya juu. | 2
+3 | Kupata usingizi wa kutosha ni muhimu kwa afya ya binadamu. | Kupata usingizi wa kutosha si muhimu kwa afya ya binadamu. | 2
+4 | Kula matunda na mboga ni muhimu kwa afya ya binadamu. | Kula matunda na mboga si muhimu kwa afya ya binadamu. | 2
+5 | Kusoma vitabu kunaweza kuboresha ujuzi wa lugha. | Kusoma vitabu hakuna athari yoyote kwa ujuzi wa lugha. | 2
+6 | Kupata mafanikio katika kazi kunaweza kusababisha furaha. | Kupata mafanikio katika kazi hakusababishi furaha. | 2
+7 | Kusafiri ni njia nzuri ya kujifunza tamaduni tofauti. | Kusafiri hakusaidii kujifunza tamaduni tofauti. | 2
+8 | Kupata elimu bora ni muhimu kwa maisha ya baadaye. | Kupata elimu bora si muhimu kwa maisha ya baadaye. | 2
+9 | Kufanya mazoezi ya mara kwa mara kunaweza kuboresha afya ya mwili. | Kufanya mazoezi ya mara kwa mara hakuna athari yoyote kwa afya ya mwili. | 2
+10 | Kusoma vitabu kunaweza
+==================================================
+

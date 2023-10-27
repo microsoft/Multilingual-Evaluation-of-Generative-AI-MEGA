@@ -1,0 +1,69 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XNLI Swahili dataset train split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+1 | Mtu huyo anapiga picha. | Mtu huyo anatumia kamera. | 0
+2 | Watoto wawili wanacheza video. | Watoto wawili wanacheza nje. | 2
+3 | Mwanamke anapika chakula. | Mwanamke anapika chakula cha jioni. | 1
+4 | Mwanafunzi anasoma kitabu. | Mwanafunzi anasoma gazeti. | 2
+5 | Wafanyakazi wanafanya kazi ofisini. | Wafanyakazi wanafanya kazi nyumbani. | 2
+6 | Mwanamke anaimba wimbo. | Mwanamke anasikiliza wimbo. | 2
+7 | Mtu anatembea mbwa wake. | Mtu anatembea paka wake. | 2
+8 | Watu wanaogelea kwenye bwawa. | Watu wanaogelea kwenye bahari. | 2
+9 | Mchezaji wa mpira wa miguu anapiga mpira. | Mchezaji wa mpira wa miguu anashika mpira. | 2
+10 | Mvulana anacheza na kifaru cha plastiki. | Mvulana anacheza na ndege ya plastiki. | 2
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XNLI Swahili dataset validation split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+1 | Mtu huyo anapiga picha. | Mtu huyo anapiga picha kwa kutumia kamera. | 1
+2 | Mwanamke anafungua tunda. | Mwanamke anafungua tunda ili kula. | 1
+3 | Watu wawili wanasimama karibu na gari. | Watu wawili wanasimama karibu na gari ili kuingia ndani. | 1
+4 | Mwanamke anapika chakula. | Mwanamke anapika chakula kwa ajili ya familia yake. | 1
+5 | Watoto wanacheza mpira wa miguu. | Watoto wanacheza mpira wa miguu shuleni. | 1
+6 | Mwanamume anasoma gazeti. | Mwanamume anasoma gazeti ili kujua habari za siku. | 1
+7 | Mwanamke anafanya mazoezi. | Mwanamke anafanya mazoezi ili kuimarisha afya yake. | 1
+8 | Mtu anapanda mti. | Mtu anapanda mti ili kuboresha mazingira. | 1
+9 | Watu wanaogelea kwenye bwawa. | Watu wanaogelea kwenye bwawa ili kujifunza kuogelea. | 1
+10 | Mwanafunzi anasoma kitabu. | Mwanafunzi anasoma kitabu ili kujifunza somo. | 1
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XNLI Swahili dataset test split. Use the following format:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | {premise1} | {hypothesis1} | {label1}
+2 | {premise2} | {hypothesis2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for entailement, 1 for neutral, 2 for contradiction
+Response:
+1 | Mwanamke mmoja anapiga picha. | Mwanamke anatumia kamera. | 0
+2 | Kikundi cha watu kinaimba na kucheza. | Watu wanakula chakula. | 2
+3 | Mtu mmoja anasoma gazeti. | Mtu huyo anasoma kitabu. | 1
+4 | Watoto wawili wanacheza mpira wa miguu. | Watoto wanacheza mpira wa kikapu. | 2
+5 | Mtu anapika chakula jikoni. | Mtu anafanya usafi jikoni. | 1
+6 | Mwanamume anavaa suti na tai. | Mwanamume anavaa mavazi rasmi. | 0
+7 | Mwanamke anafanya mazoezi kwenye gym. | Mwanamke anafanya mazoezi nje. | 2
+8 | Watu wawili wanapanda mlima. | Watu wanashuka mlima. | 1
+9 | Mtu anapanda baiskeli. | Mtu anatembea kwa miguu. | 2
+10 | Mwanafunzi anasoma darasani. | Mwanafunzi yuko shuleni. | 0
+==================================================
+

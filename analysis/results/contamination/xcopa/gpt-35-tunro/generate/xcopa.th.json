@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Thai dataset train split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | คุณเป็นคนไทยหรือไม่? | ใช่ | ไม่ใช่ | binary | 0\n2 | คุณชอบกินผลไม้หรือไม่? | ชอบ | ไม่ชอบ | binary | 0\n3 | คุณเคยไปเที่ยวต่างประเทศมาก่อนหรือไม่? | เคย | ไม่เคย | binary | 0\n4 | คุณชอบดูหนังหรือไม่? | ชอบ | ไม่ชอบ | binary | 0\n5 | คุณเคยเล่นกีฬาหรือไม่? | เคย | ไม่เคย | binary | 0\n6 | คุณชอบอาหารไทยหรือไม่? | ชอบ | ไม่ชอบ | binary | 0\n7 | คุณเคยเรียนต่อในต่างประเทศหรือไม่? | เคย | ไม่เคย | binary | 0\n8 | คุณชอบเล่นเกมคอมพิวเตอร์หรือไม่? | ชอบ | ไม่ชอบ | binary | 0\n9 | คุณเคยเป็นสมาชิกสโมสรนิยมหรือไม่? | เคย | ไม่เคย | binary | 0\n10 | คุณชอบดนตรีหรือไม่? | ชอบ | ไม่ชอบ | binary | 0"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Thai dataset validation split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | โรงเรียนปิ่นเกล้าเปิดสอนวิชาคอมพิวเตอร์ | มีคอมพิวเตอร์ให้นักเรียนเล่นได้ตลอดเวลา | มีคอมพิวเตอร์ให้นักเรียนเล่นได้เฉพาะชั่วโมงเรียน | ความเชื่อมั่น | 0\n2 | นักเรียนโรงเรียนปิ่นเกล้าสามารถยืมหนังสือจากห้องสมุดได้ตลอดเวลา | นักเรียนโรงเรียนปิ่นเกล้าสามารถยืมหนังสือจากห้องสมุดได้เฉพาะชั่วโมงเรียน | ความเชื่อมั่น | 0\n3 | นักเรียนโรงเรียนปิ่นเกล้าสามารถเข้าถึงเนื้อหาการเรียนรู้ผ่านแอปพลิเคชันได้ | นักเรียนโรงเรียนปิ่นเกล้าไม่สามารถเข้าถึงเนื้อหาการเรียนรู้ผ่านแอปพลิเคชันได้ | ความเชื่อมั่น | 1\n4 | โรงเรียนปิ่นเกล้ามีโรงอาหารให้นักเรียนทานอาหารกลางวัน | โรงเรียนปิ่นเกล้าไม่มีโรงอาหารให้นักเรียนทานอาหารกลางวัน | ความเชื่อมั่น | 0\n5 | นักเรียนโรงเรียนปิ่นเกล้าสามารถเข้าถึงเนื้อหาการเรียนรู้ผ่านเว็บไซต์ของโรงเรียนได้ | นักเรียนโรงเรียนปิ่นเกล้าไม่สามารถเข้าถึงเนื้อหาการเรียนรู้ผ่านเว็บไซต์ของโรงเรียนได้ | ความเชื่อมั่น | 0\n6 | โรงเรียนปิ่นเกล้ามีโรงเรียนวิทยาศาสตร์และคณิตศาสตร์ | โรงเรียนปิ่นเกล้าไม่มีโรงเรียนวิทยาศาสตร์และคณิตศาสตร์ | ความเชื่อมั่น | 0\n7 | นักเรียนโรงเรียนปิ่นเกล้าสามารถเข้าถึงเนื้อหาการเรียนรู้ผ่านโทรศัพท์มือถือได้ | นักเรียนโรงเรียน"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Thai dataset test split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | คุณเป็นคนไทยหรือไม่? | ใช่ | ไม่ใช่ | binary | 0\n2 | คุณชอบกินผลไม้หรือไม่? | ชอบ | ไม่ชอบ | binary | 0\n3 | คุณเคยไปเที่ยวต่างประเทศมาก่อนหรือไม่? | เคย | ไม่เคย | binary | 0\n4 | คุณชอบดูหนังหรือไม่? | ชอบ | ไม่ชอบ | binary | 0\n5 | คุณเคยเล่นกีฬามาก่อนหรือไม่? | เคย | ไม่เคย | binary | 0\n6 | คุณชอบเลี้ยงสัตว์เลี้ยงในบ้านหรือไม่? | ชอบ | ไม่ชอบ | binary | 0\n7 | คุณเคยเรียนต่อในต่างประเทศมาก่อนหรือไม่? | เคย | ไม่เคย | binary | 0\n8 | คุณชอบกินอาหารไทยหรือไม่? | ชอบ | ไม่ชอบ | binary | 0\n9 | คุณเคยเล่นเกมคอมพิวเตอร์มาก่อนหรือไม่? | เคย | ไม่เคย | binary | 0\n10 | คุณชอบเล่นดนตรีหรือไม่? | ชอบ | ไม่ชอบ | binary | 0"
+    }
+]

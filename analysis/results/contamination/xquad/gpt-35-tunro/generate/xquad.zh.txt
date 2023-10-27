@@ -1,0 +1,26 @@
+Split: test
+Prompt:
+Please generate the first 10 instances of XQuAD Mandarin dataset test split. Use the following format:
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answers1}
+{id2} | {context2} | {question2} | {answers2}
+...
+.
+Response:
+Sorry, as an AI language model, I don't have access to the XQuAD Mandarin dataset. However, I can provide you with a general format for generating instances of a dataset:
+
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answers1}
+{id2} | {context2} | {question2} | {answers2}
+{id3} | {context3} | {question3} | {answers3}
+{id4} | {context4} | {question4} | {answers4}
+{id5} | {context5} | {question5} | {answers5}
+{id6} | {context6} | {question6} | {answers6}
+{id7} | {context7} | {question7} | {answers7}
+{id8} | {context8} | {question8} | {answers8}
+{id9} | {context9} | {question9} | {answers9}
+{id10} | {context10} | {question10} | {answers10}
+==================================================
+

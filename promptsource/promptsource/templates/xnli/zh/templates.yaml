@@ -1,0 +1,54 @@
+dataset: xnli/zh
+templates:
+  37d2f061-06b0-4aa3-af53-871a2b06748f: !Template
+    answer_choices: True ||| Neither ||| False
+    id: 37d2f061-06b0-4aa3-af53-871a2b06748f
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'
+  58536115-fd5c-4f29-a85b-420fde6fc5b0: !Template
+    answer_choices: Yes ||| Maybe ||| No
+    id: 58536115-fd5c-4f29-a85b-420fde6fc5b0
+    jinja: '{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
+      Yes, no, or maybe? ||| {{ answer_choices[label] }}'
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: based on the previous passage
+    reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
+  82288265-51b5-4107-b21c-22b104d7c91f: !Template
+    answer_choices: "\u662F ||| \u4E5F\u8BB8 ||| \u4E0D"
+    id: 82288265-51b5-4107-b21c-22b104d7c91f
+    jinja: "{{premise}}\u6839\u636E\u524D\u9762\u7684\u6BB5\u843D\uFF0C\u201C{{hypothesis}}\u201D\
+      \u662F\u771F\u7684\u5417\uFF1F\u662F\u7684\uFF0C\u4E0D\u662F\u7684\uFF0C\u8FD8\
+      \u662F\u4E5F\u8BB8\uFF1F ||| {{ answer_choices[label] }}"
+    metadata: *id001
+    name: Bing-Translated based on the previous passage
+    reference: "Translated to zh version  of: Adapted from the BoolQ prompts in Schick\
+      \ & Sch\xFCtze 2021."
+  92452c1e-28b6-440f-9b3b-094ee0b64c18: !Template
+    answer_choices: "\u771F ||| \u4E5F\u4E0D ||| \u5047"
+    id: 92452c1e-28b6-440f-9b3b-094ee0b64c18
+    jinja: "{{premise}}\n\u95EE\u9898\uFF1A{{hypothesis}} \u662F\u771F\u7684\u3001\
+      \u9519\u7684\u8FD8\u662F\u4E24\u8005\u90FD\u4E0D\u662F\uFF1F ||| {{ answer_choices[label]\
+      \ }}"
+    metadata: *id002
+    name: Bing-Translated GPT-3 style
+    reference: 'Translated to zh version  of: Same as reported in Figure G7 of the
+      GPT-3 paper, except that there is no task identifying tokens like "anli R1:
+      ".'

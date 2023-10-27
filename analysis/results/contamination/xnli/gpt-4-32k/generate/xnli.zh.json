@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Mandarin dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | 他们没有在那里待太久。 | 他们在那里待了很长时间。 | 2\n2 | 他们没有在那里待太久。 | 他们在那里待了一段时间。 | 1\n3 | 他们没有在那里待太久。 | 他们没有在那里待很长时间。 | 0\n4 | 一个男人在沙滩上玩风筝。 | 一个男人在沙滩上放风筝。 | 0\n5 | 一个男人在沙滩上玩风筝。 | 一个男人在沙滩上玩滑板。 | 2\n6 | 一个男人在沙滩上玩风筝。 | 一个男人在沙滩上玩耍。 | 1\n7 | 一个年轻女子在跳舞。 | 女子在唱歌。 | 2\n8 | 一个年轻女子在跳舞。 | 女子在跳舞。 | 0\n9 | 一个年轻女子在跳舞。 | 女子在看舞蹈表演。 | 1\n10 | 一个孩子在游泳池里玩耍。 | 一个孩子在游泳池里游泳。 | 1"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Mandarin dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | 他们没有在那个地方待太久。 | 他们在那个地方待了很长时间。 | 2\n2 | 他们没有在那个地方待太久。 | 他们在那个地方待了一段时间。 | 1\n3 | 他们没有在那个地方待太久。 | 他们没有在那个地方待很长时间。 | 0\n4 | 一个女人在吃东西。 | 女人在喝水。 | 2\n5 | 一个女人在吃东西。 | 女人在吃饭。 | 0\n6 | 一个女人在吃东西。 | 女人在看电视。 | 1\n7 | 一个男孩在玩游戏。 | 男孩在学习。 | 2\n8 | 一个男孩在玩游戏。 | 男孩在玩电子游戏。 | 1\n9 | 一个男孩在玩游戏。 | 男孩在玩游戏。 | 0\n10 | 一群人在跳舞。 | 人们在唱歌。 | 2"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Mandarin dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | 他们正在修建一座桥。 | 他们正在拆除一座桥。 | 2\n2 | 一个穿着黑色上衣的男人在跳舞。 | 一个穿着黑色上衣的男人在唱歌。 | 1\n3 | 一个女人在吃冰淇淋。 | 一个女人在吃披萨。 | 2\n4 | 两个孩子在公园里玩耍。 | 两个孩子在学校里玩耍。 | 1\n5 | 一只狗在草地上跑。 | 一只狗在沙滩上跑。 | 2\n6 | 一个男人在钓鱼。 | 一个男人在游泳。 | 1\n7 | 一群人在户外聚会。 | 一群人在室内聚会。 | 2\n8 | 一个女孩在弹钢琴。 | 一个女孩在拉小提琴。 | 2\n9 | 一个男人在开车。 | 一个男人在骑自行车。 | 1\n10 | 一对夫妇在看电影。 | 一对夫妇在看戏剧。 | 1"
+    }
+]

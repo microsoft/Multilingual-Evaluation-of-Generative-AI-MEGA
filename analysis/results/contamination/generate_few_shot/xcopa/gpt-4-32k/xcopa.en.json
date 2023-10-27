@@ -1,0 +1,44 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate instances of COPA English dataset train split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            },
+            {
+                "role": "assistant",
+                "content": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | My body cast a shadow over the grass. | The sun was rising. | The grass was cut. | cause | 0 | \n2 | The woman tolerated her friend's difficult behavior. | The woman knew her friend was going through a hard time. | The woman felt that her friend took advantage of her kindness. | cause | 0 | \n3 | The women met for coffee. | The cafe reopened in a new location. | They wanted to catch up with each other. | cause | 1 | \n4 | The runner wore shorts. | The forecast predicted high temperatures. | She planned to run along the beach. | cause | 0 | \n"
+            }
+        ],
+        "response": "5 | The baby cried all night. | The baby was hungry. | The baby was tired. | cause | 0 |\n6 | The man bought a new car. | He received a promotion at work. | His old car broke down. | cause | 1 |\n7 | The dog barked loudly. | A stranger approached the house. | The dog wanted to play. | cause | 0 |\n8 | The flowers bloomed beautifully. | It rained the previous day. | The gardener fertilized the soil. | cause | 1 |\n9 | The student studied for hours. | She wanted to get a good grade. | She was bored. | cause | 0 |\n10 | The ice cream melted. | The freezer was left open. | The ice cream was eaten. | cause | 0 |\n11 | The boy fell off his bike. | He hit a bump in the road. | His bike had a flat tire. | cause | 0 |\n12 | The couple went on a romantic getaway. | They wanted to celebrate their anniversary. | They needed a break from work. | cause | 0 |\n13 | The cat climbed the tree. | It was chasing a bird. | The tree was tall. | cause | 0 |\n14 | The girl received a gift. | It was her birthday. | She won a contest. | cause | 0 |\n15 | The man wore a suit. | He had a job interview. | He was attending a wedding. | cause | 0 |\n16 | The child built a sandcastle. | She was at the beach. | She wanted to impress her friends. | cause | 1 |\n17 | The family went on a hike. | They wanted to enjoy nature. | They were lost. | cause | 0 |\n18 | The car's engine overheated. | The radiator was leaking. | The car was low on oil. | cause | 0 |\n19 | The athlete won the race. | He trained hard for months. | His competitors were slow. | cause | 0 |\n20 | The cake was delicious. | The baker used a secret recipe. | The cake was decorated beautifully. | cause | 0 |"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate instances of COPA English dataset validation split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            },
+            {
+                "role": "assistant",
+                "content": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | The man turned on the faucet. | The toilet filled with water. | Water flowed from the spout. | effect | 1 | \n2 | The girl found a bug in her cereal. | She poured milk in the bowl. | She lost her appetite. | effect | 1 | \n3 | The woman retired. | She received her pension. | She paid off her mortgage. | effect | 0 | \n4 | I wanted to conserve energy. | I swept the floor in the unoccupied room. | I shut off the light in the unoccupied room. | effect | 1 | \n"
+            }
+        ],
+        "response": "5 | The dog barked loudly. | The cat hissed and ran away. | The cat purred and approached the dog. | effect | 0 | \n6 | The baby was crying. | The mother picked up the baby. | The mother ignored the baby. | cause | 0 | \n7 | The ice cream truck arrived. | The children ran outside. | The children went to bed. | effect | 0 | \n8 | The car's gas tank was empty. | The car stopped running. | The car's tires were flat. | cause | 0 | \n9 | The boy studied hard for the test. | He wanted to get a good grade. | He wanted to fail the test. | cause | 0 | \n10 | The plant received sunlight and water. | The plant grew. | The plant withered. | effect | 0 |"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate instances of COPA English dataset test split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            },
+            {
+                "role": "assistant",
+                "content": "id | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | The item was packaged in bubble wrap. | It was fragile. | It was small. | cause | 0 | \n2 | I emptied my pockets. | I retrieved a ticket stub. | I found a weapon. | effect | 0 | \n3 | Termites invaded the house. | The termites disappeared from the house. | The termites ate through the wood in the house. | effect | 1 | \n4 | The travelers reached the border. | The patrol agent checked their passports. | The patrol agent accused them of smuggling. | effect | 0 | \n"
+            }
+        ],
+        "response": "5 | The baby was crying loudly. | The baby was hungry. | The baby was laughing. | cause | 0 |\n6 | The car's engine overheated. | The car broke down. | The car was filled with gas. | effect | 0 |\n7 | The dog barked at the stranger. | The dog was protecting its territory. | The dog was playing with the stranger. | cause | 0 |\n8 | The ice on the lake melted. | The weather got warmer. | The weather got colder. | cause | 0 |\n9 | The man slipped on the wet floor. | The floor was recently mopped. | The floor was covered in sand. | cause | 0 |\n10 | The plants in the garden grew tall. | They received plenty of sunlight. | They were in a dark room. | cause | 0 |\n11 | The students were studying for their exams. | The exams were approaching. | The exams were already over. | cause | 0 |\n12 | The traffic light turned green. | The cars started moving. | The cars stopped. | effect | 0 |\n13 | The wind blew the leaves off the trees. | The leaves fell to the ground. | The leaves turned green. | effect | 0 |\n14 | The woman felt a sharp pain in her stomach. | She had eaten something bad. | She had just finished a large meal. | cause | 0 |\n15 | There was a power outage in the neighborhood. | A storm knocked down power lines. | The sun was shining brightly. | cause | 0 |"
+    }
+]

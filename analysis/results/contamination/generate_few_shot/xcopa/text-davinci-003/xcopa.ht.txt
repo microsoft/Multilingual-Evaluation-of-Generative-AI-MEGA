@@ -1,0 +1,39 @@
+Split: train
+Prompt:
+Please generate instances of XCOPA Haitian Creole dataset train split.
+
+{"premise": "Msye a te louvri tiyo a.", "choice1": "Twal\u00e8t la te ranpli ak dlo.", "choice2": "Dlo a te soti nan bouch tiyo a.", "question": "effect", "label": 1, "idx": 0, "changed": false}
+{"premise": "Fi a te jwenn yon pin\u00e8z nan sereyal li.", "choice1": "Li te vide l\u00e8t la nan b\u00f2l la.", "choice2": "Li te p\u00e8di apeti li.", "question": "effect", "label": 1, "idx": 1, "changed": false}
+{"premise": "Madan m nan te pran retr\u00e8t.", "choice1": "Li te resevwa pansyon li.", "choice2": "Li te fin peye lajan sou kay li.", "question": "effect", "label": 0, "idx": 2, "changed": false}
+{"premise": "M te vle kons\u00e8ve en\u00e8ji.", "choice1": "Mwen te fin baleye chanm lib la.", "choice2": "Mwen te femen limy\u00e8 nan chanm lib la.", "question": "effect", "label": 1, "idx": 3, "changed": false}
+
+Response:
+{"premise": "M te vle konf\u00f2me yon bagay.", "choice1": "Mwen te f\u00e8 yon esperyans.", "choice2": "Mwen te f\u00e8 yon t\u00e8z.", "question": "effect", "label": 0, "idx": 4, "changed": false}
+==================================================
+
+Split: validation
+Prompt:
+Please generate instances of XCOPA Haitian Creole dataset validation split.
+
+{"premise": "Msye a te louvri tiyo a.", "choice1": "Twal\u00e8t la te ranpli ak dlo.", "choice2": "Dlo a te soti nan bouch tiyo a.", "question": "effect", "label": 1, "idx": 0, "changed": false}
+{"premise": "Fi a te jwenn yon pin\u00e8z nan sereyal li.", "choice1": "Li te vide l\u00e8t la nan b\u00f2l la.", "choice2": "Li te p\u00e8di apeti li.", "question": "effect", "label": 1, "idx": 1, "changed": false}
+{"premise": "Madan m nan te pran retr\u00e8t.", "choice1": "Li te resevwa pansyon li.", "choice2": "Li te fin peye lajan sou kay li.", "question": "effect", "label": 0, "idx": 2, "changed": false}
+{"premise": "M te vle kons\u00e8ve en\u00e8ji.", "choice1": "Mwen te fin baleye chanm lib la.", "choice2": "Mwen te femen limy\u00e8 nan chanm lib la.", "question": "effect", "label": 1, "idx": 3, "changed": false}
+
+Response:
+{"premise": "M te vle konf\u00f2me yon bagay.", "choice1": "Mwen te f\u00e8 yon esperyans.", "choice2": "Mwen te f\u00e8 yon t\u00e8z.", "question": "effect", "label": 0, "idx": 4, "changed": false}
+==================================================
+
+Split: test
+Prompt:
+Please generate instances of XCOPA Haitian Creole dataset test split.
+
+{"premise": "Atik la te vlope ak papye bul.", "choice1": "Li te frajil.", "choice2": "Li te piti.", "question": "cause", "label": 0, "idx": 0, "changed": false}
+{"premise": "Mwen te vide posh mwen.", "choice1": "Mwen jwenn yon bout biye.", "choice2": "Mwen te jwenn yon zam.", "question": "effect", "label": 0, "idx": 1, "changed": false}
+{"premise": "Foumi yo te anvayi kay la.", "choice1": "Foumi yo dispar\u00e8t nan kay la.", "choice2": "Foumi yo fin wonje bwa nan kay la.", "question": "effect", "label": 1, "idx": 2, "changed": false}
+{"premise": "Vwayaj\u00e8 yo te rive sou fronty\u00e8 a.", "choice1": "Ajan frontalye a te enspekte pasp\u00f2 yo.", "choice2": "Ajan frontalye a te akize yo de kontrabann.", "question": "effect", "label": 0, "idx": 3, "changed": false}
+
+Response:
+{"premise": "Mwen te konprann kijan yo f\u00e8 k\u00f2b.", "choice1": "Mwen te konprann kijan yo f\u00e8 k\u00f2b.", "choice2": "Mwen te konprann kijan yo f\u00e8 k\u00f2b nan yon fason pi rapide.", "question": "effect", "label": 0, "idx": 4, "changed": false}
+==================================================
+

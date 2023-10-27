@@ -1,0 +1,25 @@
+languages:
+- "en"
+- "es"
+- "fr"
+- "it"
+- "pt"
+pretty_name: "PAN-X Dataset"
+tags:
+- "multilingual"
+- "cross-lingual"
+- "text classification"
+dataset_info:
+    features:
+        - name: "text"
+          dtype: "string"
+        - name: "label"
+          dtype: "int"
+    splits:
+        train:
+            num_examples: 10000
+        validation:
+            num_examples: 2000
+        test:
+            num_examples: 5000
+dataset_summary: "The PAN-X dataset is a multilingual text classification dataset consisting of news articles in English, Spanish, French, Italian, and Portuguese. The task is to classify the articles into one of four categories: business, entertainment, politics, or sport. The dataset contains 15,000 examples split into train, validation, and test sets."

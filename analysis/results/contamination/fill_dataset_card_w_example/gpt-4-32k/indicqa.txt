@@ -1,0 +1,30 @@
+languages:
+- as
+- bn
+- gu
+- hi
+- kn
+- ml
+- mr
+- or
+- pa
+- ta
+- te
+pretty_name: IndicQA
+tags:
+- question_answering
+- multilingual
+dataset_info:
+    features:
+        - name: "question"
+          dtype: "string"
+        - name: "answer"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 10570
+        validation:
+            num_examples: 1300
+        test:
+            num_examples: 1300
+dataset_summary: IndicQA is a dataset for evaluating the quality of text-to-text question-answering models in 11 Indian languages. The dataset contains 10,570 question-answer pairs in the training set, 1,300 in the validation set, and 1,300 in the test set. The goal is to predict the correct answer given a question, and it is a classification task.

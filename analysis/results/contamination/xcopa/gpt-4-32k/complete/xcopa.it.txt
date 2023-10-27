@@ -1,0 +1,44 @@
+Split: test
+Completion Prompt:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | L ' oggetto era incar[MASK] | Era del[MASK] | Era[MASK] | [MASK] | [MASK]
+2 | Avevo svuotato[MASK] | Estrassi la matrice[MASK] | Trovai[MASK] | [MASK] | [MASK]
+3 | Le termiti in[MASK] | Le termiti sp[MASK] | Le termiti rosero[MASK] | [MASK] | [MASK]
+4 | I viaggiatori[MASK] | L ' agente di pattuglia[MASK] | L ' agente di pattuglia li[MASK] | [MASK] | [MASK]
+5 | L ' ufficio[MASK] | Era va[MASK] | Era[MASK] | [MASK] | [MASK]
+6 | La ragazza esaur[MASK] | Aveva giocato[MASK] | Aveva salt[MASK] | [MASK] | [MASK]
+7 | La donna aveva perso il[MASK] | Più persone si mise[MASK] | Si era tol[MASK] | [MASK] | [MASK]
+8 | La ragazza si era tappa[MASK] | La bambina aveva sba[MASK] | La bambina aveva spor[MASK] | [MASK] | [MASK]
+9 | Il gruppo suonò la[MASK] | Il pubblico applaudì[MASK] | Il pubblico ascoltò edu[MASK] | [MASK] | [MASK]
+10 | La ragazza voleva ringraz[MASK] | La ragazza rimase dopo[MASK] | La ragazza portò una me[MASK] | [MASK] | [MASK]
+
+Model's Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | L ' oggetto era incaricato | Era deludente | Era importante | causa | 1
+2 | Avevo svuotato il cassetto | Estrassi la matrice di valori | Trovai la chiave | causa | 1
+3 | Le termiti invasero la casa | Le termiti spaventarono gli abitanti | Le termiti rosero il legno | causa | 1
+4 | I viaggiatori furono fermati | L ' agente di pattuglia fece una multa | L ' agente di pattuglia li arrestò | causa | 0
+5 | L ' ufficio era chiuso | Era vacanza | Era sera | causa | 1
+6 | La ragazza esaurita | Aveva giocato a calcio | Aveva saltato la corda | causa | 0
+7 | La donna aveva perso il portafoglio | Più persone si misero a cercarlo | Si era tolta la giacca | causa | 0
+8 | La ragazza si era tappata le orecchie | La bambina aveva sbagliato una nota | La bambina aveva sporcato il pavimento | causa | 0
+9 | Il gruppo suonò la canzone | Il pubblico applaudì entusiasta | Il pubblico ascoltò educatamente | causa | 0
+10 | La ragazza voleva ringraziare l'insegnante | La ragazza rimase dopo la lezione | La ragazza portò una mela | causa | 1
+Ground Truth:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | L'oggetto era incartato nella plastica bollata. | Era delicato. | Era piccolo. | cause | 0
+2 | Avevo svuotato le mie tasche. | Estrassi la matrice di un biglietto. | Trovai un'arma. | effect | 0
+3 | Le termiti invasero la casa. | Le termiti sparirono dalla casa. | Le termiti rosero il legno della casa. | effect | 1
+4 | I viaggiatori raggiunsero il confine. | L'agente di pattuglia controllò i loro passaporti. | L'agente di pattuglia li accusò di contrabbando. | effect | 0
+5 | L'ufficio era chiuso. | Era vacanza. | Era estate. | cause | 0
+6 | La ragazza esaurì le energie. | Aveva giocato a dama. | Aveva saltato la corda. | cause | 1
+7 | La donna aveva perso il suo posto in fila. | Più persone si misero in fila. | Si era tolta dalla fila. | cause | 1
+8 | La ragazza si era tappata il naso. | La bambina aveva sbavato sul bavaglino. | La bambina aveva sporcato il pannolino. | cause | 1
+9 | Il gruppo suonò la loro canzone di successo. | Il pubblico applaudì a ritmo di musica. | Il pubblico ascoltò educatamente in silenzio. | effect | 0
+10 | La ragazza voleva ringraziare l'insegnante di matematica. | La ragazza rimase dopo scuola per punizione. | La ragazza portò una mela all'insegnante. | effect | 1
+
+==================================================
+

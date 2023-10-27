@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Spanish dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | En su opinión, ¿cuál es la causa principal de estos problemas? | La causa principal de estos problemas es la falta de educación. | 1\n2 | Los niños están jugando en el parque. | Los niños están en la escuela. | 2\n3 | El gato está durmiendo en el sofá. | El gato está despierto y jugando. | 2\n4 | María fue a la tienda a comprar pan. | María fue a la tienda a comprar leche. | 1\n5 | El coche se detuvo en la intersección. | El coche se detuvo en la gasolinera. | 1\n6 | El perro está ladrando en el jardín. | El perro está ladrando en el jardín. | 0\n7 | El avión despegó a tiempo. | El avión se retrasó. | 2\n8 | La película fue muy emocionante. | La película fue aburrida. | 2\n9 | El pastel de chocolate estaba delicioso. | El pastel de chocolate estaba demasiado dulce. | 1\n10 | El equipo ganó el campeonato. | El equipo perdió el campeonato. | 2"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Spanish dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | En su opinión, ¿cuál es la causa principal de estos problemas? | La causa principal de estos problemas es la falta de educación. | 1\n2 | El hombre está comiendo un plátano. | El hombre está comiendo una manzana. | 2\n3 | Los niños están jugando en el parque. | Los niños están en la escuela. | 1\n4 | El perro está durmiendo en el sofá. | El perro está despierto y jugando. | 2\n5 | La mujer está cocinando en la cocina. | La mujer está preparando la cena. | 0\n6 | El sol brilla en un día despejado. | Está lloviendo y el cielo está nublado. | 2\n7 | El coche está estacionado en la calle. | El coche está en movimiento. | 2\n8 | La película fue muy emocionante y entretenida. | La película fue aburrida y lenta. | 2\n9 | El equipo ganó el campeonato. | El equipo perdió el campeonato. | 2\n10 | El gato está trepando al árbol. | El gato está bajando del árbol. | 1"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Spanish dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | El hombre está afuera de la casa. | El hombre está dentro de la casa. | 2\n2 | La mujer está cocinando en la cocina. | La mujer está preparando la comida. | 0\n3 | Los niños están jugando en el parque. | Los niños están en la escuela. | 1\n4 | El perro está durmiendo en su cama. | El perro está despierto. | 2\n5 | El sol brilla en el cielo. | Está lloviendo. | 2\n6 | El coche está estacionado en la calle. | El coche está en movimiento. | 2\n7 | La tienda está cerrada. | La tienda está abierta. | 2\n8 | El tren llega a la estación. | El tren sale de la estación. | 1\n9 | El gato está trepando al árbol. | El gato está bajando del árbol. | 1\n10 | La película es muy emocionante. | La película es aburrida. | 2"
+    }
+]

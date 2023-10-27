@@ -1,0 +1,60 @@
+dataset: xnli/el
+templates:
+  37d2f061-06b0-4aa3-af53-871a2b06748f: !Template
+    answer_choices: True ||| Neither ||| False
+    id: 37d2f061-06b0-4aa3-af53-871a2b06748f
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'
+  58536115-fd5c-4f29-a85b-420fde6fc5b0: !Template
+    answer_choices: Yes ||| Maybe ||| No
+    id: 58536115-fd5c-4f29-a85b-420fde6fc5b0
+    jinja: '{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
+      Yes, no, or maybe? ||| {{ answer_choices[label] }}'
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: based on the previous passage
+    reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
+  72519f9f-57ee-43ab-ad3d-0829d6a8d1e4: !Template
+    answer_choices: "\u03A0\u03B9\u03C3\u03C4\u03CC\u03C2 ||| \u039F\u03CD\u03C4\u03B5\
+      \ ||| \u03A8\u03B5\u03CD\u03C4\u03B9\u03BA\u03BF\u03C2"
+    id: 72519f9f-57ee-43ab-ad3d-0829d6a8d1e4
+    jinja: "{{premise}}\n\u0395\u03C1\u03CE\u03C4\u03B7\u03C3\u03B7: {{hypothesis}}\
+      \ \u03A3\u03C9\u03C3\u03C4\u03CC, \u039B\u03AC\u03B8\u03BF\u03C2 \u03AE \u039A\
+      \u03B1\u03BD\u03AD\u03BD\u03B1 \u03B1\u03C0\u03CC \u03C4\u03B1 \u03B4\u03CD\u03BF\
+      ; ||| {{ answer_choices[label] }}"
+    metadata: *id001
+    name: Bing-Translated GPT-3 style
+    reference: 'Translated to el version  of: Same as reported in Figure G7 of the
+      GPT-3 paper, except that there is no task identifying tokens like "anli R1:
+      ".'
+  e7dfdfbd-2820-4481-990e-499751e8fc62: !Template
+    answer_choices: "\u039D\u03B1\u03B9 ||| \u038A\u03C3\u03C9\u03C2 ||| \u038C\u03C7\
+      \u03B9"
+    id: e7dfdfbd-2820-4481-990e-499751e8fc62
+    jinja: "{{premise}} \u039C\u03B5 \u03B2\u03AC\u03C3\u03B7 \u03C4\u03BF \u03C0\u03C1\
+      \u03BF\u03B7\u03B3\u03BF\u03CD\u03BC\u03B5\u03BD\u03BF \u03B1\u03C0\u03CC\u03C3\
+      \u03C0\u03B1\u03C3\u03BC\u03B1, \u03B5\u03AF\u03BD\u03B1\u03B9 \u03B1\u03BB\u03AE\
+      \u03B8\u03B5\u03B9\u03B1 \u03CC\u03C4\u03B9 \"{{hypothesis}}\"; \u039D\u03B1\
+      \u03B9, \u03CC\u03C7\u03B9, \u03AE \u03AF\u03C3\u03C9\u03C2; ||| {{ answer_choices[label]\
+      \ }}"
+    metadata: *id002
+    name: Bing-Translated based on the previous passage
+    reference: "Translated to el version  of: Adapted from the BoolQ prompts in Schick\
+      \ & Sch\xFCtze 2021."
