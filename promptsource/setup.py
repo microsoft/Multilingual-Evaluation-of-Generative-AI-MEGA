@@ -10,7 +10,7 @@ requirements = [
     "isort==5.8.0",
     "pytest",
     "pyyaml>=5",
-    "streamlit==0.82",
+    "streamlit==1.11.1",
     "jinja2",
     "plotly",
     "requests",
