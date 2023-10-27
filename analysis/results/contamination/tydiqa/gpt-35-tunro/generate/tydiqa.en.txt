@@ -1,0 +1,24 @@
+Split: test
+Prompt:
+Please generate the first 10 instances of TyDiQA-GoldP English dataset test split. Use the following format:
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answers1}
+{id2} | {context2} | {question2} | {answers2}
+...
+.
+Response:
+id | context | question | answers
+---|---------|----------|--------
+tydiqa-goldp-test-00001 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | When did the history of the United States begin? | [{'text': 'around 15,000 BC', 'answer_start': 63}]
+tydiqa-goldp-test-00002 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | Who were the first people to arrive in North America? | [{'text': 'Native Americans', 'answer_start': 38}]
+tydiqa-goldp-test-00003 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | What was the approximate time period when Native Americans arrived in North America? | [{'text': 'around 15,000 BC', 'answer_start': 63}]
+tydiqa-goldp-test-00004 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | What is the history of the United States? | [{'text': 'began with the arrival of Native Americans in North America around 15,000 BC', 'answer_start': 0}]
+tydiqa-goldp-test-00005 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | How long ago did Native Americans arrive in North America? | [{'text': 'around 15,000 BC', 'answer_start': 63}]
+tydiqa-goldp-test-00006 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | Who were the first inhabitants of North America? | [{'text': 'Native Americans', 'answer_start': 38}]
+tydiqa-goldp-test-00007 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | What was the time period when Native Americans first arrived in North America? | [{'text': 'around 15,000 BC', 'answer_start': 63}]
+tydiqa-goldp-test-00008 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | What was the starting point of the history of the United States? | [{'text': 'arrival of Native Americans in North America around 15,000 BC', 'answer_start': 38}]
+tydiqa-goldp-test-00009 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | Who were the first people to settle in North America? | [{'text': 'Native Americans', 'answer_start': 38}]
+tydiqa-goldp-test-00010 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | When did the first inhabitants of North America arrive? | [{'text': 'around 15,000 BC', 'answer_start': 63}]
+==================================================
+

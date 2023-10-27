@@ -1,0 +1,31 @@
+Split: test
+Prompt:
+Please generate the first 10 instances of XQuAD Spanish dataset test split. Use the following format:
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answers1}
+{id2} | {context2} | {question2} | {answers2}
+...
+.
+Response:
+1 | La Universidad de Columbia es una universidad privada de investigación ubicada en la ciudad de Nueva York. Fue fundada en 1754 como King's College por el estatuto real de Jorge II de Gran Bretaña y es la universidad más antigua del estado de Nueva York y la quinta más antigua de los Estados Unidos. | ¿Cuándo fue fundada la Universidad de Columbia? | 1754
+
+2 | La Universidad de Columbia es una universidad privada de investigación ubicada en la ciudad de Nueva York. Fue fundada en 1754 como King's College por el estatuto real de Jorge II de Gran Bretaña y es la universidad más antigua del estado de Nueva York y la quinta más antigua de los Estados Unidos. | ¿Bajo qué nombre fue fundada originalmente la Universidad de Columbia? | King's College
+
+3 | La Universidad de Columbia es una universidad privada de investigación ubicada en la ciudad de Nueva York. Fue fundada en 1754 como King's College por el estatuto real de Jorge II de Gran Bretaña y es la universidad más antigua del estado de Nueva York y la quinta más antigua de los Estados Unidos. | ¿Quién otorgó el estatuto real para la fundación de la Universidad de Columbia? | Jorge II de Gran Bretaña
+
+4 | La Universidad de Columbia es una universidad privada de investigación ubicada en la ciudad de Nueva York. Fue fundada en 1754 como King's College por el estatuto real de Jorge II de Gran Bretaña y es la universidad más antigua del estado de Nueva York y la quinta más antigua de los Estados Unidos. | ¿En qué ciudad se encuentra la Universidad de Columbia? | Nueva York
+
+5 | La Universidad de Columbia es una universidad privada de investigación ubicada en la ciudad de Nueva York. Fue fundada en 1754 como King's College por el estatuto real de Jorge II de Gran Bretaña y es la universidad más antigua del estado de Nueva York y la quinta más antigua de los Estados Unidos. | ¿Qué tipo de universidad es la Universidad de Columbia? | Universidad privada de investigación
+
+6 | El sistema solar es un sistema planetario que consiste en el Sol y los objetos astronómicos unidos a él por la gravedad. Los objetos más grandes son los ocho planetas, que incluyen a la Tierra. Los planetas se dividen en dos grupos: los planetas terrestres (Mercurio, Venus, Tierra y Marte) y los gigantes gaseosos (Júpiter, Saturno, Urano y Neptuno). | ¿Cuántos planetas hay en el sistema solar? | Ocho
+
+7 | El sistema solar es un sistema planetario que consiste en el Sol y los objetos astronómicos unidos a él por la gravedad. Los objetos más grandes son los ocho planetas, que incluyen a la Tierra. Los planetas se dividen en dos grupos: los planetas terrestres (Mercurio, Venus, Tierra y Marte) y los gigantes gaseosos (Júpiter, Saturno, Urano y Neptuno). | ¿Cuáles son los planetas terrestres? | Mercurio, Venus, Tierra y Marte
+
+8 | El sistema solar es un sistema planetario que consiste en el Sol y los objetos astronómicos unidos a él por la gravedad. Los objetos más grandes son los ocho planetas, que incluyen a la Tierra. Los planetas se dividen en dos grupos: los planetas terrestres (Mercurio, Venus, Tierra y Marte) y los gigantes gaseosos (Júpiter, Saturno, Urano y Neptuno). | ¿Cuáles son los gigantes gaseosos? | Júpiter, Saturno, Urano y Neptuno
+
+9 | El sistema solar es un sistema planetario que consiste en el Sol y los objetos astronómicos unidos a él por la gravedad. Los objetos más grandes son los ocho planetas, que incluyen a la Tierra. Los planetas se dividen en dos grupos: los planetas terrestres (Mercurio, Venus, Tierra y Marte) y los gigantes gaseosos (Júpiter, Saturno, Urano y Neptuno). | ¿Qué mantiene unidos a los objetos astronómicos en el sistema solar? | La gravedad
+
+10 | El sistema solar
+==================================================
+

@@ -1,0 +1,30 @@
+languages:
+- "en"
+pretty_name: "TyDiQA-GoldP"
+tags:
+- "question answering"
+- "multilingual"
+dataset_info:
+    features:
+        - name: "id"
+          dtype: "string"
+        - name: "language"
+          dtype: "string"
+        - name: "question"
+          dtype: "string"
+        - name: "answer"
+          dtype: "string"
+        - name: "document_url"
+          dtype: "string"
+        - name: "document_title"
+          dtype: "string"
+        - name: "document_html"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 67,563
+        validation:
+            num_examples: 7,500
+        test:
+            num_examples: 12,000
+dataset_summary: "TyDiQA-GoldP is a multilingual question answering dataset that contains 67,563 training examples, 7,500 validation examples, and 12,000 test examples in English. The dataset covers 11 typologically diverse languages and is designed to evaluate cross-lingual transfer in question answering systems."

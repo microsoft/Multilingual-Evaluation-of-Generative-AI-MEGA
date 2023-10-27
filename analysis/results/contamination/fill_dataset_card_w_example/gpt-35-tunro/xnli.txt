@@ -1,0 +1,42 @@
+annotations_creators:
+- expert-generated
+language_creators:
+- expert-generated
+languages:
+- ar
+- bg
+- de
+- el
+- en
+- es
+- fr
+- hi
+- ru
+- sw
+- th
+- tr
+- ur
+- vi
+- zh
+pretty_name: XNLI
+tags:
+- machine-translation
+- natural-language-inference
+dataset_info:
+    features:
+        - name: premise
+          dtype: string
+        - name: hypothesis
+          dtype: string
+        - name: language
+          dtype: string
+        - name: label
+          dtype: string
+    splits:
+        train:
+            num_examples: 392,702
+        validation:
+            num_examples: 2,490
+        test:
+            num_examples: 5,010
+dataset_summary: The Cross-lingual Natural Language Inference (XNLI) dataset is a crowd-sourced collection of 5,000 test and 2,500 dev pairs for the Multi-Genre Natural Language Inference (MultiNLI) corpus, translated into 15 languages. The dataset is designed to evaluate cross-lingual transfer performance of NLI models.

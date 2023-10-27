@@ -1,0 +1,38 @@
+dataset: paws-x/fr
+templates:
+  8c259e88-7646-4a50-a4ca-90393920f2dd: !Template
+    answer_choices: No ||| Yes
+    id: 8c259e88-7646-4a50-a4ca-90393920f2dd
+    jinja: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Does Sentence\
+      \ 1 paraphrase Sentence 2? Yes or No? \n||| \n{{answer_choices[label]}}"
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Concatenation
+    reference: Concatenation of sentence 1 and sentence 2
+  b3270af0-b6a2-4c62-a132-b73291c63d1b: !Template
+    answer_choices: Non ||| Oui
+    id: b3270af0-b6a2-4c62-a132-b73291c63d1b
+    jinja: "Phrase 1 : {{sentence1}}\nPhrase 2 : {{sentence2}}\nQuestion : La phrase\
+      \ 1 paraphrase-t-elle la phrase 2 ? Oui ou Non? \n||| \n{{answer_choices[label]}}"
+    metadata: *id001
+    name: Bing-Translated Concatenation
+    reference: 'Translated to fr version  of: Concatenation of sentence 1 and sentence
+      2'
+  d9911dad-75fe-4506-9843-3a46ba5e49dd: !Template
+    answer_choices: False ||| True
+    id: d9911dad-75fe-4506-9843-3a46ba5e49dd
+    jinja: "{{sentence1}} Question: {{sentence2}} True or False? \n||| \n{{answer_choices[label]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: PAWS-ANLI GPT3
+    reference: ANLI prompt format from Table G7 in the GPT3 paper

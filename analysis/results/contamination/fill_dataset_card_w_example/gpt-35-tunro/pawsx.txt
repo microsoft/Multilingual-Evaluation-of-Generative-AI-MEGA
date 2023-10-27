@@ -1,0 +1,38 @@
+languages:
+- en
+- de
+- es
+- fr
+- ja
+- ko
+- zh
+pretty_name: PAWS-X: Paraphrase Adversaries from Word Scrambling
+tags:
+- natural language processing
+- paraphrase detection
+- data augmentation
+dataset_info:
+  features:
+    - name: id
+      dtype: int
+    - name: sentence1
+      dtype: string
+    - name: sentence2
+      dtype: string
+    - name: label
+      dtype:
+        class_label:
+          names:
+            "0": not paraphrase
+            "1": paraphrase
+  splits:
+    train:
+      num_examples: 49401
+    validation:
+      num_examples: 12476
+    test:
+      num_examples: 12476
+dataset_summary: PAWS-X is a dataset for paraphrase detection, created by adversarially
+scrambling words in existing sentence pairs from PAWS. The dataset contains
+sentence pairs in six languages: English, German, Spanish, French, Japanese,
+and Korean. The goal is to predict whether two sentences are paraphrases or not.

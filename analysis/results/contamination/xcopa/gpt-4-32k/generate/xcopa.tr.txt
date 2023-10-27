@@ -1,0 +1,69 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XCOPA Turkish dataset train split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Bir kadın, çocuğunu okula bıraktı. | Çocuk evde kaldı. | Çocuk okula gitti. | cause | 1
+2 | Bir adam, köpeğini parka götürdü. | Köpek evde kaldı. | Köpek parkta oynadı. | cause | 1
+3 | İki arkadaş, sinemaya gitmeye karar verdi. | Arkadaşlar sinemada film izledi. | Arkadaşlar yüzme havuzunda yüzdü. | cause | 0
+4 | Çiftçi, tarlasını sürdü ve tohum ekti. | Tarlada çiçekler açtı. | Tarlada bitkiler yetişti. | cause | 1
+5 | Bir öğrenci, sınavda başarısız oldu. | Öğrenci ders çalıştı. | Öğrenci ders çalışmadı. | cause | 1
+6 | Hava çok soğuktu, bu yüzden kar yağdı. | Hava sıcak oldu. | Hava soğuk oldu. | cause | 1
+7 | Bir çocuk, bisikletiyle hızlı bir şekilde sürdü ve düştü. | Çocuk yavaş sürdü. | Çocuk hızlı sürdü. | cause | 1
+8 | Bir kadın, yemek pişirdi ve ailesine servis yaptı. | Aile yemek yedi. | Aile aç kaldı. | cause | 0
+9 | İşçiler, inşaat alanında çalıştı. | İnşaat tamamlandı. | İnşaat durdu. | cause | 0
+10 | Bir öğretmen, öğrencilere ders anlattı. | Öğrenciler ders dinledi. | Öğrenciler müzik dinledi. | cause | 0
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XCOPA Turkish dataset validation split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Bir kadın, çocuğunun doğum günü partisi için bir pasta yapıyor. | Çocuğun doğum günü partisi için hazırlık yapıyor. | Çocuğunun okul projesi için hazırlık yapıyor. | cause | 0
+2 | Bir adam, köpeğini parka götürüyor. | Köpeğiyle oyun oynuyor. | Köpeğiyle yemek pişiriyor. | cause | 0
+3 | Bir öğrenci, sınav için gece boyunca çalışıyor. | Sınavda başarılı olmak istiyor. | Sınavı kaçırmak istiyor. | cause | 0
+4 | Bir çift, yeni evlerine taşınıyor. | Eski evlerinde yaşamaktan sıkıldılar. | Yeni evlerinde yaşamaktan sıkıldılar. | cause | 0
+5 | Bir kadın, arkadaşıyla sinemaya gidiyor. | Bir film izlemek istiyor. | Bir kitap okumak istiyor. | cause | 0
+6 | Bir adam, işten eve dönerken markete uğruyor. | Yiyecek ve içecek almak istiyor. | Arabasını tamir ettirmek istiyor. | cause | 0
+7 | Bir çocuk, annesine yardım etmek için mutfakta çalışıyor. | Yemek yapmayı öğrenmek istiyor. | Bilgisayar oyunu oynamak istiyor. | cause | 0
+8 | Bir öğretmen, öğrencilerine yeni bir konu anlatıyor. | Öğrencilerin bilgilerini genişletmek istiyor. | Öğrencilerin kafasını karıştırmak istiyor. | cause | 0
+9 | Bir kadın, hafta sonu için kamp planı yapıyor. | Doğada vakit geçirmek istiyor. | Şehirde alışveriş yapmak istiyor. | cause | 0
+10 | Bir adam, spor salonuna üyelik başlatıyor. | Daha sağlıklı bir yaşam tarzı benimsemek istiyor. | Daha fazla fast food yemek istiyor. | cause | 0
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XCOPA Turkish dataset test split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Bir köpek, çocuğun elindeki sandviçi çalar. | Çocuk aç kalır. | Çocuk köpeği sevmeye devam eder. | cause | 0
+2 | Bir kadın, bir çiftlikte çalışmaya başlar. | Kadın hayvanları besler. | Kadın bir ofiste çalışır. | effect | 0
+3 | Bir adam, yeni bir işe başlar. | Adam iş arkadaşlarıyla tanışır. | Adam işsiz kalır. | effect | 0
+4 | Bir çocuk, bisikletle hızlı bir şekilde döner. | Çocuk düşer. | Çocuk bisikleti bırakır. | cause | 0
+5 | Bir öğrenci, sınavda başarısız olur. | Öğrenci ders çalışmamıştır. | Öğrenci ödül kazanır. | cause | 0
+6 | Bir aile, yeni bir ev satın alır. | Aile taşınır. | Aile evde kalmaya devam eder. | effect | 0
+7 | Bir kadın, spor salonuna üye olur. | Kadın kilo vermek istiyor. | Kadın spor salonunda yemek yer. | cause | 0
+8 | Bir adam, arabasını tamir etmeye çalışır. | Araba bozulmuştur. | Adam arabayı satar. | cause | 0
+9 | Bir çocuk, annesine yalan söyler. | Çocuk ceza alır. | Çocuk ödül alır. | effect | 0
+10 | Bir öğretmen, sınıfta öğrencilere bağırır. | Öğrenciler gürültü yapıyor. | Öğrenciler sessizce oturuyor. | cause | 0
+==================================================
+

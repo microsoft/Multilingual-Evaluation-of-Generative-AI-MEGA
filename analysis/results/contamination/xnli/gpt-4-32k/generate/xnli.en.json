@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI English dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | A man inspects the uniform of a figure in some East Asian country. | The man is sleeping. | 2\n2 | An older and younger man smiling. | Two men are smiling and laughing at the cats playing on the floor. | 1\n3 | A black race car starts up in front of a crowd of people. | A man is driving down a lonely road. | 1\n4 | A soccer game with multiple males playing. | Some men are playing a sport. | 0\n5 | A smiling costumed woman is holding an umbrella. | A happy woman in a fairy costume holds an umbrella. | 0\n6 | A young girl is blowing a bubble that is huge. | The girl is blowing a bubble. | 0\n7 | A man is playing a large flute. | A man is playing a flute. | 0\n8 | A man is spreading shreded cheese on a pizza. | A man is spreading shredded cheese on an uncooked pizza. | 0\n9 | Three people and a white dog are sitting in the sand on a beach. | Three dogs and a person are sitting in the snow. | 2\n10 | A man in an orange hat starring at something. | A man in an orange hat is sleeping. | 2"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI English dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | A man inspects the uniform of a figure in some East Asian country. | The man is sleeping. | 2\n2 | An older and younger man smiling. | Two men are smiling and laughing at the cats playing on the floor. | 1\n3 | A black race car starts up in front of a crowd of people. | A man is driving down a lonely road. | 1\n4 | A soccer game with multiple males playing. | Some men are playing a sport. | 0\n5 | A smiling costumed woman is holding an umbrella. | A happy woman in a fairy costume holds an umbrella. | 0\n6 | A young girl is blowing a bubble that is huge. | The girl is blowing a bubble. | 0\n7 | A man is taking a photo of a group of people. | A group of people is posing for a picture. | 1\n8 | A group of people is standing in front of a church. | A group of people is standing in front of a mosque. | 2\n9 | A woman is playing the violin. | A woman is playing the guitar. | 2\n10 | A group of people is sitting around a table with food. | A group of people is eating dinner together. | 1"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI English dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | The church has cracks in the ceiling. | The church is in poor condition. | 1\n2 | The church has cracks in the ceiling. | The church is newly built. | 2\n3 | The church has cracks in the ceiling. | The church has a damaged ceiling. | 0\n4 | The football game ended in a draw. | Both teams scored the same number of goals. | 0\n5 | The football game ended in a draw. | One team won the game. | 2\n6 | The football game ended in a draw. | The game was exciting. | 1\n7 | The cat is sitting on the windowsill. | The cat is indoors. | 0\n8 | The cat is sitting on the windowsill. | The cat is playing with a toy. | 2\n9 | The cat is sitting on the windowsill. | The cat is enjoying the view. | 1\n10 | The restaurant was full of people. | The restaurant was popular that night. | 1"
+    }
+]

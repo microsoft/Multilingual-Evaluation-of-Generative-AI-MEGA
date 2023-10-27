@@ -1,0 +1,132 @@
+Split: train
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Conceptually cream skimming has two[MASK] | Product and geography are what[MASK] | [MASK]
+2 | you know during the season and i guess at at your level uh you lose them to the next level if if they decide to recall the the parent team the[MASK] | You lose the things to the following[MASK] | [MASK]
+3 | One of our number will carry[MASK] | A member of my team will execu[MASK] | [MASK]
+4 | How do you know? All[MASK] | This information belongs[MASK] | [MASK]
+5 | yeah i tell you what though if you go price some of those tennis shoes[MASK] | The tennis shoes have[MASK] | [MASK]
+6 | my walkman broke so i ' m upset now[MASK] | I ' m upset that my walkman broke and now[MASK] | [MASK]
+7 | But a few Christian mosaics survive above the apse is the Virgin with the infant Jesus, with the Archangel Gabriel[MASK] | Most of the Christian mosaic[MASK] | [MASK]
+8 | ( Read for Slate ' s[MASK] | Slate had an opinion[MASK] | [MASK]
+9 | Gays and[MASK] | Heterosex[MASK] | [MASK]
+10 | At the end of Rue des Francs - Bourgeois is what many consider to be the city '[MASK] | Place des Vosges is constructed[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Conceptually cream skimming has two purposes | Product and geography are what make cream skimming work | 0
+2 | you know during the season and i guess at at your level uh you lose them to the next level if if they decide to recall the the parent team the next[MASK] | You lose the players to the following level if they do not recall them[MASK] | 1
+3 | One of our number will carry the device to the meeting[MASK] | A member of my team will execute the plan[MASK] | 0
+4 | How do you know? All the indications are that[MASK] | This information belongs to me[MASK] | 2
+5 | yeah i tell you what though if you go price some of those tennis shoes [MASK] | The tennis shoes have gone up in price[MASK] | 1
+6 | my walkman broke so i ' m upset now [MASK] | I ' m upset that my walkman broke and now I can't listen to music[MASK] | 1
+7 | But a few Christian mosaics survive above the apse is the Virgin with the infant Jesus, with the Archangel Gabriel located to her right and Saint Peter to her left[MASK] | Most of the Christian mosaics have been destroyed[MASK] | 2
+8 | ( Read for Slate ' s take on Jackson 's[MASK] | Slate had an opinion on Jackson's[MASK] | 1
+9 | Gays and lesbians deserve[MASK] | Heterosexuals deserve the same rights[MASK] | 0
+10 | At the end of Rue des Francs - Bourgeois is what many consider to be the city 's oldest and most beautiful square[MASK] | Place des Vosges is located there[MASK] | 1
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Conceptually cream skimming has two basic dimensions - product and geography . | Product and geography are what make cream skimming work . | 1
+2 | you know during the season and i guess at at your level uh you lose them to the next level if if they decide to recall the the parent team the Braves decide to call to recall a guy from triple A then a double A guy goes up to replace him and a single A guy goes up to replace him | You lose the things to the following level if the people recall . | 0
+3 | One of our number will carry out your instructions minutely . | A member of my team will execute your orders with immense precision . | 0
+4 | How do you know ? All this is their information again . | This information belongs to them . | 0
+5 | yeah i tell you what though if you go price some of those tennis shoes i can see why now you know they 're getting up in the hundred dollar range | The tennis shoes have a range of prices . | 1
+6 | my walkman broke so i 'm upset now i just have to turn the stereo up real loud | I 'm upset that my walkman broke and now I have to turn the stereo up really loud . | 0
+7 | But a few Christian mosaics survive above the apse is the Virgin with the infant Jesus , with the Archangel Gabriel to the right ( his companion Michael , to the left , has vanished save for a few feathers from his wings ) . | Most of the Christian mosaics were destroyed by Muslims . | 1
+8 | ( Read for Slate ' s take on Jackson 's findings . ) | Slate had an opinion on Jackson 's findings . | 0
+9 | Gays and lesbians . | Heterosexuals . | 2
+10 | At the end of Rue des Francs-Bourgeois is what many consider to be the city 's most handsome residential square , the Place des Vosges , with its stone and red brick facades . | Place des Vosges is constructed entirely of gray marble . | 2
+
+==================================================
+
+Split: validation
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | And he said, Mama[MASK] | He called his mom as soon[MASK] | [MASK]
+2 | And he said, Mama[MASK] | He didn ' t[MASK] | [MASK]
+3 | And he said, Mama[MASK] | He told his mom[MASK] | [MASK]
+4 | I didn ' t know what I was going for or anything[MASK] | I have never been to Washington so when I was[MASK] | [MASK]
+5 | I didn ' t know what I was going for or anything[MASK] | I knew exactly what I needed to[MASK] | [MASK]
+6 | I didn ' t know what I was going for or anything[MASK] | I was not quite certain what I was going to do[MASK] | [MASK]
+7 | He didn ' t[MASK] | He was the first to be[MASK] | [MASK]
+8 | He didn ' t[MASK] | He wasn ' t[MASK] | [MASK]
+9 | He didn ' t[MASK] | He wasn ' t allowed to go[MASK] | [MASK]
+10 | And I was like OK[MASK] | After I said ye[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | And he said, Mama called | He called his mom as soon as he got the news | 0
+2 | And he said, Mama didn't answer | He didn't understand what she was saying | 2
+3 | And he said, Mama was happy | He told his mom about his new job | 0
+4 | I didn't know what I was going for or anything, but I ended up having a great time | I have never been to Washington so when I was offered a job there, I was hesitant | 1
+5 | I didn't know what I was going for or anything, but I had a clear plan | I knew exactly what I needed to do to succeed | 0
+6 | I didn't know what I was going for or anything, but I figured it out eventually | I was not quite certain what I was going to do, but I knew it would work out | 1
+7 | He didn't want to go | He was the first to be invited to the party | 2
+8 | He didn't like the movie | He wasn't impressed by the special effects | 2
+9 | He didn't have enough money | He wasn't allowed to go on the trip | 2
+10 | And I was like OK, let's do it | After I said yes, I started planning the wedding | 1
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | And he said, Mama, I'm home. | He called his mom as soon as the school bus dropped him off. | 1
+2 | And he said, Mama, I'm home. | He didn't say a word. | 2
+3 | And he said, Mama, I'm home. | He told his mom he had gotten home. | 0
+4 | I didn't know what I was going for or anything, so was to report to a designated place in Washington. | I have never been to Washington so when I was assigned there I got lost trying to find the place. | 1
+5 | I didn't know what I was going for or anything, so was to report to a designated place in Washington. | I knew exactly what I needed to do as I marched to Washington. | 2
+6 | I didn't know what I was going for or anything, so was to report to a designated place in Washington. | I was not quite certain what I was going to do so I went to Washington where I was assigned to report. | 0
+7 | He didn't get to go. | He was the first to be invited and enjoyed the experience. | 2
+8 | He didn't get to go. | He wasn't allowed to attend. | 0
+9 | He didn't get to go. | He wasn't allowed to go to the museum's opening. | 1
+10 | And I was like OK, and that was it! | After I said yes, it ended. | 0
+
+==================================================
+
+Split: test
+Completion Prompt:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Well, I wasn ' t even thinking about that, but I was[MASK] | I havent spoken[MASK] | [MASK]
+2 | Well, I wasn ' t even thinking about that, but I was[MASK] | I was so upset that I[MASK] | [MASK]
+3 | Well, I wasn ' t even thinking about that, but I was[MASK] | We had a[MASK] | [MASK]
+4 | And I thought that was a privilege, and it ' s still, it ' s still,[MASK] | I was not aware that I was not the[MASK] | [MASK]
+5 | And I thought that was a privilege, and it ' s still, it ' s still,[MASK] | I was under the impression that I was the only one[MASK] | [MASK]
+6 | And I thought that was a privilege, and it ' s still, it ' s still,[MASK] | We all were given the same exact number no matter what privile[MASK] | [MASK]
+7 | They told me that, uh, that I would be[MASK] | I was never told[MASK] | [MASK]
+8 | They told me that, uh, that I would be[MASK] | I was told a guy would[MASK] | [MASK]
+9 | They told me that, uh, that I would be[MASK] | The guy showed[MASK] | [MASK]
+10 | There ' s so much you could talk about[MASK] | I want to tell you[MASK] | [MASK]
+
+Model's Response:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Well, I wasn't even thinking about that, but I was [busy] | I haven't spoken [to him in weeks] | 2
+2 | Well, I wasn't even thinking about that, but I was [crying] | I was so upset that I [couldn't stop] | 0
+3 | Well, I wasn't even thinking about that, but I was [late] | We had [to wait for hours] | 2
+4 | And I thought that was a privilege, and it's still, it's still, [very important] | I was not aware that I was not the [only one] | 1
+5 | And I thought that was a privilege, and it's still, it's still, [not alone] | I was under the impression that I was the only one [who received it] | 2
+6 | And I thought that was a privilege, and it's still, it's still, [regardless of status] | We all were given the same exact number no matter what [our positions were] | 1
+7 | They told me that, uh, that I would be [fine] | I was never told [anything] | 0
+8 | They told me that, uh, that I would be [working with him] | I was told a guy would [be my partner] | 1
+9 | They told me that, uh, that I would be [meeting him] | The guy showed [up late] | 2
+10 | There's so much you could talk about [in this city] | I want to tell you [about my favorite restaurant] | 1
+Ground Truth:
+id | premise | hypothesis | label
+---|---------|------------|------
+1 | Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again. | I havent spoken to him again. | 2
+2 | Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again. | I was so upset that I just started talking to him again. | 0
+3 | Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again. | We had a great talk. | 1
+4 | And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field. | I was not aware that I was not the only person to be at the field that day. | 1
+5 | And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field. | I was under the impression that I was the only one with that number at the AFFC Air Force Career field. | 0
+6 | And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field. | We all were given the same exact number no matter what privileges we were promised to be granted, it was all a lie. | 2
+7 | They told me that, uh, that I would be called in a guy at the end for me to meet. | I was never told anything about meeting anyone. | 2
+8 | They told me that, uh, that I would be called in a guy at the end for me to meet. | I was told a guy would be called in for me to meet. | 0
+9 | They told me that, uh, that I would be called in a guy at the end for me to meet. | The guy showed up a bit late. | 1
+10 | There's so much you could talk about on that I'll just skip that. | I want to tell you everything I know about that! | 2
+
+==================================================
+

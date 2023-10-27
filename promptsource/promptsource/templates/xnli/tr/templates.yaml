@@ -1,0 +1,52 @@
+dataset: xnli/tr
+templates:
+  37d2f061-06b0-4aa3-af53-871a2b06748f: !Template
+    answer_choices: True ||| Neither ||| False
+    id: 37d2f061-06b0-4aa3-af53-871a2b06748f
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'
+  58536115-fd5c-4f29-a85b-420fde6fc5b0: !Template
+    answer_choices: Yes ||| Maybe ||| No
+    id: 58536115-fd5c-4f29-a85b-420fde6fc5b0
+    jinja: '{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
+      Yes, no, or maybe? ||| {{ answer_choices[label] }}'
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: based on the previous passage
+    reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
+  aa9b3608-0c2c-4f19-bbab-b202d7b0ec29: !Template
+    answer_choices: "Do\u011Fru ||| Ne ||| Yanl\u0131\u015F"
+    id: aa9b3608-0c2c-4f19-bbab-b202d7b0ec29
+    jinja: "{{premise}}\nSoru: {{hypothesis}} Do\u011Fru, Yanl\u0131\u015F veya Hi\xE7\
+      biri? ||| {{ answer_choices[label] }}"
+    metadata: *id001
+    name: Bing-Translated GPT-3 style
+    reference: 'Translated to tr version  of: Same as reported in Figure G7 of the
+      GPT-3 paper, except that there is no task identifying tokens like "anli R1:
+      ".'
+  cc6e98b1-95fe-4178-b054-295dfe80c426: !Template
+    answer_choices: "Evet ||| Belki ||| Hay\u0131r"
+    id: cc6e98b1-95fe-4178-b054-295dfe80c426
+    jinja: "{{premise}} \xD6nceki pasaja dayanarak, \"{{hypothesis}}\" do\u011Fru\
+      \ mudur? Evet, hay\u0131r veya belki? ||| {{ answer_choices[label] }}"
+    metadata: *id002
+    name: Bing-Translated based on the previous passage
+    reference: "Translated to tr version  of: Adapted from the BoolQ prompts in Schick\
+      \ & Sch\xFCtze 2021."

@@ -1,0 +1,32 @@
+languages:
+- "bn"
+- "en"
+- "gu"
+- "hi"
+- "kn"
+- "ml"
+- "mr"
+- "pa"
+- "ta"
+- "te"
+pretty_name: "Indic-XNLI"
+tags:
+- "text classification"
+- "cross-lingual"
+- "natural language inference"
+dataset_info:
+    features:
+        - name: "premise"
+          dtype: "string"
+        - name: "hypothesis"
+          dtype: "string"
+        - name: "label"
+          dtype: "int32"
+    splits:
+        train:
+            num_examples: 392,702
+        validation:
+            num_examples: 2,490
+        test:
+            num_examples: 5,010
+dataset_summary: "Indic-XNLI is a cross-lingual natural language inference dataset for 11 Indian languages and English. The dataset is a translation of the XNLI dataset and covers a diverse set of genres and topics. The dataset is designed to evaluate the ability of models to perform cross-lingual natural language inference and transfer learning across languages."

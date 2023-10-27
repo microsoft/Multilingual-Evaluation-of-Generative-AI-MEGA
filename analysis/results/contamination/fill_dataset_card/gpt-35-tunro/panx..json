@@ -1,0 +1,9 @@
+{
+    "prompt": [
+        {
+            "role": "user",
+            "content": "Please fill the dataset card for the PAN-X dataset. You can use the following schema:\nlanguages: \n- \"List of ISO 639-1 code for languages covered in the dataset\"\n- lang1\n- lang2\n...\n- langM\npretty_name: \"Pretty Name of the Dataset\"\ntags:\n- tag1\n- tag2\ndataset_info:\n    features:\n        - name: \"name of the feature1\"\n          dtype: \"dtype of the feature1\"\n        ...\n        - name: \"name of the featureN\"\n          dtype: \"dtype of the featureN\"\n    splits:\n        train:\n            num_examples: \"number of examples in the train split\"\n        validation:\n            num_examples: \"number of examples in the validation split\"\n        test:\n            num_examples: \"number of examples in the test split\"\ndataset_summary: \"Summary of the dataset's description\"\n"
+        }
+    ],
+    "response": "languages:\n- \"en\"\n- \"es\"\n- \"fr\"\n- \"it\"\n- \"pt\"\npretty_name: \"PAN-X Dataset\"\ntags:\n- \"multilingual\"\n- \"cross-lingual\"\n- \"text classification\"\ndataset_info:\n    features:\n        - name: \"text\"\n          dtype: \"string\"\n        - name: \"label\"\n          dtype: \"int\"\n    splits:\n        train:\n            num_examples: 10000\n        validation:\n            num_examples: 2000\n        test:\n            num_examples: 5000\ndataset_summary: \"The PAN-X dataset is a multilingual text classification dataset consisting of news articles in English, Spanish, French, Italian, and Portuguese. The task is to classify the articles into one of four categories: business, entertainment, politics, or sport. The dataset contains 15,000 examples split into train, validation, and test sets.\""
+}

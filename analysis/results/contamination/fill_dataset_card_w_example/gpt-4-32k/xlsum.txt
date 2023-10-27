@@ -1,0 +1,26 @@
+languages:
+  - en
+pretty_name: XLSum
+tags:
+  - summarization
+  - news
+dataset_info:
+  features:
+    - name: url
+      dtype: string
+    - name: date
+      dtype: string
+    - name: title
+      dtype: string
+    - name: summary
+      dtype: string
+    - name: text
+      dtype: string
+  splits:
+    train:
+      num_examples: 1,925,018
+    validation:
+      num_examples: 5,000
+    test:
+      num_examples: 5,000
+dataset_summary: XLSum is a large-scale multi-lingual summarization dataset that consists of 1.94 million article-summary pairs in 39 languages. The dataset is created by extracting content from the English version of Wikipedia and then using Google Translate to translate the content into different languages. The goal is to generate abstractive summaries for the given articles.

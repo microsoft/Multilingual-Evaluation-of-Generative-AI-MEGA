@@ -1,0 +1,33 @@
+languages:
+- "List of ISO 639-1 code for languages covered in the dataset"
+- bn
+- en
+- gu
+- hi
+- kn
+- ml
+- mr
+- or
+- pa
+- ta
+- te
+pretty_name: IndicQA
+tags:
+- question answering
+- multilingual
+dataset_info:
+    features:
+        - name: "question"
+          dtype: "string"
+        - name: "answer"
+          dtype: "string"
+        - name: "category"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 10000
+        validation:
+            num_examples: 1000
+        test:
+            num_examples: 1000
+dataset_summary: IndicQA is a multilingual question answering dataset consisting of questions and answers in 11 Indian languages. The questions are categorized into 8 different categories such as history, science, sports, etc. The dataset is designed to evaluate cross-lingual question answering models.

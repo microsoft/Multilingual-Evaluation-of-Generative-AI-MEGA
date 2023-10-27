@@ -1,0 +1,26 @@
+{
+    "ht": {
+        "C1 or C2? premise, so/because\u2026": 0.67,
+        "best_option": 0.71,
+        "best_option discrete": 0.63,
+        "cause_effect": 0.79,
+        "choose": 0.75,
+        "exercise": 0.79,
+        "i_am_hesitating": 0.77,
+        "more likely": 0.75,
+        "plausible_alternatives": 0.76,
+        "plausible_alternatives_discrete": 0.7
+    },
+    "ta": {
+        "C1 or C2? premise, so/because\u2026": 0.0,
+        "best_option": 0.0,
+        "best_option discrete": 0.65,
+        "cause_effect": 0.0,
+        "choose": 0.0,
+        "exercise": 0.0,
+        "i_am_hesitating": 0.0,
+        "more likely": 0.01,
+        "plausible_alternatives": 0.0,
+        "plausible_alternatives_discrete": 0.62
+    }
+}

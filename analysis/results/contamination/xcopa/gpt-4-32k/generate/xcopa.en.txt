@@ -1,0 +1,69 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XCOPA English dataset train split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | A man is playing a guitar. | The man is a musician. | The man is a chef. | occupation | 0
+2 | A woman is slicing onions. | The woman is cooking. | The woman is swimming. | activity | 0
+3 | A child is riding a bike. | The child is exercising. | The child is sleeping. | activity | 0
+4 | A dog is barking loudly. | The dog is angry. | The dog is eating. | emotion | 0
+5 | A couple is dancing together. | The couple is enjoying themselves. | The couple is arguing. | emotion | 0
+6 | A person is painting a picture. | The person is an artist. | The person is a doctor. | occupation | 0
+7 | A group of people is protesting. | The people are unhappy with a situation. | The people are celebrating a birthday. | emotion | 0
+8 | A man is fixing a car. | The man is a mechanic. | The man is a teacher. | occupation | 0
+9 | A woman is typing on a computer. | The woman is working. | The woman is playing soccer. | activity | 0
+10 | A boy is playing video games. | The boy is having fun. | The boy is studying. | emotion | 0
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XCOPA English dataset validation split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | A man is playing a guitar. | The man is a musician. | The man is a chef. | occupation | 0
+2 | A woman is cutting an onion. | The woman is cooking. | The woman is swimming. | activity | 0
+3 | A dog is chasing a ball. | The dog is playing. | The dog is sleeping. | activity | 0
+4 | A baby is crying. | The baby is hungry. | The baby is laughing. | emotion | 0
+5 | A couple is dancing. | The couple is at a party. | The couple is at a funeral. | location | 0
+6 | A girl is reading a book. | The girl is studying. | The girl is watching TV. | activity | 0
+7 | A boy is riding a bike. | The boy is exercising. | The boy is eating. | activity | 0
+8 | A person is painting a picture. | The person is an artist. | The person is a doctor. | occupation | 0
+9 | A group of people is protesting. | The people are unhappy with a decision. | The people are celebrating a birthday. | reason | 0
+10 | A cat is climbing a tree. | The cat is curious. | The cat is taking a bath. | activity | 0
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XCOPA English dataset test split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | A man is playing the guitar. | The man is a musician. | The man is a chef. | occupation | 0
+2 | A woman is cutting onions. | The woman is cooking. | The woman is swimming. | activity | 0
+3 | A dog is chasing a ball. | The dog is playing. | The dog is sleeping. | activity | 0
+4 | A baby is crying. | The baby is hungry. | The baby is laughing. | emotion | 0
+5 | A couple is dancing. | The couple is celebrating. | The couple is arguing. | activity | 0
+6 | A girl is reading a book. | The girl is studying. | The girl is watching TV. | activity | 0
+7 | A boy is riding a bike. | The boy is exercising. | The boy is eating. | activity | 0
+8 | A person is painting a picture. | The person is an artist. | The person is a doctor. | occupation | 0
+9 | A group of people is protesting. | The people are expressing their opinions. | The people are attending a concert. | activity | 0
+10 | A cat is climbing a tree. | The cat is curious. | The cat is swimming. | activity | 0
+==================================================
+

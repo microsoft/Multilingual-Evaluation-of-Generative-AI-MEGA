@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Arabic dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | الرجل يرتدي قميصًا أحمر | الرجل يرتدي قميصًا أخضر | 2\n2 | الفتاة ترتدي فستانًا أحمر | الفتاة ترتدي فستانًا أزرق | 2\n3 | الرجل يركب دراجة هوائية | الرجل يركب سيارة | 2\n4 | الفتاة تحمل حقيبة كبيرة | الفتاة تحمل حقيبة صغيرة | 2\n5 | الرجل يقرأ كتابًا | الرجل يشاهد التلفزيون | 2\n6 | الفتاة ترتدي نظارات | الفتاة لا ترتدي نظارات | 0\n7 | الرجل يرتدي قبعة | الرجل لا يرتدي قبعة | 1\n8 | الفتاة ترتدي حذاءً أسود | الفتاة ترتدي حذاءً أحمر | 2\n9 | الرجل يجلس على الأريكة | الرجل يجلس على الكرسي | 1\n10 | الفتاة ترتدي ساعة | الفتاة لا ترتدي ساعة | 0"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Arabic dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | الرجل يرتدي قميصًا أحمر | الرجل يرتدي قميصًا أخضر | 2\n2 | الفتاة ترتدي فستانًا أحمر | الفتاة ترتدي فستانًا أحمر | 1\n3 | الولد يلعب كرة القدم في الملعب | الولد يلعب كرة السلة في الملعب | 2\n4 | الكلب يجري في الحديقة | الكلب ينام في الحديقة | 0\n5 | الأم تحمل طفلها في حضنها | الأم تحمل كتابًا في حضنها | 2\n6 | الرجل يقود السيارة بسرعة | الرجل يقود السيارة ببطء | 2\n7 | الفتاة ترتدي نظارات | الفتاة ترتدي قبعة | 2\n8 | الأولاد يلعبون في الحديقة | الأولاد يلعبون في المدرسة | 0\n9 | الرجل يشرب الشاي في المقهى | الرجل يشرب القهوة في المقهى | 1\n10 | الفتاة ترتدي فستانًا أحمر | الفتاة ترتدي بنطلونًا أحمر | 2"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Arabic dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | الرجل يرتدي قميصًا أحمر | الرجل يرتدي قميصًا أخضر | 2\n2 | الفتاة ترتدي فستانًا أحمر | الفتاة ترتدي فستانًا أزرق | 2\n3 | الرجل يقود السيارة | الرجل يجلس في السيارة | 1\n4 | الفتاة ترتدي نظارات | الفتاة ترتدي قبعة | 2\n5 | الرجل يشرب الشاي | الرجل يشرب القهوة | 2\n6 | الفتاة ترتدي حذاءً أسود | الفتاة ترتدي حذاءً أحمر | 2\n7 | الرجل يقرأ الجريدة | الرجل يشاهد التلفاز | 2\n8 | الفتاة ترتدي ساعة | الفتاة ترتدي أساور | 2\n9 | الرجل يرتدي نظارات | الرجل يرتدي قميصًا | 2\n10 | الفتاة ترتدي فستانًا أحمر | الفتاة ترتدي فستانًا أحمر وأسود | 0"
+    }
+]

@@ -1,0 +1,39 @@
+dataset: paws-x/ko
+templates:
+  31e33bfd-cc9c-4392-81b1-17091d7caf87: !Template
+    answer_choices: "\uC544\uB2C8\uC694 ||| \uC608"
+    id: 31e33bfd-cc9c-4392-81b1-17091d7caf87
+    jinja: "\uBB38\uC7A5 1: {{sentence1}}\n\uBB38\uC7A5 2: {{sentence2}}\n\uC9C8\uBB38\
+      : \uBB38\uC7A5 1\uC774 \uBB38\uC7A5 2\uB97C \uC758\uC5ED\uD569\uB2C8\uAE4C?\
+      \ \uC608 \uB610\uB294 \uC544\uB2C8\uC694? \n||| \n{{answer_choices[label]}}"
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated Concatenation
+    reference: 'Translated to ko version  of: Concatenation of sentence 1 and sentence
+      2'
+  8c259e88-7646-4a50-a4ca-90393920f2dd: !Template
+    answer_choices: No ||| Yes
+    id: 8c259e88-7646-4a50-a4ca-90393920f2dd
+    jinja: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Does Sentence\
+      \ 1 paraphrase Sentence 2? Yes or No? \n||| \n{{answer_choices[label]}}"
+    metadata: *id001
+    name: Concatenation
+    reference: Concatenation of sentence 1 and sentence 2
+  d9911dad-75fe-4506-9843-3a46ba5e49dd: !Template
+    answer_choices: False ||| True
+    id: d9911dad-75fe-4506-9843-3a46ba5e49dd
+    jinja: "{{sentence1}} Question: {{sentence2}} True or False? \n||| \n{{answer_choices[label]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: PAWS-ANLI GPT3
+    reference: ANLI prompt format from Table G7 in the GPT3 paper

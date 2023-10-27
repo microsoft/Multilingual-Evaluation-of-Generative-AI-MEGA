@@ -1,0 +1,69 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XCOPA Estonian dataset train split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Poiss lõi palli. | Poiss mängis jalgpalli. | Poiss nuttis. | cause | 0
+2 | Tüdruk lõi oma venda. | Tüdruk oli vihane. | Tüdruk oli õnnelik. | cause | 0
+3 | Mees jooksis bussile. | Mees oli hiljaks jäämas. | Mees tahtis trenni teha. | cause | 0
+4 | Koer haugub. | Koer on rõõmus. | Koer on ärritunud. | cause | 1
+5 | Laps naeris. | Laps vaatas koomiksit. | Laps magas. | cause | 0
+6 | Naine luges raamatut. | Naine õppis midagi uut. | Naine sõi õhtusööki. | cause | 0
+7 | Auto sõitis kraavi. | Autojuht kaotas kontrolli. | Autojuht parkis auto. | cause | 0
+8 | Torm lõi puu maha. | Puu langes maja peale. | Puu kasvas suuremaks. | effect | 0
+9 | Poiss lõpetas kooli. | Poiss sai töö. | Poiss läks puhkusele. | effect | 0
+10 | Tüdruk lõi oma venda. | Vend nuttis. | Vend naeris. | effect | 0
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XCOPA Estonian dataset validation split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Poiss lõi palli. | Pall lendas eemale. | Poiss nuttis. | cause | 0
+2 | Ema ostis lapsele mänguasja. | Laps oli õnnelik. | Laps oli kurb. | effect | 0
+3 | Tüdruk luges raamatut. | Ta sai teada uut informatsiooni. | Ta ei saanud aru, mida ta luges. | effect | 0
+4 | Koer haugub. | Keegi tuli ukse taha. | Koer magab. | cause | 0
+5 | Mees jooksis bussile. | Ta ei tahtnud bussist maha jääda. | Ta tahtis bussist maha jääda. | cause | 0
+6 | Õpilane ei õppinud eksamiks. | Ta sai halva hinde. | Ta sai hea hinde. | effect | 0
+7 | Mari sõi liiga palju maiustusi. | Tal tekkis kõhuvalu. | Ta tundis end hästi. | effect | 0
+8 | Vihm hakkas sadama. | Inimesed avasid vihmavarjud. | Inimesed jätkasid vihmavarjudeta. | effect | 0
+9 | Auto läks katki. | Auto vajas remonti. | Auto töötas korralikult. | effect | 0
+10 | Laps kardab pimedust. | Ta ei taha üksi magada. | Ta tahab üksi magada. | effect | 0
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XCOPA Estonian dataset test split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Poiss lõi oma õde. | Poiss on õnnelik. | Poiss on vihane. | cause | 1
+2 | Ema ostis lapsele uue mänguasja. | Laps on õnnelik. | Laps on kurb. | cause | 0
+3 | Koer haugub aias. | Koer on rahulik. | Koer on erutatud. | cause | 1
+4 | Tüdruk lõpetas kooli kiitusega. | Tüdruk on tark. | Tüdruk on laisk. | cause | 0
+5 | Mees jooksis bussi peale. | Mees oli hiljaks jäämas. | Mees oli bussist eemale jooksmas. | cause | 0
+6 | Naine lõi oma jalga vastu lauda. | Naine tunneb valu. | Naine tunneb end hästi. | cause | 0
+7 | Poiss sõi liiga palju jäätist. | Poiss tunneb end halvasti. | Poiss tunneb end energiliselt. | cause | 0
+8 | Tüdruk luges raamatut. | Tüdruk sai teadmisi. | Tüdruk kaotas teadmisi. | cause | 0
+9 | Mees kandis päikeseprille. | Päike paistis eredalt. | Ilm oli pilves. | cause | 0
+10 | Naine kuulas muusikat kõrvaklappidega. | Naine nautis muusikat. | Naine ei kuulnud muusikat. | cause | 0
+==================================================
+

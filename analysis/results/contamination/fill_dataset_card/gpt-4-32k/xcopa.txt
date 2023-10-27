@@ -1,0 +1,127 @@
+languages: 
+- "List of ISO 639-1 code for languages covered in the dataset"
+- en
+- es
+- de
+- nl
+- it
+- tr
+- ar
+- zh
+- ru
+- sw
+- ur
+- vi
+- fr
+- he
+- hi
+- ja
+- ko
+- pt
+- th
+- bg
+- el
+- et
+- fi
+- hu
+- lt
+- lv
+- pl
+- ro
+- sk
+- sl
+- sv
+- cs
+- da
+- nb
+- sr
+- hr
+- uk
+- mk
+- sq
+- bs
+- is
+- af
+- mt
+- ga
+- gd
+- cy
+- xh
+- zu
+- fo
+- ky
+- lo
+- ka
+- mn
+- ne
+- pa
+- fa
+- si
+- ta
+- te
+- kk
+- uz
+- am
+- hy
+- az
+- eu
+- be
+- bn
+- br
+- my
+- km
+- co
+- ku
+- ht
+- lb
+- mg
+- mi
+- mr
+- gn
+- ny
+- ps
+- qu
+- rw
+- se
+- sm
+- gd
+- sn
+- sd
+- st
+- tn
+- tg
+- to
+- tk
+- tt
+- ty
+- wo
+- fy
+- ts
+- xh
+- yi
+- zu
+pretty_name: "XCOPA: Cross-lingual Choice of Plausible Alternatives"
+tags:
+- natural language processing
+- common sense reasoning
+- multilingual
+dataset_info:
+    features:
+        - name: "premise"
+          dtype: "string"
+        - name: "question"
+          dtype: "string"
+        - name: "choice1"
+          dtype: "string"
+        - name: "choice2"
+          dtype: "string"
+        - name: "label"
+          dtype: "int32"
+    splits:
+        train:
+            num_examples: "40597"
+        validation:
+            num_examples: "4770"
+        test:
+            num_examples: "4770"
+dataset_summary: "XCOPA is a dataset for evaluating the performance of models in cross-lingual common sense reasoning tasks. It is derived from the English

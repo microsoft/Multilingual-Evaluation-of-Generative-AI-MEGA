@@ -1,0 +1,46 @@
+languages:
+- "List of ISO 639-1 code for languages covered in the dataset"
+- en
+- es
+- fr
+- pt
+- it
+- de
+- nl
+- el
+- tr
+- ar
+- he
+- hi
+- id
+- ja
+- ko
+- ru
+- th
+- vi
+- zh
+pretty_name: "Cross-lingual Compositional Phrase Alignment"
+tags:
+- natural language processing
+- cross-lingual
+- alignment
+dataset_info:
+    features:
+        - name: "source_phrase"
+          dtype: "string"
+        - name: "target_phrase"
+          dtype: "string"
+        - name: "source_language"
+          dtype: "string"
+        - name: "target_language"
+          dtype: "string"
+        - name: "alignment"
+          dtype: "int32"
+    splits:
+        train:
+            num_examples: 100000
+        validation:
+            num_examples: 10000
+        test:
+            num_examples: 10000
+dataset_summary: XCOPA is a dataset for cross-lingual compositional phrase alignment. It consists of pairs of phrases in different languages, along with their alignments. The goal is to predict the alignment between the phrases, which can be used for tasks such as machine translation and cross-lingual information retrieval. The dataset covers 19 languages and contains 210,000 phrase pairs.

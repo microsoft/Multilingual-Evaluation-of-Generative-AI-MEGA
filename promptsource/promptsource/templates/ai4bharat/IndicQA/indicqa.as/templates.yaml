@@ -1,0 +1,23 @@
+dataset: ai4bharat/IndicQA
+subset: indicqa.as
+templates:
+  f535f55f-501d-4e9c-adc6-eba2e4cb9190: !Template
+    answer_choices: null
+    id: f535f55f-501d-4e9c-adc6-eba2e4cb9190
+    jinja: '{{context}}
+
+
+      Q: {{question}}
+
+
+      Referring to the passage above, the correct answer to the given question is
+      ||| {{answers["text"][0]}}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+      - en
+      metrics:
+      - Squad
+      original_task: true
+    name: answer_given_context_and_question
+    reference: ''

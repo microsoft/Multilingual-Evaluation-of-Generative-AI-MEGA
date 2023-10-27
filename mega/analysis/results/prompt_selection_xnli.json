@@ -1,0 +1,34 @@
+{
+    "sw": {
+        "take the following as truth": 0.508,
+        "does this imply": 0.564,
+        "GPT-3 style": 0.606,
+        "based on the previous passage": 0.574,
+        "guaranteed true": 0.422,
+        "should assume": 0.518,
+        "must be true": 0.476,
+        "can we infer": 0.542,
+        "justified in saying": 0.556,
+        "claim true/false/inconclusive": 0.604,
+        "consider always/sometimes/never": 0.384,
+        "always/sometimes/never": 0.436,
+        "guaranteed/possible/impossible": 0.468,
+        "MNLI crowdsource": 0.578
+    },
+    "ur": {
+        "take the following as truth": 0.5,
+        "does this imply": 0.47,
+        "GPT-3 style": 0.526,
+        "based on the previous passage": 0.504,
+        "guaranteed true": 0.438,
+        "should assume": 0.472,
+        "must be true": 0.452,
+        "can we infer": 0.522,
+        "justified in saying": 0.46,
+        "claim true/false/inconclusive": 0.514,
+        "consider always/sometimes/never": 0.442,
+        "always/sometimes/never": 0.388,
+        "guaranteed/possible/impossible": 0.392,
+        "MNLI crowdsource": 0.45
+    }
+}

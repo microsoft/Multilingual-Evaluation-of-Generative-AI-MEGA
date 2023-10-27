@@ -1,0 +1,36 @@
+language: 
+- ar
+- bn
+- en
+- fi
+- id
+- ko
+- ru
+- sw
+- te
+- vi
+- zh
+pretty_name: "TyDi QA-Gold Passage"
+tags:
+- question_answering
+- multilingual
+dataset_info:
+    features:
+        - name: "example_id"
+          dtype: "int64"
+        - name: "language"
+          dtype: "string"
+        - name: "question"
+          dtype: "string"
+        - name: "context"
+          dtype: "string"
+        - name: "answers"
+          dtype: "list"
+    splits:
+        train:
+            num_examples: "361018"
+        validation:
+            num_examples: "9963"
+        test:
+            num_examples: "0"
+dataset_summary: "TyDi QA-Gold Passage is a question-answering dataset that contains 361,018 examples across 11 languages. The dataset is designed to capture reasoning over multiple documents and to test the ability of models to generalize to new languages. The dataset is split into a train and validation set, with no test set provided."

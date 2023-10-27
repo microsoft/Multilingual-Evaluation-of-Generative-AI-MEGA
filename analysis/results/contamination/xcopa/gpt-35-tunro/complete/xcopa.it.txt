@@ -1,0 +1,44 @@
+Split: validation
+Completion Prompt:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | L ' uomo aprì[MASK] | Il gabinetto si ri[MASK] | Dell ' acqua fluì[MASK] | [MASK] | [MASK]
+2 | La ragazza trovò un ins[MASK] | Versò il latte[MASK] | Perse l '[MASK] | [MASK] | [MASK]
+3 | La donna andò[MASK] | Ricevette la[MASK] | Ripagò il[MASK] | [MASK] | [MASK]
+4 | Volevo conservar[MASK] | Spazzai a terra[MASK] | Spensi la luce[MASK] | [MASK] | [MASK]
+5 | La carne dell ' hamburger[MASK] | Il cuoco lo[MASK] | Il cuoco l '[MASK] | [MASK] | [MASK]
+6 | Ho dubitato della parlanti[MASK] | Rifiutai[MASK] | Mi convinse a[MASK] | [MASK] | [MASK]
+7 | Ho deciso di stare a[MASK] | Il meteo ann[MASK] | I miei amici ins[MASK] | [MASK] | [MASK]
+8 | I miei occhi diventarono[MASK] | Stavo sing[MASK] | Stavo[MASK] | [MASK] | [MASK]
+9 | La fiamma della cand[MASK] | Soffiai[MASK] | Misi un fiammi[MASK] | [MASK] | [MASK]
+10 | L ' uomo bev[MASK] | L ' indomani aveva[MASK] | L ' indomani aveva[MASK] | [MASK] | [MASK]
+
+Model's Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | L' uomo aprì la porta | Il gabinetto si riempì d'acqua | Dell' acqua fluì sul pavimento | Cause-Effect | 1
+2 | La ragazza trovò un insegnante | Versò il latte nella tazza | Perse l' autobus | Cause-Effect | 0
+3 | La donna andò in banca | Ricevette la pensione | Ripagò il prestito | Cause-Effect | 1
+4 | Volevo conservare il cibo | Spazzai a terra i cocci | Spensi la luce della cucina | Sequence | 0
+5 | La carne dell' hamburger era cruda | Il cuoco lo cucinò di più | Il cuoco l' gettò via | Cause-Effect | 1
+6 | Ho dubitato della parlantina del politico | Rifiutai di votarlo | Mi convinse a cambiare idea | Contrast | 1
+7 | Ho deciso di stare a casa | Il meteo annunciava pioggia | I miei amici insistevano per uscire | Preference | 0
+8 | I miei occhi diventarono rossi | Stavo singhiozzando | Stavo piangendo | Contrast | 1
+9 | La fiamma della candela si stava spegnendo | Soffiai delicatamente | Misi un fiammifero nuovo | Cause-Effect | 0
+10 | L' uomo bevve troppo | L' indomani aveva la testa che scoppiava | L' indomani aveva la nausea | Cause-Effect | 1
+Ground Truth:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | L'uomo aprì il rubinetto. | Il gabinetto si riempì d'acqua. | Dell'acqua fluì dal beccuccio. | effect | 1
+2 | La ragazza trovò un insetto nei cereali. | Versò il latte nella ciotola. | Perse l'appetito. | effect | 1
+3 | La donna andò in pensione. | Ricevette la sua pensione. | Ripagò il suo mutuo. | effect | 0
+4 | Volevo conservare le energie. | Spazzai a terra nella stanza vuota. | Spensi la luce nella stanza vuota. | effect | 1
+5 | La carne dell'hamburger si è abbrustolita. | Il cuoco lo ha congelato. | Il cuoco l'ha grigliato. | cause | 1
+6 | Ho dubitato della parlantina del venditore. | Rifiutai la sua offerta. | Mi convinse a comprare il prodotto. | effect | 0
+7 | Ho deciso di stare a casa per la notte. | Il meteo annunciava tempesta. | I miei amici insistevano per uscire. | cause | 0
+8 | I miei occhi diventarono rossi e gonfi. | Stavo singhiozzando. | Stavo ridendo. | cause | 0
+9 | La fiamma della candela si spense. | Soffiai sullo stoppino. | Misi un fiammifero sullo stoppino. | cause | 0
+10 | L'uomo bevve molto alla festa. | L'indomani aveva il mal di testa. | L'indomani aveva il naso che cola. | effect | 0
+
+==================================================
+

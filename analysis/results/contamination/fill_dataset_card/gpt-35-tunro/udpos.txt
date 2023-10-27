@@ -1,0 +1,49 @@
+languages:
+- "en"
+- "fr"
+- "de"
+- "es"
+- "it"
+- "nl"
+- "pt"
+- "sv"
+- "ru"
+- "ar"
+- "zh"
+- "ja"
+- "ko"
+pretty_name: "Universal Dependencies Part-of-Speech Tagging (UDPOS)"
+tags:
+- "linguistics"
+- "part-of-speech tagging"
+- "multilingual"
+dataset_info:
+    features:
+        - name: "id"
+          dtype: "int32"
+        - name: "form"
+          dtype: "string"
+        - name: "lemma"
+          dtype: "string"
+        - name: "upos"
+          dtype: "string"
+        - name: "xpos"
+          dtype: "string"
+        - name: "feats"
+          dtype: "string"
+        - name: "head"
+          dtype: "int32"
+        - name: "deprel"
+          dtype: "string"
+        - name: "deps"
+          dtype: "string"
+        - name: "misc"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 12543
+        validation:
+            num_examples: 2002
+        test:
+            num_examples: 2077
+dataset_summary: "The Universal Dependencies Part-of-Speech Tagging (UDPOS) dataset is a collection of part-of-speech tagged sentences in multiple languages. It is designed to be a multilingual resource for natural language processing tasks such as machine translation, named entity recognition, and sentiment analysis."

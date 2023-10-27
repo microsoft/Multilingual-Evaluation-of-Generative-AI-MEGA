@@ -1,0 +1,20 @@
+languages:
+- "en"
+pretty_name: "XLSum"
+tags:
+- "text summarization"
+- "news articles"
+dataset_info:
+    features:
+        - name: "document"
+          dtype: "string"
+        - name: "summary"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 204045
+        validation:
+            num_examples: 11301
+        test:
+            num_examples: 11301
+dataset_summary: "XLSum is a large-scale dataset for extractive summarization of news articles. It consists of over 200,000 news articles and their corresponding summaries, and is intended for use in training and evaluating models for text summarization."

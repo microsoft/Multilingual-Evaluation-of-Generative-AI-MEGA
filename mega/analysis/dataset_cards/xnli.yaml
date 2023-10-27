@@ -1,0 +1,43 @@
+language:
+  - ar
+  - bg
+  - de
+  - el
+  - en
+  - es
+  - fr
+  - hi
+  - ru
+  - sw
+  - th
+  - tr
+  - ur
+  - vi
+  - zh
+paperswithcode_id: xnli
+pretty_name: Cross-lingual Natural Language Inference
+dataset_info:
+  features:
+    - name: premise
+      dtype: string
+    - name: hypothesis
+      dtype: string
+    - name: label
+      dtype:
+        class_label:
+          names:
+            "0": entailment
+            "1": neutral
+            "2": contradiction
+  splits:
+    train:
+      num_examples: 392702
+    validation:
+      num_examples: 2490
+    test:
+      num_examples: 5010
+dataset_summary: XNLI is a subset of a few thousand examples from MNLI which has been translated
+into a 14 different languages (some low-ish resource). As with MNLI, the goal is
+to predict textual entailment (does sentence A imply/contradict/neither sentence
+B) and is a classification task (given two sentences, predict one of three
+labels).

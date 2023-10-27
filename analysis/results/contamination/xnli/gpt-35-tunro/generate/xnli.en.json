@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI English dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | The new rights are nice, but they do not go far enough. | The new rights are not sufficient. | 0\n2 | The new rights are nice, but they do not go far enough. | The new rights are good enough. | 2\n3 | The new rights are nice, but they do not go far enough. | The new rights are better than before. | 1\n4 | The new rights are nice, but they do not go far enough. | The new rights are worse than before. | 2\n5 | The new rights are nice, but they do not go far enough. | The new rights are not good. | 0\n6 | The new rights are nice, but they do not go far enough. | The new rights are not bad. | 1\n7 | The new rights are nice, but they do not go far enough. | The new rights are not perfect. | 1\n8 | The new rights are nice, but they do not go far enough. | The new rights are not ideal. | 0\n9 | The new rights are nice, but they do not go far enough. | The new rights are not satisfactory. | 0\n10 | The new rights are nice, but they do not go far enough. | The new rights are not enough. | 0"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI English dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | The young boy is playing outdoors and the man is smiling nearby. | The child is outside, playing in the sun. | 0\n2 | A group of men are playing soccer on the beach. | Some men are playing a sport on the sand. | 1\n3 | A woman is slicing onions. | The woman is preparing a meal. | 0\n4 | A man is playing a harp. | The man is a professional musician. | 1\n5 | A group of people are protesting. | The group is not happy. | 0\n6 | A woman is riding a bike on the street. | The woman is not wearing a helmet. | 2\n7 | A man is playing a guitar and singing on stage. | A man is performing on stage. | 1\n8 | A woman is cutting a cake with a knife. | The woman is celebrating her birthday. | 0\n9 | A man is walking his dog in the park. | The man is exercising his pet. | 1\n10 | A group of people are dancing in a parade. | The people are celebrating a holiday. | 1"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI English dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "id | premise | hypothesis | label\n---|---------|------------|------\n1 | The man is playing a large drum. | The man is playing an instrument. | 0\n2 | A group of people are playing soccer on the beach. | People are playing a sport on the beach. | 0\n3 | A woman is slicing a cucumber. | A woman is cutting a vegetable. | 0\n4 | A man is playing a guitar on the street. | A musician is performing on the street. | 1\n5 | A group of people are walking in the park. | People are enjoying nature. | 1\n6 | A woman is cooking in the kitchen. | A woman is preparing food. | 0\n7 | A man is riding a bike on a dirt path. | A man is cycling on a dirt road. | 1\n8 | A group of people are dancing in a club. | People are enjoying music in a club. | 1\n9 | A woman is walking her dog in the park. | A woman is exercising with her pet. | 1\n10 | A man is playing a trumpet on the street. | A musician is performing on the street. | 1"
+    }
+]

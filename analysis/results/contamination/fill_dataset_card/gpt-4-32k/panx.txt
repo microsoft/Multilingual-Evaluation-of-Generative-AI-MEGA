@@ -1,0 +1,83 @@
+languages:
+- af
+- ar
+- bg
+- bn
+- bs
+- ca
+- cs
+- cy
+- da
+- de
+- el
+- en
+- es
+- et
+- fa
+- fi
+- fr
+- gu
+- he
+- hi
+- hr
+- hu
+- id
+- it
+- ja
+- ka
+- kk
+- ko
+- lt
+- lv
+- mk
+- ml
+- mr
+- ms
+- my
+- nb
+- nl
+- pa
+- pl
+- pt
+- ro
+- ru
+- sk
+- sl
+- sq
+- sr
+- sv
+- sw
+- ta
+- te
+- th
+- tl
+- tr
+- uk
+- ur
+- vi
+- xh
+- zh
+- zu
+
+pretty_name: "PAN-X"
+
+tags:
+- text
+- multilingual
+
+dataset_info:
+    features:
+        - name: "sentence"
+          dtype: "string"
+        - name: "label"
+          dtype: "int32"
+
+splits:
+    train:
+        num_examples: "500,000"
+    validation:
+        num_examples: "2,000"
+    test:
+        num_examples: "2,000"
+
+dataset_summary: "PAN-X is a multilingual dataset containing 500,000 sentences in 40 languages, with each language having 12,500 sentences. The dataset is designed for evaluating cross-lingual text classification tasks. It covers a diverse range of languages, including Indo-European, Afro-Asiatic, Austronesian, and Sino-Tibetan language families. The sentences are labeled with one of four categories: positive, negative, neutral, or mixed sentiment."

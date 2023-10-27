@@ -1,0 +1,30 @@
+languages:
+  - de
+  - en
+  - es
+  - fr
+  - ja
+  - ko
+  - zh
+pretty_name: PAWS-X
+tags:
+  - translation
+  - paraphrase
+dataset_info:
+  features:
+    - name: id
+      dtype: int32
+    - name: sentence1
+      dtype: string
+    - name: sentence2
+      dtype: string
+    - name: label
+      dtype: int32
+  splits:
+    train:
+      num_examples: 49401
+    validation:
+      num_examples: 8000
+    test:
+      num_examples: 8000
+dataset_summary: PAWS-X, a multilingual version of PAWS for six languages, is a dataset containing 23,659 human translated PAWS evaluation pairs and 296,406 machine translated training pairs. The goal is to predict whether the two sentences in a pair are paraphrases or not.

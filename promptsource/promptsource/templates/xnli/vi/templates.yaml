@@ -1,0 +1,53 @@
+dataset: xnli/vi
+templates:
+  2a18da81-431d-44fe-b12d-cadf7ae77524: !Template
+    answer_choices: "\u0110\xFAng ||| Kh\xF4ng ||| Sai"
+    id: 2a18da81-431d-44fe-b12d-cadf7ae77524
+    jinja: "{{premise}}\nC\xE2u h\u1ECFi: {{hypothesis}} \u0110\xFAng, Sai hay kh\xF4\
+      ng? ||| {{ answer_choices[label] }}"
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated GPT-3 style
+    reference: 'Translated to vi version  of: Same as reported in Figure G7 of the
+      GPT-3 paper, except that there is no task identifying tokens like "anli R1:
+      ".'
+  37d2f061-06b0-4aa3-af53-871a2b06748f: !Template
+    answer_choices: True ||| Neither ||| False
+    id: 37d2f061-06b0-4aa3-af53-871a2b06748f
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: *id001
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'
+  401789bc-c481-49f6-a079-89387f70d041: !Template
+    answer_choices: "C\xF3 ||| C\xF3 l\u1EBD ||| Kh\xF4ng"
+    id: 401789bc-c481-49f6-a079-89387f70d041
+    jinja: "{{premise}} D\u1EF1a v\xE0o \u0111o\u1EA1n tr\u01B0\u1EDBc, c\xF3 \u0111\
+      \xFAng l\xE0 \"{{hypothesis}}\" kh\xF4ng? V\xE2ng, kh\xF4ng, ho\u1EB7c c\xF3\
+      \ th\u1EC3? ||| {{ answer_choices[label] }}"
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated based on the previous passage
+    reference: "Translated to vi version  of: Adapted from the BoolQ prompts in Schick\
+      \ & Sch\xFCtze 2021."
+  58536115-fd5c-4f29-a85b-420fde6fc5b0: !Template
+    answer_choices: Yes ||| Maybe ||| No
+    id: 58536115-fd5c-4f29-a85b-420fde6fc5b0
+    jinja: '{{premise}} Based on the previous passage, is it true that "{{hypothesis}}"?
+      Yes, no, or maybe? ||| {{ answer_choices[label] }}'
+    metadata: *id002
+    name: based on the previous passage
+    reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."

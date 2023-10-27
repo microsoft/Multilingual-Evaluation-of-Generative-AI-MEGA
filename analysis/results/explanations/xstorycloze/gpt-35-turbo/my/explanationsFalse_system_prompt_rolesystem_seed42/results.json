@@ -1,0 +1,11 @@
+{
+"model": "gpt-35-turbo",
+"dataset": "xstory_cloze",
+"lang": "my",
+"include_explanation": false,
+"system_prompt_role": "system",
+"seed": 42,
+"metrics": {
+"accuracy": 0.10125744540039709
+}
+}

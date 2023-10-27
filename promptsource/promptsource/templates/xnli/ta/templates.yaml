@@ -1,0 +1,19 @@
+dataset: xnli/ta
+templates:
+  37d2f061-06b0-4aa3-af53-871a2b06748f: !Template
+    answer_choices: True ||| Neither ||| False
+    id: 37d2f061-06b0-4aa3-af53-871a2b06748f
+    jinja: '{{premise}}
+
+      Question: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label]
+      }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'

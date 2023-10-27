@@ -1,0 +1,13 @@
+Split: test
+Prompt:
+Please generate the first 10 instances of XQuAD Greek dataset test split. Use the following format:
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answers1}
+{id2} | {context2} | {question2} | {answers2}
+...
+.
+Response:
+Sorry, as an AI language model, I don't have access to the XQuAD Greek dataset.
+==================================================
+

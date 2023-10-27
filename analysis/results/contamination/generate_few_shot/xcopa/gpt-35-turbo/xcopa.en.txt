@@ -1,0 +1,88 @@
+Split: train
+Prompt:
+Please generate instances of XCOPA English dataset train split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | My body cast a shadow over the grass. | The sun was rising. | The grass was cut. | cause | 0 | 
+2 | The woman tolerated her friend's difficult behavior. | The woman knew her friend was going through a hard time. | The woman felt that her friend took advantage of her kindness. | cause | 0 | 
+3 | The women met for coffee. | The cafe reopened in a new location. | They wanted to catch up with each other. | cause | 1 | 
+4 | The runner wore shorts. | The forecast predicted high temperatures. | She planned to run along the beach. | cause | 0 | 
+
+Response:
+5 | The student received a good grade on the exam. | The student studied hard for the exam. | The student didn't study for the exam. | cause | 0 | 
+6 | The man was sweating profusely. | The temperature was high. | The man was nervous. | cause | 0 | 
+7 | The woman was upset. | The woman's car broke down. | The woman won the lottery. | cause | 0 | 
+8 | The child was crying. | The child was hungry. | The child was playing with toys. | cause | 0 | 
+9 | The man was late for work. | The man overslept. | The man woke up early. | cause | 0 | 
+10 | The woman was happy. | The woman received a promotion. | The woman lost her job. | cause | 0 | 
+11 | The man was tired. | The man stayed up late. | The man went to bed early. | cause | 0 | 
+12 | The woman was cold. | The temperature was low. | The woman was wearing a coat. | cause | 0 | 
+13 | The man was thirsty. | The man had been exercising. | The man had just finished drinking water. | cause | 1 | 
+14 | The woman was angry. | The woman's friend betrayed her. | The woman's friend surprised her with a gift. | cause | 0 | 
+15 | The man was happy. | The man's team won the game. | The man's team lost the game. | cause | 0 | 
+16 | The woman was sad. | The woman's pet died. | The woman's pet had a litter of puppies. | cause | 0 | 
+17 | The man was nervous. | The man was about to give a speech. | The man was watching a movie. | cause | 0 | 
+18 | The woman was excited. | The woman was going on vacation. | The woman was going to the dentist. | cause | 0 | 
+19 | The man was in pain. | The man injured his leg. | The man won the lottery. | cause | 0 | 
+20 | The woman was scared. | The woman heard a loud noise. | The woman saw a butterfly. | cause | 0 |
+==================================================
+
+Split: validation
+Prompt:
+Please generate instances of XCOPA English dataset validation split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | The man turned on the faucet. | The toilet filled with water. | Water flowed from the spout. | effect | 1 | 
+2 | The girl found a bug in her cereal. | She poured milk in the bowl. | She lost her appetite. | effect | 1 | 
+3 | The woman retired. | She received her pension. | She paid off her mortgage. | effect | 0 | 
+4 | I wanted to conserve energy. | I swept the floor in the unoccupied room. | I shut off the light in the unoccupied room. | effect | 1 | 
+
+Response:
+5 | The boy ate too much candy. | He felt sick. | He went to bed early. | effect | 0 | 
+6 | The teacher gave the students a pop quiz. | They were surprised. | They were prepared. | sentiment | 1 | 
+7 | The team won the championship. | They celebrated with a parade. | They disbanded. | effect | 0 | 
+8 | The man was caught stealing. | He was arrested. | He was given a reward. | effect | 0 | 
+9 | The woman went to the beach. | She got a sunburn. | She got a tan. | effect | 0 | 
+10 | The boy got a new bike. | He was excited. | He was disappointed. | sentiment | 0 |
+==================================================
+
+Split: test
+Prompt:
+Please generate instances of XCOPA English dataset test split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | The item was packaged in bubble wrap. | It was fragile. | It was small. | cause | 0 | 
+2 | I emptied my pockets. | I retrieved a ticket stub. | I found a weapon. | effect | 0 | 
+3 | Termites invaded the house. | The termites disappeared from the house. | The termites ate through the wood in the house. | effect | 1 | 
+4 | The travelers reached the border. | The patrol agent checked their passports. | The patrol agent accused them of smuggling. | effect | 0 | 
+
+Response:
+5 | The chef prepared the ingredients. | The dish was delicious. | The dish was burnt. | effect | 0 |
+6 | The athlete trained hard. | The athlete won the competition. | The athlete lost the competition. | effect | 0 |
+7 | The student studied for the exam. | The student passed the exam. | The student failed the exam. | effect | 0 |
+8 | The company launched a new product. | The product was a success. | The product was a failure. | effect | 0 |
+9 | The patient took the prescribed medication. | The patient's condition improved. | The patient's condition worsened. | effect | 0 |
+10 | The musician played a new song. | The audience loved the song. | The audience booed the song. | effect | 0 |
+==================================================
+

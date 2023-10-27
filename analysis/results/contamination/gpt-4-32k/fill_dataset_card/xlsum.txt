@@ -1,0 +1,32 @@
+languages: 
+- "List of ISO 639-1 code for languages covered in the dataset"
+- en
+- fr
+- de
+- es
+- it
+- nl
+- pt
+- ro
+- ru
+- tr
+pretty_name: "XLSum"
+tags:
+- summarization
+- multilingual
+dataset_info:
+    features:
+        - name: "url"
+          dtype: "string"
+        - name: "text"
+          dtype: "string"
+        - name: "summary"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: "202,638"
+        validation:
+            num_examples: "22,514"
+        test:
+            num_examples: "22,514"
+dataset_summary: "XLSum is a large-scale multilingual summarization dataset covering 45 languages and 10 language families. It is created by extracting summaries from the European Parliament website and aligning them with their corresponding source documents. The dataset contains 247,666 samples in total, with 202,638 samples for training, 22,514 samples for validation, and 22,514 samples for testing."

@@ -1,0 +1,40 @@
+languages:
+- ar
+- bg
+- de
+- el
+- en
+- es
+- fr
+- hi
+- ru
+- sw
+- th
+- tr
+- ur
+- vi
+- zh
+
+pretty_name: "Cross-lingual Natural Language Inference"
+
+tags:
+- natural language inference
+- cross-lingual
+
+dataset_info:
+    features:
+        - name: "premise"
+          dtype: "string"
+        - name: "hypothesis"
+          dtype: "string"
+        - name: "label"
+          dtype: "integer"
+    splits:
+        train:
+            num_examples: "392702"
+        validation:
+            num_examples: "2490"
+        test:
+            num_examples: "5010"
+
+dataset_summary: "XNLI is a subset of a few thousand examples from MNLI which has been translated into 14 languages (some low-resource). As with MNLI, the goal is to predict whether the premise entails, contradicts, or is neutral with respect to the hypothesis."

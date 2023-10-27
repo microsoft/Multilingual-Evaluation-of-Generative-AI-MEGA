@@ -1,0 +1,23 @@
+Split: test
+Prompt:
+Please generate the first 10 instances of XQuAD Turkish dataset test split. Use the following format:
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answers1}
+{id2} | {context2} | {question2} | {answers2}
+...
+.
+Response:
+1 | Türkiye Cumhuriyeti, Güneybatı Asya'da yer alan ve Avrupa ve Asya kıtaları arasında köprü görevi gören bir ülkedir. Türkiye'nin başkenti Ankara'dır ve en büyük şehri İstanbul'dur. Türkiye, 29 Ekim 1923'te Mustafa Kemal Atatürk önderliğinde kurulmuştur. Türkiye, 1938'de Atatürk'ün ölümünden sonra İsmet İnönü tarafından yönetildi. Türkiye, 1945'te Birleşmiş Milletler'e üye oldu ve 1952'de NATO'ya katıldı. | Türkiye'nin başkenti neresidir? | Ankara
+
+2 | İstanbul, Türkiye'nin en büyük şehri ve ekonomik, kültürel ve tarihi merkezidir. İstanbul, Avrupa ve Asya kıtaları arasında yer alan Boğaziçi ve Marmara Denizi kıyısında yer almaktadır. İstanbul, tarihi boyunca Bizans İmparatorluğu, Doğu Roma İmparatorluğu ve Osmanlı İmparatorluğu gibi büyük imparatorluklara başkentlik yapmıştır. İstanbul, Ayasofya, Topkapı Sarayı ve Kapalıçarşı gibi önemli turistik mekanlara ev sahipliği yapmaktadır. | İstanbul hangi iki kıta arasında yer almaktadır? | Avrupa ve Asya
+
+3 | Ayasofya, İstanbul'da yer alan tarihi bir yapıdır ve Bizans İmparatorluğu döneminde 537 yılında inşa edilmiştir. Ayasofya, başlangıçta bir Ortodoks kilisesi olarak kullanılmış, daha sonra 1453'te Osmanlı İmparatorluğu tarafından fethedildikten sonra camiiye dönüştürülmüştür. 1935'te ise Atatürk'ün emriyle müze olarak kullanılmaya başlanmıştır. 2020 yılında ise Ayasofya, tekrar camii olarak kullanılmak üzere karar alınmıştır. | Ayasofya hangi yıl inşa edilmiştir? | 537
+
+4 | Kapadokya, Türkiye'nin Orta Anadolu Bölgesi'nde yer alan tarihi ve turistik bir bölgedir. Kapadokya, benzersiz kaya oluşumları, yer altı şehirleri ve kaya oyma kiliseleri ile ünlüdür. Ayrıca, sıcak hava balonları ile yapılan turlar da oldukça popülerdir. Kapadokya, Hristiyanlık tarihi açısından da önemli bir yerdir ve bölgede yer alan Göreme Açık Hava Müzesi, UNESCO Dünya Mirası Listesi'nde yer almaktadır. | Kapadokya hangi bölgede yer almaktadır? | Orta Anadolu Bölgesi
+
+5 | Efes, Türkiye'nin İzmir iline bağlı Selçuk ilçesinde yer alan antik bir kenttir. Efes, antik dönemde önemli bir liman kenti ve kültürel merkezdi. Artemis Tapınağı, Celsus Kütüphanesi ve Büyük Tiyatro gibi önemli yapıları içermektedir. Efes, Hristiyanlık tarihi açısından da önemli bir yerdir ve Meryem Ana Evi olarak bilinen yapı da burada bulunmaktadır. Efes, UNESCO Dünya Mirası Listesi'nde yer almaktadır. | Efes hangi ilin sınırları içerisindedir? | İzmir
+
+6 | Pamukkale, Türkiye'nin Denizli ilinde yer alan doğal ve tarihi bir turistik alanıdır. Pamukkale, beyaz traverten terasları ve sıcak su kaynakları ile
+==================================================
+

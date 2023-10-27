@@ -1,0 +1,73 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XCOPA Indonesian dataset train split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | Pada suatu hari, seorang pria membeli sepeda motor baru. Beberapa hari kemudian, sepeda motornya dicuri. | Polisi menemukan sepeda motor yang dicuri di pasar loak. | Polisi tidak menemukan sepeda motor yang dicuri di pasar loak. | entailment | 1
+2 | Seorang wanita sedang berjalan-jalan di taman ketika dia melihat seekor anjing liar. | Wanita itu memutuskan untuk mengabaikan anjing itu dan melanjutkan jalan-jalannya. | Wanita itu memutuskan untuk memelihara anjing itu. | neutral | 0
+3 | Seorang pria sedang berbicara dengan temannya di telepon. | Pria itu berbicara dengan temannya di telepon selama 5 menit. | Pria itu berbicara dengan temannya di telepon selama 1 jam. | contradiction | 1
+4 | Seorang anak kecil sedang bermain di taman. | Anak itu jatuh dan terluka. | Anak itu bermain dengan teman-temannya tanpa cedera. | entailment | 0
+5 | Seorang pria sedang berjalan-jalan di pantai. | Pria itu menemukan botol dengan pesan di dalamnya. | Pria itu tidak menemukan botol dengan pesan di dalamnya. | entailment | 1
+6 | Seorang wanita sedang berbicara dengan temannya di telepon. | Wanita itu berbicara dengan temannya di telepon selama 30 menit. | Wanita itu tidak berbicara dengan temannya di telepon. | contradiction | 1
+7 | Seorang pria sedang bermain game di komputernya. | Pria itu menang dalam game yang dia mainkan. | Pria itu kalah dalam game yang dia mainkan. | entailment | 0
+8 | Seorang anak kecil sedang bermain di taman. | Anak itu menemukan koin di tanah. | Anak itu tidak menemukan koin di tanah. | entailment | 1
+9 | Seorang wanita sedang berjalan-jalan di taman ketika dia melihat seekor kucing liar. | Wanita itu memutuskan untuk memelihara kucing itu. | Wanita itu memutuskan untuk mengabaikan kucing itu dan melanjutkan jalan-jalannya. | contradiction | 0
+10 | Seorang pria sedang berbicara dengan temannya di telepon. | Pria itu berbicara dengan temannya di telepon selama 10 menit. | Pria itu berbicara dengan temannya di telepon selama 30 menit. | contradiction | 0
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XCOPA Indonesian dataset validation split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Pada suatu hari, seorang pria membeli sepeda motor baru. | Sepeda motor itu memiliki mesin yang kuat dan tahan lama. | Sepeda motor itu memiliki mesin yang lemah dan mudah rusak. | entailment | 0
+2 | Saya suka makanan pedas. | Saya tidak suka makanan pedas. | neutral | 0
+3 | Ani membeli baju baru di toko. | Baju itu terlalu kecil untuk Ani. | Baju itu pas untuk Ani. | contradiction | 1
+4 | Saya suka bermain sepak bola. | Saya tidak suka olahraga. | neutral | 0
+5 | Ayah membeli kucing untuk anaknya. | Anak itu sangat senang dengan kucing itu. | Anak itu takut dengan kucing itu. | entailment | 1
+6 | Saya suka menonton film horor. | Saya tidak suka menonton film horor. | neutral | 0
+7 | Hari ini cuaca sangat panas. | Hari ini cuaca sangat dingin. | contradiction | 0
+8 | Saya suka makan buah-buahan. | Saya tidak suka makan buah-buahan. | neutral | 0
+9 | Ani membeli baju baru di toko. | Baju itu terlalu besar untuk Ani. | Baju itu pas untuk Ani. | contradiction | 0
+10 | Saya suka bermain basket. | Saya tidak suka olahraga. | neutral | 0
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XCOPA Indonesian dataset test split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Pada suatu hari, seorang pria berjalan di sepanjang jalan dan melihat seekor kucing kecil yang terjebak di atas pohon. | Pria itu membiarkan kucing itu terjebak di atas pohon. | Pria itu membantu kucing itu turun dari pohon. | Negosiasi | 1
+2 | Seorang wanita membeli sebuah mobil baru dan sangat senang dengan pembelian itu. | Wanita itu tidak senang dengan pembelian mobil barunya. | Wanita itu senang dengan pembelian mobil barunya. | Negosiasi | 1
+3 | Seorang pria sedang berjalan-jalan di taman dan melihat seorang anak kecil menangis. | Pria itu tidak peduli dengan anak kecil yang menangis. | Pria itu bertanya pada anak kecil mengapa dia menangis dan mencoba membantunya. | Negosiasi | 1
+4 | Seorang wanita sedang berbicara dengan temannya tentang rencana perjalanannya ke luar negeri. | Wanita itu tidak berbicara tentang rencana perjalanannya ke luar negeri dengan temannya. | Wanita itu berbicara tentang rencana perjalanannya ke luar negeri dengan temannya. | Negosiasi | 1
+5 | Seorang pria sedang berbicara dengan temannya tentang pekerjaannya. | Pria itu tidak berbicara tentang pekerjaannya dengan temannya. | Pria itu berbicara tentang pekerjaannya dengan temannya. | Negosiasi | 1
+6 | Seorang wanita sedang berbicara dengan temannya tentang film yang baru saja dia tonton. | Wanita itu tidak berbicara tentang film yang baru saja dia tonton dengan temannya. | Wanita itu berbicara tentang film yang baru saja dia tonton dengan temannya. | Negosiasi | 1
+7 | Seorang pria sedang berbicara dengan temannya tentang makanan yang dia makan di restoran baru. | Pria itu tidak berbicara tentang makanan yang dia makan di restoran baru dengan temannya. | Pria itu berbicara tentang makanan yang dia makan di restoran baru dengan temannya. | Negosiasi | 1
+8 | Seorang wanita sedang berbicara dengan temannya tentang pakaian yang baru saja dia beli. | Wanita itu tidak berbicara tentang pakaian yang baru saja dia beli dengan temannya. | Wanita itu berbicara tentang pakaian yang baru saja dia beli dengan temannya. | Negosiasi | 1
+9 | Seorang pria sedang berbicara dengan temannya tentang hewan peliharaannya. | Pria itu tidak berbicara tentang hewan peliharaannya dengan temannya. | Pria itu berbicara tentang hewan peliharaannya dengan temannya. | Negosiasi | 1
+10 | Seorang wanita sedang berbicara dengan temannya tentang buku yang baru saja dia baca. | Wanita itu tidak berbicara tentang buku yang baru saja dia baca dengan temannya. | Wanita itu berbicara tentang buku yang baru saja dia baca dengan temannya. | Negosiasi | 1
+==================================================
+

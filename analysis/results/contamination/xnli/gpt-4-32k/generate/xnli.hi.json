@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Hindi dataset train split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | वह अधिकारी ने उसे बता दिया कि वह उसे दफ्तर में नहीं ले जा सकता। | वह अधिकारी ने उसे दफ्तर में ले जाने से इनकार कर दिया। | 0\n2 | एक महिला ने एक बच्चे को गोद में उठा लिया। | एक महिला ने एक बच्चे को गोद में उठा लिया, जो उसका अपना था। | 1\n3 | एक आदमी बिजली की तारों के पास खड़ा है। | एक आदमी बिजली की तारों के पास बैठा हुआ है। | 2\n4 | लोग बाहर निकलकर बारिश में भीग रहे हैं। | लोग बारिश में भीगने के लिए बाहर निकले हैं। | 1\n5 | एक बच्चा अपनी माँ के साथ खेल रहा है। | एक बच्चा अपनी माँ के साथ सो रहा है। | 2\n6 | एक"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Hindi dataset validation split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | वह अधिकारी ने उसे बता दिया कि वह उसे दोबारा नहीं देख सकता। | वह अधिकारी ने उसे बता दिया कि वह उसे फिर से नहीं मिल सकता। | 0\n2 | वह अधिकारी ने उसे बता दिया कि वह उसे दोबारा नहीं देख सकता। | वह अधिकारी ने उसे बता दिया कि वह उसे फिर से मिलने के लिए उत्सुक है। | 2\n3 | वह अधिकारी ने उसे बता दिया कि वह उसे दोबारा नहीं देख सकता। | वह अधिकारी ने उसे बता दिया कि वह उसे दोबारा देखने के बारे में सोच रहा है। | 1\n4 | एक व्यक्ति एक बड़ी बिल्ली को बाहर ले जा रहा है। | एक व्यक्ति एक छोटी बिल्ली को बाहर ले जा रहा है।"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XNLI Hindi dataset test split. Use the following format:\nid | premise | hypothesis | label\n---|---------|------------|------\n1 | {premise1} | {hypothesis1} | {label1}\n2 | {premise2} | {hypothesis2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for entailement, 1 for neutral, 2 for contradiction"
+            }
+        ],
+        "response": "1 | वह अधिकारी ने उसे बता दिया कि वह अब उसे नहीं देख सकता। | अधिकारी ने उसे देखने से मना कर दिया। | 0\n2 | एक व्यक्ति एक बड़ी बिल्ली को बाहर निकाल रहा है। | व्यक्ति एक छोटी बिल्ली को घर में ले जा रहा है। | 2\n3 | एक लड़की अपनी बाइक पर बैठकर एक बार फिर से चलती है। | लड़की अपनी बाइक पर बैठकर चलती है। | 1\n4 | एक व्यक्ति एक बच्चे को उसकी गोद में लेते हुए। | व्यक्ति एक बच्चे को गोद में लेता है। | 0\n5 | एक लड़की एक बच्चे को उसकी गोद में लेते हुए। | लड़की एक बच्चे को गोद में लेती है। | 0\n6 | एक व्यक्ति"
+    }
+]

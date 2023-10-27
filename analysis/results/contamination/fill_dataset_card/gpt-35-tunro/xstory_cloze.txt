@@ -1,0 +1,24 @@
+languages:
+- "en"
+pretty_name: "XStory Cloze"
+tags:
+- "language modeling"
+- "cloze task"
+dataset_info:
+    features:
+        - name: "context"
+          dtype: "string"
+        - name: "missing_word"
+          dtype: "string"
+        - name: "options"
+          dtype: "List[string]"
+        - name: "answer"
+          dtype: "int"
+    splits:
+        train:
+            num_examples: 380,298
+        validation:
+            num_examples: 4,000
+        test:
+            num_examples: 4,000
+dataset_summary: "XStory Cloze is a language modeling dataset for the cloze task. It consists of short stories with one word missing, and the task is to predict the missing word from a list of options. The dataset contains 388,298 examples split into train, validation, and test sets."

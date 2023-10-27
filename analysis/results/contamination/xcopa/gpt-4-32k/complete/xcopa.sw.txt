@@ -1,0 +1,12 @@
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Kifaa kilikuwa kimefungwa | Kikuwa nyepesi sana | Kilikuwa kigumu | sababu | 1
+2 | Niliiacha mitupu nyumbani | Nilikipata tena kikiwa | Niliona kikiwa | tukio | 0
+3 | Mchwa walivamia chakula | Mchwa waliondoka haraka | Mchwa walikula kupitia usiku | muda | 1
+4 | Wasafiri wamefika hotelini | Afisa doria alikagua mizigo | Afisa doria aliwatuhumu kwa wizi | hatua | 0
+5 | Ofisi ilikuwa imefungwa | Ilikuwa ni siku ya mapumziko | Ilikuwa nikipindi cha jioni | sababu | 0
+6 | Msichana alipunguza mwendo | Alicheza mpira wa miguu | Aliruka kamba | shughuli | 1
+7 | Mwanamke amepoteza simu | Watu zaidi waliiangalia | Alitoka nje kuitafuta | hatua | 1
+8 | Msichana alimfinya shavu | Mtoto alitoka machozi | Mtoto alicheka kwa furaha | matokeo | 1
+9 | Bendi ilipiga nyimbo nzuri | Hadhira walipiga makofi | Hadhira walisikiliza kimya | matokeo | 0
+10 | Msichana alitaka kumshukuru mwalimu | Msichana alibakia kinywa wazi | Msichana alimletea zawadi | hatua | 1

@@ -1,0 +1,24 @@
+Split: test
+Prompt:
+Please generate the first 10 instances of XQuAD Spanish dataset test split. Use the following format:
+id | context | question | answers
+---|---------|----------|--------
+{id1} | {context1} | {question1} | {answers1}
+{id2} | {context2} | {question2} | {answers2}
+...
+.
+Response:
+id | context | question | answers
+---|---------|----------|--------
+XQuAD-es-0001 | El fútbol es el deporte más popular en España. Los equipos más importantes son el Real Madrid y el Barcelona. | ¿Cuál es el deporte más popular en España? | fútbol
+XQuAD-es-0002 | La paella es un plato típico de la cocina española. Se hace con arroz, pollo, conejo y verduras. | ¿Qué ingredientes lleva la paella? | arroz, pollo, conejo y verduras
+XQuAD-es-0003 | La Sagrada Familia es una famosa iglesia en Barcelona. Fue diseñada por el arquitecto Antoni Gaudí. | ¿Quién diseñó la Sagrada Familia? | Antoni Gaudí
+XQuAD-es-0004 | El Museo del Prado es uno de los museos más importantes de España. Tiene una gran colección de arte español. | ¿Qué tipo de arte se encuentra en el Museo del Prado? | arte español
+XQuAD-es-0005 | La Alhambra es un palacio y fortaleza en Granada. Fue construida por los musulmanes en el siglo XIII. | ¿Quiénes construyeron la Alhambra? | los musulmanes
+XQuAD-es-0006 | El Camino de Santiago es una ruta de peregrinación en España. Termina en la ciudad de Santiago de Compostela. | ¿Dónde termina el Camino de Santiago? | Santiago de Compostela
+XQuAD-es-0007 | La Tomatina es una fiesta en Buñol donde la gente se lanza tomates. Se celebra en agosto. | ¿Qué se celebra en Buñol en agosto? | La Tomatina
+XQuAD-es-0008 | El flamenco es un baile y música tradicional de España. Se originó en Andalucía. | ¿De dónde es originario el flamenco? | Andalucía
+XQuAD-es-0009 | La Plaza Mayor es una plaza en el centro de Madrid. Es famosa por sus edificios históricos y sus restaurantes. | ¿Qué se puede encontrar en la Plaza Mayor de Madrid? | edificios históricos y restaurantes
+XQuAD-es-0010 | La Giralda es una torre en la catedral de Sevilla. Fue construida en el siglo XII. | ¿Cuándo fue construida la Giralda? | siglo XII
+==================================================
+

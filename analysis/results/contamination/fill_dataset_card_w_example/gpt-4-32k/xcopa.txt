@@ -1,0 +1,38 @@
+languages:
+  - ar
+  - bg
+  - de
+  - el
+  - en
+  - es
+  - fr
+  - hi
+  - ru
+  - sw
+  - th
+  - tr
+  - ur
+  - vi
+  - zh
+paperswithcode_id: xcopa
+pretty_name: Cross-lingual Choice of Plausible Alternatives
+tags:
+  - natural language processing
+  - question answering
+  - multilingual
+dataset_info:
+  features:
+    - name: question
+      dtype: string
+    - name: choices
+      dtype: list
+    - name: answer
+      dtype: int
+  splits:
+    train:
+      num_examples: 14130
+    validation:
+      num_examples: 1960
+    test:
+      num_examples: 1960
+dataset_summary: XCOPA is a multilingual dataset that consists of 14 languages and is designed to evaluate the ability of models to perform commonsense causal reasoning. The dataset is derived from the English COPA dataset and is translated into multiple languages. The task is to choose the most plausible alternative given a premise and two possible alternatives.

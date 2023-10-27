@@ -1,0 +1,29 @@
+languages:
+- "en"
+- "ar"
+pretty_name: "MLQA"
+tags:
+- "question-answering"
+- "multilingual"
+dataset_info:
+    features:
+        - name: "context"
+          dtype: "string"
+        - name: "question"
+          dtype: "string"
+        - name: "answers"
+          dtype: "list of strings"
+        - name: "correct_answer_index"
+          dtype: "int32"
+        - name: "id"
+          dtype: "string"
+        - name: "title"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 86821
+        validation:
+            num_examples: 1140
+        test:
+            num_examples: 1140
+dataset_summary: "MLQA is a multilingual question-answering dataset that contains questions and answers in English and Arabic. The dataset is designed to evaluate cross-lingual transfer performance of question-answering models."

@@ -1,0 +1,30 @@
+languages:
+- "en"
+- "de"
+- "es"
+- "it"
+pretty_name: "Cross-lingual Question Answering Dataset (XQuAD)"
+tags:
+- "question answering"
+- "cross-lingual"
+- "multilingual"
+dataset_info:
+    features:
+        - name: "id"
+          dtype: "string"
+        - name: "context"
+          dtype: "string"
+        - name: "question"
+          dtype: "string"
+        - name: "answers"
+          dtype: "list of strings"
+        - name: "correct_answer_index"
+          dtype: "int32"
+    splits:
+        train:
+            num_examples: 240
+        validation:
+            num_examples: 60
+        test:
+            num_examples: 1190
+dataset_summary: "XQuAD is a cross-lingual question answering dataset that consists of questions and answers in four languages: English, German, Spanish, and Italian. The dataset is designed to evaluate the ability of models to perform cross-lingual question answering, where the model is given a question in one language and must provide an answer in another language. The dataset contains 1,490 examples in total, with 240 examples in the training set, 60 examples in the validation set, and 1,190 examples in the test set."

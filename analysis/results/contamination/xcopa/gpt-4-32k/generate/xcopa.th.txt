@@ -1,0 +1,69 @@
+Split: train
+Prompt:
+Please generate the first 10 instances of XCOPA Thai dataset train split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | นกกินปลา | นกกำลังหิว | ปลากำลังหิว | cause | 0
+2 | คนขับรถเร็วเกินไป | คนขับรถได้รับความเสียหาย | คนขับรถได้รับความสนุกสนาน | effect | 0
+3 | ฝนตกหนัก | คนใส่เสื้อกันฝน | คนใส่แว่นกันแดด | cause | 0
+4 | นักเรียนทำการบ้าน | นักเรียนเข้าใจเนื้อหา | นักเรียนไม่สนใจเรียน | effect | 0
+5 | คนเดินเข้าป่า | คนพบกับสัตว์ป่า | คนไปที่ห้างสรรพสินค้า | effect | 0
+6 | คนเลี้ยงสุนัข | คนมีความสุข | คนเป็นแพ้แมว | effect | 0
+7 | คนปลูกต้นไม้ | คนช่วยลดการก๊าซเรือนกระจก | คนทำลายสิ่งแวดล้อม | effect | 0
+8 | คนทำงานอดิเรก | คนมีความสามารถพิเศษ | คนไม่มีงานทำ | cause | 0
+9 | คนเล่นกีฬา | คนมีสุขภาพดี | คนนอนหลับ | effect | 0
+10 | คนดื่มน้ำมาก | คนไม่ขาดน้ำ | คนขาดน้ำ | effect | 0
+==================================================
+
+Split: validation
+Prompt:
+Please generate the first 10 instances of XCOPA Thai dataset validation split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | นกกินปลา | นกกินข้าว | นกกินเนื้อ | cause | 0
+2 | คนขับรถเร็ว | คนขับรถชนต้นไม้ | คนขับรถหลับใน | effect | 1
+3 | ฝนตกหนัก | ถนนเปียก | ถนนแห้ง | effect | 0
+4 | คนเดินทางไปทะเล | คนเดินทางไปเขา | คนเดินทางไปป่า | cause | 1
+5 | แมวตกน้ำ | แมวเปียก | แมวแห้ง | effect | 0
+6 | ดอกไม้บาน | ดอกไม้สวยงาม | ดอกไม้เหี่ยว | effect | 0
+7 | คนเล่นกีฬา | คนรู้สึกสุขภาพดี | คนรู้สึกป่วย | effect | 0
+8 | คนทำงานหนัก | คนรู้สึกเหนื่อย | คนรู้สึกสดชื่น | effect | 0
+9 | คนเรียนรู้ภาษาใหม่ | คนสามารถสื่อสารกับคนในประเทศนั้น | คนไม่สามารถสื่อสารกับคนในประเทศนั้น | effect | 0
+10 | คนกินอาหารมาก | คนอ้วนขึ้น | คนผอมลง | effect | 0
+==================================================
+
+Split: test
+Prompt:
+Please generate the first 10 instances of XCOPA Thai dataset test split. Use the following format:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}
+1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}
+...
+. You should map the labels based on the following rules:
+0 for choice 1, 1 for choice 2
+Response:
+1 | นกกินปลา | นกกำลังหิว | ปลากำลังหิว | cause | 0
+2 | คนขับรถเร็วเกินไป | คนขับรถได้รับความเสียหาย | คนขับรถได้รับความสุข | effect | 0
+3 | นักเรียนทำการบ้าน | นักเรียนเข้าใจเนื้อหา | นักเรียนไม่สนใจเรียน | effect | 0
+4 | มีความร้อนมากขึ้น | น้ำแข็งที่ภูเขาละลาย | น้ำแข็งที่ภูเขาเพิ่มขึ้น | cause | 1
+5 | คนขับรถเมาสุรา | คนขับรถขับรถอย่างปลอดภัย | คนขับรถขับรถอย่างไม่ปลอดภัย | effect | 1
+6 | ฝนตกหนัก | คนใส่เสื้อกันฝน | คนใส่แว่นกันแดด | cause | 0
+7 | คนเดินเล่นในสวนสาธารณะ | คนต้องการออกกำลังกาย | คนต้องการนอนหลับ | effect | 0
+8 | คนทำงานล่ะเอียด | คนมีความสามารถในการมองเห็น | คนตาบอด | effect | 0
+9 | คนเล่นกีฬา | คนมีสุขภาพดี | คนป่วย | effect | 0
+10 | คนเขียนบทความ | คนต้องการแบ่งปันความรู้ | คนต้องการทำลายความรู้ | effect | 0
+==================================================
+

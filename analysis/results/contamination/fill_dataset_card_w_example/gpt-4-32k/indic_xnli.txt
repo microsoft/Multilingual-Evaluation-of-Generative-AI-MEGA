@@ -1,0 +1,35 @@
+languages: 
+- as
+- bn
+- gu
+- hi
+- kn
+- ml
+- mr
+- or
+- pa
+- ta
+- te
+pretty_name: "Indic-XNLI"
+tags:
+- natural language processing
+- text classification
+- cross-lingual
+dataset_info:
+    features:
+        - name: "premise"
+          dtype: "string"
+        - name: "hypothesis"
+          dtype: "string"
+        - name: "label"
+          dtype: "int32"
+        - name: "lang"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: "373250"
+        validation:
+            num_examples: "2490"
+        test:
+            num_examples: "2490"
+dataset_summary: "Indic-XNLI is a natural language inference (NLI) corpus covering 11 languages from the Indian subcontinent. It is a translation of the English XNLI corpus, which is an extension of the MultiNLI corpus. The goal of the task is to predict whether a given pair of sentences are entailment, contradiction, or neutral. The dataset is useful for evaluating the performance of cross-lingual models on the NLI task in Indian languages."

@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Quechua dataset train split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Un wawqiqa wasita purirqa. | wawqiqa wasita purirqa | wawqiqa wasita manaraq purirqa | cause | 0\n2 | Un ñawiqa qallarirqa. | ñawiqa qallarirqa | ñawiqa manaraq qallarirqa | cause | 0\n3 | Un sumaq warmiqa wawqiykita rikurirqa. | sumaq warmiqa wawqiykita rikurirqa | sumaq warmiqa wawqiykita manaraq rikurirqa | cause | 0\n4 | Un taytaqa chayamurqa. | taytaqa chayamurqa | taytaqa manaraq chayamurqa | cause | 0\n5 | Un wawqiqa yachachiykita yacharirqa. | wawqiqa yachachiykita yacharirqa | wawqiqa yachachiykita manaraq yacharirqa | cause | 0\n6 | Un ñawiqa waqyaykita waqyayrqa. | ñawiqa waqyaykita waqyayrqa | ñawiqa waqyaykita manaraq waqyayrqa | cause | 0\n7 | Un sumaq warmiqa sumaqta rikurirqa. | sumaq warmiqa sumaqta rikurirqa | sumaq warmiqa sumaqta manaraq rikurirqa | cause | 0\n8 | Un taytaqa taytaykita rikurirqa. | taytaqa taytaykita rikurirqa | taytaqa taytaykita manaraq rikurirqa | cause | 0\n9 | Un wawqiqa wawqiykita waqyayrqa. | wawqiqa wawqiykita waqyayrqa | wawqiqa wawqiykita manaraq waqyayrqa | cause | 0\n10 | Un ñawiqa ñawiykita yacharirqa. | ñawiqa ñawiykita yacharirqa | ñawiqa ñawiykita manaraq yacharirqa | cause | 0"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Quechua dataset validation split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Un wawqiqa wasita purirqa. | wawqiqa wasita purirqa | wawqiqa wasita manaraq purirqa | cause | 0\n2 | Un ñawiqa qallarirqa. | ñawiqa qallarirqa | ñawiqa manaraq qallarirqa | cause | 0\n3 | Un sumaq warmiqa wawqiykita rikurirqa. | sumaq warmiqa wawqiykita rikurirqa | sumaq warmiqa wawqiykita manaraq rikurirqa | cause | 0\n4 | Un taytaqa wasita purirqa. | taytaqa wasita purirqa | taytaqa wasita manaraq purirqa | cause | 0\n5 | Un ñawiqa qallarirqa. | ñawiqa qallarirqa | ñawiqa manaraq qallarirqa | cause | 0\n6 | Un sumaq warmiqa wawqiykita rikurirqa. | sumaq warmiqa wawqiykita rikurirqa | sumaq warmiqa wawqiykita manaraq rikurirqa | cause | 0\n7 | Un taytaqa wasita purirqa. | taytaqa wasita purirqa | taytaqa wasita manaraq purirqa | cause | 0\n8 | Un ñawiqa qallarirqa. | ñawiqa qallarirqa | ñawiqa manaraq qallarirqa | cause | 0\n9 | Un sumaq warmiqa wawqiykita rikurirqa. | sumaq warmiqa wawqiykita rikurirqa | sumaq warmiqa wawqiykita manaraq rikurirqa | cause | 0\n10 | Un taytaqa wasita purirqa. | taytaqa wasita purirqa | taytaqa wasita manaraq purirqa | cause | 0"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Quechua dataset test split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 0\n2 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 1\n3 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 0\n4 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 1\n5 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 0\n6 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 1\n7 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 0\n8 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 1\n9 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 0\n10 | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | Wasiqa wasita purirqa. | causal | 1"
+    }
+]

@@ -1,0 +1,95 @@
+dataset: xcopa
+subset: it
+templates:
+  07dc5774-1e57-4c9a-8696-02f589051b53: !Template
+    answer_choices: choice1 ||| choice2
+    id: 07dc5774-1e57-4c9a-8696-02f589051b53
+    jinja: "{{ premise }} \n\nWhat's the best option?\n- choice1 : {{choice1}}\n-\
+      \ choice2 : {{choice2}}\n\nWe are looking for {% if question == \"cause\" %}\
+      \ a cause {% else %} an effect {% endif %}\n||| {% if label != -1 %}{{answer_choices[label]}}{%endif%}"
+    metadata: &id002 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: best_option discrete
+    reference: Discrete version of the best_option prompt
+  0a72c907-bef2-4b56-be7a-39de13eae0e3: !Template
+    answer_choices: scelta1 ||| scelta2
+    id: 0a72c907-bef2-4b56-be7a-39de13eae0e3
+    jinja: "{{ premise }} {% if question == \"cause\" %} Questo \xE8 successo perch\xE9\
+      ... {% else %} Di conseguenza... {% endif %}\nAiutami a scegliere l'opzione\
+      \ pi\xF9 plausibile:\n- scelta1: {{choice1}}\n- scelta2: {{choice2}} \nRisposta:\
+      \ ||| {% if label != -1 %} {{ answer_choices[label] }} {%endif%}"
+    metadata: &id003 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated plausible_alternatives_discrete
+    reference: 'Translated to it version  of: Discrete version of plausible_alternatives
+      prompt'
+  3edeb40f-ad9a-4759-970b-930bc2dd1914: !Template
+    answer_choices: ''
+    id: 3edeb40f-ad9a-4759-970b-930bc2dd1914
+    jinja: '- valik1 : {{choice1}}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Bing-Translated best_option discrete
+    reference: 'Translated to it version  of: Discrete version of the best_option
+      prompt'
+  744047dc-1298-45a2-8d68-d67e3f834ded: !Template
+    answer_choices: '{{choice1 }} ||| {{choice2}}'
+    id: 744047dc-1298-45a2-8d68-d67e3f834ded
+    jinja: '"{{ answer_choices[0] }}" or "{{ answer_choices[1] }}"? {{ premise }}
+      {% if question == "cause" %} because {% else %} so {% endif %} ||| {% if label
+      != -1 %}{{ answer_choices[label] }}{% endif %}'
+    metadata: &id001 !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: "C1 or C2? premise, so/because\u2026"
+    reference: "Adapted from Perez et al. 2021 and Schick & Sch\xFCtz 2021."
+  8169f7ec-b7ab-4f27-81aa-31e26dcd2ef9: !Template
+    answer_choices: '{{choice1 }} ||| {{choice2}}'
+    id: 8169f7ec-b7ab-4f27-81aa-31e26dcd2ef9
+    jinja: '{{ answer_choices[0] }}" o "{{ answer_choices[1] }}"? {{ premise }} {%
+      if question == "cause" %} because {% else %} so {% endif %} ||| {% if label
+      != -1 %} {{ answer_choices[label] }} {% endif %}'
+    metadata: *id001
+    name: "Bing-Translated C1 or C2? premise, so/because\u2026"
+    reference: "Translated to it version  of: Adapted from Perez et al. 2021 and Schick\
+      \ & Sch\xFCtz 2021."
+  8a163e7c-8292-4b39-92f8-a1629e010bdf: !Template
+    answer_choices: scelta1 ||| scelta2
+    id: 8a163e7c-8292-4b39-92f8-a1629e010bdf
+    jinja: "{{ premise}} \n\nQual \xE8 l'opzione migliore?\n- scelta1 : {{choice1}}\n\
+      - scelta2 : {{choice2}}\n\nStiamo cercando {% if question == \"cause\" %} a\
+      \ cause {% else %} un effetto {% endif %}\n||| {% if label != -1 %} {{answer_choices[label]}}\
+      \ {%endif%}"
+    metadata: *id002
+    name: Bing-Translated best_option discrete
+    reference: 'Translated to it version  of: Discrete version of the best_option
+      prompt'
+  f67eb599-4667-4d2e-88cf-d792cc08a1b6: !Template
+    answer_choices: choice1 ||| choice2
+    id: f67eb599-4667-4d2e-88cf-d792cc08a1b6
+    jinja: "{{ premise }} {% if question == \"cause\" %} This happened because...\
+      \ {% else %} As a consequence... {% endif %}\nHelp me pick the more plausible\
+      \ option:\n- choice1: {{choice1}}\n- choice2: {{choice2}} \nAnswer: ||| {% if\
+      \ label != -1 %}{{ answer_choices[label] }}{%endif%}"
+    metadata: *id003
+    name: plausible_alternatives_discrete
+    reference: Discrete version of plausible_alternatives prompt

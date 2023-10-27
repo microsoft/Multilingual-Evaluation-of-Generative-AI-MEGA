@@ -1,0 +1,34 @@
+languages:
+- en
+- de
+- es
+- fr
+- ja
+- ko
+- zh
+
+pretty_name: "PAWS-X"
+
+tags:
+- translation
+- paraphrase
+
+dataset_info:
+    features:
+        - name: "id"
+          dtype: "int32"
+        - name: "sentence1"
+          dtype: "string"
+        - name: "sentence2"
+          dtype: "string"
+        - name: "label"
+          dtype: "int32"
+    splits:
+        train:
+            num_examples: 49,401
+        validation:
+            num_examples: 2,000
+        test:
+            num_examples: 2,000
+
+dataset_summary: "PAWS-X, a multilingual version of PAWS for six languages, is a dataset containing 23,659 human translated PAWS evaluation pairs and 296,406 machine translated training pairs. The goal of the PAWS-X dataset is to evaluate the performance of multilingual models on the paraphrase identification task. The languages covered in the dataset are English, German, Spanish, French, Japanese, Korean, and Chinese."

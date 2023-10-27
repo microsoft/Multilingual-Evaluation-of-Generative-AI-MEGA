@@ -1,0 +1,44 @@
+Split: test
+Completion Prompt:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Imaymanaqa puqpukama plasticowa[MASK] | Chay imaymanaqa p[MASK] | Chay imaymanaqa hu[MASK] | [MASK] | [MASK]
+2 | Wulsilluykunata[MASK] | Huk boleto nisqat[MASK] | Huk arma nisqat[MASK] | [MASK] | [MASK]
+3 | Kuki kurukuna was[MASK] | Kuki kurukunaqa was[MASK] | Kuki kuruqa wasip kur[MASK] | [MASK] | [MASK]
+4 | Ch ' usaqkunaqa[MASK] | Pasaportenkunatam poli[MASK] | Contrabando apasqankumantam[MASK] | [MASK] | [MASK]
+5 | Oficinaqa wisq '[MASK] | Raymichakuy p '[MASK] | Ruphay mit[MASK] | [MASK] | [MASK]
+6 | Warmaqa mana kallpa[MASK] | Payqa damas nis[MASK] | Payqa waskhapi[MASK] | [MASK] | [MASK]
+7 | Sinripi qhatisqayninta[MASK] | Huk runakunam sin[MASK] | Sinrichakusqanmanta[MASK] | [MASK] | [MASK]
+8 | Warmaqa sinqantam ma[MASK] | Wawaqa baberuchan[MASK] | Wawaqa pañalchan[MASK] | [MASK] | [MASK]
+9 | Bandaqa aswan riqsis[MASK] | Takisqawan kuchka runaku[MASK] | Upallallam runaku[MASK] | [MASK] | [MASK]
+10 | Matemáticas yachachiqnintam warm[MASK] | Escuela tukukuptinmi warmaqa[MASK] | Warmaqa manzanatam yacha[MASK] | [MASK] | [MASK]
+
+Model's Response:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Imaymanaqa puqpukama plasticowan kawsan | Chay imaymanaqa plastikuta | Chay imaymanaqa huanuchata | causality | 0
+2 | Wulsilluykunata rikuchkani | Huk boleto nisqata | Huk arma nisqata | instrument | 1
+3 | Kuki kurukuna wasipita | Kuki kurukunaqa wasipita | Kuki kuruqa wasip kuruta | definition | 0
+4 | Ch ' usaqkunaqa llank'asqanku | Pasaportenkunatam polis | Contrabando apasqankumantam | reason | 1
+5 | Oficinaqa wisq 'an | Raymichakuy p 'an | Ruphay mitan | purpose | 1
+6 | Warmaqa mana kallpanchik | Payqa damas nisqan | Payqa waskhapin | property | 1
+7 | Sinripi qhatisqayninta rikuni | Huk runakunam sinri | Sinrichakusqanmanta | explanation | 0
+8 | Warmaqa sinqantam manan | Wawaqa baberuchanta | Wawaqa pañalchanta | function | 1
+9 | Bandaqa aswan riqsisqan | Takisqawan kuchka runakun | Upallallam runakun | reason | 0
+10 | Matemáticas yachachiqnintam warmakuna | Escuela tukukuptinmi warmaqa | Warmaqa manzanatam yachan | location | 0
+Ground Truth:
+id | premise | choice1 | choice2 | question_type | label
+---|--------|---------|---------|----------|------
+1 | Imaymanaqa puqpukama plasticowanmi q'ipichakurqan. | Chay imaymanaqa p'akikuqlla karqan. | Chay imaymanaqa huch'uylla karqan. | cause | 0
+2 | Wulsilluykunata qasichirqani. | Huk boleto nisqata tarikurqani. | Huk arma nisqatam tarikurqani. | effect | 0
+3 | Kuki kurukuna wasiman haykurqanku. | Kuki kurukunaqa wasimanta chinkarqanku. | Kuki kuruqa wasip kurkunta mikhurqanku. | effect | 1
+4 | Ch'usaqkunaqa fronteramanmi chayarqanku. | Pasaportenkunatam policiaqa qhawarqan. | Contrabando apasqankumantam policiaqa tumparqan.. | effect | 0
+5 | Oficinaqa wisq'asqa karqan. | Raymichakuy p'unchawmi karqan. | Ruphay mit'am karqan. | cause | 0
+6 | Warmaqa mana kallpayuqmi tukurqan. | Payqa damas nisqata pukllarqan. | Payqa waskhapi p'inkirqan. | cause | 1
+7 | Sinripi qhatisqaynintam warmiqa chinkarachirqan. | Huk runakunam sinriman haykurqanku. | Sinrichakusqanmanta payqa lluqsirqan. | cause | 1
+8 | Warmaqa sinqantam makinwan pakayukurqan. | Wawaqa baberuchanpi llawsaykacharqan. | Wawaqa pañalchanpi qhillichakurqan. | cause | 1
+9 | Bandaqa aswan riqsisqa takiyninta takirqan. | Takisqawan kuchka runakuna t'aqllaykurqanku. | Upallallam runakunaqa uyarqanku. | effect | 0
+10 | Matemáticas yachachiqnintam warmaqa añanchayta munarqan. | Escuela tukukuptinmi warmaqa harkasqa qhipakurqan. | Warmaqa manzanatam yachachiqninman apamurqan. | effect | 1
+
+==================================================
+

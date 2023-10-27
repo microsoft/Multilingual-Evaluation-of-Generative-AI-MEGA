@@ -1,0 +1,10 @@
+1 | Mwanamke anapika chakula. | Mwanamke ana njaa. | Mwanamke anafanya kazi. | cause | 1
+2 | Mtu anasoma gazeti. | Mtu anapata habari. | Mtu anapata usingizi. | effect | 0
+3 | Mtoto anacheza na mbwa. | Mtoto anafurahi. | Mtoto anaogopa. | effect | 0
+4 | Mvua inanyesha nje. | Ardhi inalowa. | Jua linawaka. | effect | 0
+5 | Mwanafunzi anasoma kwa bidii. | Mwanafunzi anapata alama nzuri. | Mwanafunzi anacheza mpira. | effect | 0
+6 | Mtu anatembea kwa haraka. | Mtu ana kazi ya kufanya. | Mtu anapumzika. | cause | 0
+7 | Mwanamke ananunua matunda sokoni. | Mwanamke anataka kula matunda. | Mwanamke anauza matunda. | cause | 0
+8 | Mtu anaimba wimbo. | Mtu anafurahia muziki. | Mtu anasikiliza redio. | effect | 0
+9 | Mwanafunzi anachelewa shuleni. | Mwanafunzi aliamka kuchelewa. | Mwanafunzi alikwenda mapema. | cause | 0
+10 | Mtu anapanda mti. | Mtu anataka kuboresha mazingira. | Mtu anataka kukata mti. | cause | 0

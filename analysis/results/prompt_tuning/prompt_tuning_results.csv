@@ -1,0 +1,5 @@
+,Language,Prompt-Tuning,Accuracy
+0,ht,English Data,0.72
+1,ta,English Data,0.59
+2,ht,Language-Specific Data,0.756
+3,ta,Language-Specific Data,0.544

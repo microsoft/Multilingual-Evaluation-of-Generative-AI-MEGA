@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Estonian dataset train split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Poiss lõi palli. | Poiss mängis jalgpalli. | Poiss nuttis. | cause | 0\n2 | Tüdruk lõi oma venda. | Tüdruk oli vihane. | Tüdruk oli õnnelik. | cause | 0\n3 | Mees jooksis bussile. | Mees oli hiljaks jäämas. | Mees tahtis trenni teha. | cause | 0\n4 | Koer haugub. | Koer on rõõmus. | Koer on ärritunud. | cause | 1\n5 | Laps naeris. | Laps vaatas koomiksit. | Laps magas. | cause | 0\n6 | Naine luges raamatut. | Naine õppis midagi uut. | Naine sõi õhtusööki. | cause | 0\n7 | Auto sõitis kraavi. | Autojuht kaotas kontrolli. | Autojuht parkis auto. | cause | 0\n8 | Torm lõi puu maha. | Puu langes maja peale. | Puu kasvas suuremaks. | effect | 0\n9 | Poiss lõpetas kooli. | Poiss sai töö. | Poiss läks puhkusele. | effect | 0\n10 | Tüdruk lõi oma venda. | Vend nuttis. | Vend naeris. | effect | 0"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Estonian dataset validation split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Poiss lõi palli. | Pall lendas eemale. | Poiss nuttis. | cause | 0\n2 | Ema ostis lapsele mänguasja. | Laps oli õnnelik. | Laps oli kurb. | effect | 0\n3 | Tüdruk luges raamatut. | Ta sai teada uut informatsiooni. | Ta ei saanud aru, mida ta luges. | effect | 0\n4 | Koer haugub. | Keegi tuli ukse taha. | Koer magab. | cause | 0\n5 | Mees jooksis bussile. | Ta ei tahtnud bussist maha jääda. | Ta tahtis bussist maha jääda. | cause | 0\n6 | Õpilane ei õppinud eksamiks. | Ta sai halva hinde. | Ta sai hea hinde. | effect | 0\n7 | Mari sõi liiga palju maiustusi. | Tal tekkis kõhuvalu. | Ta tundis end hästi. | effect | 0\n8 | Vihm hakkas sadama. | Inimesed avasid vihmavarjud. | Inimesed jätkasid vihmavarjudeta. | effect | 0\n9 | Auto läks katki. | Auto vajas remonti. | Auto töötas korralikult. | effect | 0\n10 | Laps kardab pimedust. | Ta ei taha üksi magada. | Ta tahab üksi magada. | effect | 0"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Estonian dataset test split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Poiss lõi oma õde. | Poiss on õnnelik. | Poiss on vihane. | cause | 1\n2 | Ema ostis lapsele uue mänguasja. | Laps on õnnelik. | Laps on kurb. | cause | 0\n3 | Koer haugub aias. | Koer on rahulik. | Koer on erutatud. | cause | 1\n4 | Tüdruk lõpetas kooli kiitusega. | Tüdruk on tark. | Tüdruk on laisk. | cause | 0\n5 | Mees jooksis bussi peale. | Mees oli hiljaks jäämas. | Mees oli bussist eemale jooksmas. | cause | 0\n6 | Naine lõi oma jalga vastu lauda. | Naine tunneb valu. | Naine tunneb end hästi. | cause | 0\n7 | Poiss sõi liiga palju jäätist. | Poiss tunneb end halvasti. | Poiss tunneb end energiliselt. | cause | 0\n8 | Tüdruk luges raamatut. | Tüdruk sai teadmisi. | Tüdruk kaotas teadmisi. | cause | 0\n9 | Mees kandis päikeseprille. | Päike paistis eredalt. | Ilm oli pilves. | cause | 0\n10 | Naine kuulas muusikat kõrvaklappidega. | Naine nautis muusikat. | Naine ei kuulnud muusikat. | cause | 0"
+    }
+]

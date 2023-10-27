@@ -1,0 +1,54 @@
+Split: train
+Prompt:
+Please generate instances of XCOPA Haitian Creole dataset train split.
+{"premise": "Msye a te louvri tiyo a.", "choice1": "Twal\u00e8t la te ranpli ak dlo.", "choice2": "Dlo a te soti nan bouch tiyo a.", "question": "effect", "label": 1, "idx": 0, "changed": false}
+{"premise": "Fi a te jwenn yon pin\u00e8z nan sereyal li.", "choice1": "Li te vide l\u00e8t la nan b\u00f2l la.", "choice2": "Li te p\u00e8di apeti li.", "question": "effect", "label": 1, "idx": 1, "changed": false}
+{"premise": "Madan m nan te pran retr\u00e8t.", "choice1": "Li te resevwa pansyon li.", "choice2": "Li te fin peye lajan sou kay li.", "question": "effect", "label": 0, "idx": 2, "changed": false}
+{"premise": "M te vle kons\u00e8ve en\u00e8ji.", "choice1": "Mwen te fin baleye chanm lib la.", "choice2": "Mwen te femen limy\u00e8 nan chanm lib la.", "question": "effect", "label": 1, "idx": 3, "changed": false}
+
+Continue generating instances.
+Response:
+{"premise": "Timoun yo te fin manje tout manje yo.", "choice1": "Yo te toujou grangou.", "choice2": "Yo te santi yo plen.", "question": "effect", "label": 1, "idx": 4, "changed": false}
+{"premise": "Machin nan te panne nan mitan wout la.", "choice1": "Chofè a te rele yon depannè.", "choice2": "Chofè a te kontinye kouri.", "question": "effect", "label": 0, "idx": 5, "changed": false}
+{"premise": "Meteorolog yo te anonse yon gwo lapli.", "choice1": "Moun yo te soti ak parapli yo.", "choice2": "Moun yo te al nan plaj la.", "question": "effect", "label": 0, "idx": 6, "changed": false}
+{"premise": "Mwen te bliye mete alam nan telefòn mwen.", "choice1": "Mwen te leve bonè nan maten an.", "choice2": "Mwen te domi an reta.", "question": "effect", "label": 1, "idx": 7, "changed": false}
+{"premise": "Mwen te achte yon pye mango pou mwen plante nan lakou mwen.", "choice1": "Mwen te jwenn yon pye mango nan mache a.", "choice2": "Mwen te espere pou mango yo grandi.", "question": "effect", "label": 1, "idx": 8, "changed": false}
+{"premise": "Mwen te kouri nan lapli.", "choice1": "Mwen te mouye.", "choice2": "Mwen te rete nan kay la.", "question": "effect", "label": 0, "idx": 9, "changed": false}
+==================================================
+
+Split: validation
+Prompt:
+Please generate instances of XCOPA Haitian Creole dataset validation split.
+{"premise": "Msye a te louvri tiyo a.", "choice1": "Twal\u00e8t la te ranpli ak dlo.", "choice2": "Dlo a te soti nan bouch tiyo a.", "question": "effect", "label": 1, "idx": 0, "changed": false}
+{"premise": "Fi a te jwenn yon pin\u00e8z nan sereyal li.", "choice1": "Li te vide l\u00e8t la nan b\u00f2l la.", "choice2": "Li te p\u00e8di apeti li.", "question": "effect", "label": 1, "idx": 1, "changed": false}
+{"premise": "Madan m nan te pran retr\u00e8t.", "choice1": "Li te resevwa pansyon li.", "choice2": "Li te fin peye lajan sou kay li.", "question": "effect", "label": 0, "idx": 2, "changed": false}
+{"premise": "M te vle kons\u00e8ve en\u00e8ji.", "choice1": "Mwen te fin baleye chanm lib la.", "choice2": "Mwen te femen limy\u00e8 nan chanm lib la.", "question": "effect", "label": 1, "idx": 3, "changed": false}
+
+Continue generating instances.
+Response:
+{"premise": "Timoun yo te fin manje tout manje yo.", "choice1": "Yo te toujou grangou.", "choice2": "Yo te santi yo plen.", "question": "effect", "label": 1, "idx": 4, "changed": false}
+{"premise": "Meteorolojist yo te anonse yon siklòn.", "choice1": "Moun yo te kòmanse prepare pou siklòn nan.", "choice2": "Moun yo te kontinye fè aktivite yo kòm si pa gen anyen.", "question": "effect", "label": 0, "idx": 5, "changed": false}
+{"premise": "Machin nan te panne nan mitan wout la.", "choice1": "Chofè a te rele yon depannè.", "choice2": "Chofè a te kontinye kouri.", "question": "effect", "label": 0, "idx": 6, "changed": false}
+{"premise": "Moun yo te tande yon gwo bri nan kay la.", "choice1": "Yo te kouri al wè kisa ki te fè bri a.", "choice2": "Yo te rete nan pozisyon yo e pa tcheke bri a.", "question": "effect", "label": 0, "idx": 7, "changed": false}
+{"premise": "Mwen te bliye mete alam nan kay la.", "choice1": "Mwen te santi mwen an sekirite.", "choice2": "Mwen te santi mwen ensekir.", "question": "effect", "label": 1, "idx": 8, "changed": false}
+{"premise": "Mwen te achte yon pye mango pou mwen plante nan jaden mwen.", "choice1": "Mwen te jwenn pye mango a nan yon magazen.", "choice2": "Mwen te espere pou mwen jwenn mango nan lavni.", "question": "effect", "label": 1, "idx": 9, "changed": false}
+==================================================
+
+Split: test
+Prompt:
+Please generate instances of XCOPA Haitian Creole dataset test split.
+{"premise": "Atik la te vlope ak papye bul.", "choice1": "Li te frajil.", "choice2": "Li te piti.", "question": "cause", "label": 0, "idx": 0, "changed": false}
+{"premise": "Mwen te vide posh mwen.", "choice1": "Mwen jwenn yon bout biye.", "choice2": "Mwen te jwenn yon zam.", "question": "effect", "label": 0, "idx": 1, "changed": false}
+{"premise": "Foumi yo te anvayi kay la.", "choice1": "Foumi yo dispar\u00e8t nan kay la.", "choice2": "Foumi yo fin wonje bwa nan kay la.", "question": "effect", "label": 1, "idx": 2, "changed": false}
+{"premise": "Vwayaj\u00e8 yo te rive sou fronty\u00e8 a.", "choice1": "Ajan frontalye a te enspekte pasp\u00f2 yo.", "choice2": "Ajan frontalye a te akize yo de kontrabann.", "question": "effect", "label": 0, "idx": 3, "changed": false}
+
+Continue generating instances.
+Response:
+{"premise": "Mwen te kouri nan lapli.", "choice1": "Mwen te mouye.", "choice2": "Mwen te cho.", "question": "effect", "label": 0, "idx": 4, "changed": false}
+{"premise": "Mwen te achte yon pye mango.", "choice1": "Mwen te plante li nan jaden mwen.", "choice2": "Mwen te manje li.", "question": "effect", "label": 0, "idx": 5, "changed": false}
+{"premise": "Mwen te pèdi kle kay mwen.", "choice1": "Mwen te oblije kase pòt la.", "choice2": "Mwen te jwenn yon lòt kle.", "question": "effect", "label": 0, "idx": 6, "changed": false}
+{"premise": "Mwen te koupe zèb nan lakou mwen.", "choice1": "Lakou a te pi pwòp.", "choice2": "Lakou a te pi sal.", "question": "effect", "label": 0, "idx": 7, "changed": false}
+{"premise": "Mwen te pran yon grenn aspirin.", "choice1": "Mwen te gen tètfè mal.", "choice2": "Mwen te gen yon kout pye.", "question": "cause", "label": 0, "idx": 8, "changed": false}
+{"premise": "Mwen te koute mizik nan telefòn mwen.", "choice1": "Mwen te mete ekoutè.", "choice2": "Mwen te mete yon chapo.", "question": "cause", "label": 0, "idx": 9, "changed": false}
+==================================================
+

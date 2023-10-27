@@ -1,0 +1,36 @@
+languages:
+- "List of ISO 639-1 code for languages covered in the dataset"
+- en
+pretty_name: Universal Dependencies English Web Treebank (UDPOS)
+tags:
+- Part-of-speech tagging
+dataset_info:
+    features:
+        - name: "id"
+          dtype: "int32"
+        - name: "form"
+          dtype: "string"
+        - name: "lemma"
+          dtype: "string"
+        - name: "upos"
+          dtype: "string"
+        - name: "xpos"
+          dtype: "string"
+        - name: "feats"
+          dtype: "string"
+        - name: "head"
+          dtype: "int32"
+        - name: "deprel"
+          dtype: "string"
+        - name: "deps"
+          dtype: "string"
+        - name: "misc"
+          dtype: "string"
+    splits:
+        train:
+            num_examples: 12543
+        validation:
+            num_examples: 2002
+        test:
+            num_examples: 2077
+dataset_summary: The Universal Dependencies English Web Treebank (UDPOS) is a corpus of English sentences annotated with part-of-speech tags, morphological features, and syntactic dependencies. The dataset is part of the Universal Dependencies project, which aims to develop cross-linguistically consistent treebank annotation for many languages. The UDPOS dataset is widely used for training and evaluating part-of-speech taggers and dependency parsers.

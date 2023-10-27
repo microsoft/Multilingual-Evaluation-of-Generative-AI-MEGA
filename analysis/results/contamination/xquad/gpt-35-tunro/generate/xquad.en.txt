@@ -1,0 +1,12 @@
+id | context | question | answers
+---|---------|----------|--------
+XQuAD-TEST-0001 | The history of the United States began with the arrival of Native Americans in North America around 15,000 BC. | When did the history of the United States begin? | 15,000 BC
+XQuAD-TEST-0002 | The Great Barrier Reef is the world's largest coral reef system composed of over 2,900 individual reefs and 900 islands stretching for over 2,300 kilometers over an area of approximately 344,400 square kilometers. | What is the Great Barrier Reef? | the world's largest coral reef system
+XQuAD-TEST-0003 | The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. | Where is the Eiffel Tower located? | Paris, France
+XQuAD-TEST-0004 | The human brain is the central organ of the human nervous system, and with the spinal cord makes up the central nervous system. | What is the human brain? | the central organ of the human nervous system
+XQuAD-TEST-0005 | The Amazon rainforest, also known in English as Amazonia or the Amazon Jungle, is a moist broadleaf forest that covers most of the Amazon basin of South America. | What is the Amazon rainforest? | a moist broadleaf forest
+XQuAD-TEST-0006 | The Great Wall of China is a series of fortifications made of stone, brick, tamped earth, wood, and other materials, generally built along an east-to-west line across the historical northern borders of China to protect the Chinese states and empires against the raids and invasions of the various nomadic groups of the Eurasian Steppe. | What is the Great Wall of China? | a series of fortifications
+XQuAD-TEST-0007 | The Taj Mahal is an ivory-white marble mausoleum on the right bank of the Yamuna river in the Indian city of Agra. | Where is the Taj Mahal located? | Agra, India
+XQuAD-TEST-0008 | The moon is an astronomical body that orbits Earth as its only permanent natural satellite. | What is the moon? | an astronomical body
+XQuAD-TEST-0009 | The Sahara is a desert located on the African continent. | Where is the Sahara located? | on the African continent
+XQuAD-TEST-0010 | The Statue of Liberty is a colossal neoclassical sculpture on Liberty Island in New York Harbor within New York City, in the United States. | Where is the Statue of Liberty located? | New York Harbor within New York City, in the United States.

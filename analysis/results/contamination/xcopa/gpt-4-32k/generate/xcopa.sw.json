@@ -1,0 +1,32 @@
+[
+    {
+        "split": "train",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Swahili dataset train split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Mwanamke anapika chakula. | Mwanamke anapika chakula cha mchana. | Mwanamke anapika chakula cha jioni. | chakula | 0\n2 | Mtu anasoma gazeti. | Mtu anapata habari. | Mtu anapata usingizi. | sababu | 0\n3 | Watoto wanacheza mpira nje. | Watoto wanafurahia mchezo. | Watoto wanafanya kazi ya nyumbani. | shughuli | 0\n4 | Mvua inanyesha sana. | Barabara zinakuwa utelezi. | Jua linawaka sana. | matokeo | 0\n5 | Mwanafunzi anasoma kwa bidii. | Mwanafunzi anapata alama nzuri. | Mwanafunzi anacheza video michezo. | matokeo | 0\n6 | Mama ananunua matunda sokoni. | Mama anapika chakula. | Mama anauza matunda. | shughuli | 1\n7 | Mtu anatembea mbwa wake. | Mtu anapenda mbwa. | Mtu anapenda paka. | hisia | 0\n8 | Mwanamke anaimba wimbo. | Mwanamke anafurahia muziki. | Mwanamke anasikiliza redio. | shughuli | 0\n9 | Mtu anapanda mti. | Mtu anataka kuboresha mazingira. | Mtu anataka kukata mti. | sababu | 0\n10 | Watu wanakimbia marathon. | Watu wanafanya mazoezi. | Watu wanakula chakula. | shughuli | 0"
+    },
+    {
+        "split": "validation",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Swahili dataset validation split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Mwanamke anapika chakula. | Mwanamke anapika chakula cha mchana. | Mwanamke anapika chakula cha jioni. | cause | 0\n2 | Mtu anasoma gazeti. | Mtu anapata habari. | Mtu anapata usingizi. | effect | 0\n3 | Mtoto anacheza na mbwa. | Mtoto anafurahi. | Mtoto anasoma kitabu. | effect | 0\n4 | Mvua inanyesha nje. | Watu wanavaa koti za mvua. | Watu wanavaa miwani ya jua. | effect | 0\n5 | Mwanafunzi anasoma kwa bidii. | Mwanafunzi anapata alama nzuri. | Mwanafunzi anacheza mpira. | effect | 0\n6 | Mtu anatembea kwenye jua kali. | Mtu anapata jasho. | Mtu anapata baridi. | effect | 0\n7 | Mtu anawasha taa. | Mtu anataka kuona vizuri. | Mtu anataka kusikia vizuri. | cause | 0\n8 | Mtu anafungua dirisha. | Mtu anataka hewa safi. | Mtu anataka kufunga mlango. | cause | 0\n9 | Mtu anapanda mti. | Mtu anataka kuboresha mazingira. | Mtu anataka kuchimba shimo. | cause | 0\n10 | Mtu ananunua tiketi ya sinema. | Mtu anataka kutazama filamu. | Mtu anataka kula chakula cha mchana. | cause | 0"
+    },
+    {
+        "split": "test",
+        "prompt": [
+            {
+                "role": "user",
+                "content": "Please generate the first 10 instances of XCOPA Swahili dataset test split. Use the following format:\nid | premise | choice1 | choice2 | question_type | label\n---|--------|---------|---------|----------|------\n1 | {premise1} | {choice1_1} | {choice1_2} | {question_type_1} | {label1}\n1 | {premise2} | {choice2_1} | {choice2_2} | {question_type_2} | {label2}\n...\n. You should map the labels based on the following rules:\n0 for choice 1, 1 for choice 2"
+            }
+        ],
+        "response": "1 | Mwanamke anapika chakula. | Mwanamke ana njaa. | Mwanamke anafanya kazi. | cause | 1\n2 | Mtu anasoma gazeti. | Mtu anapata habari. | Mtu anapata usingizi. | effect | 0\n3 | Mtoto anacheza na mbwa. | Mtoto anafurahi. | Mtoto anaogopa. | effect | 0\n4 | Mvua inanyesha nje. | Ardhi inalowa. | Jua linawaka. | effect | 0\n5 | Mwanafunzi anasoma kwa bidii. | Mwanafunzi anapata alama nzuri. | Mwanafunzi anacheza mpira. | effect | 0\n6 | Mtu anatembea kwa haraka. | Mtu ana kazi ya kufanya. | Mtu anapumzika. | cause | 0\n7 | Mwanamke ananunua matunda sokoni. | Mwanamke anataka kula matunda. | Mwanamke anauza matunda. | cause | 0\n8 | Mtu anaimba wimbo. | Mtu anafurahia muziki. | Mtu anasikiliza redio. | effect | 0\n9 | Mwanafunzi anachelewa shuleni. | Mwanafunzi aliamka kuchelewa. | Mwanafunzi alikwenda mapema. | cause | 0\n10 | Mtu anafanya mazoezi. | Mtu anataka kuwa na afya nzuri. | Mtu anataka kupata homa. | cause | 0"
+    }
+]
