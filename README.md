@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://2023.emnlp.org/"><img src="https://img.shields.io/badge/EMNLP-2023-blue"></a>
-  <a href="https://github.com/microsoft/MMLMCalibration/blob/main/LICENSE">
+  <a href="https://github.com/microsoft/Multilingual-Evaluation-of-Generative-AI-MEGA/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-green">
   </a>
 </p>
