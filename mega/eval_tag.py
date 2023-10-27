@@ -182,14 +182,14 @@ def main(sys_args):
     train_dataset = load_tagging_dataset(
         args.dataset,
         args.pivot_lang,
-        split="train" if not args.use_val_to_prompt else "validation",
+        split="validation" if args.use_val_to_prompt else "train",
         xtreme_dir=args.xtreme_dir,
         delimiter=args.delimiter,
     )
     test_dataset = load_tagging_dataset(
         args.dataset,
         args.tgt_lang,
-        split="test" if not args.eval_on_val else "validation",
+        split="validation" if args.eval_on_val else "test",
         max_examples=1000,  # args.max_examples,
         dataset_frac=args.test_frac,
         xtreme_dir=args.xtreme_dir,

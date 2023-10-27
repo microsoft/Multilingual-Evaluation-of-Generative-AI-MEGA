@@ -55,10 +55,14 @@ def construct_qa_prompt(
             answer = (
                 "unanswerable"
                 if example["answers"]["text"] == []
-                else example["answers"]["text"]
+                else (
+                    example["answers"]["text"][0]
+                    if type(example["answers"]["text"]) == list
+                    else example["answers"]["text"]
+                )
             )
             return (
-                template.replace("{context}", example["context"])
+                template.replace("{context}", str(example["context"]))
                 .replace("{question}", example["question"])
                 .replace("{answer}", answer)
             )

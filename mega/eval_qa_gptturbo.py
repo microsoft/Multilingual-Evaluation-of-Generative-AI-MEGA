@@ -212,14 +212,14 @@ def evaluate_qa_chatgpt(
     num_evals_per_sec=2,
     temperature=0,
     max_tokens=20,
-    log_wandb=True,
+    log_wandb=False,
     metric="squad",
 ):
     f1_sum = 0
     em_sum = 0
     avg_em = 0
     avg_f1 = 0
-
+ 
     squad_metric = load(metric)
 
     run_details = {"num_calls": 0}
@@ -250,7 +250,10 @@ def evaluate_qa_chatgpt(
                     max_tokens=max_tokens,
                 )
                 break
-            except (openai.error.InvalidRequestError, openai.error.Timeout):
+            # except (openai.error.InvalidRequestError, openai.error.Timeout):
+            except Exception as e:
+                print(e)
+                
                 if len(train_examples_i) == 0:
                     pred = ""
                     print("Exausted Everything! Giving Empty Prediction Now :(")
@@ -313,6 +316,8 @@ def evaluate_qa_chatgpt(
             em_sum += results["exact"]
         avg_f1 = f1_sum / (i + 1)
         avg_em = em_sum / (i + 1)
+        # print(log_wandb, "wandb")
+        log_wandb = False
         if log_wandb:
             wandb.log({"f1": avg_f1, "em": avg_em}, step=i + 1)
             wandb.log(run_details, step=i + 1)
@@ -342,7 +347,7 @@ def evaluate_qa_chatgpt(
 def main(sys_args):
     args = parse_args(sys_args)
     load_openai_env_variables()
-
+    print(args.log_wandb, "WANDB")
     # Set seed
     random.seed(args.seed)
     np.random.seed(args.seed)
@@ -383,9 +388,8 @@ def main(sys_args):
 
     # Loading instruction for the task
     instruction = INSTRUCTIONS["xquad"]
-    print(instruction)
 
-    out_dir = f"{args.save_dir}/{args.dataset}/{args.model}/{args.tgt_lang}/PivotLang_{args.pivot_lang}_PromptName_{args.tgt_prompt_name.replace('/','_')}_Verbalizer_{args.verbalizer}_FewShotK_{args.few_shot_k}"
+    out_dir = f"{args.save_dir}/{args.dataset}/{args.model}_rerun/{args.tgt_lang}/PivotLang_{args.pivot_lang}_PromptName_{args.tgt_prompt_name.replace('/','_')}_Verbalizer_{args.verbalizer}_FewShotK_{args.few_shot_k}"
     if args.translate_test:
         out_dir = f"{out_dir}_translate_test"
 

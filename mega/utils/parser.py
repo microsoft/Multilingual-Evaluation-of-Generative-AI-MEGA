@@ -151,6 +151,7 @@ def parse_args(args: list) -> argparse.Namespace:
         "--log_wandb",
         action="store_true",
         help="Whether to log experiments and results on wandb",
+        default=False,
     )
     parser.add_argument(
         "--no-save", action="store_true", help="Whether to not save any results"

@@ -1,12 +1,13 @@
 key_path: /home/t-hdiddee/MultilingualBlanketEval/keys/openai_key.txt
 k: 1
-model: gpt-4-32k
+model: gpt-35-turbo
 chat_prompt: True
 turbo_identifier: gpt-35-turbo
 instruction_identifier: xlsum
-response_logger_root: ./gpt-4-all-lang-eval/
+response_logger_root: ./gpt-4-new-all-lang-eval/
 prompt_selection: False
 sleep_period: 0.5
+wandb_log: False
 langs:
   - "swahili"
   - "tamil"
@@ -47,7 +48,7 @@ random_seed: 42
 max_prompt_selection_samples: 1000
 max_tokens: 150
 temperature: 0
-metric_logger_path: "xlsum_gpt_4_metrics.csv"
+metric_logger_path: "xlsum_gpt_35_metrics.csv"
 prompt_names:
   - DOC_write_summary_of_above
 # For xlsum language codes check https://huggingface.co/datasets/csebuetnlp/xlsum/blob/main/xlsum.py or the dataloader for xlsum

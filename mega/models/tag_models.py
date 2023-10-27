@@ -23,6 +23,7 @@ SUPPORTED_MODELS = [
     "gpt-4-32k",
     "gpt-4",
     "gpt-35-turbo",
+    "gpt-35-turbo-16k"
 ]
 CHAT_MODELS = ["gpt-35-turbo-16k", "gpt-4", "gpt-35-turbo", "gpt-4-32k"]
 

@@ -12,6 +12,7 @@ from mega.utils.env_utils import (
     BLOOMZ_API_URL,
     HF_API_URL,
 )
+import backoff
 
 load_openai_env_variables()
 
@@ -19,6 +20,7 @@ SUPPORTED_MODELS = [
     "BLOOM",
     "BLOOMZ",
     "gpt-35-turbo",
+    "gpt-35-turbo-16k",
     "gpt-4-32k",
     "gpt-4",
 ]
@@ -41,96 +43,45 @@ def timeout_handler(signum, frame):
     raise openai.error.Timeout("API Response Stuck!")
 
 
+# @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
+@backoff.on_exception(backoff.expo, openai.error.APIError)
 def gpt3x_completion(
     prompt: Union[str, List[Dict[str, str]]],
     model: str,
     run_details: Any = {},
     num_evals_per_sec: int = 2,
-    backoff_base: int = 2,
-    backoff_rate: int = 2,
-    backoff_ceil: int = 10,
-    timeout: int = 0,
     **model_params,
 ) -> str:
-    """Runs the prompt over the GPT3.x model for text completion
-
-    Args:
-        - prompt (str) : Prompt String to be completed by the model
-        - model (str) : GPT-3x model to use
-
-    Returns:
-        str: generated string
-    """
-
-    if model in CHAT_MODELS:
-        openai.api_version = "2023-03-15-preview"
-    else:
-        openai.api_version = "2022-12-01"
-
-    # Hit the api repeatedly till response is obtained
     output = None
-    backoff_count = 0
-    while True:
-        try:
-            if isinstance(prompt, str):
-                if timeout != 0:
-                    # Set the signal handler for the SIGALRM signa
-                    signal.signal(signal.SIGALRM, timeout_handler)
-                    signal.alarm(
-                        timeout
-                    )  # Wait for timeout seconds for the response to come
-                response = openai.Completion.create(
-                    engine=model,
-                    prompt=prompt,
-                    max_tokens=model_params.get("max_tokens", 20),
-                    temperature=model_params.get("temperature", 1),
-                    top_p=model_params.get("top_p", 1),
-                )
-                if timeout != 0:
-                    signal.alarm(0)  # Disable the alarm
-                if "num_calls" in run_details:
-                    run_details["num_calls"] += 1
-                output = response["choices"][0]["text"].strip().split("\n")[0]
-                time.sleep(1 / num_evals_per_sec)
-                backoff_count = 0
-            else:
-                if timeout != 0:
-                    # Set the signal handler for the SIGALRM signa
-                    signal.signal(signal.SIGALRM, timeout_handler)
-                    signal.alarm(
-                        timeout
-                    )  # Wait for timeout seconds for the response to come
-                response = openai.ChatCompletion.create(
-                    engine=model,
-                    messages=prompt,
-                    max_tokens=model_params.get("max_tokens", 20),
-                    temperature=model_params.get("temperature", 1),
-                    top_p=model_params.get("top_p", 1),
-                )
-                if timeout != 0:
-                    signal.alarm(0)  # Disable the alarm
-                if "num_calls" in run_details:
-                    run_details["num_calls"] += 1
-                if response["choices"][0]["finish_reason"] == "content_filter":
-                    output = ""
-                else:
-                    output = response["choices"][0]["message"][
-                        "content"
-                    ].strip()  # .split("\n")[0]
-                time.sleep(1 / num_evals_per_sec)
-                backoff_count = 0
-            break
-        except (openai.error.APIConnectionError, openai.error.RateLimitError) as e:
-            backoff_count = min(backoff_count + 1, backoff_ceil)
-            sleep_time = backoff_base**backoff_count
-            print(f"Exceeded Rate Limit. Waiting for {sleep_time} seconds")
-            time.sleep(sleep_time)
-            continue
-        except (openai.error.APIError, TypeError):
-            warnings.warn(
-                "Couldn't generate response, returning empty string as response"
-            )
-            return ""
+    if isinstance(prompt, str):
+        response = openai.Completion.create(
+            engine=model,
+            prompt=prompt,
+            max_tokens=model_params.get("max_tokens", 20),
+            temperature=model_params.get("temperature", 1),
+            top_p=model_params.get("top_p", 1),
+        )
+        if "num_calls" in run_details:
+            run_details["num_calls"] += 1
+        output = response["choices"][0]["text"].strip().split("\n")[0]
+        time.sleep(1 / num_evals_per_sec)
+    else:
+        response = openai.ChatCompletion.create(
+            engine=model,
+            messages=prompt,
+            max_tokens=model_params.get("max_tokens", 20),
+            temperature=model_params.get("temperature", 1),
+            top_p=model_params.get("top_p", 1),
+        )
+        if "num_calls" in run_details:
+            run_details["num_calls"] += 1
+        if response["choices"][0]["finish_reason"] == "content_filter":
+            output = ""
+        else:
+            output = response["choices"][0]["message"][
+                "content"
+            ].strip()  # .split("\n")[0]
+        time.sleep(1 / num_evals_per_sec)
 
     return output
 
@@ -229,10 +180,7 @@ def model_completion(
         str: generated string
     """
 
-    if (
-        model
-        in CHAT_MODELS
-    ):
+    if model in CHAT_MODELS:
         return gpt3x_completion(prompt, model, timeout=timeout, **model_params)
 
     if model == "BLOOM":

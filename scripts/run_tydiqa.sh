@@ -11,7 +11,7 @@ do
             k=8
         fi
         echo "Running for lang $lang and k $k"
-        python -m mega.eval_qa_gptindex -p $lang -t $lang -d tydiqa --pivot_prompt_name "answer_given_context_and_question" --tgt_prompt_name "answer_given_context_and_question" --eval_on_val -k $k --short_contexts
+        python -m mega.eval_qa_gptturbo -p $lang -t $lang -d tydiqa --pivot_prompt_name "answer_given_context_and_question" --tgt_prompt_name "answer_given_context_and_question" --eval_on_val -k $k --short_contexts
     done
 done
 
