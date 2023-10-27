@@ -4,7 +4,7 @@ transformers==4.30.0
 tqdm
 wandb
 word2word==1.0.0
-langchain==0.0.294
+langchain==0.0.317
 python-dotenv
 evaluate
 spacy
