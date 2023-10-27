@@ -1,6 +1,6 @@
 openai
 datasets
-transformers==4.26.0
+transformers==4.30.0
 tqdm
 wandb
 word2word==1.0.0
